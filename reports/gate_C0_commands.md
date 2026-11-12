@@ -130,3 +130,19 @@ No additional package installation was performed during C0. Reproducing plots
 byte-for-byte is tested in the recorded environment; rendering bytes can vary
 across platforms or font-library versions. Statistical tables and seeds are
 the portable scientific artifacts.
+
+## Result commit and verified synchronization
+
+```sh
+git add reports/gate_C0_commands.md reports/gate_C0_logs reports/gate_C0_negative_controls.md reports/gate_C0_report.md reports/gate_C0_theory_decision.md reports/gate_C0_modified_files.txt requirements-gate-C0.txt results/gate_C0
+git -c user.name='COMET Research' -c user.email='comet-research@users.noreply.github.com' commit -m 'Record Gate C0 pilot results and scoped GO decision'
+GIT_TERMINAL_PROMPT=0 git -c http.proxy=http://proxy-dku.oit.duke.edu:3128 -c http.lowSpeedLimit=1 -c http.lowSpeedTime=30 push --set-upstream origin codex/gate-c0-informativeness
+GIT_TERMINAL_PROMPT=0 git -c http.proxy=http://proxy-dku.oit.duke.edu:3128 -c http.lowSpeedLimit=1 -c http.lowSpeedTime=10 ls-remote origin refs/heads/codex/gate-c0-informativeness refs/heads/codex/gates-a-b
+GIT_TERMINAL_PROMPT=0 git -c http.proxy=http://proxy-dku.oit.duke.edu:3128 -c http.lowSpeedLimit=1 -c http.lowSpeedTime=10 ls-remote overleaf refs/heads/codex/gates-a-b
+```
+
+Commit/push/remote reads all exited 0. Observed C0 result SHA was
+`f2b4e4c70d5837296e73709cf3ac547c6f46f116`; original experiment/paper branches
+remained d11a36f / df70f48. The following metadata-only commit records this
+verification; its final SHA, push and clean-worktree check are provided in the
+final response rather than attempting a self-referential committed hash.
