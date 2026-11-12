@@ -1,0 +1,115 @@
+{
+  "convention": "Known exact mathematical randomization law; float exported complement and ordinary score/radius rounding, not a bit-level numerical verification theorem",
+  "max_absolute_complement_error": 1.734723475976807e-17,
+  "new_outcomes_generated": 0,
+  "rows": [
+    {
+      "absolute_difference": 0.0,
+      "cell_id": "A",
+      "context": 0,
+      "difference": "0",
+      "e0_exact_lottery_probability": "1/2",
+      "e0_float_representation": "1/2",
+      "e1_exact_dyadic": "1/2"
+    },
+    {
+      "absolute_difference": 0.0,
+      "cell_id": "A",
+      "context": 1,
+      "difference": "0",
+      "e0_exact_lottery_probability": "1/2",
+      "e0_float_representation": "1/2",
+      "e1_exact_dyadic": "1/2"
+    },
+    {
+      "absolute_difference": 0.0,
+      "cell_id": "B",
+      "context": 0,
+      "difference": "0",
+      "e0_exact_lottery_probability": "5404319552844595/9007199254740992",
+      "e0_float_representation": "5404319552844595/9007199254740992",
+      "e1_exact_dyadic": "3602879701896397/9007199254740992"
+    },
+    {
+      "absolute_difference": 0.0,
+      "cell_id": "B",
+      "context": 1,
+      "difference": "0",
+      "e0_exact_lottery_probability": "3602879701896397/9007199254740992",
+      "e0_float_representation": "3602879701896397/9007199254740992",
+      "e1_exact_dyadic": "5404319552844595/9007199254740992"
+    },
+    {
+      "absolute_difference": 0.0,
+      "cell_id": "C",
+      "context": 0,
+      "difference": "0",
+      "e0_exact_lottery_probability": "5404319552844595/9007199254740992",
+      "e0_float_representation": "5404319552844595/9007199254740992",
+      "e1_exact_dyadic": "3602879701896397/9007199254740992"
+    },
+    {
+      "absolute_difference": 0.0,
+      "cell_id": "C",
+      "context": 1,
+      "difference": "0",
+      "e0_exact_lottery_probability": "3602879701896397/9007199254740992",
+      "e0_float_representation": "3602879701896397/9007199254740992",
+      "e1_exact_dyadic": "5404319552844595/9007199254740992"
+    },
+    {
+      "absolute_difference": 8.673617379884035e-18,
+      "cell_id": "D",
+      "context": 0,
+      "difference": "-5/576460752303423488",
+      "e0_exact_lottery_probability": "570696144780389253/576460752303423488",
+      "e0_float_representation": "4458563631096791/4503599627370496",
+      "e1_exact_dyadic": "5764607523034235/576460752303423488"
+    },
+    {
+      "absolute_difference": 1.734723475976807e-17,
+      "cell_id": "D",
+      "context": 1,
+      "difference": "-5/288230376151711744",
+      "e0_exact_lottery_probability": "282465768628677509/288230376151711744",
+      "e0_float_representation": "2206763817411543/2251799813685248",
+      "e1_exact_dyadic": "5764607523034235/288230376151711744"
+    },
+    {
+      "absolute_difference": 8.673617379884035e-18,
+      "cell_id": "E",
+      "context": 0,
+      "difference": "-5/576460752303423488",
+      "e0_exact_lottery_probability": "570696144780389253/576460752303423488",
+      "e0_float_representation": "4458563631096791/4503599627370496",
+      "e1_exact_dyadic": "5764607523034235/576460752303423488"
+    },
+    {
+      "absolute_difference": 1.734723475976807e-17,
+      "cell_id": "E",
+      "context": 1,
+      "difference": "-5/288230376151711744",
+      "e0_exact_lottery_probability": "282465768628677509/288230376151711744",
+      "e0_float_representation": "2206763817411543/2251799813685248",
+      "e1_exact_dyadic": "5764607523034235/288230376151711744"
+    },
+    {
+      "absolute_difference": 0.0,
+      "cell_id": "F",
+      "context": 0,
+      "difference": "0",
+      "e0_exact_lottery_probability": "5404319552844595/9007199254740992",
+      "e0_float_representation": "5404319552844595/9007199254740992",
+      "e1_exact_dyadic": "3602879701896397/9007199254740992"
+    },
+    {
+      "absolute_difference": 0.0,
+      "cell_id": "F",
+      "context": 1,
+      "difference": "0",
+      "e0_exact_lottery_probability": "3602879701896397/9007199254740992",
+      "e0_float_representation": "3602879701896397/9007199254740992",
+      "e1_exact_dyadic": "5404319552844595/9007199254740992"
+    }
+  ]
+}

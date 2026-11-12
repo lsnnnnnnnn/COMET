@@ -1,0 +1,11 @@
+{
+  "archive_sha256": "d40e3d30a85e57f582fa414a29888544222e946d45b1324fb38f37d8edbb92fe",
+  "baseline": "3f8902d1033f3c4eece9a3746912ac9f1d8904ef",
+  "files": {
+    "CODEX_COMET_GATE_C_MASTER.md": "adf1348e12ca89e3f0b7559f4872e54c669c9af8bb49091b453e7f4647002262",
+    "COMET_GATE_C_INITIAL_PROMPT.txt": "cc1f95d8d76c5e592bfbdb1f664ca05bc12e8d4e48e6dceb930d315a857c2aa0",
+    "COMET_GATE_C_RESEARCH_DECISION_CN.md": "cdb229f21b3be3e7a0126b18ed7d0db3f30e495fa2ef747cdede1033c82a21c2"
+  },
+  "scope": "C-PREFLIGHT ONLY",
+  "source_path": "/Users/shengenli/Downloads/COMET_Gate_C_Implementation_Package.zip"
+}

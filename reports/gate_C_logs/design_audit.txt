@@ -1,0 +1,1 @@
+{"all_graph_colorings_verified": true, "all_primary_support_positive": true, "candidate_level_comparisons": 486, "config_sha256": "b834e7b409bb008ba0d2b6e591515873831f87d036fdc53ed0392d0b94012ff4", "forbidden_inputs": ["outcomes", "oracle_true_targets", "estimated_tail_scales"], "new_outcomes_generated": 0, "source": "pre_outcome_design_and_proved_known_envelopes"}

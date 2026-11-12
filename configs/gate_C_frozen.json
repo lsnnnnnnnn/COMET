@@ -1,0 +1,347 @@
+{
+  "alphas": [
+    0.05,
+    0.1
+  ],
+  "baseline_git_sha": "3f8902d1033f3c4eece9a3746912ac9f1d8904ef",
+  "cells": [
+    {
+      "cell_id": "A",
+      "design": {
+        "B": 128,
+        "auditors": [
+          "all"
+        ],
+        "chi": 1,
+        "e_by_context": [
+          0.5,
+          0.5
+        ],
+        "mu_hat": [
+          0.5,
+          0.5
+        ],
+        "n0": 64,
+        "q_probs": [
+          0.5
+        ],
+        "reference": 0.25
+      },
+      "nuisance_source": "fixed_predeclared",
+      "outcome_family": "bernoulli",
+      "p": 2.0,
+      "stable_targets": true,
+      "tail_alpha": 1.75,
+      "tail_scale": 0.1
+    },
+    {
+      "cell_id": "B",
+      "design": {
+        "B": 128,
+        "auditors": [
+          "all",
+          "group1"
+        ],
+        "chi": 1,
+        "e_by_context": [
+          0.4,
+          0.6
+        ],
+        "mu_hat": [
+          0.5,
+          0.5
+        ],
+        "n0": 256,
+        "q_probs": [
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "reference": 0.25
+      },
+      "nuisance_source": "fixed_predeclared",
+      "outcome_family": "bernoulli",
+      "p": 2.0,
+      "stable_targets": true,
+      "tail_alpha": 1.75,
+      "tail_scale": 0.1
+    },
+    {
+      "cell_id": "C",
+      "design": {
+        "B": 128,
+        "auditors": [
+          "all",
+          "group1"
+        ],
+        "chi": 4,
+        "e_by_context": [
+          0.4,
+          0.6
+        ],
+        "mu_hat": [
+          0.5,
+          0.5
+        ],
+        "n0": 256,
+        "q_probs": [
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "reference": 0.25
+      },
+      "nuisance_source": "fixed_predeclared",
+      "outcome_family": "bernoulli",
+      "p": 2.0,
+      "stable_targets": true,
+      "tail_alpha": 1.75,
+      "tail_scale": 0.1
+    },
+    {
+      "cell_id": "D",
+      "design": {
+        "B": 128,
+        "auditors": [
+          "all",
+          "group1"
+        ],
+        "chi": 1,
+        "e_by_context": [
+          0.01,
+          0.02
+        ],
+        "mu_hat": [
+          0.5,
+          0.5
+        ],
+        "n0": 256,
+        "q_probs": [
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "reference": 0.25
+      },
+      "nuisance_source": "fixed_predeclared",
+      "outcome_family": "bernoulli",
+      "p": 2.0,
+      "stable_targets": true,
+      "tail_alpha": 1.75,
+      "tail_scale": 0.1
+    },
+    {
+      "cell_id": "E",
+      "design": {
+        "B": 128,
+        "auditors": [
+          "all",
+          "group1"
+        ],
+        "chi": 4,
+        "e_by_context": [
+          0.01,
+          0.02
+        ],
+        "mu_hat": [
+          0.5,
+          0.5
+        ],
+        "n0": 256,
+        "q_probs": [
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "reference": 0.25
+      },
+      "nuisance_source": "fixed_predeclared",
+      "outcome_family": "bernoulli",
+      "p": 2.0,
+      "stable_targets": true,
+      "tail_alpha": 1.75,
+      "tail_scale": 0.1
+    },
+    {
+      "cell_id": "F",
+      "design": {
+        "B": 128,
+        "auditors": [
+          "all",
+          "group1"
+        ],
+        "chi": 4,
+        "e_by_context": [
+          0.4,
+          0.6
+        ],
+        "mu_hat": [
+          0.5,
+          0.5
+        ],
+        "n0": 256,
+        "q_probs": [
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "reference": 0.25
+      },
+      "nuisance_source": "fixed_predeclared",
+      "outcome_family": "symmetric_pareto",
+      "p": 1.5,
+      "stable_targets": true,
+      "tail_alpha": 1.75,
+      "tail_scale": 0.1
+    }
+  ],
+  "confirmatory_reps_per_cell": 1000,
+  "constraint_per_subgroup_mass": 0.2,
+  "deferred": [
+    "C-STAT1000-replication runs",
+    "secondary sensitivity",
+    "power gap sweep",
+    "discovery",
+    "policy repair",
+    "real datasets",
+    "Bernstein or martingale extensions"
+  ],
+  "eta": 0.125,
+  "holm_family": "17 eligible cell-method 95% comparisons; full-range and point baselines excluded",
+  "methods": [
+    "orig_mom",
+    "exact_binomial_mom",
+    "bounded_graph_chebyshev",
+    "ips",
+    "dm",
+    "dr",
+    "full_feasible_range"
+  ],
+  "phase_authorized": "preflight",
+  "preflight_inference": "Debugging only; same diagnostics labeled nonconfirmatory",
+  "preflight_reps_per_cell": 2,
+  "primary_alpha": 0.05,
+  "primary_comparisons": [
+    {
+      "alpha": 0.05,
+      "cell_id": "A",
+      "method": "orig_mom"
+    },
+    {
+      "alpha": 0.05,
+      "cell_id": "A",
+      "method": "exact_binomial_mom"
+    },
+    {
+      "alpha": 0.05,
+      "cell_id": "A",
+      "method": "bounded_graph_chebyshev"
+    },
+    {
+      "alpha": 0.05,
+      "cell_id": "B",
+      "method": "orig_mom"
+    },
+    {
+      "alpha": 0.05,
+      "cell_id": "B",
+      "method": "exact_binomial_mom"
+    },
+    {
+      "alpha": 0.05,
+      "cell_id": "B",
+      "method": "bounded_graph_chebyshev"
+    },
+    {
+      "alpha": 0.05,
+      "cell_id": "C",
+      "method": "orig_mom"
+    },
+    {
+      "alpha": 0.05,
+      "cell_id": "C",
+      "method": "exact_binomial_mom"
+    },
+    {
+      "alpha": 0.05,
+      "cell_id": "C",
+      "method": "bounded_graph_chebyshev"
+    },
+    {
+      "alpha": 0.05,
+      "cell_id": "D",
+      "method": "orig_mom"
+    },
+    {
+      "alpha": 0.05,
+      "cell_id": "D",
+      "method": "exact_binomial_mom"
+    },
+    {
+      "alpha": 0.05,
+      "cell_id": "D",
+      "method": "bounded_graph_chebyshev"
+    },
+    {
+      "alpha": 0.05,
+      "cell_id": "E",
+      "method": "orig_mom"
+    },
+    {
+      "alpha": 0.05,
+      "cell_id": "E",
+      "method": "exact_binomial_mom"
+    },
+    {
+      "alpha": 0.05,
+      "cell_id": "E",
+      "method": "bounded_graph_chebyshev"
+    },
+    {
+      "alpha": 0.05,
+      "cell_id": "F",
+      "method": "orig_mom"
+    },
+    {
+      "alpha": 0.05,
+      "cell_id": "F",
+      "method": "exact_binomial_mom"
+    }
+  ],
+  "schema_version": "gate-c-frozen-v1",
+  "scope": "Independent exogenous macro-blocks only; no adaptive or deployment claim",
+  "secondary_alpha": 0.1,
+  "seed_manifest_path": "configs/gate_C_seed_manifest.json",
+  "seed_manifest_sha256": "9d04a99066a7c8c0234f226f4dddfa33e9c0171fdb6f3486c30452389c667eab",
+  "selection": "No outcome/oracle-based selection of cells, methods, p, eta, K, scales, nuisance, constraints or families",
+  "stopping_rule": "Exactly2 preflight logs percell; stop on crash, preserve failures, resume only incomplete run_ids; no confirmatory outcomes in this phase",
+  "tail_choice": "Ideal symmetric Pareto exponent1.75 scale0.1, p1.5: finite p-moment/infinite variance; finite-precision right-grid moment-dominated sampler, no outcome clipping; chosen before Gate C outcomes",
+  "target_range_source": "Known conditional location mean class [0,1], including F; not a bounded-Y claim for F",
+  "truth": "Analytic fixed-design conditional expectation; oracle joined after all methods/levels",
+  "undercoverage_test": "P_Bin(n,0.95)(X <= hits), one-sided H0 coverage >=0.95; Holm across17"
+}

@@ -1,0 +1,9 @@
+Read `CODEX_COMET_GATE_C_MASTER.md` in full. Continue from verified COMET commit `3f8902d1033f3c4eece9a3746912ac9f1d8904ef`; preserve Gate A+B+C0 and the untouched Overleaf state.
+
+For this first task, execute **C-PREFLIGHT ONLY**:
+1. Inspect the real Gate C0 report, pilot CSV, proofs, code, test suite and all data assumptions. Reconcile all reported numbers and any divergences.
+2. Build a frozen preregistration and reproducible manifest for six primary Gate C cells; audit the conditional pathwise target, exact e, correct dependency graph, nuisance/pilot separation, known p-moment envelopes and strict method applicability.
+3. Implement deterministic oracle-truth and theorem/status tests. Preserve the 377 passing tests.
+4. Run only small CPU integration preflight jobs, NOT the 1000-replication confirmatory batch; create a checkpoint-resume test, report time/memory use and provide GO/BLOCKED decision.
+
+Do not modify the paper, download large datasets, claim results about fully adaptive histories, or choose parameters based on confirmatory oracle outcomes. Save the actual files, commands, failed-run logs and git SHA. Do not silently deviate from the master instructions.
