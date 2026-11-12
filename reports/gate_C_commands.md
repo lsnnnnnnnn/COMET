@@ -139,3 +139,20 @@ recorded the before/after checkpoint hashes. They generated no outcomes. Full
 reports, exact path inventory and synchronization are committed separately
 from the frozen code. No confirmatory command, external dataset download, GPU
 job, manuscript write or later-phase experiment was executed.
+
+## Result commit and synchronization
+
+```sh
+git add reports/gate_C_commands.md reports/gate_C_logs reports/gate_C_report.md reports/gate_C_statistical_summary.md reports/gate_C_modified_files.txt results/gate_C
+git -c user.name='COMET Research' -c user.email='comet-research@users.noreply.github.com' commit -m 'Record twelve-log Gate C preflight resume evidence and scoped GO decision'
+GIT_TERMINAL_PROMPT=0 git -c http.proxy=http://proxy-dku.oit.duke.edu:3128 -c http.lowSpeedLimit=1 -c http.lowSpeedTime=30 push --set-upstream origin codex/gate-c-preflight
+GIT_TERMINAL_PROMPT=0 git -c http.proxy=http://proxy-dku.oit.duke.edu:3128 -c http.lowSpeedLimit=1 -c http.lowSpeedTime=10 ls-remote origin refs/heads/codex/gate-c-preflight
+GIT_TERMINAL_PROMPT=0 git -c http.proxy=http://proxy-dku.oit.duke.edu:3128 -c http.lowSpeedLimit=1 -c http.lowSpeedTime=10 ls-remote origin refs/heads/codex/gate-c0-informativeness refs/heads/codex/gates-a-b
+GIT_TERMINAL_PROMPT=0 git -c http.proxy=http://proxy-dku.oit.duke.edu:3128 -c http.lowSpeedLimit=1 -c http.lowSpeedTime=10 ls-remote overleaf refs/heads/codex/gates-a-b
+```
+
+Commit and push exited 0; the C-PREFLIGHT remote result SHA was
+`b17ad86a97a06617a15f890e0dcbcbde5d341360`. Prior branch SHAs remained
+3f8902d, d11a36f and df70f48 as recorded in `gate_C_sync_status.md`. This
+metadata-only audit is committed next; its own final SHA and remote/clean-state
+verification are provided in the final response. No force-push or paper change.
