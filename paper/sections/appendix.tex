@@ -87,7 +87,14 @@ The bound is conservative because it uses an integral coloring and ignores cance
 \section{Proof Blueprint for the Uniform \COMET\ Bound}
 \label{app:proof-main}
 
-We provide the complete argument under the equal-block coupled model used in \cref{thm:uniform-comet}. The remaining technical work for the final paper is to state the weakest conditional coupling assumptions and track constants for the chosen adaptive scale estimator.
+\paragraph{Gate A audit status: unresolved blueprint.}
+The argument below is retained as a research blueprint, not an established proof
+of the adaptive or mutually cross-fitted theorem. Its unspecified conditioning,
+coupling-event independence, average nuisance-bias transfer, and leftover-block
+handling require further assumptions or corrections. The proved implementation
+uses the separate model, complete-block grouping, and explicit constants of
+\cref{thm:gate-a-clean}; the coupling transfer there does not condition on
+successful coupling.
 
 Fix $\theta\in\Theta$ and condition on the design and nuisance-training data. Let $\mu_b(\theta)=\E[\bar Z_b(\theta)]$ for a block of size $n_0$. By \cref{lem:graph-moment},
 \begin{equation}
@@ -182,19 +189,37 @@ For a stationary $\beta$-mixing sequence of block summaries, blocks separated by
 \label{app:lower}
 
 \begin{proof}[Proof of \cref{thm:lower}]
-Let $n=N/\chi$ be the number of independent clusters. Every cluster contains $\chi$ identical copies of a scalar $X_j$, so observing all $N$ rows is statistically equivalent to observing $X_1,\ldots,X_n$.
+Let $n=N/\chi\ge1$ be the number of independent clusters. Every cluster contains $\chi$ identical copies of a scalar $X_j$, so observing all $N$ rows is statistically equivalent to observing $X_1,\ldots,X_n$.
 
-Consider $P_0$ concentrated at zero and $P_1$ assigning probability $\varepsilon=1/n$ to $a=\nu_p\varepsilon^{-1/p}$ and probability $1-\varepsilon$ to zero. Their means differ by
+Set $\varepsilon=1/(2n)$ and $a=\nu_p(2\varepsilon)^{-1/p}$. Consider $P_0=\delta_0$ and $P_1=(1-\varepsilon)\delta_0+\varepsilon\delta_a$. Their means differ by
 \begin{equation}
-\Delta=\varepsilon a=\nu_p n^{-(p-1)/p}.
+\Delta=\varepsilon a=\frac{\nu_p}{2}n^{-(p-1)/p}.
 \end{equation}
-Moreover, $P_1$ satisfies
-$\E_{P_1}\abs{X-\E X}^p\le\E_{P_1}\abs X^p=\varepsilon a^p=\nu_p^p$.
-The total variation distance between $P_0^n$ and $P_1^n$ is
+The centered moment of $P_0$ is zero. For $P_1$, using $0<\varepsilon\le1/2$ and $p>1$ gives the explicit bound
+\begin{align*}
+\E_{P_1}\abs{X-\E_{P_1}X}^p
+&=a^p\{(1-\varepsilon)\varepsilon^p
+       +\varepsilon(1-\varepsilon)^p\}\\
+&\le a^p(\varepsilon^p+\varepsilon)
+ \le2\varepsilon a^p=\nu_p^p.
+\end{align*}
+No inequality comparing a centered moment directly with the raw moment is used. Since $P_0^n$ is concentrated at the all-zero sample,
 \begin{equation}
-1-(1-1/n)^n\le 1-e^{-1}/2
+\operatorname{TV}(P_0^n,P_1^n)=1-(1-\varepsilon)^n\le n\varepsilon=\frac12.
 \end{equation}
-for all sufficiently large $n$; finite small $n$ are absorbed into the constant. Le Cam's two-point method therefore gives minimax absolute-error risk at least a constant multiple of $\Delta$. Substituting $n=N/\chi$ proves \cref{eq:lower-bound}.
+For completeness, let $Q=P_0^n\wedge P_1^n$ be the common subprobability measure, of mass $1-\operatorname{TV}(P_0^n,P_1^n)$. For any estimator $T$ (including randomized estimators, by integrating over their common randomization), the triangle inequality implies
+\begin{align*}
+\E_{P_0^n}|T|+\E_{P_1^n}|T-\Delta|
+&\ge\int\bigl(|T|+|T-\Delta|\bigr)\,dQ\\
+&\ge\Delta\{1-\operatorname{TV}(P_0^n,P_1^n)\}.
+\end{align*}
+Consequently,
+\begin{equation}
+\max_{i\in\{0,1\}}\E_{P_i^n}|T-M(P_i)|
+\ge\frac{\Delta}{2}\{1-\operatorname{TV}(P_0^n,P_1^n)\}
+\ge\frac{\nu_p}{8}\left(\frac{\chi}{N}\right)^{(p-1)/p}.
+\end{equation}
+Taking the infimum over $T$ proves \cref{eq:lower-bound} with $c_p=1/8$. This is an expected absolute-risk lower bound for the exact $\chi$-clique replication subclass, hence also for any model class containing that subclass. It does not establish a sharp bound for every fixed sparse graph, or a matching simultaneous high-probability confidence radius.
 \end{proof}
 
 \section{Streaming Truncation Variant}
@@ -302,3 +327,5 @@ Before submission, every item below should be resolved in the manuscript or remo
     \item Check all dataset licenses, outcome definitions, and intervention claims.
     \item Recompile with the exact official ICLR 2027 style files, verify the nine-page main-text limit, anonymity, references, and the required AI use statement.
 \end{enumerate}
+
+\input{sections/gate_a_certificate}

@@ -25,6 +25,17 @@ The proof partitions the variables by color, applies the von Bahr--Esseen inequa
 \subsection{Uniform robust certificate}
 Let $\bar Z_b(\theta)$ be the oracle-score mean in temporal block $b$ for $\theta=(q,h)$. The retained blocks have common size $n_0$ and satisfy $\chi_b\le\bar\chi_W$. Assume blocks can be coupled to independent copies with total coupling failure at most $\varepsilon_{\coup}$. This includes geometrically $\beta$-mixing blocks separated by a gap $\ell$, for which $\varepsilon_{\coup}$ can be bounded by a sum of mixing coefficients. Split the $B$ blocks into $K$ MOM super-blocks of equal cardinality up to one.
 
+\paragraph{Gate A audit status.}
+The following original theorem is retained as an \emph{unproved statement in
+its adaptive and mutually cross-fitted scope}. Dependence-separated folds and
+history-specific moment bounds do not establish the common conditioning and
+independence required by its proof blueprint. The proved initial certificate is
+\cref{thm:gate-a-clean}, under an exogenous design, independent evaluation
+macro-blocks, fixed nuisances or an independent pilot, stable block targets,
+exact logging probabilities, and known moment envelopes. Its explicit radius
+is \cref{eq:gate-a-radius}. This narrowing closes mathematical proof gaps;
+it is not a claim that the original adaptive estimand has been validated.
+
 \begin{theorem}[Uniform \COMET\ certificate]
 \label{thm:uniform-comet}
 Suppose \cref{ass:identification,ass:p-moment} hold, the nuisance functions are fitted on dependence-separated folds, the centered cross-fitted scores obey the same conditional $p$-moment envelope $\nu_p$, and \cref{lem:graph-moment} applies conditionally within every evaluation block. Set

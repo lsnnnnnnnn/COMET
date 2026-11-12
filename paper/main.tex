@@ -62,6 +62,17 @@
 Logged decision systems increasingly combine learned policies, adaptive data collection, and interacting units. Their counterfactual statistics can be unstable for three distinct reasons: target and logging policies may have only weak overlap, outcomes may be heavy-tailed, and observations may be dependent through repeated users, slates, networks, or temporal feedback. We introduce \COMET, a general framework for estimating and testing families of counterfactual moments in this regime. The framework begins with an orthogonal score that covers off-policy value, subgroup effects, counterfactual calibration, safety constraints, and exposure-mediated spillovers. It then combines dependence-separated cross-fitting with graph--time robust aggregation to produce simultaneous certificates over target policies and auditors. The proposed rate separates heavy-tail difficulty, an observable conflict-graph design effect, nuisance-estimation error, temporal coupling, and within-window drift. Building on these certificates, we formulate a discover--certify procedure for finding hidden failure subgroups without reusing the certification data, and a pessimistic policy-repair rule with high-probability feasibility. We specify a complete empirical program spanning controlled synthetic processes, semi-synthetic temporal graphs, and real logged recommendation data. The resulting problem is broader than counterfactual fairness on evolving graphs: that setting is recovered as one instance of a common counterfactual-moment interface.
 \end{abstract}
 
+\paragraph{Gate A scope notice.}
+The abstract and original sections describe the broader research program.
+The proved certificate in this audited draft is \cref{thm:gate-a-clean}:
+a fixed-design, independent-evaluation-block result with explicit constants
+and known moment envelopes. The original adaptive-history and mutually
+cross-fitted concentration claims remain unproved outside that model.
+The corrected lower bound concerns exact clique replication and expected
+absolute risk. No final empirical coverage or long-run deployment-safety
+claim is established by this first-stage audit.
+
+
 \input{sections/01_introduction}
 \input{sections/02_setup}
 \input{sections/03_method}
