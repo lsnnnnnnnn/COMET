@@ -1,0 +1,5 @@
+{
+  "completed_checkpoint_sha256": "59e64d94a02cdf1c4ed8a65bd3d6869aeeb6c5e076a933bf3ac0fcd0356d6fb8",
+  "completed_run_id": "gate-c-v1/preflight/A/0000",
+  "reason": "INTENTIONAL_CHECKPOINT_RESUME_TEST"
+}

@@ -1,0 +1,16 @@
+{
+  "checkpoint": "results/gate_C/preflight/batch/runs/A/0000.json",
+  "completed_runs": 12,
+  "confirmatory_runs": 0,
+  "idempotent_resume_exit_code": 0,
+  "idempotent_resume_new_logs": 0,
+  "idempotent_resume_skipped_logs": 12,
+  "injected_crash_events": 1,
+  "run_id": "gate-c-v1/preflight/A/0000",
+  "sha256_after_idempotent_resume": "59e64d94a02cdf1c4ed8a65bd3d6869aeeb6c5e076a933bf3ac0fcd0356d6fb8",
+  "sha256_after_resume": "59e64d94a02cdf1c4ed8a65bd3d6869aeeb6c5e076a933bf3ac0fcd0356d6fb8",
+  "sha256_before_resume": "59e64d94a02cdf1c4ed8a65bd3d6869aeeb6c5e076a933bf3ac0fcd0356d6fb8",
+  "skipped_first_checkpoint": 1,
+  "unchanged_after_resume": true,
+  "unique_completed_runs": 12
+}

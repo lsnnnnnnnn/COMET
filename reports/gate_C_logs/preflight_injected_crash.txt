@@ -1,0 +1,13 @@
+completed gate-c-v1/preflight/A/0000
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/shengenli/Documents/ChatGPT/COMET/experiments/gate_c_preflight.py", line 297, in <module>
+    main()
+  File "/Users/shengenli/Documents/ChatGPT/COMET/experiments/gate_c_preflight.py", line 293, in main
+    run(args.config,args.output,args.resume,args.crash_after_completed)
+  File "/Users/shengenli/Documents/ChatGPT/COMET/experiments/gate_c_preflight.py", line 264, in run
+    raise RuntimeError("INTENTIONAL_CHECKPOINT_RESUME_TEST")
+RuntimeError: INTENTIONAL_CHECKPOINT_RESUME_TEST
+        1.02 real         0.55 user         0.14 sys
+time: sysctl kern.clockrate: Operation not permitted

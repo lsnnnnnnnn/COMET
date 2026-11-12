@@ -1,0 +1,6 @@
+{
+  "cpu": "Apple M1",
+  "cpu_count": 8,
+  "external_time_l_status": "time -l returned1 because sandbox denied kern.clockrate after Python batchcompleted; use recorded process_time/perf_counter/getrusage resources",
+  "source": "read-only sysctl query succeeded with sandbox escalation"
+}

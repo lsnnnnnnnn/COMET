@@ -85,3 +85,57 @@ Actual primary execution, fault/recovery outputs, resource measurements and
 final commits are appended below after those operations complete. No
 confirmatory, secondary, power/discovery/repair campaign, real-data download,
 GPU job or paper edit is authorized in this run.
+
+## Actual frozen commit and primary checkpoint-resume execution
+
+The freeze commit is `ab4c74fbf1ae84c0e5ffd72d77ce5b48d3fba8cb`:
+
+```sh
+git -c user.name='COMET Research' -c user.email='comet-research@users.noreply.github.com' commit -m 'Freeze Gate C preflight model proofs protocol seeds and checkpoint tests'
+/usr/bin/time -l .venv/bin/python -m experiments.gate_c_preflight --config configs/gate_C_frozen.json --output results/gate_C/preflight/batch --crash-after-completed 1 > reports/gate_C_logs/preflight_injected_crash.txt 2>&1
+/usr/bin/time -l .venv/bin/python -m experiments.gate_c_preflight --config configs/gate_C_frozen.json --output results/gate_C/preflight/batch --resume > reports/gate_C_logs/preflight_resume.txt 2>&1
+.venv/bin/python -m experiments.gate_c_preflight --config configs/gate_C_frozen.json --output results/gate_C/preflight/batch --resume > reports/gate_C_logs/preflight_idempotent_resume.txt 2>&1
+```
+
+The first command deliberately exited 1 after saving exactly A/0000. Its
+checkpoint SHA-256 was recorded before recovery. The next invocation generated
+11 remaining logs, skipped A/0000 and wrote BATCH_COMPLETE plus all outputs.
+Both external `time -l` wrappers then reported sandbox-denied
+`sysctl kern.clockrate`; the resume wrapper exited 1 despite the completed
+Python batch. Its failure is not hidden or described as shell success. The
+third direct command exited **0**, skipped all 12 completed runs, regenerated
+no outcomes, and reproduced the exported scientific records from checkpoints.
+The completed A/0000 bytes stayed identical through both resumes.
+
+`execution_invocation.json` preserves the actual 11-log resume resources before
+`last_invocation.json` is updated by the zero-new-log idempotency check. Internal
+perf_counter/process_time/getrusage measurements were available and saved; no
+resource number is inferred from a failed monitor. The Apple M1 CPU-brand query
+`sysctl -n machdep.cpu.brand_string` was initially sandbox-denied (exit 1), then
+succeeded with read-only sandbox escalation (exit 0). No code or input changes
+were made to obtain a favorable run.
+
+## Post-run read-only audit and presentation
+
+```sh
+git diff ab4c74f --name-only -- comet experiments configs tests theory/gate_c_heavy_tail_contract.md
+git diff --check
+```
+
+The first diff is empty. The independent read-only audit checked 127,613
+invariants with zero failures: 12 distinct preflight IDs, all 2,268 records,
+84 summaries, statuses/coverage/Wilson/17-way Holm/widths/decisions, 26 frozen
+source hashes, both input files and all 152 baseline files. Its actual command
+was `python3 /tmp/comet_gate_c_final_readonly_audit.py`; the exact source and
+source hash are embedded in `results/gate_C/preflight/final_audit.json` for
+reproduction without adding a new module to the frozen scientific source set.
+One audit inventory probe guessed a nonexistent `interval_diagnostics.py` and
+returned exit 2; `informativeness.py` was then located and read. No audit check
+or pytest failed.
+
+Inline standard-library CSV/JSON scripts derived `marginal_coverage.csv` and
+`gate_C_statistical_summary.md` from the saved checkpoints/summary files, and
+recorded the before/after checkpoint hashes. They generated no outcomes. Full
+reports, exact path inventory and synchronization are committed separately
+from the frozen code. No confirmatory command, external dataset download, GPU
+job, manuscript write or later-phase experiment was executed.
