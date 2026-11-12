@@ -1,0 +1,472 @@
+diff --git a/paper/GATE_A_STATUS.md b/paper/GATE_A_STATUS.md
+new file mode 100644
+index 0000000..5f405f4
+--- /dev/null
++++ b/paper/GATE_A_STATUS.md
+@@ -0,0 +1,20 @@
++# Gate A source status
++
++The two manuscript entry points now visibly distinguish the unresolved broad
++adaptive/cross-fit theorem from the proved independent-block certificate in
++`sections/gate_a_certificate.tex`. Original theorem statements were retained;
++the additional assumptions and mathematical reasons are explicit.
++
++Both lower-bound proofs now use epsilon=1/(2n), the correct centered moment,
++and a Le Cam expected absolute-risk constant of 1/8 for the exact clique
++replication subclass. They make no sharpness claim for every sparse graph.
++
++The checked-in `main.pdf` and `full_working_draft.pdf` are the original ZIP
++artifacts and are intentionally preserved. Recompile the LaTeX for the current
++version. The experiment checkout saves current compiled PDFs under
++`build/paper/`, outside this manuscript subtree.
++
++No empirical paper results were inserted: the Gate B 30-replication smoke run
++is only a software/debugging check and all its intervals were vacuous. Full
++theory reports, source-line references, tests and smoke artifacts are maintained
++in the accompanying experiment repository.
+diff --git a/paper/full_working_draft.tex b/paper/full_working_draft.tex
+index 12fd66f..316b75b 100644
+--- a/paper/full_working_draft.tex
++++ b/paper/full_working_draft.tex
+@@ -62,6 +62,17 @@
+ Logged decision systems increasingly combine learned policies, adaptive data collection, and interacting units. Their counterfactual statistics can be unstable for three distinct reasons: target and logging policies may have only weak overlap, outcomes may be heavy-tailed, and observations may be dependent through repeated users, slates, networks, or temporal feedback. We introduce \COMET, a general framework for estimating and testing families of counterfactual moments in this regime. The framework begins with an orthogonal score that covers off-policy value, subgroup effects, counterfactual calibration, safety constraints, and exposure-mediated spillovers. It then combines dependence-separated cross-fitting with graph--time robust aggregation to produce simultaneous certificates over target policies and auditors. The proposed rate separates heavy-tail difficulty, an observable conflict-graph design effect, nuisance-estimation error, temporal coupling, and within-window drift. Building on these certificates, we formulate a discover--certify procedure for finding hidden failure subgroups without reusing the certification data, and a pessimistic policy-repair rule with high-probability feasibility. We specify a complete empirical program spanning controlled synthetic processes, semi-synthetic temporal graphs, and real logged recommendation data. The resulting problem is broader than counterfactual fairness on evolving graphs: that setting is recovered as one instance of a common counterfactual-moment interface.
+ \end{abstract}
+ 
++\paragraph{Gate A scope notice.}
++The abstract and original sections describe the broader research program.
++The proved certificate in this audited draft is \cref{thm:gate-a-clean}:
++a fixed-design, independent-evaluation-block result with explicit constants
++and known moment envelopes. The original adaptive-history and mutually
++cross-fitted concentration claims remain unproved outside that model.
++The corrected lower bound concerns exact clique replication and expected
++absolute risk. No final empirical coverage or long-run deployment-safety
++claim is established by this first-stage audit.
++
++
+ \input{sections/full/01_introduction}
+ \input{sections/full/02_setup}
+ \input{sections/full/03_method}
+diff --git a/paper/main.tex b/paper/main.tex
+index 9175c03..7858cdd 100644
+--- a/paper/main.tex
++++ b/paper/main.tex
+@@ -62,6 +62,17 @@
+ Logged decision systems increasingly combine learned policies, adaptive data collection, and interacting units. Their counterfactual statistics can be unstable for three distinct reasons: target and logging policies may have only weak overlap, outcomes may be heavy-tailed, and observations may be dependent through repeated users, slates, networks, or temporal feedback. We introduce \COMET, a general framework for estimating and testing families of counterfactual moments in this regime. The framework begins with an orthogonal score that covers off-policy value, subgroup effects, counterfactual calibration, safety constraints, and exposure-mediated spillovers. It then combines dependence-separated cross-fitting with graph--time robust aggregation to produce simultaneous certificates over target policies and auditors. The proposed rate separates heavy-tail difficulty, an observable conflict-graph design effect, nuisance-estimation error, temporal coupling, and within-window drift. Building on these certificates, we formulate a discover--certify procedure for finding hidden failure subgroups without reusing the certification data, and a pessimistic policy-repair rule with high-probability feasibility. We specify a complete empirical program spanning controlled synthetic processes, semi-synthetic temporal graphs, and real logged recommendation data. The resulting problem is broader than counterfactual fairness on evolving graphs: that setting is recovered as one instance of a common counterfactual-moment interface.
+ \end{abstract}
+ 
++\paragraph{Gate A scope notice.}
++The abstract and original sections describe the broader research program.
++The proved certificate in this audited draft is \cref{thm:gate-a-clean}:
++a fixed-design, independent-evaluation-block result with explicit constants
++and known moment envelopes. The original adaptive-history and mutually
++cross-fitted concentration claims remain unproved outside that model.
++The corrected lower bound concerns exact clique replication and expected
++absolute risk. No final empirical coverage or long-run deployment-safety
++claim is established by this first-stage audit.
++
++
+ \input{sections/01_introduction}
+ \input{sections/02_setup}
+ \input{sections/03_method}
+diff --git a/paper/sections/04_theory.tex b/paper/sections/04_theory.tex
+index a0e291c..94c3839 100644
+--- a/paper/sections/04_theory.tex
++++ b/paper/sections/04_theory.tex
+@@ -16,6 +16,17 @@ The proof colors the graph, applies the von Bahr--Esseen inequality within indep
+ 
+ Let retained blocks have size $n_0$, coloring count at most $\bar\chi_W$, and total coupling failure $\varepsilon_{\coup}$. Split $B$ blocks into $K$ MOM super-blocks.
+ 
++\paragraph{Gate A audit status.}
++The following original theorem is retained as an \emph{unproved statement in
++its adaptive and mutually cross-fitted scope}. Dependence-separated folds and
++history-specific moment bounds do not establish the common conditioning and
++independence required by its proof blueprint. The proved initial certificate is
++\cref{thm:gate-a-clean}, under an exogenous design, independent evaluation
++macro-blocks, fixed nuisances or an independent pilot, stable block targets,
++exact logging probabilities, and known moment envelopes. Its explicit radius
++is \cref{eq:gate-a-radius}. This narrowing closes mathematical proof gaps;
++it is not a claim that the original adaptive estimand has been validated.
++
+ \begin{theorem}[Uniform \COMET\ certificate]
+ \label{thm:uniform-comet}
+ Suppose \cref{ass:identification,ass:p-moment} hold; cross-fitting is dependence-separated; the centered cross-fitted scores satisfy the conditional $p$-moment envelope $\nu_p$; and \cref{lem:graph-moment} applies within each block. Let
+diff --git a/paper/sections/appendix.tex b/paper/sections/appendix.tex
+index 78b8f97..47536dd 100644
+--- a/paper/sections/appendix.tex
++++ b/paper/sections/appendix.tex
+@@ -87,7 +87,14 @@ The bound is conservative because it uses an integral coloring and ignores cance
+ \section{Proof Blueprint for the Uniform \COMET\ Bound}
+ \label{app:proof-main}
+ 
+-We provide the complete argument under the equal-block coupled model used in \cref{thm:uniform-comet}. The remaining technical work for the final paper is to state the weakest conditional coupling assumptions and track constants for the chosen adaptive scale estimator.
++\paragraph{Gate A audit status: unresolved blueprint.}
++The argument below is retained as a research blueprint, not an established proof
++of the adaptive or mutually cross-fitted theorem. Its unspecified conditioning,
++coupling-event independence, average nuisance-bias transfer, and leftover-block
++handling require further assumptions or corrections. The proved implementation
++uses the separate model, complete-block grouping, and explicit constants of
++\cref{thm:gate-a-clean}; the coupling transfer there does not condition on
++successful coupling.
+ 
+ Fix $\theta\in\Theta$ and condition on the design and nuisance-training data. Let $\mu_b(\theta)=\E[\bar Z_b(\theta)]$ for a block of size $n_0$. By \cref{lem:graph-moment},
+ \begin{equation}
+@@ -182,19 +189,37 @@ For a stationary $\beta$-mixing sequence of block summaries, blocks separated by
+ \label{app:lower}
+ 
+ \begin{proof}[Proof of \cref{thm:lower}]
+-Let $n=N/\chi$ be the number of independent clusters. Every cluster contains $\chi$ identical copies of a scalar $X_j$, so observing all $N$ rows is statistically equivalent to observing $X_1,\ldots,X_n$.
++Let $n=N/\chi\ge1$ be the number of independent clusters. Every cluster contains $\chi$ identical copies of a scalar $X_j$, so observing all $N$ rows is statistically equivalent to observing $X_1,\ldots,X_n$.
+ 
+-Consider $P_0$ concentrated at zero and $P_1$ assigning probability $\varepsilon=1/n$ to $a=\nu_p\varepsilon^{-1/p}$ and probability $1-\varepsilon$ to zero. Their means differ by
++Set $\varepsilon=1/(2n)$ and $a=\nu_p(2\varepsilon)^{-1/p}$. Consider $P_0=\delta_0$ and $P_1=(1-\varepsilon)\delta_0+\varepsilon\delta_a$. Their means differ by
+ \begin{equation}
+-\Delta=\varepsilon a=\nu_p n^{-(p-1)/p}.
++\Delta=\varepsilon a=\frac{\nu_p}{2}n^{-(p-1)/p}.
+ \end{equation}
+-Moreover, $P_1$ satisfies
+-$\E_{P_1}\abs{X-\E X}^p\le\E_{P_1}\abs X^p=\varepsilon a^p=\nu_p^p$.
+-The total variation distance between $P_0^n$ and $P_1^n$ is
++The centered moment of $P_0$ is zero. For $P_1$, using $0<\varepsilon\le1/2$ and $p>1$ gives the explicit bound
++\begin{align*}
++\E_{P_1}\abs{X-\E_{P_1}X}^p
++&=a^p\{(1-\varepsilon)\varepsilon^p
++       +\varepsilon(1-\varepsilon)^p\}\\
++&\le a^p(\varepsilon^p+\varepsilon)
++ \le2\varepsilon a^p=\nu_p^p.
++\end{align*}
++No inequality comparing a centered moment directly with the raw moment is used. Since $P_0^n$ is concentrated at the all-zero sample,
+ \begin{equation}
+-1-(1-1/n)^n\le 1-e^{-1}/2
++\operatorname{TV}(P_0^n,P_1^n)=1-(1-\varepsilon)^n\le n\varepsilon=\frac12.
+ \end{equation}
+-for all sufficiently large $n$; finite small $n$ are absorbed into the constant. Le Cam's two-point method therefore gives minimax absolute-error risk at least a constant multiple of $\Delta$. Substituting $n=N/\chi$ proves \cref{eq:lower-bound}.
++For completeness, let $Q=P_0^n\wedge P_1^n$ be the common subprobability measure, of mass $1-\operatorname{TV}(P_0^n,P_1^n)$. For any estimator $T$ (including randomized estimators, by integrating over their common randomization), the triangle inequality implies
++\begin{align*}
++\E_{P_0^n}|T|+\E_{P_1^n}|T-\Delta|
++&\ge\int\bigl(|T|+|T-\Delta|\bigr)\,dQ\\
++&\ge\Delta\{1-\operatorname{TV}(P_0^n,P_1^n)\}.
++\end{align*}
++Consequently,
++\begin{equation}
++\max_{i\in\{0,1\}}\E_{P_i^n}|T-M(P_i)|
++\ge\frac{\Delta}{2}\{1-\operatorname{TV}(P_0^n,P_1^n)\}
++\ge\frac{\nu_p}{8}\left(\frac{\chi}{N}\right)^{(p-1)/p}.
++\end{equation}
++Taking the infimum over $T$ proves \cref{eq:lower-bound} with $c_p=1/8$. This is an expected absolute-risk lower bound for the exact $\chi$-clique replication subclass, hence also for any model class containing that subclass. It does not establish a sharp bound for every fixed sparse graph, or a matching simultaneous high-probability confidence radius.
+ \end{proof}
+ 
+ \section{Streaming Truncation Variant}
+@@ -302,3 +327,5 @@ Before submission, every item below should be resolved in the manuscript or remo
+     \item Check all dataset licenses, outcome definitions, and intervention claims.
+     \item Recompile with the exact official ICLR 2027 style files, verify the nine-page main-text limit, anonymity, references, and the required AI use statement.
+ \end{enumerate}
++
++\input{sections/gate_a_certificate}
+diff --git a/paper/sections/full/04_theory.tex b/paper/sections/full/04_theory.tex
+index 4e5f0ef..1617685 100644
+--- a/paper/sections/full/04_theory.tex
++++ b/paper/sections/full/04_theory.tex
+@@ -25,6 +25,17 @@ The proof partitions the variables by color, applies the von Bahr--Esseen inequa
+ \subsection{Uniform robust certificate}
+ Let $\bar Z_b(\theta)$ be the oracle-score mean in temporal block $b$ for $\theta=(q,h)$. The retained blocks have common size $n_0$ and satisfy $\chi_b\le\bar\chi_W$. Assume blocks can be coupled to independent copies with total coupling failure at most $\varepsilon_{\coup}$. This includes geometrically $\beta$-mixing blocks separated by a gap $\ell$, for which $\varepsilon_{\coup}$ can be bounded by a sum of mixing coefficients. Split the $B$ blocks into $K$ MOM super-blocks of equal cardinality up to one.
+ 
++\paragraph{Gate A audit status.}
++The following original theorem is retained as an \emph{unproved statement in
++its adaptive and mutually cross-fitted scope}. Dependence-separated folds and
++history-specific moment bounds do not establish the common conditioning and
++independence required by its proof blueprint. The proved initial certificate is
++\cref{thm:gate-a-clean}, under an exogenous design, independent evaluation
++macro-blocks, fixed nuisances or an independent pilot, stable block targets,
++exact logging probabilities, and known moment envelopes. Its explicit radius
++is \cref{eq:gate-a-radius}. This narrowing closes mathematical proof gaps;
++it is not a claim that the original adaptive estimand has been validated.
++
+ \begin{theorem}[Uniform \COMET\ certificate]
+ \label{thm:uniform-comet}
+ Suppose \cref{ass:identification,ass:p-moment} hold, the nuisance functions are fitted on dependence-separated folds, the centered cross-fitted scores obey the same conditional $p$-moment envelope $\nu_p$, and \cref{lem:graph-moment} applies conditionally within every evaluation block. Set
+diff --git a/paper/sections/full/appendix.tex b/paper/sections/full/appendix.tex
+index a436bf2..e834ce5 100644
+--- a/paper/sections/full/appendix.tex
++++ b/paper/sections/full/appendix.tex
+@@ -87,7 +87,14 @@ The bound is conservative because it uses an integral coloring and ignores cance
+ \section{Proof Blueprint for the Uniform \COMET\ Bound}
+ \label{app:proof-main}
+ 
+-We provide the complete argument under the equal-block coupled model used in \cref{thm:uniform-comet}. The remaining technical work for the final paper is to state the weakest conditional coupling assumptions and track constants for the chosen adaptive scale estimator.
++\paragraph{Gate A audit status: unresolved blueprint.}
++The argument below is retained as a research blueprint, not an established proof
++of the adaptive or mutually cross-fitted theorem. Its unspecified conditioning,
++coupling-event independence, average nuisance-bias transfer, and leftover-block
++handling require further assumptions or corrections. The proved implementation
++uses the separate model, complete-block grouping, and explicit constants of
++\cref{thm:gate-a-clean}; the coupling transfer there does not condition on
++successful coupling.
+ 
+ Fix $\theta\in\Theta$ and condition on the design and nuisance-training data. Let $\mu_b(\theta)=\E[\bar Z_b(\theta)]$ for a block of size $n_0$. By \cref{lem:graph-moment},
+ \begin{equation}
+@@ -182,19 +189,37 @@ For a stationary $\beta$-mixing sequence of block summaries, blocks separated by
+ \label{app:lower}
+ 
+ \begin{proof}[Proof of \cref{thm:lower}]
+-Let $n=N/\chi$ be the number of independent clusters. Every cluster contains $\chi$ identical copies of a scalar $X_j$, so observing all $N$ rows is statistically equivalent to observing $X_1,\ldots,X_n$.
++Let $n=N/\chi\ge1$ be the number of independent clusters. Every cluster contains $\chi$ identical copies of a scalar $X_j$, so observing all $N$ rows is statistically equivalent to observing $X_1,\ldots,X_n$.
+ 
+-Consider $P_0$ concentrated at zero and $P_1$ assigning probability $\varepsilon=1/n$ to $a=\nu_p\varepsilon^{-1/p}$ and probability $1-\varepsilon$ to zero. Their means differ by
++Set $\varepsilon=1/(2n)$ and $a=\nu_p(2\varepsilon)^{-1/p}$. Consider $P_0=\delta_0$ and $P_1=(1-\varepsilon)\delta_0+\varepsilon\delta_a$. Their means differ by
+ \begin{equation}
+-\Delta=\varepsilon a=\nu_p n^{-(p-1)/p}.
++\Delta=\varepsilon a=\frac{\nu_p}{2}n^{-(p-1)/p}.
+ \end{equation}
+-Moreover, $P_1$ satisfies
+-$\E_{P_1}\abs{X-\E X}^p\le\E_{P_1}\abs X^p=\varepsilon a^p=\nu_p^p$.
+-The total variation distance between $P_0^n$ and $P_1^n$ is
++The centered moment of $P_0$ is zero. For $P_1$, using $0<\varepsilon\le1/2$ and $p>1$ gives the explicit bound
++\begin{align*}
++\E_{P_1}\abs{X-\E_{P_1}X}^p
++&=a^p\{(1-\varepsilon)\varepsilon^p
++       +\varepsilon(1-\varepsilon)^p\}\\
++&\le a^p(\varepsilon^p+\varepsilon)
++ \le2\varepsilon a^p=\nu_p^p.
++\end{align*}
++No inequality comparing a centered moment directly with the raw moment is used. Since $P_0^n$ is concentrated at the all-zero sample,
+ \begin{equation}
+-1-(1-1/n)^n\le 1-e^{-1}/2
++\operatorname{TV}(P_0^n,P_1^n)=1-(1-\varepsilon)^n\le n\varepsilon=\frac12.
+ \end{equation}
+-for all sufficiently large $n$; finite small $n$ are absorbed into the constant. Le Cam's two-point method therefore gives minimax absolute-error risk at least a constant multiple of $\Delta$. Substituting $n=N/\chi$ proves \cref{eq:lower-bound}.
++For completeness, let $Q=P_0^n\wedge P_1^n$ be the common subprobability measure, of mass $1-\operatorname{TV}(P_0^n,P_1^n)$. For any estimator $T$ (including randomized estimators, by integrating over their common randomization), the triangle inequality implies
++\begin{align*}
++\E_{P_0^n}|T|+\E_{P_1^n}|T-\Delta|
++&\ge\int\bigl(|T|+|T-\Delta|\bigr)\,dQ\\
++&\ge\Delta\{1-\operatorname{TV}(P_0^n,P_1^n)\}.
++\end{align*}
++Consequently,
++\begin{equation}
++\max_{i\in\{0,1\}}\E_{P_i^n}|T-M(P_i)|
++\ge\frac{\Delta}{2}\{1-\operatorname{TV}(P_0^n,P_1^n)\}
++\ge\frac{\nu_p}{8}\left(\frac{\chi}{N}\right)^{(p-1)/p}.
++\end{equation}
++Taking the infimum over $T$ proves \cref{eq:lower-bound} with $c_p=1/8$. This is an expected absolute-risk lower bound for the exact $\chi$-clique replication subclass, hence also for any model class containing that subclass. It does not establish a sharp bound for every fixed sparse graph, or a matching simultaneous high-probability confidence radius.
+ \end{proof}
+ 
+ \section{Streaming Truncation Variant}
+@@ -302,3 +327,5 @@ Before submission, every item below should be resolved in the manuscript or remo
+     \item Check all dataset licenses, outcome definitions, and intervention claims.
+     \item Recompile with the exact official ICLR 2027 style files, verify the nine-page main-text limit, anonymity, references, and the required AI use statement.
+ \end{enumerate}
++
++\input{sections/gate_a_certificate}
+diff --git a/paper/sections/gate_a_certificate.tex b/paper/sections/gate_a_certificate.tex
+new file mode 100644
+index 0000000..b15d6ba
+--- /dev/null
++++ b/paper/sections/gate_a_certificate.tex
+@@ -0,0 +1,208 @@
++\section{Gate A: Explicit Independent-Block Certificate}
++\label{app:gate-a-certificate}
++
++This section gives the finite-sample theorem used by the initial certified
++implementation. Its conditioning and independence assumptions are stronger than
++those stated for the adaptive research program in
++\cref{thm:uniform-comet}. They are necessary for the proof below: conditioning
++on future adaptive contexts can change earlier conditional means, and
++conditioning on mutually trained nuisance fits can create dependence among
++evaluation scores. Neither difficulty is resolved by a temporal guard alone.
++The original adaptive/cross-fitting theorem remains unproved outside the
++following model.
++
++\paragraph{Model and estimand.}
++Let $\mathcal D$ be generated by an exogenous design fixed before all
++evaluation randomization and, optionally, a nuisance pilot independent of
++the evaluation sample conditional on that design. All statements below
++condition on $\mathcal D$. There are $B$ independent evaluation
++macro-blocks with $n_0$ rows each, for $N=Bn_0$ retained rows. The design fixes contexts, references
++$f_u\in[0,1]$, the finite family $\Theta$ of $m\ge1$ policy--auditor pairs,
++and predictions $\widehat\mu_u(s)\in[0,1]$; $|h_u|\le1$.
++Within each block, a declared sufficient dependency graph for the score
++vector admits a proper coloring using at most $\chi$ colors. Here
++\emph{sufficient} means that disjoint vertex sets with no connecting edges
++have conditionally independent score vectors, not just uncorrelated scores.
++
++For each unit, consistency and conditional exchangeability hold under
++$\mathcal D$, and the exact logging law is
++$e_u(s)=\Prb(S_u=s\mid\mathcal D)$ on the same finite exposure space as
++$q_u$, where $q_u(s)\ge0$ and $\sum_s q_u(s)=1$.
++Require $q_u(s)>0\Rightarrow e_u(s)>0$. Define
++\begin{align}
++Z_u(\theta)
++&=h_u\left[
++ \sum_s q_u(s)\widehat\mu_u(s)-f_u
++ +\frac{q_u(S_u)}{e_u(S_u)}
++       \{Y_u-\widehat\mu_u(S_u)\}\right],
++\label{eq:gate-a-score}\\
++m_u(\theta)
++&=h_u\left[\sum_s q_u(s)\E[Y_u(s)\mid\mathcal D]-f_u\right].
++\end{align}
++The fit is fixed given $\mathcal D$ and the exact-propensity DR identity
++gives $\E[Z_u(\theta)\mid\mathcal D]=m_u(\theta)$.
++Assume stable block targets:
++\begin{equation}
++ \frac1{n_0}\sum_{u\in b}m_u(\theta)=M_{\mathcal D}(\theta)
++ \quad\text{for every }b,\theta.
++\label{eq:gate-a-target}
++\end{equation}
++Thus $M_{\mathcal D}$ is also the raw-row average target on this fixed
++design. It is not a replacement of an arbitrary adaptive realized-history
++target by its unconditional average.
++
++\begin{theorem}[Gate A independent-block certificate]
++\label{thm:gate-a-clean}
++Under the preceding model, fix $1<p\le2$ and known finite
++$\mathcal D$-measurable envelopes $\nu_\theta$ satisfying
++\begin{equation}
++ \E[|Z_u(\theta)-m_u(\theta)|^p\mid\mathcal D]
++ \le \nu_\theta^p
++ \quad\text{for every }u,\theta.
++\label{eq:gate-a-moment}
++\end{equation}
++For a predeclared $\alpha\in(0,1)$ set $\delta_{\rm stat}=\alpha$ and
++\begin{equation}
++ K=\left\lceil8\log\frac{2m}{\delta_{\rm stat}}\right\rceil,
++ \qquad B\ge2K,\qquad L_{\min}=\lfloor B/K\rfloor.
++\end{equation}
++Partition all $B$ complete blocks deterministically into $K$ disjoint
++groups with lengths $L_g\in\{\lfloor B/K\rfloor,\lceil B/K\rceil\}$.
++Let $T_g(\theta)$ average the $L_g$ block means in group $g$, using its
++actual length, and let $\widehat M(\theta)$ be their median (the average of
++the two middle order statistics for even $K$). Define
++\begin{equation}
++ r_\theta=32^{1/p}\nu_\theta
++       \left(\frac{\chi}{L_{\min}n_0}\right)^{(p-1)/p}.
++\label{eq:gate-a-radius}
++\end{equation}
++Then
++\begin{equation}
++ \Prb\left(
++  |\widehat M(\theta)-M_{\mathcal D}(\theta)|\le r_\theta
++  \text{ for all }\theta\in\Theta
++  \,\middle|\,\mathcal D\right)\ge1-\alpha.
++\label{eq:gate-a-coverage}
++\end{equation}
++The same coverage follows unconditionally by integration.
++\end{theorem}
++
++\begin{proof}
++Fix $\theta$ and write $X_u=Z_u-m_u$. For each color class $C_c$,
++conditional independence and the von Bahr--Esseen inequality with
++constant at most $2$ give
++\[
++ \E\left[\left|\sum_{u\in C_c}X_u\right|^p
++       \,\middle|\,\mathcal D\right]
++ \le2\sum_{u\in C_c}\E[|X_u|^p\mid\mathcal D].
++\]
++The color sums may depend on each other. The deterministic inequality
++$|\sum_c S_c|^p\le\chi^{p-1}\sum_c|S_c|^p$ nevertheless implies
++\[
++ \E[|\bar Z_b-M_{\mathcal D}|^p\mid\mathcal D]
++ \le2\nu_\theta^p(\chi/n_0)^{p-1}.
++\]
++A second application of von Bahr--Esseen across the independent blocks
++in each group yields
++\[
++ \E[|T_g-M_{\mathcal D}|^p\mid\mathcal D]
++ \le4\nu_\theta^p
++       \left(\frac{\chi}{L_g n_0}\right)^{p-1}
++ \le4\nu_\theta^p
++       \left(\frac{\chi}{L_{\min}n_0}\right)^{p-1}.
++\]
++If $\nu_\theta=0$, all centered scores are zero almost surely and the
++claim holds directly. Otherwise Markov's inequality at
++\cref{eq:gate-a-radius} makes each group's failure
++probability at most $4/32=1/8$. The indicators of group failures are
++conditionally independent. Hoeffding's inequality gives
++\[
++ \Prb\left(\#\{\text{bad groups}\}\ge K/2\mid\mathcal D\right)
++ \le \exp\{-2K(1/2-1/8)^2\}
++ =e^{-9K/32}\le e^{-K/8}.
++\]
++When fewer than $K/2$ groups fail, both middle order statistics, if there
++are two, lie within the target interval, and so does the median.
++A union bound over the $m$ candidates is at most
++$m e^{-K/8}\le\delta_{\rm stat}/2\le\alpha$; independence across
++candidates is unnecessary. All groups have the same target by
++\cref{eq:gate-a-target}, even when their lengths differ. Every complete
++block is used; no remainder blocks or rows are discarded.
++\end{proof}
++
++\paragraph{Known bounded-reward envelope.}
++For $Y_u(s)\in[0,1]$, the score in \cref{eq:gate-a-score} satisfies
++$|Z_u|\le1+q_u(S_u)/e_u(S_u)$. Therefore
++\begin{align}
++ \E[|Z_u|^p\mid\mathcal D]
++ &\le2^{p-1}\left[1+\sum_s q_u(s)^p e_u(s)^{1-p}\right],\\
++ \E[|Z_u-\E(Z_u\mid\mathcal D)|^p\mid\mathcal D]
++ &\le2^p\E[|Z_u|^p\mid\mathcal D].
++\end{align}
++The second line follows from the two-term convexity inequality and
++conditional Jensen; it does not assert that centering decreases a raw
++$p$th moment. Hence the valid computable choice is
++\begin{equation}
++ \nu_\theta^p
++ =\max_u 2^{2p-1}
++       \left[1+\sum_s q_u(s)^p e_u(s)^{1-p}\right].
++\label{eq:gate-a-envelope}
++\end{equation}
++A $q_u(s)=0$ term is zero, including when $e_u(s)=0$; a state with
++$q_u(s)>0=e_u(s)$ is a support failure. The bound uses the known logging
++law and outcome range, not oracle response means or an empirical tail
++estimate. A finite design with supported states has a finite maximum.
++This does not imply a nonrandom uniform conditional envelope over a
++population with arbitrarily small random propensities; the envelope and
++its possible dependence on design or sample size must be reported.
++
++\paragraph{Implemented synthetic specialization.}
++Each macro-block repeats the same fixed context pattern and has a graph
++consisting of disjoint $\chi$-cliques. A clique contains exact copies of
++one cluster record. Logging and potential-outcome draws are independent
++between clusters and between macro-blocks. The observed reward is
++Bernoulli, the exposure is the binary action, the finite policy--auditor
++family is frozen before evaluation, and the nuisance prediction is a
++predeclared fixed function. These facts supply graph sufficiency,
++stability, randomization, and conditional independence by construction.
++The same argument permits a genuinely independent pilot, but not mutual
++cross-fitting on evaluation blocks. The API uses
++\cref{eq:gate-a-envelope} and \cref{eq:gate-a-radius}, rejects infeasible
++$B<2K$, and sets nuisance radius, drift radius, and coupling failure
++probability to zero. Nominal $95\%$ and $90\%$ statements use $\alpha=.05$
++and $.10$, respectively, over the full frozen family at each level.
++
++\paragraph{Coupling and other budgets.}
++For a future extension, suppose that on a common probability space the
++entire original scored-block vectors can be coupled to copies that are
++independent conditional on $\mathcal D$, with the required marginals and
++target, and with conditional mismatch probability at most
++$\varepsilon_{\rm coup}$. Concentration must first be proved for the
++copy law. For the corresponding failure events,
++\[
++ \Prb(F_{\rm original}\mid\mathcal D)
++ \le \Prb(F_{\rm copy}\mid\mathcal D)
++       +\Prb(\text{any mismatch}\mid\mathcal D).
++\]
++The copies need not remain independent after conditioning on successful
++coupling. An advertised level $1-\alpha$ requires
++$\delta_{\rm stat}+\varepsilon_{\rm coup}+\delta_{\rm aux}\le\alpha$,
++where $\delta_{\rm aux}$ accounts for any separately proved random
++envelopes. Coupling probability is not an additive numerical radius.
++Nonzero nuisance and drift corrections would require proved uniform
++block/group target bounds; a window-average nuisance error alone does
++not control a nonlinear median. No such coupling, estimated-scale,
++adaptive-fit, or unknown-drift extension is exposed by the certified API.
++
++\paragraph{Subgroup and deployment scope.}
++For binary fixed-design auditors the mass
++$\pi_{\mathcal D}=N^{-1}\sum_u h_u$ is known exactly. If it is positive,
++dividing a numerator interval by this mass gives the corresponding
++fixed-design subgroup interval; if zero, the ratio is undefined.
++A superpopulation mass requires its own sampling theorem. Positive
++mass does not replace exposure support or guarantee useful precision.
++The certificate is for a single predeclared evaluation window.
++Pessimistic selection on its simultaneous event proves feasibility of
++the same local fixed-design moments. It does not prove pathwise
++long-run safety after deploying a policy that changes future contexts
++or feedback.

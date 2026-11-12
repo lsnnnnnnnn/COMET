@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "comet-certified"
+version = "0.1.0"
+description = "Proof-matched fixed-design COMET synthetic certificate"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+comet-smoke = "comet.smoke:main"
+
+[tool.setuptools.packages.find]
+include = ["comet*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+

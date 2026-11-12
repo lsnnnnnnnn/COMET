@@ -1,0 +1,3 @@
+nominal=95%: issued=30/30, family hits=30/30; debugging only
+nominal=90%: issued=30/30, family hits=30/30; debugging only
+Artifacts: /Users/shengenli/Documents/ChatGPT/COMET/results/smoke

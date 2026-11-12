@@ -1,0 +1,16 @@
+WARNING: The directory '/Users/shengenli/Library/Caches/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Processing /Users/shengenli/Documents/ChatGPT/COMET
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: comet-certified
+  Building wheel for comet-certified (pyproject.toml): started
+  Building wheel for comet-certified (pyproject.toml): finished with status 'done'
+  Created wheel for comet-certified: filename=comet_certified-0.1.0-py3-none-any.whl size=16019 sha256=106055c747c477d6c4aacd83f35a537496ffa80f376a4b967a44e81a8b2e3855
+  Stored in directory: /private/var/folders/hq/xxy49vtj1x73w3hh3fzf_fdm0000gn/T/pip-ephem-wheel-cache-pw118ceh/wheels/65/66/ae/ec569d9db4037ebec2f0c1bac45c9e9b923be04c06a952f246
+Successfully built comet-certified
+Installing collected packages: comet-certified
+  Attempting uninstall: comet-certified
+    Found existing installation: comet-certified 0.1.0
+    Uninstalling comet-certified-0.1.0:
+      Successfully uninstalled comet-certified-0.1.0
+Successfully installed comet-certified-0.1.0
