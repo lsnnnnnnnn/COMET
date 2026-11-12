@@ -1,0 +1,12 @@
+[
+  {
+    "source": "/Users/shengenli/Downloads/COMET_Review_and_Codex_Package.zip",
+    "sha256": "18148b07c81396d39dbb4437e74bc40f408f3a7a85f02e19f1dded083ce660fd",
+    "destination": "task_materials"
+  },
+  {
+    "source": "/Users/shengenli/Downloads/__Counterfactual_Moment_Auditingunder_Weak_Overlap_and_Dependent_Feedback.zip",
+    "sha256": "3d12002e8a7de57629a31ddd63ddd6ce64a5b411b3e73317e75ccf8153955a18",
+    "destination": "paper"
+  }
+]

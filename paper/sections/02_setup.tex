@@ -1,0 +1,81 @@
+\section{Counterfactual Moments from Adaptive Dependent Logs}
+\label{sec:setup}
+
+At round $t$, the system observes history $\F_{t-1}$ and units $\Ical_t$, then draws a possibly joint action $A_t$. For $u=(t,i)$ with context $X_u$, a known exposure mapping
+\begin{equation}
+S_u=g_u(A_{I(u)})\in\Scal
+\label{eq:exposure-map}
+\end{equation}
+compresses the relevant assignment into a finite local state (e.g., shown/not shown, slate position, or treatment plus neighbor exposure). Let $Y_u(s)$ be the potential outcome and $Y_u=Y_u(S_u)$. Define
+\begin{equation}
+e_u(s)=\Prb(S_u=s\mid X_u,\F_{t-1}),\qquad
+\mu_u(s)=\E[Y_u(s)\mid X_u,\F_{t-1}].
+\label{eq:nuisance}
+\end{equation}
+A predictable target intervention $q\in\Qcal$ assigns mass $q_u(s\mid X_u,\F_{t-1})$.
+
+\begin{assumption}[Local identification]
+\label{ass:identification}
+Consistency holds through \cref{eq:exposure-map}; $Y_u(s)\perp S_u\mid X_u,\F_{t-1}$; and $q_u(s)>0$ implies $e_u(s)>0$ almost surely.
+\end{assumption}
+This is support positivity, not a uniform lower bound. The generalized doubly robust score is
+\begin{equation}
+\psi_u^q(\eta)=\sum_{s\in\Scal}q_u(s)
+\left[\mu_u(s)+\frac{\ind\{S_u=s\}}{e_u(s)}\{Y_u-\mu_u(s)\}\right],
+\label{eq:orthogonal-score}
+\end{equation}
+where $\eta=(\mu,e)$. For auditor $h\in\Hcal$, predictable reference $f_u$, and window $\Ical_W$ of size $N_W$, we target the pathwise predictable moment
+\begin{equation}
+M_W(q,h;f)=\frac1{N_W}\sum_{u\in\Ical_W}
+\E[h_u\{\psi_u^q(\eta_0)-f_u\}\mid\F_{t(u)-1}].
+\label{eq:target-moment}
+\end{equation}
+Unlike a stationary estimand, \cref{eq:target-moment} follows the realized deployment path.
+
+\begin{proposition}[Identification and double robustness]
+\label{prop:dr}
+Under \cref{ass:identification}, $\E[\psi_u^q(\eta_0)\mid X_u,\F_{t-1}]=\sum_s q_u(s)\mu_u(s)$. For generic $\bar\eta=(\bar\mu,\bar e)$,
+\begin{equation}
+\E[\psi_u^q(\bar\eta)-\psi_u^q(\eta_0)\mid X_u,\F_{t-1}]
+=\sum_s q_u(s)\{\bar\mu_u(s)-\mu_u(s)\}
+\frac{\bar e_u(s)-e_u(s)}{\bar e_u(s)}.
+\label{eq:dr-remainder}
+\end{equation}
+\end{proposition}
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\linewidth}{@{}p{.25\linewidth}p{.28\linewidth}X@{}}
+\toprule
+Question & $(q,f)$ & Auditor / contrast \\
+\midrule
+Policy or subgroup value & target policy, $f=0$ & $h=1$ or subgroup indicator \\
+Counterfactual calibration & intervention, $f=\widehat p$ & group/score tests or learned $h$ \\
+Heterogeneous effects & $\psi^{q_1}-\psi^{q_0}$ & group, role, or learned subgroup \\
+Safety / spillovers / COPF & cost or local exposure state & one-sided constraints or parity tests \\
+\bottomrule
+\end{tabularx}
+\caption{Representative instantiations; details are in \cref{app:examples}.}
+\label{tab:moment-examples}
+\end{table}
+
+\paragraph{Weak overlap and heavy tails.}
+For some $p\in(1,2]$, assume uniformly over $(q,h)$
+\begin{equation}
+\frac1{N_W}\sum_u\E[|h_u\{\psi_u^q(\eta_0)-f_u\}|^p\mid\F_{t(u)-1}]\le\nu_p^p.
+\label{eq:p-moment}
+\end{equation}
+\begin{assumption}[Finite-$p$ score moments]
+\label{ass:p-moment}
+Equation~\eqref{eq:p-moment} holds for the oracle score; the theorem additionally requires the centered cross-fitted score to obey a stated conditional envelope.
+\end{assumption}
+A sufficient residual condition contains $q_u(s)^p e_u(s)^{1-p}\E[|Y_u(s)-\mu_u(s)|^p\mid X_u,\F_{t-1}]$, exposing separate failure modes from small propensities and heavy-tailed outcomes.
+
+\paragraph{Observable dependence and drift.}
+Construct a conflict graph $G_W$ on audited units: connect units sharing randomized exposure, a slate, repeated entity, outcome shock, or declared interference neighborhood. In temporal block $b$, let $\chi_b$ be a proper-coloring count. Blocks are separated by a gap $\ell$; an offline coupling fails with probability at most $\varepsilon_{\coup}$, while adaptive analysis conditions on the past. Nonstationarity is measured by
+\begin{equation}
+\Delta_W(q,h)=\max_{b\le B}|M_b(q,h)-M_W(q,h)|.
+\label{eq:drift}
+\end{equation}
+Thus window length trades effective sample size against drift.

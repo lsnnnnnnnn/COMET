@@ -1,0 +1,136 @@
+%%%% ICLR 2027 conference style -- local compilation copy
+%%%% Layout follows the public ICLR 2027 style interface and dimensions.
+%%%% Before submission, overwrite this file and the .bst with the exact
+%%%% files distributed at the official ICLR 2027 author-guidelines page.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{iclr2027_conference}[2026/08/22 ICLR 2027 draft style]
+
+\RequirePackage{eso-pic}
+\RequirePackage{fancyhdr}
+\RequirePackage{natbib}
+\RequirePackage{xcolor}
+\setcitestyle{authoryear,round,citesep={;},aysep={,},yysep={;}}
+
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\textfraction}{0.05}
+
+\newif\ificlrfinal
+\iclrfinalfalse
+\def\iclrfinalcopy{\iclrfinaltrue}
+
+\font\iclrtenhv=phvb at 8pt
+
+\setlength{\paperheight}{11in}
+\setlength{\paperwidth}{8.5in}
+\oddsidemargin .5in
+\evensidemargin .5in
+\marginparwidth .07in
+\topmargin -.625in
+\addtolength{\headsep}{.25in}
+\textheight 9in
+\textwidth 5.5in
+\widowpenalty=10000
+\clubpenalty=10000
+\flushbottom
+\sloppy
+
+\def\addcontentsline#1#2#3{}
+
+\def\maketitle{\par
+\begingroup
+  \def\thefootnote{\fnsymbol{footnote}}
+  \def\@makefnmark{\hbox to 0pt{$^{\@thefnmark}$\hss}}
+  \long\def\@makefntext##1{\parindent 1em\noindent
+      \hbox to1.8em{\hss $\m@th ^{\@thefnmark}$}##1}
+  \@maketitle \@thanks
+\endgroup
+\setcounter{footnote}{0}
+\let\maketitle\relax
+\let\@maketitle\relax
+\gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\thanks\relax}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\rfoot{\thepage}
+
+\def\@maketitle{\vbox{\hsize\textwidth
+  {\LARGE\scshape \@title\par}
+  \ificlrfinal
+    \lhead{Published as a conference paper at ICLR 2027}
+    \vskip .18in
+    \begin{center}\begin{tabular}[t]{c}\bfseries\@author\end{tabular}\end{center}
+  \else
+    \lhead{Under review as a conference paper at ICLR 2027}
+    \vskip .18in
+    \begin{center}\begin{tabular}[t]{c}\bfseries Anonymous authors\\Paper under double-blind review\end{tabular}\end{center}
+  \fi
+  \vskip .18in minus .08in}}
+
+\renewenvironment{abstract}
+  {\vskip.075in\centerline{\large\scshape Abstract}\vspace{.5ex}\begin{quote}}
+  {\par\end{quote}\vskip 1ex}
+
+\def\section{\@startsection{section}{1}{\z@}
+  {-2.0ex plus -.5ex minus -.2ex}{1.5ex plus .3ex minus .2ex}
+  {\large\scshape\raggedright}}
+\def\subsection{\@startsection{subsection}{2}{\z@}
+  {-1.8ex plus -.5ex minus -.2ex}{.8ex plus .2ex}
+  {\normalsize\scshape\raggedright}}
+\def\subsubsection{\@startsection{subsubsection}{3}{\z@}
+  {-1.5ex plus -.5ex minus -.2ex}{.5ex plus .2ex}
+  {\normalsize\scshape\raggedright}}
+\def\paragraph{\@startsection{paragraph}{4}{\z@}
+  {1.5ex plus .5ex minus .2ex}{-1em}{\normalsize\bfseries}}
+\def\subparagraph{\@startsection{subparagraph}{5}{\z@}
+  {1.5ex plus .5ex minus .2ex}{-1em}{\normalsize\scshape}}
+
+\footnotesep 6.65pt
+\skip\footins 9pt plus 4pt minus 2pt
+\def\footnoterule{\kern-3pt \hrule width 12pc \kern 2.6pt}
+\setcounter{footnote}{0}
+
+\parindent 0pt
+\topsep 4pt plus 1pt minus 2pt
+\partopsep 1pt plus .5pt minus .5pt
+\itemsep 2pt plus 1pt minus .5pt
+\parsep 2pt plus 1pt minus .5pt
+\parskip .5pc
+\leftmargin3pc
+\leftmargini\leftmargin
+\leftmarginii 2em
+\leftmarginiii 1.5em
+\leftmarginiv 1em
+\leftmarginv .5em
+
+\def\@listi{\leftmargin\leftmargini}
+\def\@listii{\leftmargin\leftmarginii
+  \labelwidth\leftmarginii\advance\labelwidth-\labelsep
+  \topsep 2pt plus 1pt minus .5pt
+  \parsep 1pt plus .5pt minus .5pt
+  \itemsep\parsep}
+\def\@listiii{\leftmargin\leftmarginiii
+  \labelwidth\leftmarginiii\advance\labelwidth-\labelsep
+  \topsep 1pt plus .5pt minus .5pt
+  \parsep\z@\partopsep .5pt plus 0pt minus .5pt
+  \itemsep\topsep}
+
+\abovedisplayskip 7pt plus 2pt minus 5pt
+\belowdisplayskip\abovedisplayskip
+\abovedisplayshortskip 0pt plus 3pt
+\belowdisplayshortskip 4pt plus 3pt minus 3pt
+
+\def\normalsize{\@setfontsize\normalsize{10pt}{11pt}}
+\def\small{\@setfontsize\small{9pt}{10pt}}
+\def\footnotesize{\@setfontsize\footnotesize{9pt}{10pt}}
+\def\scriptsize{\@setfontsize\scriptsize{7pt}{8pt}}
+\def\tiny{\@setfontsize\tiny{6pt}{7pt}}
+\def\large{\@setfontsize\large{12pt}{14pt}}
+\def\Large{\@setfontsize\Large{14pt}{16pt}}
+\def\LARGE{\@setfontsize\LARGE{17pt}{20pt}}
+\def\huge{\@setfontsize\huge{20pt}{23pt}}
+\def\Huge{\@setfontsize\Huge{25pt}{28pt}}
+\normalsize

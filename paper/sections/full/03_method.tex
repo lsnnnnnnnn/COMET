@@ -1,0 +1,107 @@
+\section{The \COMET\ Estimator}
+\label{sec:method}
+
+\COMET separates three operations that are often conflated: nuisance learning, dependence control, and heavy-tail robustification. This separation is useful both statistically and operationally: logging propensities can be audited independently of the outcome model, the conflict graph can be inspected before seeing outcomes, and the robust aggregation rule can be stress-tested without retraining the backbone policy.
+
+\subsection{Dependence-separated cross-fitting}
+Random row-wise cross-fitting is invalid when rows share a user, slate, neighborhood, or nearby time state. We construct evaluation folds at the macro-block level and add a temporal guard band. For fold $k$, nuisances $\widehat\eta^{(-k)}=(\widehat\mu^{(-k)},\widehat e^{(-k)})$ are trained only on blocks that are outside the guard band and have no prohibited entity overlap with the evaluation fold. If the platform logs exact propensities, $\widehat e=e$ and only the outcome regression is learned. The cross-fitted score for $u$ in fold $k(u)$ is
+\begin{equation}
+    \widehat Z_u(q,h)
+    :=h_u\left\{\psi_u^q\!\left(\widehat\eta^{(-k(u))}\right)-f_u\right\}.
+    \label{eq:crossfit-score}
+\end{equation}
+Fold construction uses only design variables available before the outcome is observed. This prevents outcome-adaptive removal of difficult observations.
+
+\subsection{Graph--time robust aggregation}
+Let $b=1,\ldots,B$ index temporally separated evaluation blocks. For the clean estimator and theorem, blocks are constructed with a common retained size $n_0$ (the final incomplete block is dropped), so $N_W=Bn_0$. A deterministic proper coloring gives $\chi_b$ color classes and we set
+\begin{equation}
+    \bar\chi_W:=\max_{b\le B}\chi_b,
+    \qquad
+    N_{\eff}:=\frac{N_W}{\bar\chi_W}.
+    \label{eq:neff}
+\end{equation}
+This is a conservative effective sample size. A clique block contributes roughly one independent observation per $n_0$ rows, while an edgeless block contributes all $n_0$ rows. Degeneracy $d_b+1$ can replace $\chi_b$ when a fast greedy coloring is used. A variable-block weighted extension is given in the appendix, but the equal-block construction avoids changing the target population through precision weighting.
+
+For each $(q,h)$, compute the block mean
+\begin{equation}
+    \bar Z_b(q,h):=\frac{1}{n_b}\sum_{u\in b}\widehat Z_u(q,h).
+\end{equation}
+Blocks are partitioned into $K$ super-blocks with the same number of temporal blocks (up to one). The $g$th mean is
+\begin{equation}
+    \widetilde Z_g(q,h)
+    :=\frac{1}{\abs{g}}\sum_{b\in g}\bar Z_b(q,h),
+\end{equation}
+and the primary estimate is
+\begin{equation}
+    \widehat M_W(q,h):=\operatorname{median}_{g\le K}\widetilde Z_g(q,h).
+    \label{eq:comet-estimator}
+\end{equation}
+This is a graph-aware median-of-means (MOM) construction. The block representation allows heavy-tail robustness to operate at the same granularity used to control temporal dependence. An optional streaming variant replaces the median by adaptive score truncation; it is described in \cref{app:streaming}.
+
+\begin{algorithm}[t]
+\caption{\COMET\ certification for a finite policy--auditor family}
+\label{alg:comet}
+\begin{algorithmic}[1]
+\Require Logged data; target policies $\Qcal$; auditors $\Hcal$; exposure map $g$; tail index $p$ or a tuning grid; confidence $\delta$.
+\State Build time macro-blocks, guard bands, and conflict graphs from design variables.
+\State Construct dependence-separated cross-fitting folds; fit $\widehat\eta^{(-k)}$.
+\For{each evaluation unit $u$ and $(q,h)\in\Qcal\times\Hcal$}
+    \State Compute $\widehat Z_u(q,h)$ from \cref{eq:crossfit-score}.
+\EndFor
+\State Retain equal-size blocks; color each conflict graph; compute $\bar\chi_W$ and $N_{\eff}=N_W/\bar\chi_W$.
+\State Form equal-count super-blocks and the robust estimates in \cref{eq:comet-estimator}.
+\State Compute simultaneous radii $r_W(q,h;\delta)$, including nuisance, coupling, and drift allowances.
+\State \Return $[\widehat M_W-r_W,\widehat M_W+r_W]$ for every $(q,h)$, plus diagnostics $(N_{\eff},\chi_b,$ overlap tails, abstentions$)$.
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Tail tuning.}
+The cleanest theorem treats $p$ and an upper scale $\nu_p$ as known. The implementation will expose three modes: (i) an oracle mode used only to verify rate predictions in synthetic data; (ii) a sensitivity grid over $p$ and robust scales, reporting the union of valid intervals; and (iii) a data-adaptive Lepski-style mode that selects among nested truncation/MOM scales. The adaptive mode is a required empirical component and a candidate secondary theorem, not an assumption hidden in the implementation.
+
+\subsection{Simultaneous radii and diagnostic decomposition}
+For a finite family $\Theta=\Qcal\times\Hcal$, the working radius has the form
+\begin{equation}
+\begin{split}
+ r_W(q,h;\delta)
+ ={}& C_p\widehat\nu_p(q,h)
+ \left(\frac{\log(2\abs{\Theta}/\delta)}{N_{\eff}}\right)^{\frac{p-1}{p}}
+ +\widehat R_{\nuis}(q,h)\\
+ &+\widehat R_{\coup}(q,h)
+ +\widehat R_{\drift}(q,h).
+\end{split}
+\label{eq:radius}
+\end{equation}
+The four terms answer different debugging questions. A large heavy-tail term indicates insufficient effective support; a large nuisance term points to model or propensity error; a large coupling term calls for wider temporal spacing; and a large drift term calls for shorter or explicitly nonstationary windows. Reporting only the total radius would obscure these distinct failure modes.
+
+The exact nuisance bias suggested by \cref{eq:dr-remainder} is
+\begin{equation}
+R_{\nuis}(q,h)
+:=\frac{1}{N_W}\sum_u
+\E\!\left[
+\abs{h_u}\sum_s q_u(s)
+\abs{\widehat\mu_u(s)-\mu_u(s)}
+\frac{\abs{\widehat e_u(s)-e_u(s)}}{\widehat e_u(s)}
+\right].
+\label{eq:nuisance-rem}
+\end{equation}
+In experiments it is estimated by cross-fit surrogates and stress-tested under controlled nuisance misspecification. When propensities are logged exactly, this term is zero regardless of outcome-regression error.
+
+\subsection{Ratio certificates and abstention}
+Many subgroup metrics are ratios. Let $m_h=\E[h_u r_u]$ be a counterfactual residual numerator and $\pi_h=\E[h_u]$ the slice mass. Suppose simultaneous intervals satisfy
+\begin{equation}
+    \abs{m_h-\widehat m_h}\le r_{m,h},
+    \qquad
+    \abs{\pi_h-\widehat\pi_h}\le r_{\pi,h}.
+\end{equation}
+Then, whenever $\widehat\pi_h-r_{\pi,h}>0$,
+\begin{equation}
+    \frac{\abs{m_h}}{\pi_h}
+    \le
+    \frac{\abs{\widehat m_h}+r_{m,h}}
+         {\widehat\pi_h-r_{\pi,h}}.
+    \label{eq:ratio-cert}
+\end{equation}
+If the denominator lower bound is nonpositive, \COMET\ returns \emph{insufficient support to certify}. This abstention is essential under weak overlap and prevents a tiny subgroup from receiving a numerically precise but statistically meaningless fairness or calibration score.
+
+\subsection{Computational interface}
+For fixed score arrays, all moments are matrix products between an auditor matrix and counterfactual pseudo-outcomes. Conflict-graph construction is performed once per window; greedy degeneracy coloring is linear in the graph size. The expensive component is typically nuisance fitting, not robust aggregation. The implementation will cache cross-fitted scores so that new hand-designed auditors can be certified without retraining, while learned auditors must respect the discovery/certification split in \cref{sec:discover-repair}.

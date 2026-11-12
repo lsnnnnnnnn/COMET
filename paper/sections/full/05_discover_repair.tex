@@ -1,0 +1,63 @@
+\section{Discover, Certify, and Repair}
+\label{sec:discover-repair}
+
+\subsection{Learning failure subgroups without invalidating inference}
+Hand-designed group and score buckets are interpretable but can miss interactions among user history, item type, time, model confidence, and network position. Directly maximizing an empirical violation over a rich auditor class and reporting the same value as a certificate is invalid: the search overfits the noise, especially when inverse propensities are heavy-tailed.
+
+\COMET\ uses a two-stage protocol. Split the window into graph--time separated discovery and certification sets. On the discovery set, fit an auditor
+\begin{equation}
+\widehat h
+\in\argmax_{h\in\Hcal_{\mathrm{rich}}}
+\abs{\widehat M_{\mathrm{disc}}(q,h)}
+-\lambda\,\Omega(h),
+\label{eq:auditor-learning}
+\end{equation}
+where $\Hcal_{\mathrm{rich}}$ may be a shallow tree, sparse rule list, boosted model, or neural auditor and $\Omega$ controls complexity or minimum support. Freeze $\widehat h$, then run \cref{alg:comet} on the certification split. Conditional on the discovery data, $\widehat h$ is a fixed test, so the certification guarantee does not depend on the complexity of the search model. Multiple discovered auditors can be certified by including the frozen top-$L$ candidates in a finite family and paying only $\log L$ in the radius.
+
+\begin{algorithm}[t]
+\caption{Discover--certify auditing}
+\label{alg:discover}
+\begin{algorithmic}[1]
+\Require A target intervention $q$, a rich auditor class, and graph--time separated discovery/certification data.
+\State Fit or cache cross-fitted counterfactual scores on the discovery split.
+\State Learn one or more supported auditors using \cref{eq:auditor-learning}; freeze their parameters and textual definitions.
+\State Recompute nuisance functions and scores using only training data permitted for the certification split.
+\State Certify each frozen auditor with \COMET, including numerator and support-mass uncertainty.
+\State \Return certified violations, non-violations, and abstentions; retain the discovery score only as a search diagnostic.
+\end{algorithmic}
+\end{algorithm}
+
+The protocol separates two questions that are often confused: \emph{Can a model find a suspicious pattern?} and \emph{Does fresh dependent data support that pattern counterfactually?} A useful learned auditor should succeed on both.
+
+\subsection{Pessimistic policy repair}
+Let $V(q)$ be a counterfactual utility moment and $C_j(q)$, $j=1,\ldots,J$, be risk, cost, calibration, spillover, or fairness moments with acceptable levels $\alpha_j$. Suppose \COMET\ gives simultaneous estimates and radii over a candidate library $\Qcal$:
+\begin{equation}
+\abs{\widehat V(q)-V(q)}\le r_V(q),
+\qquad
+\abs{\widehat C_j(q)-C_j(q)}\le r_j(q).
+\label{eq:sim-policy-event}
+\end{equation}
+We select
+\begin{equation}
+\widehat q\in\argmax_{q\in\Qcal}
+\bigl\{\widehat V(q)-r_V(q)\bigr\}
+\quad\text{s.t.}\quad
+\widehat C_j(q)+r_j(q)\le\alpha_j
+\ \forall j.
+\label{eq:policy-repair}
+\end{equation}
+This rule is pessimistic in both directions: it optimizes a utility lower confidence bound and constrains risk upper confidence bounds. The policy library may contain the current policy, mixtures with an exploration policy, threshold or group-offset variants, and policies produced by an unconstrained learner. A continuous neural policy class can be optimized first, but only a frozen candidate library is used in the certification theorem.
+
+\begin{proposition}[Feasibility and utility of repaired policy]
+\label{prop:repair}
+On the simultaneous event \cref{eq:sim-policy-event}, any solution of \cref{eq:policy-repair} satisfies $C_j(\widehat q)\le\alpha_j$ for all $j$. Moreover, for every comparator $q$ satisfying the robust margin condition $C_j(q)+2r_j(q)\le\alpha_j$ for all $j$,
+\begin{equation}
+    V(\widehat q)\ge V(q)-2r_V(q).
+    \label{eq:repair-utility}
+\end{equation}
+\end{proposition}
+
+The margin condition is informative rather than cosmetic. A policy whose estimated constraint lies exactly at the boundary cannot be certified without additional data. As $N_{\eff}$ grows, the robustly feasible set expands and the utility penalty contracts at the heavy-tail rate. This connects statistical design choices---exploration, candidate budget, interference radius, window length---directly to deployable policy quality.
+
+\paragraph{Sequential deployment.}
+In an online system, repair is run at auditable epochs rather than after every event. A new policy is admitted only if its current-window certificates pass; exploration and propensity logging remain active after deployment. Sequential validity can be obtained by allocating confidence across epochs or replacing fixed-window bounds with e-processes, but full anytime-valid theory is left as an extension. The experiments report cumulative violations and detection delay under controlled shifts rather than claiming fixed-window intervals are automatically time-uniform.

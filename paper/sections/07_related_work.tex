@@ -1,0 +1,11 @@
+\section{Related Work}
+\label{sec:related}
+
+\paragraph{Orthogonal estimation and overlap.}
+Doubly robust OPE combines outcome regression and importance weighting \citep{dudik2011doubly,jiang2016doubly,farajtabar2018more}; cross-fitting and orthogonality permit flexible nuisance learning \citep{chernozhukov2018double,foster2019orthogonal}. Weak-overlap work studies slower rates, truncation, or partial identification \citep{wang2017optimal,mehrabi2024weak,khan2024beyond}. \COMET\ differs by certifying a simultaneous policy--auditor family under both score tails and observable dependence.
+
+\paragraph{Heavy tails and dependence.}
+Median-of-means and related robust estimators provide exponential-confidence mean estimation under finite moments \citep{lugosi2019mean}. Exposure mappings formalize causal effects under interference \citep{aronow2017estimating,savje2021average}; dependency graphs and temporal blocking control partial and mixing dependence \citep{janson2004large,merlevede2009bernstein}. Our contribution is their integration with cross-fitted counterfactual scores, a reported conflict-graph design effect, ratio abstention, and downstream certified decisions.
+
+\paragraph{Auditing and performativity.}
+Multicalibration and outcome indistinguishability motivate testing predictions over rich subpopulations \citep{hebertjohnson2018multicalibration,dwork2021outcome}; performative prediction studies distributional response to deployment \citep{perdomo2020performative}. COPF specializes these ideas to exposure fairness in evolving-graph link recommendation \citep{li2026copf}. \COMET\ generalizes the residual-moment abstraction, separates subgroup discovery from certification, and uses simultaneous uncertainty directly for policy repair.

@@ -1,0 +1,28 @@
+COMET bundle build report
+Generated: 2026-08-22
+
+Entry point: main.tex
+- Compilation: successful with pdflatex + bibtex8
+- Total PDF pages: 15
+- Main research body: pages 1-7
+- Statements and bibliography begin: page 8
+- Appendix begins: page 9, after the bibliography
+- Unresolved references/citations in final pass: none
+- Overfull boxes in final pass: none
+- Page size: US Letter (612 x 792 pt)
+- Fonts checked as embedded
+
+Entry point: full_working_draft.tex
+- Compilation: successful with pdflatex + bibtex8
+- Total PDF pages: 20
+- Purpose: overlength research source, not submission-length
+- Unresolved references/citations in final pass: none
+- Overfull boxes in final pass: none
+
+Visual QA
+- Both PDFs were rendered to page images.
+- The compact paper and appendix were inspected for clipping, missing figures, broken tables, and page-boundary errors.
+- The title was shortened to avoid automatic word hyphenation in the title block.
+
+Important limitation
+- The bundled ICLR style files are local compilation copies. Replace them with the exact official ICLR 2027 files and repeat all checks before submission.

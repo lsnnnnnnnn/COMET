@@ -1,0 +1,24 @@
+\begin{tikzpicture}[
+  node distance=5mm and 5mm,
+  box/.style={draw,rounded corners=1.5pt,align=center,minimum height=8mm,inner xsep=5pt,inner ysep=3pt,font=\small},
+  arrow/.style={-{Latex[length=2mm]},semithick},
+  group/.style={draw,dashed,rounded corners=2pt,inner sep=4pt}
+]
+\node[box] (log) {Adaptive logs\\$X,A,S,Y,e$};
+\node[box,right=of log] (score) {Orthogonal score\\$\psi^q(\widehat\eta)$};
+\node[box,right=of score] (split) {Graph--time\\separation};
+\node[box,right=of split] (robust) {Robust aggregation\\and radii};
+\draw[arrow] (log) -- (score);
+\draw[arrow] (score) -- (split);
+\draw[arrow] (split) -- (robust);
+
+\node[box,below=7mm of score] (discover) {Discover\\learn $h$ \\ on split 1};
+\node[box,below=7mm of split] (certify) {Certify\\test frozen \\ $h$ on split 2};
+\node[box,below=7mm of robust] (repair) {Repair\\pessimistic\\ policy choice};
+\draw[arrow] (score) -- (discover);
+\draw[arrow] (discover) -- (certify);
+\draw[arrow] (robust) -- (certify);
+\draw[arrow] (certify) -- (repair);
+
+\node[group,fit=(score)(split)(robust),label={[font=\scriptsize]above:counterfactual moment engine}] {};
+\end{tikzpicture}

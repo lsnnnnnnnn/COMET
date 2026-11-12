@@ -1,0 +1,78 @@
+\section{Finite-Sample Guarantees}
+\label{sec:theory}
+
+We state the core result for a finite family $\Theta=\Qcal\times\Hcal$. Extensions to VC-type auditor classes can replace $\log\abs{\Theta}$ by an entropy integral, but the finite-family statement is already sufficient for policy libraries, score buckets, and the certification stage of a learned auditor.
+
+\subsection{A graph moment reduction}
+The following elementary reduction explains why the coloring penalty enters with the same exponent as sample size.
+
+\begin{lemma}[Finite-$p$ moment under a conflict graph]
+\label{lem:graph-moment}
+Let $X_1,\ldots,X_n$ be conditionally mean-zero random variables with a conditional dependency graph that admits a proper coloring with $\chi$ colors. If $p\in(1,2]$ and $\E[\abs{X_i}^p\mid\mathcal D]\le\nu^p$, then
+\begin{equation}
+\E\!\left[
+\abs{\frac{1}{n}\sum_{i=1}^nX_i}^p
+\middle|\mathcal D
+\right]
+\le C_p\nu^p\left(\frac{\chi}{n}\right)^{p-1},
+\label{eq:graph-moment}
+\end{equation}
+where $\mathcal D$ contains the design variables and coloring.
+\end{lemma}
+
+The proof partitions the variables by color, applies the von Bahr--Esseen inequality within each independent color class, and combines the color sums using convexity. Thus $n/\chi$ behaves as a conservative effective sample size without requiring every graph neighborhood to be uniformly small.
+
+\subsection{Uniform robust certificate}
+Let $\bar Z_b(\theta)$ be the oracle-score mean in temporal block $b$ for $\theta=(q,h)$. The retained blocks have common size $n_0$ and satisfy $\chi_b\le\bar\chi_W$. Assume blocks can be coupled to independent copies with total coupling failure at most $\varepsilon_{\coup}$. This includes geometrically $\beta$-mixing blocks separated by a gap $\ell$, for which $\varepsilon_{\coup}$ can be bounded by a sum of mixing coefficients. Split the $B$ blocks into $K$ MOM super-blocks of equal cardinality up to one.
+
+\begin{theorem}[Uniform \COMET\ certificate]
+\label{thm:uniform-comet}
+Suppose \cref{ass:identification,ass:p-moment} hold, the nuisance functions are fitted on dependence-separated folds, the centered cross-fitted scores obey the same conditional $p$-moment envelope $\nu_p$, and \cref{lem:graph-moment} applies conditionally within every evaluation block. Set
+\begin{equation}
+K=\left\lceil 8\log\frac{2\abs{\Theta}}{\delta}\right\rceil,
+\qquad K\le B/2.
+\end{equation}
+Then there is a constant $C_p$ depending only on $p$ such that, with probability at least $1-\delta-\varepsilon_{\coup}$,
+\begin{equation}
+\sup_{\theta=(q,h)\in\Theta}
+\abs{\widehat M_W(\theta)-M_W(\theta)}
+\le
+C_p\nu_p
+\left(
+\frac{\log(2\abs{\Theta}/\delta)}{N_{\eff}}
+\right)^{\frac{p-1}{p}}
++R_{\nuis}^{\star}+\Delta_W^{\star},
+\label{eq:main-bound}
+\end{equation}
+where $R_{\nuis}^{\star}=\sup_{\theta}R_{\nuis}(\theta)$ and $\Delta_W^{\star}=\sup_{\theta}\Delta_W(\theta)$. If block coupling is exact and the target is stable within the window, the last probability and error corrections vanish.
+\end{theorem}
+
+At $p=2$, the stochastic term is $N_{\eff}^{-1/2}$ up to logarithms. For $p<2$, it becomes $N_{\eff}^{-(p-1)/p}$, which is the canonical finite-$p$ mean-estimation rate. The theorem makes three distinctions that are important in practice. First, $N_{\eff}$ is based on the logged conflict graph rather than the raw number of candidate rows. Second, weak overlap and heavy-tailed outcomes enter through the same score moment $\nu_p$ but can be diagnosed separately from the propensity and residual distributions. Third, adaptivity is not hidden inside a stationary expectation: nonstationarity appears as the measurable window-drift term $\Delta_W^{\star}$.
+
+\paragraph{Proof idea.}
+Condition on the cross-fitting training data and the design. \Cref{lem:graph-moment} converts each block mean into an observation whose $p$th centered moment is at most a constant times $\nu_p^p(\bar\chi_W/n_0)^{p-1}$. Averaging $B/K$ independent temporal blocks gives a super-block moment of order $\nu_p^p(K/N_{\eff})^{p-1}$, so Markov's inequality makes each super-block accurate with a constant probability. A binomial tail bound implies that a majority of super-blocks are accurate, and a union bound over $\Theta$ yields the logarithmic complexity. Equation~\eqref{eq:dr-remainder} contributes the nuisance-product remainder. The coupling event transfers the result from independent block copies to the original sequence, while nonidentical block targets contribute at most $\Delta_W^{\star}$. A detailed derivation is provided in \cref{app:proof-main}.
+
+\begin{corollary}[Certified ratio moments]
+\label{cor:ratio}
+On the event in \cref{thm:uniform-comet}, any ratio metric $\abs{m_h}/\pi_h$ obeys \cref{eq:ratio-cert} whenever the lower confidence bound on $\pi_h$ is positive. Otherwise, abstention is the only conclusion guaranteed by the data.
+\end{corollary}
+
+\subsection{A matching dependence--tail lower bound}
+The coloring penalty is not merely an artifact of the proof. Consider a subclass in which $N$ observations form $N/\chi$ independent clusters of size $\chi$, and every observation within a cluster is an exact copy. This is a valid dependency graph with clique number and chromatic number $\chi$.
+
+\begin{theorem}[Cluster-replication lower bound]
+\label{thm:lower}
+Fix $p\in(1,2]$ and suppose $\chi$ divides $N$. Over distributions satisfying $\E\abs{X-\E X}^p\le\nu_p^p$ and the cluster-replication dependence model above, every estimator $\widetilde M$ satisfies
+\begin{equation}
+\inf_{\widetilde M}\sup_{P}
+\E_P\abs{\widetilde M-M(P)}
+\ge c_p\nu_p
+\left(\frac{\chi}{N}\right)^{\frac{p-1}{p}}.
+\label{eq:lower-bound}
+\end{equation}
+\end{theorem}
+
+The proof reduces the problem to mean estimation from $N/\chi$ independent finite-$p$ samples and applies a two-point heavy-tail construction. Consequently, the interaction between local dependence and tail index in \cref{eq:main-bound} is minimax unavoidable for the general class, up to logarithmic factors. Sharper graph parameters may improve over a particular coloring for structured graphs, but no method can replace effective sample size by raw sample size without additional assumptions.
+
+\subsection{Scope of the guarantee}
+The theorem certifies an identified counterfactual moment; it cannot diagnose violations of ignorability or an incorrect exposure mapping from logged outcomes alone. It also separates, rather than eliminates, temporal coupling and drift. A strong final version should sharpen the observable design effect using fractional colorings or graph-specific variance proxies and prove validity of the adaptive tail-tuning rule. These refinements do not change the problem definition or the downstream discover--certify--repair interface.

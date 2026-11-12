@@ -1,0 +1,484 @@
+% !TEX program = pdflatex
+% ================================================================
+% Writing sample (single-author technical note)
+% Topic: COPF (deployment-stable counterfactual fairness) + heavy tails
+% ================================================================
+
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+
+% --- notation ---
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Pp}{\mathbb{P}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[2]{\langle #1,#2\rangle}
+
+\newcommand{\Eb}{\widehat{\mathbb{E}}} % self-normalized empirical average
+\newcommand{\tGADR}{\widetilde{\Gamma}}
+
+% --- cleveref names ---
+\crefname{theorem}{Theorem}{Theorems}
+\Crefname{theorem}{Theorem}{Theorems}
+\crefname{lemma}{Lemma}{Lemmas}
+\Crefname{lemma}{Lemma}{Lemmas}
+\crefname{assumption}{Assumption}{Assumptions}
+\Crefname{assumption}{Assumption}{Assumptions}
+\crefname{definition}{Definition}{Definitions}
+\Crefname{definition}{Definition}{Definitions}
+\crefname{algorithm}{Algorithm}{Algorithms}
+\Crefname{algorithm}{Algorithm}{Algorithms}
+
+% --- theorem envs ---
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment{proofsketch}{\begin{proof}[Proof sketch]}{\end{proof}}
+
+% ================================================================
+\title{\vspace{-1.2em}Writing Sample: Robust Certificates for Deployment-Stable\\ Counterfactual Fairness in Evolving Graph Recommendations}
+\author{\vspace{-0.6em}Single-author technical note}
+\date{\vspace{-0.8em}\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Online link recommendation on evolving graphs is \emph{performative}: changing which candidate links are shown
+changes which links form and what feedback is observed later.
+COPF (Counterfactual Online Performative Fairness) is a decision-layer framework that makes fairness
+\emph{deployment-stable} by defining fairness on \emph{exposure counterfactuals} (shown vs.~not shown)
+and certifying group gaps via Residual Outcome Indistinguishability (Residual-OI) on
+graph-aware doubly-robust (GA-DR) pseudo-outcomes.
+
+This note isolates a theory module I developed to strengthen COPF for two ``real-world'' failure modes:
+(1) \textbf{heavy-tailed pseudo-outcomes} caused by inverse propensity weighting (small exposure probabilities),
+and (2) \textbf{heavy-tailed graph degrees} (power-law networks), which invalidate assumptions that depend on the
+maximum graph degree.
+
+I show how to build \emph{robust} Residual-OI certificates under only a finite $p$-th moment assumption ($1<p\le 2$),
+with explicit dependence on a \emph{checkable} interference degree $\kappa$ and mixing time $\tau_{\mathrm{mix}}$.
+I then prove that in COPF, $\kappa$ can be upper-bounded \emph{by protocol design} (candidate budget and memory horizon),
+so the guarantees remain meaningful even on hub-dominated (power-law) graphs.
+\end{abstract}
+
+\paragraph{What this writing sample is (and is not).}
+This is a single-author technical note intended to be readable without the full COPF paper.
+It summarizes the core COPF objects only to the extent needed for the two results above.
+
+\paragraph{Main takeaways.}
+\begin{itemize}[leftmargin=1.4em]
+  \item \textbf{Robust auditing/certificates:} replace ``bounded residual'' assumptions (or heuristic clipping) with
+  a principled robust mean estimator that tolerates heavy tails and dependence.
+  \item \textbf{Hubs are not the bottleneck:} the statistical dependence parameter entering the certificate is not
+  the maximum graph degree; it is the maximum degree $\kappa$ of a \emph{dependency graph over logged instances},
+  which can be bounded by the logging protocol.
+\end{itemize}
+
+% ================================================================
+\section{Problem: performative recommendation and deployment-stable fairness}
+\label{sec:intro}
+% ================================================================
+
+In recommendation-driven graph growth (``who to follow'', ``people you may know''),
+the platform selects a slate of candidate destinations each round.
+Many edges form only after exposure, so the platform's policy affects the future graph and the future data.
+As a result, fairness metrics computed directly on realized outcomes can drift after a policy update.
+
+COPF addresses this by defining fairness on \emph{exposure counterfactuals}:
+for each candidate dyad, compare what would happen if it were shown versus not shown,
+and compare these effects across protected groups.
+To estimate these counterfactual quantities from a single online stream,
+COPF uses explicit exploration and propensity logging, and then audits residuals with
+Outcome Indistinguishability-style tools.
+
+\paragraph{Why heavy tails matter in COPF.}
+Even if outcomes are binary, COPF uses inverse propensity weighting.
+When some candidates have very small exposure probability $e_t(v)$,
+the weight $1/e_t(v)$ can induce heavy-tailed pseudo-outcomes and residuals.
+Separately, evolving social graphs often have power-law degrees;
+any analysis that depends on the \emph{maximum} graph degree is therefore brittle.
+
+This note develops a robust certificate that depends instead on (i) a finite moment assumption and
+(ii) a dependence parameter that is controlled by the protocol.
+
+% ================================================================
+\section{Setup and COPF recap (minimal)}
+\label{sec:setup}
+% ================================================================
+
+\paragraph{Rounds and candidates.}
+At each round $t\in\{1,\dots,T\}$, the stream reveals a source node $u_t$ and a realized destination $v_t^\star$.
+A candidate set is formed online as
+\[C_t = \{v_t^\star\}\cup N_t,\]
+where $N_t$ contains up to $N$ negatives (sampled without leakage).
+Let $M:=\max_t |C_t|$ denote the (protocol) candidate budget.
+
+\paragraph{Scores and exposure.}
+A backbone scorer produces a probability $\hat p_t(u_t,v)\in(0,1)$ for each $v\in C_t$.
+An exposure policy selects a size-$K$ slate $D_t\subseteq C_t$.
+Let $D_t(v):=\1\{v\in D_t\}$ be the marginal exposure.
+COPF logs each candidate's marginal entry propensity
+\[e_t(v) := \Pp(D_t(v)=1\mid H_t),\]
+where $H_t$ is the information used to construct the slate (graph history, scores, etc.).
+
+\paragraph{Potential outcomes and counterfactual effects.}
+For each candidate dyad $(u_t,v)$, let $Y_t^{(1)}(u_t,v)$ and $Y_t^{(0)}(u_t,v)$ denote
+potential outcomes under exposure and no exposure.
+The observed outcome satisfies consistency:
+\[Y_t(u_t,v) = D_t(v)\,Y_t^{(1)}(u_t,v) + (1-D_t(v))\,Y_t^{(0)}(u_t,v).\]
+
+\paragraph{Groups and slices.}
+Each node $i$ has a protected attribute $A_i\in\cA$ (finite).
+A dyad label $A_t(u_t,v)$ is defined by an attribution rule (source-side $A_{u_t}$ or destination-side $A_v$).
+For auditing, we use a finite family $\cH$ of slice indicators
+(e.g., group $\times$ score bucket $\times$ optional structural role).
+
+\begin{assumption}[Identifiability and bounded dependence]\label{ass:ident}
+For each round $t$ and candidate $v\in C_t$, define a logged context $W_t=W_t(u_t,v)$ computed only from $G_{\le t}$.
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{Overlap:} $\exists\,e_{\min}>0$ such that $e_{\min}\le e_t(v)\le 1-e_{\min}$.
+\item \textbf{Local ignorability:} conditional on $W_t$, $D_t(v)$ is independent of $(Y_t^{(0)}(u_t,v),Y_t^{(1)}(u_t,v))$.
+\item \textbf{Bounded dependence:} the process exhibits temporal dependence with mixing time $\tau_{\mathrm{mix}}$ and
+local network interference that induces a dependency graph of maximum degree $\kappa$ on any evaluation window.
+\end{enumerate}
+\end{assumption}
+
+\paragraph{GA-DR pseudo-outcomes.}
+Let $\mu_a(W):=\E[Y^{(a)}\mid W]$ and let $\hat\mu_{a,t}(W)$ be online estimates.
+For $a\in\{0,1\}$ define
+\begin{equation}
+\label{eq:gadr}
+\tGADR_t^{(a)}(u_t,v)
+:=\hat\mu_{a,t}(W_t)
++\frac{\1\{D_t(v)=a\}}{\hat e_t^{(a)}(v)}\bigl(Y_t(u_t,v)-\hat\mu_{a,t}(W_t)\bigr),
+\end{equation}
+where $\hat e_t^{(1)}(v)=\hat e_t(v)$ and $\hat e_t^{(0)}(v)=1-\hat e_t(v)$.
+
+\paragraph{Residuals.}
+For calibration we use
+\[\hat r_t^{(0)}(u_t,v):=\tGADR_t^{(0)}(u_t,v)-\hat p_t(u_t,v),\]
+and for treatment-effect parity we use the effect residual
+\[\hat r_t^{(\Delta)}(u_t,v):=\bigl(\tGADR_t^{(1)}(u_t,v)-\tGADR_t^{(0)}(u_t,v)\bigr)-\hat\tau_t(W_t),\]
+where $\hat\tau_t(W)$ is an optional centering term.
+
+\paragraph{Graph-aware window average.}
+Let $w_t(u_t,v)\ge 0$ be (optional) graph-aware weights.
+On a window $\cW$ of logged instances, define the self-normalized mean
+\[
+\Eb_{\mathrm{GA},\cW}[Z] :=
+\frac{\sum_{(t,v)\in\cW} w_t(u_t,v)\,Z_t(u_t,v)}{\sum_{(t,v)\in\cW} w_t(u_t,v)}.
+\]
+
+% ================================================================
+\section{Residual-OI and certificate reduction}
+\label{sec:cert}
+% ================================================================
+
+\begin{definition}[Windowed Residual-OI]\label{def:oi}
+Given residuals $\hat r_t$ and an auditor family $\cH$ of bounded tests $h_t=h(W_t)\in[-1,1]$,
+\[
+\widehat{\mathrm{OI}}_{\cW}(\hat r;\cH) := \sup_{h\in\cH}\abs{\Eb_{\mathrm{GA},\cW}[h_t\hat r_t]}.
+\]
+\end{definition}
+
+\paragraph{Fairness gaps as residual correlations.}
+A key simplification in COPF is that counterfactual fairness gaps can be written as
+(normalized) residual correlations on slices.
+For example, define the exposure ATE for group $s$ as
+$\tau_s := \E[Y^{(1)}-Y^{(0)}\mid A=s]$ and define the parity gap
+$g_{\mathrm{TEgap}}:=\max_{s,s'}\abs{\tau_s-\tau_{s'}}$.
+Similarly define a slice calibration gap for bucket $I$.
+
+\begin{lemma}[Gap linearization to residual moments]\label{lem:linearize}
+Assume overlap and $\Pp(A=s)>0$.
+Let $r^{(\Delta)}:=(Y^{(1)}-Y^{(0)})-\tau(W)$ and $r^{(0)}:=Y^{(0)}-\hat p$.
+Then for any groups $s_1,s_2$,
+\[
+\tau_{s_1}-\tau_{s_2}
+= \frac{\E[\1\{A=s_1\}r^{(\Delta)}]}{\Pp(A=s_1)}
+- \frac{\E[\1\{A=s_2\}r^{(\Delta)}]}{\Pp(A=s_2)}
++ \Bigl(\E[\tau(W)\mid A=s_1]-\E[\tau(W)\mid A=s_2]\Bigr),
+\]
+and for any calibration slice $(s,I)$,
+\[
+\E[Y^{(0)}\mid A=s,\hat p\in I]-\E[\hat p\mid A=s,\hat p\in I]
+= \frac{\E[\1\{A=s,\hat p\in I\}r^{(0)}]}{\Pp(A=s,\hat p\in I)}.
+\]
+\end{lemma}
+
+\begin{remark}[Certificate form]
+If $\tau(W)$ is group-agnostic (as in many COPF instantiations),
+the last term in \Cref{lem:linearize} cancels between groups.
+Then bounding $\sup_{h\in\cH}\abs{\E[h r]}$ and dividing by a minimum slice mass $p_{\min}$
+yields a uniform certificate for both parity and calibration gaps.
+\end{remark}
+
+So far, nothing addresses heavy tails:
+standard concentration arguments typically assume $\hat r_t\in[-1,1]$ (via clipping).
+Next, we remove this boundedness requirement.
+
+% ================================================================
+\section{Robust Residual-OI under heavy tails and dependence}
+\label{sec:heavy}
+% ================================================================
+
+\subsection{Why heavy tails occur}
+Even with $Y\in\{0,1\}$, the GA-DR term \eqref{eq:gadr} contains $1/\hat e_t^{(a)}(v)$.
+When some $\hat e_t(v)$ are small, $\tGADR$ and hence residuals can have long tails.
+Clipping $1/\hat e$ fixes this numerically but complicates theory.
+Instead we assume a finite moment and use a robust mean estimator.
+
+\subsection{Assumptions: $p$-moment heavy tails}
+\begin{assumption}[$p$-moment residuals]\label{ass:pmoment}
+Fix $p\in(1,2]$.
+For each auditor $h\in\cH$, define the scalar process
+$X_{t,h}:=h_t\,r_t$ where $r_t$ is either $r_t^{(0)}$ or $r_t^{(\Delta)}$.
+Assume a uniform conditional $p$-moment bound
+\[
+\E\bigl[\abs{X_{t,h}}^p\mid \cF_{t-1}\bigr] \le \sigma^p
+\quad\text{for all }t\text{ and all }h\in\cH.
+\]
+Additionally, assume the bounded dependence parameters $(\kappa,\tau_{\mathrm{mix}})$ from \Cref{ass:ident}.
+\end{assumption}
+
+\subsection{Estimator: truncated self-normalized correlations}
+Fix a window $\cW$ with $|\cW|=T$ and a truncation level $\tau>0$.
+Define the truncated window statistic
+\[
+\widehat m_{\tau}(h)
+:= \Eb_{\mathrm{GA},\cW}\bigl[X_{t,h}\,\1\{\abs{X_{t,h}}\le \tau\}\bigr].
+\]
+This is an estimator of $\E[X_{t,h}]$ with an explicit bias--variance tradeoff.
+
+\subsection{Main theorem: uniform concentration with dependence corrections}
+\begin{theorem}[Robust auditing bound for heavy-tailed COPF residuals]\label{thm:robust}
+Assume \Cref{ass:pmoment} and let $\cH$ be finite.
+Let $T_{\mathrm{eff}}$ denote an effective sample size satisfying
+\begin{equation}
+\label{eq:teff}
+T_{\mathrm{eff}} \asymp \frac{T}{(\kappa+1)\,\tau_{\mathrm{mix}}}
+\qquad\text{(up to universal constants and logarithmic factors).}
+\end{equation}
+Choose
+\begin{equation}
+\label{eq:tauchoice}
+\tau \asymp \Bigl(\frac{\sigma^p\,T_{\mathrm{eff}}}{\log(\abs{\cH}/\delta)}\Bigr)^{1/p}
+\end{equation}
+for a confidence level $\delta\in(0,1)$.
+Then with probability at least $1-\delta$,
+\[
+\sup_{h\in\cH}\abs{\widehat m_{\tau}(h)-\E[X_{t,h}]}
+\ \le\ C\,\sigma\Bigl(\frac{\log(\abs{\cH}/\delta)}{T_{\mathrm{eff}}}\Bigr)^{\frac{p-1}{p}},
+\]
+for a universal constant $C>0$.
+
+Consequently, if all audited slices have mass at least $p_{\min}$,
+then the corresponding counterfactual fairness gaps that admit the ratio form in \Cref{lem:linearize}
+obey a high-probability certificate
+\[
+\max\{g_{\mathrm{Calmax}},\ g_{\mathrm{TEgap}}\}
+\ \lesssim\ \frac{1}{p_{\min}}\,\sigma\Bigl(\frac{\log(\abs{\cH}/\delta)}{T_{\mathrm{eff}}}\Bigr)^{\frac{p-1}{p}}
+\quad\text{(up to a factor of $2$ for two-group differences).}
+\]
+\end{theorem}
+
+\begin{proofsketch}[Proof sketch of \Cref{thm:robust}]
+\textbf{(1) Truncation bias.}
+By Markov and the $p$-moment bound,
+$\abs{\E[X\1\{\abs{X}>\tau\}]}\le \E[\abs{X}^p]\,\tau^{-(p-1)}\le \sigma^p\tau^{-(p-1)}$.
+
+\textbf{(2) Concentration of truncated terms.}
+The truncated variables are bounded by $\tau$.
+Within a window, bounded local interference yields a dependency graph of degree $\kappa$,
+so a coloring argument reduces the sum to $\kappa+1$ nearly independent sub-sums.
+Temporal mixing is handled by blocking at scale $\tau_{\mathrm{mix}}$.
+This yields an effective number of approximately independent blocks $T_{\mathrm{eff}}$ as in \eqref{eq:teff}.
+Applying a Hoeffding/Bernstein inequality for bounded (nearly) independent blocks and union bounding over $\cH$
+controls the deviation of $\widehat m_{\tau}(h)$ from its truncated expectation.
+
+\textbf{(3) Balance bias and deviation.}
+Bounding the truncated second moment by $\E[(X\1\{\abs{X}\le \tau\})^2]\le \sigma^p\tau^{2-p}$
+shows that the deviation term scales like
+$\sigma^{p/2}\tau^{1-p/2}\sqrt{\log(\abs{\cH}/\delta)/T_{\mathrm{eff}}}$.
+Choosing $\tau$ as in \eqref{eq:tauchoice} balances this deviation with the truncation bias,
+yielding the final rate $T_{\mathrm{eff}}^{-(p-1)/p}$.
+\end{proofsketch}
+
+\begin{remark}[Interpretation]
+When $p=2$ (finite variance), the rate becomes nearly $T_{\mathrm{eff}}^{-1/2}$ (up to logs),
+matching sub-Gaussian behavior.
+For heavier tails ($p<2$), the certificate degrades gracefully.
+Importantly, dependence enters only through $T_{\mathrm{eff}}$, so controlling $\kappa$ is critical.
+\end{remark}
+
+% ================================================================
+\section{Heavy-tailed graphs: protocol-level control of the interference degree $\kappa$}
+\label{sec:kappa}
+% ================================================================
+
+This section addresses the ``hub'' issue.
+In many social graphs, $\max_i \deg(i)$ is extremely large and can grow with $|V|$.
+A naive analysis that upper bounds dependence by $\max_i\deg(i)$ becomes vacuous.
+
+The key observation is that COPF's dependence parameter is not a graph degree.
+It is the maximum degree of a \emph{dependency graph over logged instances} within a window.
+This degree can be bounded by design choices in the logging protocol.
+
+\subsection{Interference neighborhoods and dependency graphs}
+Index a logged instance by $u=(t,v)$, i.e., a specific candidate $v\in C_t$.
+Let $D$ denote the global exposure assignments over all instances.
+
+\begin{definition}[Local interference neighborhood]\label{def:localint}
+Fix integers $r_{\mathrm{int}}\ge 0$ and $L_{\mathrm{int}}\ge 0$.
+We say the process satisfies $(r_{\mathrm{int}},L_{\mathrm{int}})$-local interference if
+for each instance $u=(t,v)$ there exists a \emph{computable} set of instances $\cI(u)$ such that:
+\begin{enumerate}[leftmargin=2em]
+\item (Locality) $\cI(u)$ includes only instances from rounds $t'\in[t-L_{\mathrm{int}},\,t+L_{\mathrm{int}}]$;
+\item (Graph locality) membership in $\cI(u)$ depends only on nodes within $r_{\mathrm{int}}$ hops of $\{u_t,v\}$ in $G_{\le t}$
+(and the candidate rule);
+\item (Interference restriction) the potential outcome of $u$ satisfies
+$Y_u(D)=Y_u\bigl(g_u(D_{\cI(u)})\bigr)$ for some mapping $g_u$;
+that is, treatments outside $\cI(u)$ do not affect $Y_u$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Instance dependency graph and degree $\kappa$]\label{def:depgraph}
+Fix a window $\cW$ of instances.
+Define a graph on $\cW$ by connecting $u$ and $u'$ if $u'\in\cI(u)$ or $u\in\cI(u')$.
+Let $\kappa$ denote the maximum degree of this dependency graph.
+\end{definition}
+
+\subsection{Main lemma: $\kappa$ is bounded by the candidate budget}
+\begin{lemma}[Protocol-level bound on $\kappa$]\label{lem:kappa}
+Assume $(r_{\mathrm{int}},L_{\mathrm{int}})$-local interference (\Cref{def:localint})
+and a bounded candidate budget $|C_t|\le M$ for all rounds.
+Then for any evaluation window, the induced dependency-graph degree satisfies
+\[
+\kappa \le (2L_{\mathrm{int}}+1)\,(M-1)\cdot c_0,
+\]
+where $c_0\ge 1$ is a small constant depending only on whether we index instances by candidates,
+by dyads, or by per-round slates (i.e., bookkeeping conventions).
+In particular, the bound is \emph{independent} of the maximum graph degree.
+\end{lemma}
+
+\begin{proofsketch}
+Fix an instance $u=(t,v)$.
+By definition, $\cI(u)$ can only include instances from rounds within $\pm L_{\mathrm{int}}$ of $t$.
+Each such round contains at most $M$ instances (one per candidate).
+Thus $\abs{\cI(u)}\le (2L_{\mathrm{int}}+1)\,M$.
+The dependency graph degree of $u$ is at most $\abs{\cI(u)}-1$ up to constant-factor bookkeeping,
+yielding the claim.
+\end{proofsketch}
+
+\begin{remark}[Why this resolves the ``power-law degree'' concern]
+Even if the underlying evolving graph has hubs with degree $\Theta(|V|^\alpha)$,
+the certificate in \Cref{thm:robust} remains meaningful as long as the protocol enforces
+bounded candidate processing per round and bounded interference horizon.
+This matches real systems, where candidate generation and logging are necessarily budgeted.
+\end{remark}
+
+% ================================================================
+\section{How to use this in practice: a robust online Residual-OI module}
+\label{sec:practice}
+% ================================================================
+
+\paragraph{Replace ``clip residuals'' by robust window statistics.}
+In a COPF-style runner that audits a finite slice family $\cH$ on sliding windows,
+one can implement \Cref{thm:robust} by computing truncated correlations.
+A practical choice is to set $\tau$ using an empirical scale estimate per window
+(e.g., MAD or a running $p$-moment proxy), while treating $p$ as a hyperparameter.
+
+\begin{algorithm}[t]
+\caption{Robust windowed Residual-OI (truncated correlations)}
+\label{alg:robustoi}
+\begin{algorithmic}[1]
+\State \textbf{Input:} window $\cW$, auditor family $\cH$, truncation $\tau$, min-mass threshold $p_{\min}$
+\For{each $h\in\cH$}
+  \State compute $X_{t,h}=h_t\hat r_t$ for instances in $\cW$
+  \State compute $\widehat m_{\tau}(h)=\Eb_{\mathrm{GA},\cW}[X_{t,h}\1\{\abs{X_{t,h}}\le \tau\}]$
+\EndFor
+\State output $\widehat{\mathrm{OI}}^{\mathrm{rob}}_{\cW}=\max_{h\in\cH}\abs{\widehat m_{\tau}(h)}$
+\State (optional) report certificate $\widehat{\mathrm{OI}}^{\mathrm{rob}}_{\cW}/p_{\min}$
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Interpretation for a reader.}
+Algorithm~\ref{alg:robustoi} is the exact point where ``heavy tails'' enter COPF.
+The rest of the pipeline (identifiability, GA-DR, and gap linearization) remains unchanged.
+
+% ================================================================
+\section{Optional appendix: where the $p$-moment condition comes from}
+\label{sec:appendix}
+% ================================================================
+
+A simple sufficient condition for \Cref{ass:pmoment} is that inverse propensity weights have bounded moments.
+The next lemma connects this to exploration and the candidate budget.
+
+\begin{lemma}[Inverse propensity moments under $\epsilon$-uniform Top-$K$ exploration]\label{lem:prop}
+Suppose the exposure policy mixes in an $\epsilon$-uniform Top-$K$ component:
+with probability $\epsilon$ it samples $K$ items uniformly without replacement from $C_t$.
+Then for every $v\in C_t$,
+\[
+e_t(v)\ge \epsilon\,\frac{K}{|C_t|} \ge \epsilon\,\frac{K}{M}.
+\]
+Consequently, for any $p\ge 1$,
+\[
+\Bigl(\frac{1}{e_t(v)}\Bigr)^p \le \Bigl(\frac{M}{\epsilon K}\Bigr)^p.
+\]
+If outcomes are bounded (e.g., $Y\in[0,1]$) and $\hat\mu$ is bounded, then the GA-DR term
+has finite $p$-moments with constants depending polynomially on $M/(\epsilon K)$.
+\end{lemma}
+
+\begin{remark}
+This lemma makes a practical point: heavy tails are controlled primarily by (i) ensuring overlap through
+explicit exploration and (ii) keeping candidate sets budgeted.
+Neither requires assumptions on the maximum degree of the evolving graph.
+\end{remark}
+
+% ================================================================
+\section*{References (minimal)}
+\begin{thebibliography}{9}
+\bibitem{copf}
+COPF: An Online Framework for Deployment-Stable Counterfactual Fairness in Evolving Graphs.
+(Under review; technical report version.)
+
+\bibitem{oi}
+Outcome indistinguishability and multicalibration references; see, e.g., Dwork et al.
+
+\bibitem{dr}
+Doubly robust estimation and off-policy evaluation references; see, e.g., Swaminathan \& Joachims.
+\end{thebibliography}
+
+\end{document}

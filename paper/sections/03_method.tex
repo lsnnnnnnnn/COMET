@@ -1,0 +1,71 @@
+\section{The \COMET\ Estimator}
+\label{sec:method}
+
+\COMET separates nuisance learning, dependence control, and heavy-tail robustification. This permits independent diagnostics of propensity support, outcome-model error, conflict-graph inflation, and tail sensitivity.
+
+\paragraph{Dependence-separated cross-fitting.}
+Random row-wise folds leak information when rows share a user, slate, neighborhood, or nearby latent state. We form evaluation folds from time macro-blocks with guard gaps and prohibited-entity separation. For unit $u$ in fold $k(u)$, nuisances are trained only on allowed blocks and the score is
+\begin{equation}
+\widehat Z_u(q,h)=h_u\{\psi_u^q(\widehat\eta^{(-k(u))})-f_u\}.
+\label{eq:crossfit-score}
+\end{equation}
+Fold construction uses design variables available before observing outcomes. When exact logging propensities are available, only $\mu$ is learned and the propensity component of the double-robust remainder is zero.
+
+\paragraph{Graph--time median of means.}
+Retain $B$ temporally separated blocks of common size $n_0$, so $N_W=Bn_0$. Properly color each block conflict graph, set $\bar\chi_W=\max_b\chi_b$, and define the conservative effective sample size
+\begin{equation}
+N_{\eff}=N_W/\bar\chi_W.
+\label{eq:neff}
+\end{equation}
+For each $\theta=(q,h)$, compute block means $\bar Z_b(\theta)=n_0^{-1}\sum_{u\in b}\widehat Z_u(\theta)$. Partition the $B$ blocks into $K$ equal-count super-blocks, average within each super-block, and take
+\begin{equation}
+\widehat M_W(\theta)=\operatorname{median}_{g\le K}
+\left\{\frac1{|g|}\sum_{b\in g}\bar Z_b(\theta)\right\}.
+\label{eq:comet-estimator}
+\end{equation}
+Equal block sizes preserve the raw-unit target; variable-size extensions and a streaming truncation variant appear in the appendix.
+
+\begin{algorithm}[t]
+\caption{\COMET\ certification for finite $\Theta=\Qcal\times\Hcal$}
+\label{alg:comet}
+\begin{algorithmic}[1]
+\Require Logs, exposure map, policies $\Qcal$, auditors $\Hcal$, confidence $\delta$.
+\State Build guarded time blocks and logged conflict graphs; create separated cross-fitting folds.
+\State Fit $\widehat\eta^{(-k)}$ and compute $\widehat Z_u(q,h)$ for all $(q,h)\in\Theta$.
+\State Color each block, compute $N_{\eff}$, and aggregate by \cref{eq:comet-estimator}.
+\State Form simultaneous radii with tail, nuisance, coupling, and drift terms.
+\State \Return intervals, $N_{\eff}$, overlap/tail diagnostics, and support-based abstentions.
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Radius decomposition.}
+The working radius is
+\begin{equation}
+\begin{split}
+r_W(q,h;\delta)={}&C_p\widehat\nu_p(q,h)
+\left(\frac{\log(2|\Theta|/\delta)}{N_{\eff}}\right)^{\frac{p-1}{p}}
++r_{\nuis}(q,h)\\
+&+r_{\coup}(q,h)+r_{\drift}(q,h).
+\end{split}
+\label{eq:radius}
+\end{equation}
+The terms answer different operational questions: insufficient support/tail mass, nuisance misspecification, inadequate time separation, or an overly long window. For estimated propensities, the exact bias is bounded by
+\begin{equation}
+R_{\nuis}(q,h)=\frac1{N_W}\sum_u\E\!\left[
+|h_u|\sum_s q_u(s)|\widehat\mu_u(s)-\mu_u(s)|
+\frac{|\widehat e_u(s)-e_u(s)|}{\widehat e_u(s)}\right].
+\label{eq:nuisance-rem}
+\end{equation}
+A valid certificate must use either exact propensities/one correct nuisance or a justified high-probability upper bound $r_{\nuis}\ge R_{\nuis}$; a plug-in diagnostic alone is not a proof of coverage.
+
+\paragraph{Ratio certificates and abstention.}
+For a subgroup ratio $|m_h|/\pi_h$, construct simultaneous radii $r_{m,h}$ and $r_{\pi,h}$. If $\widehat\pi_h-r_{\pi,h}>0$, then
+\begin{equation}
+\frac{|m_h|}{\pi_h}\le
+\frac{|\widehat m_h|+r_{m,h}}{\widehat\pi_h-r_{\pi,h}}.
+\label{eq:ratio-cert}
+\end{equation}
+Otherwise \COMET\ returns \emph{insufficient support to certify}. This prevents tiny slices from receiving precise-looking but unsupported calibration or fairness scores.
+
+\paragraph{Tail tuning.}
+The clean theorem treats $p$ and an envelope $\nu_p$ as known. Experiments compare oracle tuning, a sensitivity grid whose intervals are unioned, and an adaptive Lepski-style rule. Only variants with a proved or separately validated tuning guarantee are presented as confidence procedures.

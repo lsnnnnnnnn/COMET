@@ -1,0 +1,58 @@
+\section{Finite-Sample Guarantees}
+\label{sec:theory}
+
+We state the core result for a finite family $\Theta=\Qcal\times\Hcal$; the certification stage of a learned auditor is finite because the discovered tests are frozen before evaluation.
+
+\begin{lemma}[Conflict-graph moment reduction]
+\label{lem:graph-moment}
+Let $X_1,\ldots,X_n$ be conditionally mean-zero with a conditional dependency graph admitting a proper coloring with $\chi$ colors. If $p\in(1,2]$ and $\E[|X_i|^p\mid\mathcal D]\le\nu^p$, then
+\begin{equation}
+\E\!\left[\left|\frac1n\sum_{i=1}^nX_i\right|^p\middle|\mathcal D\right]
+\le C_p\nu^p\left(\frac{\chi}{n}\right)^{p-1}.
+\label{eq:graph-moment}
+\end{equation}
+\end{lemma}
+The proof colors the graph, applies the von Bahr--Esseen inequality within independent color classes, and combines color sums by convexity (\cref{app:proof-graph}). Thus $n/\chi$ acts as a conservative effective sample size.
+
+Let retained blocks have size $n_0$, coloring count at most $\bar\chi_W$, and total coupling failure $\varepsilon_{\coup}$. Split $B$ blocks into $K$ MOM super-blocks.
+
+\begin{theorem}[Uniform \COMET\ certificate]
+\label{thm:uniform-comet}
+Suppose \cref{ass:identification,ass:p-moment} hold; cross-fitting is dependence-separated; the centered cross-fitted scores satisfy the conditional $p$-moment envelope $\nu_p$; and \cref{lem:graph-moment} applies within each block. Let
+\begin{equation*}
+K=\left\lceil8\log\frac{2|\Theta|}{\delta}\right\rceil\le B/2.
+\end{equation*}
+If $r_{\nuis}\ge R_{\nuis}^{\star}$ is a valid simultaneous nuisance-bias bound, then with probability at least $1-\delta-\varepsilon_{\coup}$,
+\begin{equation}
+\sup_{\theta\in\Theta}|\widehat M_W(\theta)-M_W(\theta)|
+\le C_p\nu_p\left(
+\frac{\log(2|\Theta|/\delta)}{N_{\eff}}
+\right)^{\frac{p-1}{p}}
++r_{\nuis}+\Delta_W^{\star},
+\label{eq:main-bound}
+\end{equation}
+where $\Delta_W^{\star}=\sup_{\theta}\Delta_W(\theta)$. With exact block independence and stable targets, the coupling failure and drift correction vanish.
+\end{theorem}
+
+At $p=2$, the stochastic term is $N_{\eff}^{-1/2}$ up to logarithms; for $p<2$, it is $N_{\eff}^{-(p-1)/p}$. The proof conditions on design and nuisance-training data, applies \cref{lem:graph-moment} to each block, averages independent coupled blocks inside super-blocks, and uses a majority argument plus a union bound over $\Theta$. Equation~\eqref{eq:dr-remainder} supplies the nuisance product term, and nonidentical block targets cost at most $\Delta_W^{\star}$. Full details are in \cref{app:proof-main}.
+
+\begin{corollary}[Certified ratios]
+\label{cor:ratio}
+On the event in \cref{thm:uniform-comet}, every ratio $|m_h|/\pi_h$ obeys \cref{eq:ratio-cert} when the subgroup-mass lower confidence bound is positive; otherwise the data justify only abstention.
+\end{corollary}
+
+\paragraph{Lower bound.}
+The dependence penalty is not only a proof artifact. Consider $N/\chi$ independent clusters, each replicated exactly $\chi$ times.
+\begin{theorem}[Cluster-replication lower bound]
+\label{thm:lower}
+For $p\in(1,2]$ and $\chi\mid N$, over distributions satisfying $\E|X-\E X|^p\le\nu_p^p$ under the cluster model, every estimator $\widetilde M$ obeys
+\begin{equation}
+\inf_{\widetilde M}\sup_P\E_P|\widetilde M-M(P)|
+\ge c_p\nu_p\left(\frac{\chi}{N}\right)^{\frac{p-1}{p}}.
+\label{eq:lower-bound}
+\end{equation}
+\end{theorem}
+The proof reduces to finite-$p$ mean estimation from $N/\chi$ independent samples using a two-point construction (\cref{app:lower}). Hence the tail--dependence interaction in \cref{eq:main-bound} is minimax unavoidable for this general class, up to logarithmic factors. Sharper fractional-coloring parameters remain possible under additional graph structure.
+
+\paragraph{Scope.}
+The theorem certifies an identified moment; it cannot test ignorability or an incorrect exposure mapping from logs alone. Estimated propensities require a defensible nuisance bound, and adaptive tail tuning requires its own validity argument. These are explicit assumptions rather than hidden implementation choices.

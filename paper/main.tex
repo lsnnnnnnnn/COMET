@@ -1,0 +1,89 @@
+% !TEX program = pdflatex
+% ================================================================
+% COMET -- ICLR 2027 working draft
+% ================================================================
+% Submission mode is anonymous by default. For camera-ready only:
+%   \iclrfinalcopy
+% The exact official 2027 style files should replace the local copies
+% before submission. See STYLE_NOTICE.md.
+% ================================================================
+
+\documentclass{article}
+
+\usepackage{iclr2027_conference,times}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs,multirow,array,tabularx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+% Make hyperref destinations for algorithmic lines unique across algorithms.
+\makeatletter
+\renewcommand{\theHALG@line}{\thealgorithm.\arabic{ALG@line}}
+\makeatother
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black}
+
+\input{math_commands}
+
+% Draft annotations are intentionally disabled in the compiled paper.
+% Change to \showdraftnotestrue while developing.
+\newif\ifshowdraftnotes
+\showdraftnotesfalse
+\newcommand{\draftnote}[1]{\ifshowdraftnotes\par\noindent\fcolorbox{orange!70!black}{orange!8}{\parbox{0.95\linewidth}{\textbf{Draft note.} #1}}\par\fi}
+\newcommand{\todo}[1]{\ifshowdraftnotes\textcolor{red!70!black}{[TODO: #1]}\fi}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\title{\COMET: Counterfactual Moment Auditing\\under Weak Overlap and Dependent Feedback}
+
+\author{Anonymous Authors}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Logged decision systems increasingly combine learned policies, adaptive data collection, and interacting units. Their counterfactual statistics can be unstable for three distinct reasons: target and logging policies may have only weak overlap, outcomes may be heavy-tailed, and observations may be dependent through repeated users, slates, networks, or temporal feedback. We introduce \COMET, a general framework for estimating and testing families of counterfactual moments in this regime. The framework begins with an orthogonal score that covers off-policy value, subgroup effects, counterfactual calibration, safety constraints, and exposure-mediated spillovers. It then combines dependence-separated cross-fitting with graph--time robust aggregation to produce simultaneous certificates over target policies and auditors. The proposed rate separates heavy-tail difficulty, an observable conflict-graph design effect, nuisance-estimation error, temporal coupling, and within-window drift. Building on these certificates, we formulate a discover--certify procedure for finding hidden failure subgroups without reusing the certification data, and a pessimistic policy-repair rule with high-probability feasibility. We specify a complete empirical program spanning controlled synthetic processes, semi-synthetic temporal graphs, and real logged recommendation data. The resulting problem is broader than counterfactual fairness on evolving graphs: that setting is recovered as one instance of a common counterfactual-moment interface.
+\end{abstract}
+
+\input{sections/01_introduction}
+\input{sections/02_setup}
+\input{sections/03_method}
+\input{sections/04_theory}
+\input{sections/05_discover_repair}
+\input{sections/06_experiments}
+\input{sections/07_related_work}
+\input{sections/08_conclusion}
+
+\section*{Reproducibility Statement}
+The estimands, assumptions, algorithms, and evaluation metrics are stated in the main paper. The appendix provides derivations, proof blueprints, dependence-construction details, synthetic data-generating processes, dataset-specific protocols, and a checklist of claims that must be verified before submission. The final version will include an anonymous code package containing data preprocessing, simulation, estimator implementations, and scripts that reproduce every table and figure from fixed configuration files and random seeds.
+
+\section*{Ethics Statement}
+The framework is intended to diagnose and constrain counterfactual failures in deployed decision systems, but a valid certificate is conditional on the exposure mapping, logged propensities, identification assumptions, auditor family, and data quality. Misspecified interference neighborhoods or unmeasured confounding can create false assurance. Sensitive group labels should be collected and processed only with appropriate legal, organizational, and privacy safeguards. Dataset experiments will follow the licenses and intended-use conditions of the original releases. Policy repair should not be treated as a substitute for domain review, stakeholder consultation, or prospective evaluation.
+
+\section*{AI Use Statement}
+Generative AI tools were used in research ideation and to help reorganize prior technical notes, draft portions of the prose and LaTeX, propose mathematical formulations, and outline theoretical and experimental directions. The authors are responsible for independently checking every definition, proof, citation, implementation, and empirical claim; unverified suggestions must not be presented as established results.
+
+\bibliography{references}
+\bibliographystyle{iclr2027_conference}
+
+\appendix
+\input{sections/appendix}
+
+\end{document}

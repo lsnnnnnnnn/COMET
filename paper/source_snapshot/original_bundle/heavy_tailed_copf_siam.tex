@@ -1,0 +1,592 @@
+
+% !TEX program = pdflatex
+% ================================================================
+% Heavy-Tailed COPF (SIAM-theory oriented) -- compile-ready skeleton
+% ================================================================
+% Notes:
+%   - This file is designed to compile as-is and serve as a roadmap.
+%   - Replace placeholder citations / author names as needed.
+%   - Theorems are stated in a modular way: A (auditing/certificates),
+%     B (heavy-tailed optimization/control), C (random-graph -> kappa/mixing/moments).
+% ================================================================
+
+\documentclass[11pt]{article}
+
+% -----------------------------
+% Packages
+% -----------------------------
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+% Cleveref names
+\crefname{theorem}{Theorem}{Theorems}
+\Crefname{theorem}{Theorem}{Theorems}
+\crefname{lemma}{Lemma}{Lemmas}
+\Crefname{lemma}{Lemma}{Lemmas}
+\crefname{assumption}{Assumption}{Assumptions}
+\Crefname{assumption}{Assumption}{Assumptions}
+\crefname{definition}{Definition}{Definitions}
+\Crefname{definition}{Definition}{Definitions}
+\crefname{algorithm}{Algorithm}{Algorithms}
+\Crefname{algorithm}{Algorithm}{Algorithms}
+
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+% -----------------------------
+% Hyperref setup
+% -----------------------------
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+% -----------------------------
+% Macros
+% -----------------------------
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Pp}{\mathbb{P}} % avoid conflict with \P
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cF}{\mathcal{F}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inner}[2]{\langle #1,#2\rangle}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\polylog}{\mathrm{polylog}}
+
+\newcommand{\Eb}{\widehat{\mathbb{E}}} % empirical / self-normalized average
+\newcommand{\tGADR}{\widetilde{\Gamma}}
+
+% -----------------------------
+% Theorem environments
+% -----------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% A handy proof-sketch environment
+\newenvironment{proofsketch}{\begin{proof}[Proof sketch]}{\end{proof}}
+
+% -----------------------------
+% Title
+% -----------------------------
+\title{\vspace{-1.2em}Heavy-Tailed Counterfactual Online Performative Fairness on Evolving Graphs}
+
+\date{\vspace{-0.6em}\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study counterfactual online performative fairness (COPF) in evolving graphs when the logged
+pseudo-outcomes and gradients are heavy-tailed due to inverse propensity weighting and graph-dependent feedback.
+Our goal is a theory-first paper that (i) certifies decision-counterfactual fairness without assuming bounded residuals or clipping,
+(ii) proves stability/convergence of online fairness control under heavy-tailed gradient noise, and
+(iii) derives checkable bounds on dependence parameters (interference degree $\kappa$ and mixing time $\tau_{\mathrm{mix}}$)
+from a dynamic random-graph generative model.
+\end{abstract}
+
+\paragraph{Roadmap.}
+Section~\ref{sec:setup} defines the evolving-graph exposure-counterfactual setup.
+Section~\ref{sec:copf_recap} recaps the COPF components we reuse (GA-DR, Residual-OI, certificates, dependence model).
+Section~\ref{sec:A} presents Task~A (heavy-tailed auditing/certificates) with a full proof blueprint.
+Section~\ref{sec:B} presents Task~B (heavy-tailed optimization/control via normalized momentum).
+Section~\ref{sec:C} presents Task~C (random graph model $\Rightarrow$ bounds on $\kappa,\tau_{\mathrm{mix}}$ and propensity moments).
+Appendices collect proof details to be filled.
+
+% ============================================================
+\section{Problem setup: evolving graphs, exposure, counterfactuals}
+\label{sec:setup}
+% ============================================================
+
+\paragraph{Evolving graph and rounds.}
+Let $\{G_{\le t}\}_{t\ge 1}$ be an evolving graph with node set $V$ and edge set $E_{\le t}$ at round $t$.
+At each round $t$, the system observes an anchor/source node $u_t$ and a realized destination $v_t^\star$
+(e.g., a formed link endpoint).
+
+\paragraph{Online candidate set.}
+We construct a candidate set
+\[
+C_t \;=\; \{v_t^\star\}\cup N_t,
+\]
+where $N_t$ is a feasible negative set (sampled online from $G_{\le t}$; no leakage).
+
+\paragraph{Scores, groups, and slices.}
+A backbone scorer outputs $\hat p_t(u_t,v)\in(0,1)$ for each $(u_t,v)$ with $v\in C_t$.
+Each node has protected attribute $A_i\in\cA$ (finite).
+Fix an attribution rule and define dyad group label $A_t(u_t,v)\in\cA$
+(e.g., source-side $A_{u_t}$ or destination-side $A_v$).
+For auditing, define group-conditional score buckets $\{I_{s,b}\}_{b=1}^B$ and an optional structural role
+$R_t(u_t,v)\in\cR$ computed from local graph statistics.
+A typical slice indicator is
+\[
+h_{s,b,\rho}(u_t,v)
+:= \1\{A_t(u_t,v)=s,\ \hat p_t(u_t,v)\in I_{s,b},\ R_t(u_t,v)=\rho\}.
+\]
+Let $\cH$ denote the (finite) family of such indicators.
+
+\paragraph{Exposure policy and propensities.}
+An exposure policy selects a (Top-$K$) slate $D_t\subseteq C_t$.
+For each $v\in C_t$, define marginal exposure $D_t(v):=\1\{v\in D_t\}\in\{0,1\}$.
+Let $e_t(v):=\Pp(D_t(v)=1\mid \text{history up to }t)$ be the propensity, and $\hat e_t(v)$ the logged estimate.
+
+\paragraph{Potential outcomes.}
+For each $(u_t,v)$ define potential outcomes $Y_t^{(a)}(u_t,v)$ for $a\in\{0,1\}$ (not exposed / exposed).
+The observed banditized outcome is $Y_t(u_t,v)=Y_t^{(D_t(v))}(u_t,v)$.
+
+% ============================================================
+\section{COPF recap: identifiability, GA-DR, Residual-OI, certificates, dependence}
+\label{sec:copf_recap}
+% ============================================================
+
+\begin{assumption}[Local identifiability on evolving graphs]\label{ass:ident}
+For each round $t$ and candidate $v\in C_t$, define a logged context $W_t=W_t(u_t,v)$
+computed from $G_{\le t}$ (and exogenous features).
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{Overlap.} There exists $e_{\min}>0$ such that $e_{\min}\le e_t(v)\le 1-e_{\min}$.
+\item \textbf{Local ignorability.} Conditional on $W_t$, the exposure $D_t(v)$ is independent of
+$\bigl(Y_t^{(0)}(u_t,v),Y_t^{(1)}(u_t,v)\bigr)$.
+\item \textbf{Bounded dependence.} The process satisfies bounded local interference and temporal mixing
+(e.g., $\beta$-mixing with mixing time $\tau_{\mathrm{mix}}$).
+\end{enumerate}
+\end{assumption}
+
+\paragraph{GA-DR pseudo-outcomes (COPF).}
+Let $\mu_a(W):=\E[Y^{(a)}\mid W]$ and let $\hat\mu_{a,t}(W)$ be online estimates (possibly cross-fit).
+
+\begin{definition}[GA-DR pseudo-outcomes]\label{def:gadr}
+Define $\hat e_t^{(1)}(v):=\hat e_t(v)$ and $\hat e_t^{(0)}(v):=1-\hat e_t(v)$.
+For $a\in\{0,1\}$, define the doubly robust pseudo-outcome
+\[
+\tGADR_t^{(a)}(u_t,v)
+:=\hat\mu_{a,t}(W_t)\;+\;\frac{\1\{D_t(v)=a\}}{\hat e_t^{(a)}(v)}
+\Bigl(Y_t(u_t,v)-\hat\mu_{a,t}(W_t)\Bigr).
+\]
+Given nonnegative graph-aware weights $w_t(u_t,v)$, define a self-normalized empirical average over a window $\cW$:
+\[
+\Eb_{\mathrm{GA},\cW}[Z]
+:=\frac{\sum_{(t,v)\in\cW} w_t(u_t,v)\,Z_t(u_t,v)}{\sum_{(t,v)\in\cW} w_t(u_t,v)}.
+\]
+\end{definition}
+
+\paragraph{Residual sequences (auditing/control).}
+Let $\hat p_t(u_t,v)$ be the post-processed score (after any decision-layer adjustment).
+Define
+\begin{align*}
+\hat r_t^{(0)}(u_t,v) &:= \tGADR_t^{(0)}(u_t,v) - \hat p_t(u_t,v),\\
+\hat r_t^{(\Delta)}(u_t,v) &:= \Bigl(\tGADR_t^{(1)}(u_t,v)-\tGADR_t^{(0)}(u_t,v)\Bigr) - \hat\tau_t(W_t),
+\end{align*}
+where $\hat\tau_t(W)$ is an (optional) centering estimate of the conditional effect.
+
+\paragraph{Decision-counterfactual fairness metrics (examples).}
+For each group $s\in\cA$, define the exposure ATE $\tau_s := \E[Y^{(1)}-Y^{(0)}\mid A=s]$ and parity gap
+$g_{\mathrm{TEgap}} := \max_{s,s'}|\tau_s-\tau_{s'}|$.
+For $a=0$ (no exposure), define bucketed calibration gaps
+\[
+g_{\mathrm{Cal},s,I}^{(0)}
+:=\abs{\E\bigl[Y^{(0)}\mid A=s,\hat p\in I\bigr]-\E\bigl[\hat p\mid A=s,\hat p\in I\bigr]},
+\qquad
+g_{\mathrm{Calmax}}^{(0)}:=\max_{s,I} g_{\mathrm{Cal},s,I}^{(0)}.
+\]
+
+\begin{definition}[Windowed Residual-OI]\label{def:residualoi}
+Fix a finite auditor family $\cH$ (slice indicators or signed tests).
+Given a residual sequence $r_t$ and window $\cW$, define
+\[
+\widehat{\mathrm{OI}}_{\cW}(r;\cH)
+:=\sup_{h\in\cH}\abs{\Eb_{\mathrm{GA},\cW}\bigl[h_t\,r_t\bigr]}.
+\]
+We say $\varepsilon$-Residual-OI holds on $\cW$ if $\widehat{\mathrm{OI}}_{\cW}(r;\cH)\le \varepsilon$.
+\end{definition}
+
+\paragraph{Certificates (ratio form).}
+Let $\pi_{s,I}:=\Pr(A=s,\hat p\in I)$ denote slice mass.
+For calibration slices $(s,I)$, one has ratio forms of the type
+\[
+g_{\mathrm{Cal},s,I}^{(0)}
+=\frac{\abs{\E\bigl[\1\{A=s,\hat p\in I\}\,r^{(0)}\bigr]}}{\pi_{s,I}},
+\]
+with $r^{(0)}:=Y^{(0)}-\hat p$ (or a centered analog).
+Thus bounding numerators uniformly over slices and lower bounding slice masses yields a finite-sample certificate.
+
+\paragraph{Dependence model (COPF interface).}
+Index an audited instance by $u=(i,j,t)$ (a candidate dyad at time $t$).
+Let $D$ denote the global exposure assignment, and $D_{I(u)}$ its restriction to a neighborhood $I(u)$.
+\emph{Local interference:} there exists a \emph{computable} neighborhood $I(u)$ (from $G_{\le t}$ and the candidate rule)
+such that $Y_u(D)=Y_u(g_u(D_{I(u)}))$.
+Within a window, define a dependency graph over instances: connect $u,u'$ if $u'\in I(u)$ or $u\in I(u')$.
+Let $\kappa$ be its maximum degree.
+Temporal dependence is captured by a mixing coefficient (e.g., $\beta$-mixing) with mixing time $\tau_{\mathrm{mix}}$.
+
+% ============================================================
+\section{Task A: Heavy-tailed auditing \& certificates on dependent graph data}
+\label{sec:A}
+% ============================================================
+
+\subsection{Motivation: why heavy tails appear in COPF}
+The GA-DR pseudo-outcome contains inverse propensity terms $1/\hat e_t^{(a)}(v)$.
+If propensities can be very small (weak exploration, large candidate sets, or score-based inclusion),
+then the pseudo-outcomes and residuals can be heavy-tailed even when $Y\in[0,1]$.
+COPF mitigates this via exploration and propensity clipping; here we develop a \emph{theory} that does not require bounded residuals.
+
+\subsection{Heavy-tailed moment assumption}
+\begin{assumption}[$p$-moment heavy-tailed residuals under dependence]\label{ass:heavy_resid}
+Fix $p\in(1,2]$.
+For each $h\in\cH$, define the scalar sequence
+$X_{t,h}:=h_t\,r_t$ (where $r_t$ is the relevant residual, e.g., $r^{(0)}$ or $r^{(\Delta)}$).
+Assume a uniform $p$-moment bound
+\[
+\E\bigl[\abs{X_{t,h}}^p \mid \cF_{t-1}\bigr]\le \sigma^p
+\quad\text{for all }t\text{ and all }h\in\cH,
+\]
+and that the process obeys the same local-interference dependency-graph degree bound $\kappa$
+and temporal $\beta$-mixing with mixing time $\tau_{\mathrm{mix}}$.
+\end{assumption}
+
+\subsection{Estimator: dynamic truncated mean}
+We use a (time/window dependent) truncation threshold $\tau>0$.
+Given a window $\cW$ of size $T$, define for each $h\in\cH$:
+\[
+\bar X_{h,\tau}:=\frac{1}{T}\sum_{t\in\cW} \bigl[X_{t,h}\cdot \1\{\abs{X_{t,h}}\le \tau\}\bigr].
+\]
+(Variants: Huberization, Catoni, median-of-means; we start with truncation because it makes the bias-variance tradeoff explicit.)
+
+\subsection{Target theorem (A): uniform concentration in heavy-tailed regime}
+\begin{theorem}[A: Heavy-tailed auditing bound for dependent graph data]\label{thm:A_trunc}
+Assume \Cref{ass:ident,ass:heavy_resid}.
+Fix confidence $\delta\in(0,1)$ and a finite auditor family $\cH$.
+Let $T:=|\cW|$ and define an \emph{effective sample size}
+\[
+T_{\mathrm{eff}} \;\asymp\; \frac{T}{(\kappa+1)\,\tau_{\mathrm{mix}}}
+\quad\text{(up to log factors from blocking/thinning).}
+\]
+Choose the truncation level
+\[
+\tau \;\asymp\; \Bigl(\frac{\sigma^p\,T_{\mathrm{eff}}}{\log(\abs{\cH}/\delta)}\Bigr)^{1/p}.
+\]
+Then there exists a universal constant $C>0$ such that, with probability at least $1-\delta$,
+\[
+\sup_{h\in\cH}\abs{\bar X_{h,\tau}-\E[X_{t,h}]}
+\ \le\
+C\,\sigma\Bigl(\frac{\log(\abs{\cH}/\delta)}{T_{\mathrm{eff}}}\Bigr)^{\frac{p-1}{p}}.
+\]
+Consequently, any ratio-form fairness metric whose numerator is controlled by $\sup_{h\in\cH}\abs{\E[X_{t,h}]}$
+admits a finite-sample certificate with heavy-tail rate $T_{\mathrm{eff}}^{-(p-1)/p}$ and explicit dependence on
+$\kappa$ and $\tau_{\mathrm{mix}}$.
+\end{theorem}
+
+\subsection{Proof blueprint for Theorem~\ref{thm:A_trunc}}
+We now outline the proof steps (this can become the Appendix proof).
+
+\begin{proofsketch}[Proof sketch for \Cref{thm:A_trunc}]
+
+\textbf{Step 1: Bias--variance decomposition (truncation).}
+Write
+\[
+\E[X_{t,h}] - \E[X_{t,h}\1\{\abs{X_{t,h}}\le \tau\}]
+= \E[X_{t,h}\1\{\abs{X_{t,h}}>\tau\}].
+\]
+By Markov and the $p$-moment bound,
+\[
+\abs{\E[X_{t,h}\1\{\abs{X_{t,h}}>\tau\}]}
+\le \E[\abs{X_{t,h}}^p]\,\tau^{-(p-1)} \le \sigma^p \tau^{-(p-1)}.
+\]
+This is the \emph{bias term}.
+
+\medskip
+\textbf{Step 2: Handling graph dependency via dependency-graph coloring.}
+Within a window, the instance-level dependency graph has maximum degree $\kappa$ by local interference.
+Thus it can be colored with at most $\kappa+1$ colors.
+Equivalently, we can partition indices into $\kappa+1$ subcollections such that within each color class,
+variables are independent \emph{conditional on the past} up to temporal dependence.
+(References: dependency-graph method / Janson-style decomposition; a sharper variant uses the chromatic number.)
+
+\medskip
+\textbf{Step 3: Handling temporal dependence via blocking/thinning (mixing).}
+Use a blocking argument with block length comparable to $\tau_{\mathrm{mix}}$,
+so that blocks are nearly independent in the $\beta$-mixing sense.
+This converts the window average into an average over approximately $T_{\mathrm{eff}}$ effectively independent blocks.
+
+\medskip
+\textbf{Step 4: Concentration for bounded variables.}
+The truncated variables $X_{t,h}\1\{\abs{X_{t,h}}\le \tau\}$ are bounded by $\tau$.
+Apply a Bernstein-type inequality for $\beta$-mixing sequences (e.g., Merlev\`ede--Peligrad--Rio),
+and then union bound (or a vector-valued inequality) over the finite class $\cH$:
+\[
+\Pp\!\left(\sup_{h\in\cH}\abs{\bar X_{h,\tau}-\E[X_{t,h}\1\{\abs{X_{t,h}}\le \tau\}]}\ge u\right)
+\le \delta.
+\]
+The deviation term scales like
+$u\lesssim \tau\frac{\log(\abs{\cH}/\delta)}{T_{\mathrm{eff}}}
++\sqrt{\Var(X_{t,h}\1\{\abs{X_{t,h}}\le \tau\})\frac{\log(\abs{\cH}/\delta)}{T_{\mathrm{eff}}}}$.
+Since $\E[\abs{X}^p]\le \sigma^p$ and $p\le 2$,
+one can bound the truncated second moment by $\E[(X\1\{\abs{X}\le \tau\})^2]\le \sigma^p\tau^{2-p}$.
+
+\medskip
+\textbf{Step 5: Balance the terms.}
+Choose $\tau$ to equalize the truncation bias $\sigma^p\tau^{-(p-1)}$ with the deviation scale.
+This yields $\tau\asymp (\sigma^p T_{\mathrm{eff}}/\log(\abs{\cH}/\delta))^{1/p}$
+and overall error rate $\sigma(\log(\abs{\cH}/\delta)/T_{\mathrm{eff}})^{(p-1)/p}$.
+
+\medskip
+\textbf{Optional strengthening (vector-valued martingale).}
+Instead of a crude union bound over $\cH$, treat $(\bar X_{h,\tau})_{h\in\cH}$ as a vector martingale
+and bound its sup-norm using a vector-valued Bernstein/Pinelis inequality.
+This can reduce constants and better exploit correlations between slices.
+\end{proofsketch}
+
+\remark{TBD for Task A}
+The sharpest form of \Cref{thm:A_trunc} depends on how $\kappa$ and mixing enter $T_{\mathrm{eff}}$.
+Obtaining tight dependence-corrections (e.g., replacing $\kappa+1$ by a degeneracy or fractional chromatic number,
+or proving polylog bounds on those quantities under random graph models).
+
+% ============================================================
+\section{Task B: Heavy-tailed online fairness control via normalized momentum}
+\label{sec:B}
+% ============================================================
+
+\subsection{Controller as stochastic optimization (primal--dual template)}
+We model the COPF decision-layer controller as minimizing a utility loss subject to fairness constraints.
+Let $\theta\in\R^d$ denote primal decision parameters (e.g., group offsets / thresholds) and $\lambda\in\R_+^K$ dual variables.
+Consider a saddle objective
+\[
+\min_{\theta\in\R^d}\max_{\lambda\ge 0}\ \mathcal{L}(\theta,\lambda)
+:= \E[f(\theta;\xi)] + \sum_{k=1}^K \lambda_k\bigl(\E[g_k(\theta;\xi)]-\alpha_k\bigr),
+\]
+where $\xi$ encodes the evolving-graph randomness, arrivals, and potential-outcome noise, and
+$g_k$ are fairness-gap functions estimated via GA-DR residuals.
+
+\subsection{Heavy-tailed gradient assumption}
+\begin{assumption}[$p$-moment stochastic gradients]\label{ass:heavy_grad}
+Fix $p\in(1,2]$.
+Assume the stochastic gradient estimator $G_t(\theta,\lambda)$ satisfies
+\[
+\E\!\left[\norm{G_t(\theta,\lambda)-\nabla \mathcal{L}(\theta,\lambda)}^p\ \big|\ \cF_{t-1}\right]\le \sigma_g^p,
+\]
+under the same local-interference degree $\kappa$ and mixing time $\tau_{\mathrm{mix}}$.
+\end{assumption}
+
+\subsection{Algorithm: batched normalized SGD with momentum (NSGDM-style)}
+We use mini-batching, momentum, and normalization.
+Below is a template (specialize to either pure primal, or primal--dual updates).
+
+\begin{algorithm}[t]
+\caption{Batched NSGDM controller (template)}
+\label{alg:nsgdm}
+\begin{algorithmic}[1]
+\State \textbf{Input:} stepsizes $\{\eta_t\}$, momentum $\beta\in[0,1)$, batch sizes $\{B_t\}$, small $\{\epsilon_t\}$
+\State Initialize $\theta_0\in\R^d$, momentum $m_0=0$; (optionally) $\lambda_0\ge 0$
+\For{$t=1,2,\dots,T$}
+  \State Collect a batch $\{\xi_{t,i}\}_{i=1}^{B_t}$ (possibly by thinning with lag $\ge\tau_{\mathrm{mix}}$)
+  \State Compute batch gradient $\bar g_t = \frac{1}{B_t}\sum_{i=1}^{B_t} G(\theta_{t-1},\lambda_{t-1};\xi_{t,i})$
+  \State Update momentum: $m_t = \beta m_{t-1} + (1-\beta)\bar g_t$
+  \State Normalize: $\hat m_t = \frac{m_t}{\norm{m_t}+\epsilon_t}$
+  \State Primal step: $\theta_t = \theta_{t-1} - \eta_t \hat m_t$
+  \State (Optional dual ascent with projection): $\lambda_t = \Pi_{\R_+^K}\bigl(\lambda_{t-1} + \eta_t^\lambda \hat m_t^\lambda\bigr)$
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Target theorem (B): stationarity under heavy tails without clipping}
+\begin{theorem}[B: Heavy-tailed convergence of normalized-momentum control]\label{thm:B}
+Assume $\mathcal{L}$ is $L$-smooth in $\theta$ (and concave in $\lambda$ if analyzing the saddle-point gap),
+and assume \Cref{ass:heavy_grad} with $p\in(1,2]$.
+Run Algorithm~\ref{alg:nsgdm} with appropriate $\eta_t,B_t,\epsilon_t$ (possibly depending on $p$,
+or adaptively tuned when $p$ is unknown).
+Then the iterates satisfy a heavy-tail stationarity guarantee of the form
+\[
+\min_{t\le T}\E\bigl[\norm{\nabla_\theta \mathcal{L}(\theta_t,\lambda_t)}\bigr]
+\ \le\ 
+\mathrm{Rate}\!\left(T;\,p,\sigma_g,\,\kappa,\,\tau_{\mathrm{mix}}\right),
+\]
+where $\mathrm{Rate}(\cdot)$ matches the best-known heavy-tail exponent in the i.i.d.\ case
+(up to dependence corrections that scale with $\kappa$ and $\tau_{\mathrm{mix}}$).
+\end{theorem}
+
+\begin{proofsketch}[Proof sketch for \Cref{thm:B}]
+\textbf{Step 1: Descent lemma.}
+By $L$-smoothness,
+\[
+\mathcal{L}(\theta_{t+1},\lambda_t)\le \mathcal{L}(\theta_t,\lambda_t)
+-\eta_t\inner{\nabla_\theta \mathcal{L}(\theta_t,\lambda_t)}{\hat m_t}
++\frac{L}{2}\eta_t^2.
+\]
+Since $\norm{\hat m_t}\le 1$, the curvature term is $\bigO(\eta_t^2)$.
+
+\textbf{Step 2: Heavy-tailed bias--noise control for normalized momentum.}
+Show that the normalized momentum direction $\hat m_t$ remains sufficiently aligned with the true gradient
+in expectation, despite heavy-tailed noise:
+\[
+\E\!\left[\inner{\nabla \mathcal{L}}{\hat m_t}\right]\gtrsim \E[\norm{\nabla \mathcal{L}}] - \mathrm{Err}_t,
+\]
+where $\mathrm{Err}_t$ depends on the $p$-moment noise level, batching, and dependence.
+
+\textbf{Step 3: Momentum tracking inequality.}
+Define a tracking error $e_t=m_t-\nabla \mathcal{L}(\theta_t,\lambda_t)$ and derive a recursion of the form
+\[
+\norm{e_t}\le \beta\norm{e_{t-1}} + (1-\beta)\norm{\bar g_t-\nabla \mathcal{L}(\theta_t,\lambda_t)} + \beta L \norm{\theta_t-\theta_{t-1}}.
+\]
+Control the noise term using $p$-moment concentration for batch means under dependence
+(analogous to Task~A but vector-valued).
+
+\textbf{Step 4: Sum telescoping and tune parameters.}
+Sum the descent inequality over $t$ and choose $(\eta_t,B_t,\epsilon_t)$ to balance
+(i) bias from normalization/momentum and heavy tails, and (ii) curvature $\sum \eta_t^2$.
+This yields the final stationarity rate.
+
+\textbf{Step 5 (optional): primal--dual gap.}
+For a saddle objective, bound the Nikaido--Isoda function or a primal--dual gap using a similar Lyapunov argument.
+\end{proofsketch}
+
+\remark{TBD for task B}
+The dependence correction enters through effective sample size of mini-batches and through correlation of gradient noise.
+Sharp dependence-aware martingale inequalities (especially vector-valued).
+
+% ============================================================
+\section{Task C: Random graph generative models imply bounds on dependence, mixing, and propensity moments}
+\label{sec:C}
+% ============================================================
+
+\subsection{COPF dependence objects (recap)}
+COPF's dependence is captured by (i) a computable local interference neighborhood $I(u)$ and
+(ii) the induced dependency graph degree $\kappa$ within windows, plus temporal mixing with time $\tau_{\mathrm{mix}}$.
+Here we aim to derive explicit \emph{high-probability} bounds on these quantities from a dynamic random graph model.
+
+\subsection{Dynamic random graph model (modular template)}
+\begin{assumption}[Dynamic random graph model $\mathsf{GRM}(\Theta)$]\label{ass:grm}
+The evolving graphs $\{G_t\}$ are generated by a random process $\mathsf{GRM}(\Theta)$
+(e.g., preferential attachment with choice, spatial random graphs, or sparse inhomogeneous random graphs),
+with the following properties:
+
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{Local volume growth.} For each fixed radius $r$, there exists a function $b_r(n)$ such that
+for all horizons $T$ and $\delta\in(0,1)$,
+\[
+\Pp\!\left(\max_{t\le T}\max_{v\in V_t} |B_r(v;G_t)| \le b_r(|V_T|)\right)\ge 1-\delta.
+\]
+\item \textbf{(Optional) degree tail exponent.} The marginal degree distribution has exponent $\gamma>1$
+(in a suitable w.h.p.\ sense).
+\item \textbf{(Optional) driving-chain mixing.} The arrival process / graph-update mechanism is driven by
+a Markov chain with spectral gap $\lambda>0$.
+\end{enumerate}
+\end{assumption}
+
+\subsection{Candidate rule + Top-$K$ exposure}
+At time $t$, candidate sets satisfy either a bounded budget $|C_t|\le M$,
+or neighborhood candidates $C_t\subseteq B_{r_{\mathrm{cand}}}(u_t;G_{\le t})$.
+The exposure policy has an $\epsilon$-uniform Top-$K$ component to guarantee overlap in the model.
+
+\subsection{C.1: sparse interference from local volume growth}
+\begin{lemma}[Reduction: local volume $\Rightarrow$ dependency degree]\label{lem:kappa_reduction}
+Assume $(r_{\mathrm{int}},L_{\mathrm{int}})$-local interference neighborhoods $I(u)$ only include instances whose endpoints lie within
+$r_{\mathrm{int}}$ hops and within the last $L_{\mathrm{int}}$ rounds.
+Let $M:=\max_{t\le T}|C_t|$.
+Then, over any window, the instance dependency-graph maximum degree satisfies
+\[
+\kappa \ \le\ c\cdot (2L_{\mathrm{int}}+1)\cdot M \cdot
+\max_{t\le T}\max_{v\in V_t}\ |B_{2r_{\mathrm{int}}}(v;G_t)|,
+\]
+for a constant $c$ depending only on indexing conventions.
+\end{lemma}
+
+\begin{theorem}[C.1: Sparse interference under $\mathsf{GRM}(\Theta)$]\label{thm:C1}
+Under \Cref{ass:grm} and \Cref{lem:kappa_reduction}, with probability at least $1-\delta$,
+\[
+\kappa \ \le\ c\cdot (2L_{\mathrm{int}}+1)\cdot M \cdot b_{2r_{\mathrm{int}}}(|V_T|).
+\]
+In particular, if $b_{2r_{\mathrm{int}}}(n)=\polylog(n)$ w.h.p., then $\kappa=\polylog(|V_T|)$ w.h.p.
+even when degrees are heavy-tailed.
+\end{theorem}
+
+\subsection{C.2: temporal mixing via spectral gap}
+\begin{theorem}[C.2: Mixing time from spectral gap]\label{thm:C2}
+If the driving chain is reversible with spectral gap $\lambda>0$, then its $\beta$-mixing coefficients decay geometrically:
+$\beta(\ell)\le C(1-\lambda)^\ell$, and thus $\tau_{\mathrm{mix}}(\varepsilon)\le \lambda^{-1}\log(C/\varepsilon)$.
+\end{theorem}
+
+\subsection{C.3: inverse propensity moments and phase transitions}
+\begin{theorem}[C.3: Propensity moments under neighborhood candidates]\label{thm:C3}
+Assume neighborhood candidates $C_t\subseteq B_{r_{\mathrm{cand}}}(u_t;G_{\le t})$ and an $\epsilon$-uniform Top-$K$ component.
+Then for any $v\in C_t$, the marginal propensity satisfies $e_t(v)\ge \epsilon\cdot K/|C_t|$ and hence
+\[
+\Bigl(\frac{1}{e_t(v)}\Bigr)^p \ \le\ \Bigl(\frac{|C_t|}{\epsilon K}\Bigr)^p.
+\]
+If $|C_t|\le |B_{r_{\mathrm{cand}}}(u_t;G_{\le t})|$ and $\E[|B_{r_{\mathrm{cand}}}(u_t;G_{\le t})|^p]<\infty$,
+then $\E[(1/e_t(v))^p]<\infty$.
+Under a power-law degree exponent $\gamma$, a sufficient condition is $p<\gamma-1$ (a moment ``phase transition'').
+\end{theorem}
+
+\remark{TBD for task C}
+(i) prove polylog bounds on $b_r(n)$ using branching-process approximations and martingale concentration,
+(ii) relate $\gamma$ to the sharp integrability threshold for neighborhood volume (hence inverse propensities),
+and (iii) bound spectral gaps/mixing times for the driving process or for induced interference graphs.
+
+% ============================================================
+\section{What remains to be proved}
+\label{sec:todo}
+% ============================================================
+
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{A: Make $T_{\mathrm{eff}}$ explicit.} Formalize the exact blocking+coloring argument
+and compute the constants that map $(T,\kappa,\tau_{\mathrm{mix}})$ to $T_{\mathrm{eff}}$.
+\item \textbf{A: Upgrade from truncation to MOM/Catoni (optional).} If we want sub-Gaussian behavior at $p=2$ uniformly,
+switch to median-of-means or Catoni and repeat the dependence-graph + mixing analysis.
+\item \textbf{B: Choose a concrete NSGDM rate theorem.} Decide whether to match the i.i.d.\ exponent from the heavy-tailed NSGDM paper
+or to state a dependence-aware adaptation with explicit $(\kappa,\tau_{\mathrm{mix}})$.
+\item \textbf{C: Instantiate $\mathsf{GRM}(\Theta)$.} Pick models and prove the needed high-probability volume growth $b_r(n)=\polylog(n)$ and the moment thresholds in \Cref{thm:C3}.
+\end{enumerate}
+
+% ============================================================
+%\section*{References (placeholders)}
+% ============================================================
+%\begin{thebibliography}{9}
+
+%\bibitem{copf}
+%\textit{COPF paper.} (Replace with the actual COPF citation.)
+
+%\bibitem{ht-nsgdm}
+%\textit{Optimally convergent normalized SGD with momentum under heavy-tailed noise.}
+%arXiv:2412.19529 (replace with full citation).
+
+%\bibitem{merlevede2009}
+%Merlev\`ede, Peligrad, and Rio.
+%\newblock Bernstein inequality and moderate deviations under strong mixing conditions.
+%\newblock \emph{Stochastic Processes and their Applications}, 2009. (placeholder)
+
+%\bibitem{janson}
+%Janson.
+%\newblock Large deviations for sums of partly dependent random variables.
+%\newblock (placeholder)
+
+%\end{thebibliography}
+
+\end{document}

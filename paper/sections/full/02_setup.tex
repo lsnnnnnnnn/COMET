@@ -1,0 +1,113 @@
+\section{Counterfactual Moments from Adaptive Dependent Logs}
+\label{sec:setup}
+
+\subsection{Logged process and local exposure}
+At round $t=1,\ldots,T$, a system observes the history $\F_{t-1}$ and a set of decision units $\Ical_t$. A unit $u=(t,i)$ has context $X_u$, while the system draws a possibly joint action vector $A_t$ from a predictable logging policy. A known \emph{exposure mapping}
+\begin{equation}
+    S_u = g_u\!\left(A_{I(u)}\right)\in\Scal
+    \label{eq:exposure-map}
+\end{equation}
+compresses the relevant part of the joint assignment into a finite local exposure state. Examples include a binary shown/not-shown indicator, an item's position in a slate, a treatment together with the fraction of treated neighbors, or a discretized dose. For every $s\in\Scal$, let $Y_u(s)$ be the potential outcome under local exposure $s$; the observed outcome is $Y_u=Y_u(S_u)$. We allow $Y_u$ to be unbounded.
+
+The generalized propensity and outcome regression are
+\begin{align}
+ e_u(s) &:= \Prb(S_u=s\mid X_u,\F_{t-1}), &
+ \mu_u(s) &:= \E[Y_u(s)\mid X_u,\F_{t-1}].
+ \label{eq:nuisance}
+\end{align}
+A target intervention $q\in\Qcal$ is a predictable conditional distribution $q_u(s\mid X_u,\F_{t-1})$. It may represent a new ranking policy, a stochastic treatment rule, or a local intervention used only for auditing.
+
+\begin{assumption}[Local identification]
+\label{ass:identification}
+For every evaluated unit and exposure state: (i) consistency holds through \cref{eq:exposure-map}; (ii) $Y_u(s)\perp S_u\mid X_u,\F_{t-1}$; and (iii) $q_u(s)>0$ implies $e_u(s)>0$ almost surely.
+\end{assumption}
+
+The third condition requires support only where the target intervention places mass. It does \emph{not} impose a constant lower bound on $e_u(s)$.
+
+\subsection{Orthogonal scores and moment families}
+For nuisance functions $\eta=(\mu,e)$, define the generalized doubly robust score
+\begin{equation}
+\psi_u^q(\eta)
+:=\sum_{s\in\Scal}q_u(s)
+\left[
+\mu_u(s)+\frac{\ind\{S_u=s\}}{e_u(s)}\{Y_u-\mu_u(s)\}
+\right].
+\label{eq:orthogonal-score}
+\end{equation}
+Let $h\in\Hcal$ be an auditor or constraint function, and let $f_u$ be a predictable reference quantity such as a model score, a budget level, or zero. For a window $\Ical_W=\cup_{t\in W}\Ical_t$ of size $N_W$, our target is the pathwise average predictable moment
+\begin{equation}
+M_W(q,h;f)
+:=\frac{1}{N_W}\sum_{u\in\Ical_W}
+\E\!\left[h_u\{\psi_u^q(\eta_0)-f_u\}\mid\F_{t(u)-1}\right],
+\label{eq:target-moment}
+\end{equation}
+where $h_u=h(X_u,\F_{t(u)-1})$ and $\eta_0=(\mu_0,e_0)$. The target is allowed to depend on the realized history. It therefore describes the counterfactual behavior of the system along the deployment path actually being audited, rather than assuming that the adaptive process has reached a stationary distribution.
+
+\begin{proposition}[Identification and double robustness]
+\label{prop:dr}
+Under \cref{ass:identification}, $\E[\psi_u^q(\eta_0)\mid X_u,\F_{t-1}]=\sum_s q_u(s)\mu_u(s)$. Moreover, for generic nuisances $\bar\eta=(\bar\mu,\bar e)$,
+\begin{equation}
+\E[\psi_u^q(\bar\eta)-\psi_u^q(\eta_0)\mid X_u,\F_{t-1}]
+=\sum_s q_u(s)\{\bar\mu_u(s)-\mu_u(s)\}
+\frac{\bar e_u(s)-e_u(s)}{\bar e_u(s)}.
+\label{eq:dr-remainder}
+\end{equation}
+Thus the conditional bias vanishes if either nuisance component is correct and otherwise is second order in their errors.
+\end{proposition}
+
+The same moment interface yields several common tasks.
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}p{.22\linewidth}p{.25\linewidth}X@{}}
+\toprule
+Task & Choice of target/reference & Auditor or interpretation \\
+\midrule
+Policy value & $q$ target policy, $f=0$ & $h\equiv1$ \\
+Subgroup value & $q$ target policy, $f=0$ & $h=\ind\{G=g\}$ or a learned subgroup \\
+Counterfactual calibration & $q$ intervention, $f=\widehat p(X)$ & score-bin/group indicators or signed calibration tests \\
+Effect heterogeneity & contrast $\psi^{q_1}-\psi^{q_0}$ & tests of conditional treatment or exposure effects \\
+Safety/resource constraint & outcome is cost, harm, or load & $M_W(q,h)\le\alpha_h$ \\
+Local spillover & $S=(A_i,\bar A_{N(i)})$ & direct and neighbor-exposure contrasts \\
+COPF instance & shown/not-shown $S$ & group--score auditors and exposure-effect parity \\
+\bottomrule
+\end{tabularx}
+\caption{Examples covered by the counterfactual-moment interface. A single run may certify many target policies and auditors simultaneously.}
+\label{tab:moment-examples}
+\end{table}
+
+\subsection{Weak overlap and heavy-tailed scores}
+Large scores can arise from small propensities, heavy-tailed outcomes, or both. We encode the statistically relevant object directly rather than assuming bounded outcomes and bounded importance ratios.
+
+\begin{assumption}[Finite-$p$ counterfactual moments]
+\label{ass:p-moment}
+For some $p\in(1,2]$ and $\nu_p<\infty$, uniformly over $(q,h)\in\Qcal\times\Hcal$,
+\begin{equation}
+\frac{1}{N_W}\sum_{u\in\Ical_W}
+\E\!\left[
+\abs{h_u\{\psi_u^q(\eta_0)-f_u\}}^p
+\mid\F_{t(u)-1}
+\right]
+\le \nu_p^p.
+\label{eq:p-moment}
+\end{equation}
+No second moment is required when $p<2$.
+\end{assumption}
+
+A sufficient condition controls the weighted residual term
+$\sum_s q_u(s)^p e_u(s)^{1-p}
+\E[\abs{Y_u(s)-\mu_u(s)}^p\mid X_u,\F_{t-1}]$.
+This makes the weak-overlap mechanism explicit: even bounded outcomes can generate finite-$p$ but infinite-variance scores when $e_u(s)$ approaches zero sufficiently often. Conversely, strong overlap does not eliminate heavy tails when the outcome residual is heavy-tailed. Experiments in \cref{sec:experiments} vary these two mechanisms separately.
+
+\subsection{Observable dependence and drift}
+Within a window, define a conflict graph $G_W=(\Ical_W,E_W)$. Two vertices are adjacent whenever their scores may share randomized exposure, outcome noise, a repeated entity, or an interference neighborhood. The graph is constructed from logged identifiers, slate membership, time, and the specified exposure mapping. Let $\chi_W$ denote the number of colors returned by a fixed proper-coloring algorithm and $d_W$ its degeneracy. Both are observable design quantities; $\chi_W\le d_W+1\le\Delta(G_W)+1$.
+
+Temporal dependence remains possible across conflict-free units. We therefore partition time into macro-blocks separated by a gap $\ell$. For an offline $\beta$-mixing analysis, a Berbee-style coupling contributes a failure-probability term of order $B\beta(\ell)$ for $B$ retained blocks. In adaptive deployments, we instead condition on the past and treat the block targets as predictable. To make nonstationarity explicit, let
+\begin{equation}
+\Delta_W(q,h)
+:=\max_{b\le B}
+\abs{M_b(q,h)-M_W(q,h)}
+\label{eq:drift}
+\end{equation}
+measure within-window target drift. Shorter windows reduce $\Delta_W$ but also reduce effective sample size, producing an auditable bias--variance--drift tradeoff.

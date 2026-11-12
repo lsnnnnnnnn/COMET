@@ -1,0 +1,95 @@
+\section{Experimental Design}
+\label{sec:experiments}
+
+The empirical goal is not to demonstrate that one estimator has the smallest point error under a single simulator. The central claim is about \emph{reliable certification}; therefore coverage and false certification are primary endpoints. We organize the study around five questions.
+
+\begin{enumerate}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+    \item[\textbf{RQ1}] Do nominal $90\%$ and $95\%$ intervals attain empirical coverage under weak overlap, heavy-tailed outcomes, and dependence?
+    \item[\textbf{RQ2}] Does error scale with $N_{\eff}^{-(p-1)/p}$ rather than raw row count, and is the dependence penalty necessary?
+    \item[\textbf{RQ3}] Which component matters in which regime: orthogonality, heavy-tail robustification, graph correction, temporal separation, or drift control?
+    \item[\textbf{RQ4}] Can discover--certify recover an unknown violating subgroup while controlling false discoveries?
+    \item[\textbf{RQ5}] Does pessimistic repair reduce true constraint violations with a competitive utility--safety frontier?
+\end{enumerate}
+
+\subsection{Controlled dynamic process}
+We use two graph families: a dynamic degree-corrected stochastic block model for controlled community structure and a preferential-attachment stream for hub-heavy dependence. At round $t$, a user/source is sampled, a candidate set is constructed, and the behavior policy selects an item or Top-$K$ slate according to
+\begin{equation}
+\pi_t=(1-\epsilon_{\mathrm{exp}})
+\operatorname{Softmax}(s_t/\tau)
++\epsilon_{\mathrm{exp}}\operatorname{UniformTopK}.
+\label{eq:synthetic-policy}
+\end{equation}
+A sticky latent regime $Z_t$ induces temporal persistence. For unit $u=(t,i)$, outcomes follow
+\begin{equation}
+Y_u=\mu(X_u,Z_t)
++\tau_{G_u}A_u
++\rho_{G_u}\overline A_{N(u),t}
++b_{\mathrm{entity}(u)}
++\varepsilon_u,
+\label{eq:synthetic-outcome}
+\end{equation}
+where $\tau_g$ is a direct exposure effect, $\rho_g$ is a spillover effect, and $b_{\mathrm{entity}}$ creates repeated-user dependence. The noise is Gaussian, Student-$t$, or Pareto/Lomax with a controlled tail index. We evaluate four regimes: light-tailed control; weak overlap only; heavy-tailed outcome only; and both mechanisms together. Ground-truth moments are computed analytically when possible and otherwise by a large independent Monte Carlo intervention run whose error is at least an order of magnitude below the plotted intervals.
+
+Sweeps vary sample size, tail index $p$, exploration $\epsilon_{\mathrm{exp}}$, candidate budget, Top-$K$, hub strength, interference radius, repeated-entity frequency, temporal persistence, window length, auditor count, and nuisance misspecification. The key rate plot places median absolute error and interval width against both $N$ and $N_{\eff}$ on log--log axes. The predicted slope is $-(p-1)/p$ against $N_{\eff}$; fitting a slope against raw $N$ is a negative control.
+
+\subsection{Real structures and logged interventions}
+The datasets play complementary roles rather than being treated as interchangeable benchmarks.
+
+\paragraph{TGB semi-synthetic.}
+Temporal Graph Benchmark (TGB) provides large real graph streams and standardized temporal splits \citep{huang2023tgb}. We preserve timestamps, repeated nodes, degree heterogeneity, and candidate construction, then simulate the logging policy and potential-outcome mechanism on top of the observed stream. This yields exact counterfactual truth while retaining realistic conflict graphs. The main tests compare no dependence correction, temporal-only blocks, graph-only correction, and the full graph--time design. We also compare maximum-degree, degeneracy, and greedy-coloring proxies for effective sample size.
+
+\paragraph{Open Bandit Dataset.}
+Open Bandit Dataset contains logged recommendations collected by multiple behavior policies on the same e-commerce platform, including action probabilities and outcomes \citep{saito2021open}. One policy's log is used to estimate the value of another, while the latter's on-policy sample average provides an external evaluation target. Because the reward is primarily binary, this experiment isolates heavy tails induced by importance ratios rather than by the outcome. Target policies are also interpolated between the logged policies to create a graded overlap path.
+
+\paragraph{KuaiRand.}
+KuaiRand provides sequential recommendation logs with user identifiers, timestamps, multiple feedback fields, and randomly exposed videos inserted into standard feeds \citep{gao2022kuairand}. It is used to study repeated-user dependence, drift, and heavy-tailed watch-time outcomes. The randomized-exposure portion supports held-out intervention checks, but we do not claim exact ground truth for every arbitrary target policy. Evaluation therefore emphasizes stability across random-exposure validation slices, support-aware abstention, and subgroup replication over time.
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabularx}{\linewidth}{@{}lccccX@{}}
+\toprule
+Setting & Exact truth & Weak overlap & Outcome tail & Graph/time dep. & Primary purpose \\
+\midrule
+Synthetic DCSBM/PA & Yes & Controlled & Controlled & Controlled & Coverage, rates, lower-bound regimes \\
+TGB semi-synthetic & Yes & Controlled & Controlled & Real structure & Dependence correction and $N_{\eff}$ \\
+Open Bandit & On-policy target & Real/graded & Limited & Mild temporal & Real propensity OPE \\
+KuaiRand & Partial validation & Real & Watch time & Repeated users/time & Drift, abstention, subgroup replication \\
+\bottomrule
+\end{tabularx}
+\caption{The evaluation suite separates exact counterfactual validation from realism. No single dataset is asked to establish every claim.}
+\label{tab:datasets}
+\end{table}
+
+\subsection{Baselines and ablations}
+Estimator baselines include direct method (DM), IPS, self-normalized IPS, ordinary DR, clipped DR, switch/truncated DR, more-robust DR, i.i.d. MOM-DR, temporal block-MOM, graph-corrected non-robust DR, and \COMET. For learned subgroup search we compare fixed slices, unconstrained in-sample search, sample-split search without dependence separation, and discover--certify. Policy repair baselines are utility-only selection, empirical constrained selection without radii, clipped-DR constraints, and the COPF decision-layer controller in the evolving-link application \citep{li2026copf}.
+
+Ablations remove one component at a time: outcome regression, exact/logged propensities, graph edges, temporal gaps, robust aggregation, nuisance separation, denominator uncertainty, and drift allowance. To expose silent failure, every method must return both an estimate and either an interval or an explicit statement that it has no valid interval under the tested assumptions.
+
+\subsection{Metrics and reporting}
+For estimation we report bias, RMSE, median absolute error, empirical coverage, average interval width, and worst-case coverage across policies/auditors. For certification we report false certification rate, power, abstention rate, and support-stratified performance. For subgroup discovery we report overlap with the planted subgroup, effect-size regret relative to the best supported subgroup, and replication on the certification split. For repair we report true utility, maximum true constraint violation, cumulative violation over deployment epochs, and detection delay after a shift. Runtime, peak memory, graph-construction time, and effective-sample-size diagnostics are reported separately.
+
+All synthetic experiments use at least enough independent repetitions to place a two-sided binomial confidence interval of width at most two percentage points around nominal $95\%$ coverage. Hyperparameters are selected without using counterfactual ground truth, except in explicitly labeled oracle-tail experiments. Dataset preprocessing, candidate construction, policy mixtures, auditor definitions, and random seeds are fixed in configuration files before the final comparison.
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Method & Coverage $\uparrow$ & Width $\downarrow$ & False cert. $\downarrow$ & Repair violation $\downarrow$ \\
+\midrule
+Ordinary DR & -- & -- & -- & -- \\
+Clipped / truncated DR & -- & -- & -- & -- \\
+i.i.d. MOM-DR & -- & -- & -- & -- \\
+Temporal block-MOM & -- & -- & -- & -- \\
+Graph-aware non-robust & -- & -- & -- & -- \\
+\COMET & -- & -- & -- & -- \\
+\bottomrule
+\end{tabular}
+\caption{Main-result table shell. Values are intentionally blank until the preregistered experiment scripts are run. The final paper should report uncertainty over repetitions, not only means.}
+\label{tab:main-placeholder}
+\end{table}
+
+\draftnote{The minimum credible ICLR experiment set is: synthetic coverage/rate study; TGB semi-synthetic dependence study; one real logged-propensity OPE study; discover--certify subgroup study; and policy repair. KuaiRand is valuable but can move to the appendix if time is limited.}

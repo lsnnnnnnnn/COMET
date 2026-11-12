@@ -1,0 +1,45 @@
+\section{Experimental Design}
+\label{sec:experiments}
+
+The empirical claim is reliable certification, not minimum point error in one simulator. We ask whether intervals attain nominal coverage; errors scale with $N_{\eff}^{-(p-1)/p}$; graph, time, robustification, and nuisance separation matter in the regimes they target; hidden subgroups can be discovered and replicated; and pessimistic repair improves the utility--constraint frontier.
+
+\paragraph{Controlled dynamic process.}
+We use a dynamic degree-corrected block model and a preferential-attachment stream. A logging policy selects an item or Top-$K$ slate via
+\begin{equation}
+\pi_t=(1-\epsilon_{\rm exp})\operatorname{Softmax}(s_t/\tau)
++\epsilon_{\rm exp}\operatorname{UniformTopK},
+\label{eq:synthetic-policy}
+\end{equation}
+and a sticky latent regime induces temporal persistence. Outcomes follow
+\begin{equation}
+Y_u=\mu(X_u,Z_t)+\tau_{G_u}A_u+\rho_{G_u}\bar A_{N(u),t}
++b_{\mathrm{entity}(u)}+\varepsilon_u,
+\label{eq:synthetic-outcome}
+\end{equation}
+with direct and spillover effects, repeated-entity dependence, and Gaussian, Student-$t$, or Pareto/Lomax noise. Four regimes separate light tails, weak overlap only, outcome tails only, and both. Sweeps vary sample size, $p$, exploration, candidate budget, hub strength, interference radius, temporal persistence, auditor count, and nuisance misspecification. Ground truth is analytic or obtained from an independent intervention run whose Monte Carlo error is negligible relative to interval width. The key log--log plot compares scaling against raw $N$ and against $N_{\eff}$.
+
+\paragraph{Complementary real-data studies.}
+TGB preserves real temporal-graph structure while the logging policy and potential outcomes are simulated, yielding exact counterfactual truth with realistic conflict graphs \citep{huang2023tgb}. Open Bandit uses real propensities and multiple behavior policies; one policy's log evaluates another whose on-policy mean supplies an external target, isolating importance-ratio tails with mostly binary rewards \citep{saito2021open}. KuaiRand adds repeated-user sequences, randomized exposures, and heavy-tailed watch time; its randomized portion supports held-out intervention checks, but arbitrary target policies are not treated as having exact ground truth \citep{gao2022kuairand}.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}lccccX@{}}
+\toprule
+Setting & Truth & Overlap & $Y$ tail & Dependence & Main role \\
+\midrule
+Synthetic DCSBM/PA & Exact & Controlled & Controlled & Controlled & Coverage and rates \\
+TGB semi-synthetic & Exact & Controlled & Controlled & Real graph & Graph/time correction \\
+Open Bandit & On-policy & Real/graded & Limited & Temporal & Real-propensity OPE \\
+KuaiRand & Partial check & Real & Watch time & User/time & Drift and subgroup replication \\
+\bottomrule
+\end{tabularx}
+\caption{No single dataset is asked to validate every claim.}
+\label{tab:datasets}
+\end{table}
+
+\paragraph{Baselines and ablations.}
+We compare DM, IPS, self-normalized IPS, ordinary DR, clipped/switch DR, more-robust DR, i.i.d. MOM-DR, temporal block-MOM, graph-corrected non-robust DR, and \COMET. Subgroup baselines are fixed slices, in-sample search, and sample-split search without dependence separation. Repair baselines are utility-only selection, empirical constraints without radii, clipped-DR constraints, and the COPF controller in the evolving-link application \citep{li2026copf}. Ablations remove graph edges, temporal gaps, robust aggregation, cross-fitting separation, denominator uncertainty, and drift allowance.
+
+\paragraph{Metrics and protocol.}
+Primary endpoints are empirical $90\%/95\%$ coverage, interval width, worst-policy/auditor coverage, false certification, power, and abstention. We additionally report bias/RMSE, planted-subgroup recovery and certification replication, true utility, maximum true constraint violation, detection delay after shift, runtime, memory, graph-construction cost, and overlap/$N_{\eff}$ diagnostics. Synthetic repetitions are chosen so Monte Carlo uncertainty around $95\%$ coverage is at most two percentage points. Hyperparameters are selected without counterfactual truth except in labeled oracle-tail experiments; all preprocessing, candidate rules, policy mixtures, and seeds are configuration-controlled. Detailed grids and dataset protocols are in \cref{app:experiments}.

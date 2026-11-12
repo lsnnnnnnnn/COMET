@@ -1,0 +1,37 @@
+\section{Discover, Certify, and Repair}
+\label{sec:discover-repair}
+
+\paragraph{Learn then certify.}
+Fixed score bins can miss failures defined by interactions among group, activity, device, time, and graph position. On a discovery split, fit a rich auditor by
+\begin{equation}
+\widehat h\in\argmax_{h\in\Hcal_{\rm rich}}
+|\widehat M_{\rm disc}(q,h)|-\lambda\Omega(h),
+\label{eq:auditor-learning}
+\end{equation}
+subject to a minimum-support rule. The auditor's parameters and human-readable definition are then frozen. Nuisances and scores are recomputed using only training data allowed for a graph--time separated certification split, where \COMET\ tests $\widehat h$. Conditional on discovery data, the selected auditor is fixed; certifying the top $L$ frozen candidates pays only $\log L$ in the finite-family radius. This separates \emph{finding a suspicious pattern} from \emph{showing that fresh dependent data support it counterfactually}.
+
+\paragraph{Pessimistic policy repair.}
+Let $V(q)$ be utility and $C_j(q)$, $j\le J$, be risk, cost, calibration, spillover, or fairness moments with limits $\alpha_j$. Suppose simultaneous estimates satisfy
+\begin{equation}
+|\widehat V(q)-V(q)|\le r_V(q),\qquad
+|\widehat C_j(q)-C_j(q)|\le r_j(q)
+\label{eq:sim-policy-event}
+\end{equation}
+for all policies in a frozen library $\Qcal$. Choose
+\begin{equation}
+\widehat q\in\argmax_{q\in\Qcal}\{\widehat V(q)-r_V(q)\}
+\quad\text{s.t.}\quad
+\widehat C_j(q)+r_j(q)\le\alpha_j\quad\forall j.
+\label{eq:policy-repair}
+\end{equation}
+The library may include the deployed policy, exploration mixtures, threshold/group-offset variants, and candidates produced by an unconstrained learner; only the frozen library is covered by the simultaneous theorem.
+
+\begin{proposition}[Feasibility and utility]
+\label{prop:repair}
+On the event \eqref{eq:sim-policy-event}, every solution of \cref{eq:policy-repair} satisfies $C_j(\widehat q)\le\alpha_j$. For any comparator $q$ with $C_j(q)+2r_j(q)\le\alpha_j$ for all $j$,
+\begin{equation}
+V(\widehat q)\ge V(q)-2r_V(q).
+\label{eq:repair-utility}
+\end{equation}
+\end{proposition}
+The robust margin is substantive: a policy estimated exactly at a constraint boundary cannot be certified without more information. As support improves and $N_{\eff}$ grows, the certified feasible set expands. Sequential deployment repeats the procedure by epoch with an explicit error-spending schedule and never reuses a discovery split as certification data.

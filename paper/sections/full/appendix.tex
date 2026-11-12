@@ -1,0 +1,304 @@
+\section{Extended Notation and Application Instantiations}
+\label{app:examples}
+
+This appendix expands the compact interface in \cref{tab:moment-examples}. For binary action $A\in\{0,1\}$ without interference, set $S=A$. For a target treatment rule $q(1\mid X)$, \cref{eq:orthogonal-score} is the familiar augmented inverse-propensity score. For a slate, $S$ may be a position, a shown/not-shown indicator, or a coarser exposure summary. For network interference, $S=(A_i,b(\{A_j:j\in N(i)\}))$, where $b$ discretizes neighbor exposure. The validity of every estimand is relative to this mapping: two assignments treated as the same exposure state are assumed to induce the same potential outcome for the unit.
+
+\paragraph{Off-policy value.}
+Set $h\equiv1$ and $f=0$. Then $M_W(q,1;0)$ is the window-average value of target intervention $q$ along the observed context path.
+
+\paragraph{Counterfactual calibration.}
+Let $f_u=\widehat p_u$ be a deployed score and let $q$ specify the intervention under which calibration is desired. For a group/score slice $h_{g,I}=\ind\{G=g,\widehat p\in I\}$, the ratio $\E[h_{g,I}(\psi^q-\widehat p)]/\E[h_{g,I}]$ is a signed counterfactual calibration residual. Absolute-value and maximum-over-slice metrics follow from simultaneous numerator and denominator bounds.
+
+\paragraph{Heterogeneous direct or spillover effects.}
+For two interventions $q_1,q_0$, replace $\psi^q$ by $\psi^{q_1}-\psi^{q_0}$. Auditors can be protected-group indicators, network roles, or learned subgroup functions. Direct and spillover contrasts are obtained by changing only one coordinate of a multicomponent exposure state.
+
+\paragraph{Safety and resource use.}
+Let $Y$ be cost, harm, latency, or resource consumption and set $f=\alpha$. A one-sided moment certificate determines whether the target policy satisfies a constraint. The same policy can be evaluated against many costs and subgroups without redefining the estimator.
+
+\section{Identification and Orthogonality}
+\label{app:identification}
+
+\begin{proof}[Proof of \cref{prop:dr}]
+Condition on $(X_u,\F_{t-1})$ and suppress the unit index. Under consistency and local ignorability,
+\begin{align*}
+\E\!\left[
+\frac{\ind\{S=s\}}{e(s)}\{Y-\mu(s)\}
+\middle|X,\F_{t-1}
+\right]
+&=\frac{\Prb(S=s\mid X,\F_{t-1})}{e(s)}
+\E[Y(s)-\mu(s)\mid X,\F_{t-1}]\\
+&=0.
+\end{align*}
+Summing with weights $q(s)$ yields
+$\E[\psi^q(\eta_0)\mid X,\F_{t-1}]=\sum_sq(s)\mu(s)$.
+For generic $\bar\eta$, the conditional expectation of the augmentation term is
+\begin{align*}
+\E\!\left[
+\frac{\ind\{S=s\}}{\bar e(s)}\{Y-\bar\mu(s)\}
+\middle|X,\F_{t-1}
+\right]
+=\frac{e(s)}{\bar e(s)}\{\mu(s)-\bar\mu(s)\}.
+\end{align*}
+Adding the regression term and subtracting the oracle target gives
+\begin{align*}
+\bar\mu(s)-\mu(s)
++\frac{e(s)}{\bar e(s)}\{\mu(s)-\bar\mu(s)\}
+=\{\bar\mu(s)-\mu(s)\}\frac{\bar e(s)-e(s)}{\bar e(s)}.
+\end{align*}
+Multiplying by $q(s)$ and summing proves \cref{eq:dr-remainder}.
+\end{proof}
+
+A useful deterministic consequence is
+\begin{equation}
+\abs{\E[h\{\psi^q(\bar\eta)-\psi^q(\eta_0)\}]}
+\le
+\E\!\left[
+\abs h\sum_s q(s)\abs{\bar\mu(s)-\mu(s)}
+\frac{\abs{\bar e(s)-e(s)}}{\bar e(s)}
+\right],
+\end{equation}
+which motivates \cref{eq:nuisance-rem}. Cross-fitting makes $\bar\eta$ fixed relative to the evaluation fold when applying concentration. It does not by itself guarantee that this remainder is small; that requires nuisance quality in norms weighted by the target policy and inverse propensity.
+
+\section{Proof of the Conflict-Graph Moment Lemma}
+\label{app:proof-graph}
+
+\begin{proof}[Proof of \cref{lem:graph-moment}]
+Condition on $\mathcal D$ and let $C_1,\ldots,C_\chi$ be the color classes. Write $S_c=\sum_{i\in C_c}X_i$. Variables inside a color class are conditionally independent and mean zero. For $1<p\le2$, the von Bahr--Esseen inequality gives
+\begin{equation}
+    \E[\abs{S_c}^p\mid\mathcal D]
+    \le C_p\sum_{i\in C_c}\E[\abs{X_i}^p\mid\mathcal D]
+    \le C_p\abs{C_c}\nu^p.
+\end{equation}
+The color sums need not be mutually independent. Convexity nevertheless implies
+\begin{equation}
+\abs{\textstyle\sum_{c=1}^\chi S_c}^p
+\le\chi^{p-1}\sum_{c=1}^\chi\abs{S_c}^p.
+\end{equation}
+Taking conditional expectations, summing $\abs{C_c}=n$, and dividing by $n^p$ yields
+\begin{equation}
+\E\!\left[\abs{n^{-1}\sum_iX_i}^p\mid\mathcal D\right]
+\le C_p\nu^p\chi^{p-1}n^{1-p},
+\end{equation}
+which is \cref{eq:graph-moment}.
+\end{proof}
+
+The bound is conservative because it uses an integral coloring and ignores cancellations across colors. A fractional coloring or a graph-specific moment inequality may replace $\chi$ by a smaller parameter; this is a theorem-strengthening opportunity rather than a change to the estimator interface.
+
+\section{Proof Blueprint for the Uniform \COMET\ Bound}
+\label{app:proof-main}
+
+We provide the complete argument under the equal-block coupled model used in \cref{thm:uniform-comet}. The remaining technical work for the final paper is to state the weakest conditional coupling assumptions and track constants for the chosen adaptive scale estimator.
+
+Fix $\theta\in\Theta$ and condition on the design and nuisance-training data. Let $\mu_b(\theta)=\E[\bar Z_b(\theta)]$ for a block of size $n_0$. By \cref{lem:graph-moment},
+\begin{equation}
+\E\abs{\bar Z_b(\theta)-\mu_b(\theta)}^p
+\le C_p\nu_p^p\left(\frac{\bar\chi_W}{n_0}\right)^{p-1}.
+\label{eq:block-p}
+\end{equation}
+On the coupling event, the $B$ block means can be replaced by independent copies with the same marginals. Partition them into $K$ super-blocks of size $L=\lfloor B/K\rfloor$; at most $K-1$ excess blocks can be discarded or deterministically distributed without changing constants. For group $g$, define
+\begin{equation}
+\widetilde Z_g=\frac1L\sum_{b\in g}\bar Z_b,
+\qquad
+\mu_g=\frac1L\sum_{b\in g}\mu_b.
+\end{equation}
+The von Bahr--Esseen inequality across independent temporal blocks and \cref{eq:block-p} imply
+\begin{align}
+\E\abs{\widetilde Z_g-\mu_g}^p
+&\le \frac{C_p}{L^p}\sum_{b\in g}
+\E\abs{\bar Z_b-\mu_b}^p\\
+&\le C_p'\nu_p^p
+\left(\frac{\bar\chi_W}{Ln_0}\right)^{p-1}
+\le C_p''\nu_p^p
+\left(\frac{K}{N_{\eff}}\right)^{p-1}.
+\label{eq:superblock-p}
+\end{align}
+Choose
+\begin{equation}
+ a=C_p'''\nu_p\left(\frac{K}{N_{\eff}}\right)^{(p-1)/p}
+\end{equation}
+with a constant making $\Prb(\abs{\widetilde Z_g-\mu_g}>a)\le1/8$ by Markov's inequality. Since super-blocks are independent on the coupling event, a Chernoff bound gives
+\begin{equation}
+\Prb\left(\text{at least }K/2\text{ groups are bad}\right)
+\le e^{-cK}.
+\end{equation}
+The window target is the average of equal-size block targets. By \cref{eq:drift}, $\abs{\mu_g-M_W}\le\Delta_W$. Hence, whenever a majority of groups are good, their estimates all lie in $[M_W-a-\Delta_W,M_W+a+\Delta_W]$, and so does their median. Taking $K\ge8\log(2\abs\Theta/\delta)$ and union bounding over $\Theta$ proves the stochastic and drift terms.
+
+The argument above is centered at the expectation of the cross-fitted plug-in score. Proposition~\ref{prop:dr} bounds its difference from the oracle counterfactual target by $R_{\nuis}$. Finally, the independent-block result transfers to the original blocks outside a coupling event of probability $\varepsilon_{\coup}$. Combining the events gives \cref{eq:main-bound}.
+
+\paragraph{Variable block sizes.}
+A valid extension can preserve the raw-row target by constructing super-blocks with equal total raw mass and using raw-mass weights inside each group. Its moment bound depends on
+\begin{equation}
+\max_g
+\frac{\sum_{b\in g}n_b^p(\chi_b/n_b)^{p-1}}
+     {(\sum_{b\in g}n_b)^p}
+=
+\max_g
+\frac{\sum_{b\in g}n_b\chi_b^{p-1}}
+     {(\sum_{b\in g}n_b)^p}.
+\end{equation}
+The equal-block estimator in the main text is preferred for the first implementation because its target and design effect are immediately auditable.
+
+\section{Nuisance Learning under Dependence}
+\label{app:nuisance}
+
+A cross-fitting fold is defined by temporal blocks, entity clusters, and conflict edges rather than rows. The following rules prevent common leakage modes.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+    \item All observations from an entity that can carry latent state across time belong to the same side of a fold boundary or are separated by a declared washout period.
+    \item Units whose exposure neighborhoods overlap are not split between nuisance training and evaluation when that overlap would reveal the evaluation assignment or outcome.
+    \item Features are timestamped and constructed only from information available before the logged action.
+    \item Propensities are taken from the logging mechanism when available; an estimated propensity is evaluated on held-out folds and its lower-tail calibration is reported.
+\end{enumerate}
+
+For theoretical statements, the cross-fitted score must have a finite conditional $p$-moment. Exact logged propensities make this condition easier to diagnose. Estimated propensities can introduce artificial near-zero denominators even when the true behavior policy has adequate support. The implementation therefore reports quantiles of both logged and estimated target-to-logging ratios and treats numerical zeros as support failures. Propensity clipping is included as a baseline, not silently built into the estimand. Robustifying the final orthogonal score is distinct from asserting that the propensity ratio is bounded.
+
+A Cauchy--Schwarz version of the nuisance remainder is available when suitable weighted second moments exist. Define
+\begin{align*}
+A_q^2&=\E\left[\abs h\sum_s q(s)\{\widehat\mu(s)-\mu(s)\}^2w_s\right],\\
+B_q^2&=\E\left[\abs h\sum_s q(s)
+\frac{\{\widehat e(s)-e(s)\}^2}{\widehat e(s)^2w_s}\right]
+\end{align*}
+for positive weights $w_s$. Then $R_{\nuis}(q,h)\le A_qB_q$. Under weak overlap, choosing and estimating these weighted norms is more informative than reporting unweighted nuisance RMSE.
+
+\section{Temporal Coupling and Conflict-Graph Construction}
+\label{app:dependence}
+
+\subsection{Conflict edges}
+An edge is added between two scored units when any of the following holds under the declared data-generating interface: they share a randomized slate; one lies in the other's interference neighborhood; they share a user or item state not absorbed by the context; their outcomes share a cluster shock; or their feature construction uses a common post-action random variable. Edges are not inferred from outcome correlation after the fact. This keeps the design penalty checkable and prevents outcome-dependent graph selection.
+
+\subsection{A protocol-level degree bound}
+The original evolving-graph application motivates a useful design corollary. Suppose each round processes at most $M$ scored candidate units and an evaluated unit can interact only with units from $L_{\mathrm{int}}$ previous or future rounds. If the within-round protocol creates at most $cM$ conflicts for each unit, then
+\begin{equation}
+    \Delta(G_W)\le c(2L_{\mathrm{int}}+1)M,
+    \qquad
+    \bar\chi_W\le c(2L_{\mathrm{int}}+1)M+1.
+\label{eq:protocol-degree}
+\end{equation}
+This is a protocol bound, not a claim that the underlying graph has bounded degree. Hubs can exist; capping candidate processing and interference memory still controls the logged instance graph. The experiment varying $M$ exposes the resulting compute--statistics tradeoff.
+
+\subsection{Mixing blocks}
+For a stationary $\beta$-mixing sequence of block summaries, blocks separated by $\ell$ can be coupled to independent copies with total failure probability bounded by a constant times $(B-1)\beta(\ell)$. Geometric decay $\beta(\ell)\le C\rho^\ell$ yields a logarithmic guard length for a specified coupling budget. In an adaptive system, stationarity may be implausible; the main text therefore reports window drift separately and treats the mixing result as an offline corollary rather than the definition of the target.
+
+\section{Heavy-Tail Lower Bound}
+\label{app:lower}
+
+\begin{proof}[Proof of \cref{thm:lower}]
+Let $n=N/\chi$ be the number of independent clusters. Every cluster contains $\chi$ identical copies of a scalar $X_j$, so observing all $N$ rows is statistically equivalent to observing $X_1,\ldots,X_n$.
+
+Consider $P_0$ concentrated at zero and $P_1$ assigning probability $\varepsilon=1/n$ to $a=\nu_p\varepsilon^{-1/p}$ and probability $1-\varepsilon$ to zero. Their means differ by
+\begin{equation}
+\Delta=\varepsilon a=\nu_p n^{-(p-1)/p}.
+\end{equation}
+Moreover, $P_1$ satisfies
+$\E_{P_1}\abs{X-\E X}^p\le\E_{P_1}\abs X^p=\varepsilon a^p=\nu_p^p$.
+The total variation distance between $P_0^n$ and $P_1^n$ is
+\begin{equation}
+1-(1-1/n)^n\le 1-e^{-1}/2
+\end{equation}
+for all sufficiently large $n$; finite small $n$ are absorbed into the constant. Le Cam's two-point method therefore gives minimax absolute-error risk at least a constant multiple of $\Delta$. Substituting $n=N/\chi$ proves \cref{eq:lower-bound}.
+\end{proof}
+
+\section{Streaming Truncation Variant}
+\label{app:streaming}
+
+For online monitoring, storing enough blocks for a MOM estimate may be undesirable. Define a score-truncated estimator
+\begin{equation}
+\widehat M_{\tau}(q,h)
+=\frac1{N_W}\sum_{u\in\Ical_W}
+\widehat Z_u(q,h)\ind\{\abs{\widehat Z_u(q,h)}\le\tau\}.
+\end{equation}
+Under a conditional $p$-moment bound, truncation bias is at most $\nu_p^p\tau^{-(p-1)}$. Applying a bounded dependency-graph/mixing inequality to the truncated score gives a deviation term that balances at
+\begin{equation}
+\tau\asymp
+\left(
+\frac{\nu_p^pN_{\eff}}
+     {\log(\abs\Theta/\delta)}
+\right)^{1/p},
+\end{equation}
+leading to the same $\nu_p\{\log(\abs\Theta/\delta)/N_{\eff}\}^{(p-1)/p}$ rate up to coupling and nuisance corrections. This variant estimates a path-average mean even when block targets vary, but its scale selection is more sensitive and its finite-sample constants can be worse than MOM. It is therefore useful as a streaming method and an ablation, not as an excuse to claim that the method uses no truncation anywhere.
+
+\section{Policy-Repair Guarantee}
+\label{app:repair-proof}
+
+\begin{proof}[Proof of \cref{prop:repair}]
+On the simultaneous event, every selected constraint satisfies
+\begin{equation}
+C_j(\widehat q)\le\widehat C_j(\widehat q)+r_j(\widehat q)\le\alpha_j.
+\end{equation}
+Let $q$ satisfy $C_j(q)+2r_j(q)\le\alpha_j$. Then
+\begin{equation}
+\widehat C_j(q)+r_j(q)
+\le C_j(q)+2r_j(q)\le\alpha_j,
+\end{equation}
+so $q$ is feasible for \cref{eq:policy-repair}. Optimality of $\widehat q$ and the utility confidence bounds imply
+\begin{align*}
+V(\widehat q)
+&\ge\widehat V(\widehat q)-r_V(\widehat q)\\
+&\ge\widehat V(q)-r_V(q)\\
+&\ge V(q)-2r_V(q).
+\end{align*}
+\end{proof}
+
+\section{Detailed Experimental Protocol}
+\label{app:experiments}
+
+\subsection{Synthetic parameters}
+The initial grid should include $p\in\{1.2,1.5,1.8,2.0\}$; exploration $\epsilon_{\mathrm{exp}}\in\{0.01,0.05,0.1,0.2\}$; candidate budgets $M\in\{20,100,500\}$; interference radii $r\in\{0,1,2\}$; temporal persistence values yielding short, medium, and long correlation; and sample sizes spanning at least one order of magnitude. Pareto/Lomax parameters must be chosen so that the asserted moment exists and the next higher diagnostic moment can fail. A bounded-outcome weak-overlap generator and a strong-overlap heavy-outcome generator are both required.
+
+The planted hidden subgroup should depend on an interaction not represented by the fixed slices, for example
+\begin{equation}
+\ind\{G=1,\ \deg(v)>q_{0.9},\ \text{new-user}=1,\ Z_t=\text{high-load}\}.
+\end{equation}
+Its support and effect are varied independently. Discovery models are constrained by a minimum support rule; certification evaluates both the planted effect and false discoveries under a null generator.
+
+\subsection{Open Bandit protocol}
+Use one logged policy as behavior data and estimate the value of the other policy. The on-policy mean from the target log is computed on a disjoint time range when possible. Repeat in both directions and across policy mixtures. Report overlap diagnostics, effective sample size, and any context strata where the target action has inadequate support. Binary reward makes this a clean test of importance-weight tails but not of outcome-heavy-tail robustness.
+
+\subsection{TGB semi-synthetic protocol}
+Use the original timestamps and node identities. The logging score may be generated from a fixed temporal-graph backbone or a transparent structural score; the counterfactual estimator should not be credited for backbone accuracy. Potential outcomes depend on source/destination features, latent communities, direct exposure, and neighborhood exposure. Candidate-set construction is fixed before comparing estimators. Ground truth is obtained by replaying the known outcome function under target interventions on the same context stream.
+
+\subsection{KuaiRand protocol}
+Preserve user-level chronology and build folds by user/time blocks. Analyze binary interactions and watch time separately. Use the random-exposure records for intervention-oriented validation and the standard-feed records for weak-overlap stress tests. Claims must distinguish exact randomization-based checks from model-assisted extrapolation to target policies not represented by the random exposure mechanism.
+
+\subsection{Coverage computation}
+For each configuration and estimator, generate $R$ independent repetitions. Empirical coverage is the fraction of intervals containing the ground truth; Wilson or Clopper--Pearson intervals quantify Monte Carlo uncertainty. A method with a high abstention rate is not assigned artificial coverage: coverage conditional on non-abstention and overall decision error are reported together. The final plots include a nominal-versus-empirical coverage curve and support-stratified coverage.
+
+\section{Relation to COPF and Reuse of the Earlier Draft}
+\label{app:copf}
+
+The earlier project studied counterfactual online performative fairness for exposure in evolving-graph link recommendation. Its useful ingredients map into the present framework as follows.
+\begin{center}
+\small
+\begin{tabularx}{.97\linewidth}{@{}p{.28\linewidth}X@{}}
+\toprule
+Earlier component & Role in \COMET \\
+\midrule
+Shown/not-shown potential outcomes & One binary exposure mapping $S\in\{0,1\}$ \\
+Graph-aware doubly robust pseudo-outcomes & Special case of \cref{eq:orthogonal-score} \\
+Residual-OI over group/score slices & Counterfactual moments with fixed auditors \\
+Local-interference dependency graph & One source of the general conflict graph \\
+Exposure-effect parity and calibration & Two examples in \cref{tab:moment-examples} \\
+Primal--dual decision controller & Baseline; replaced by certificate-guided repair \\
+Strict propensity overlap & Replaced by target-support positivity and finite-$p$ moments \\
+Random-graph generative task & Optional protocol/design corollary, not a main contribution \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+The new paper should cite the earlier work in third person and explicitly state the difference in the introduction and appendix. Reusing notation or a special-case lemma is not enough to establish novelty; the main theorem, estimator, learned-auditor protocol, policy-repair result, and experiments must answer the general moment problem stated here.
+
+\section{Limitations and Pre-Submission Claim Audit}
+\label{app:limitations}
+
+Before submission, every item below should be resolved in the manuscript or removed from the claimed contributions.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+    \item Prove the exact conditional version of \cref{thm:uniform-comet} used by the implementation, including coupling constants and the adaptive scale rule.
+    \item Verify that the conflict graph corresponds to the synthetic and real-data preprocessing; report its construction algorithm, not only $\bar\chi_W$.
+    \item Show empirical coverage, not merely RMSE, across weak-overlap and outcome-tail regimes.
+    \item Demonstrate that graph/time corrections improve calibration of intervals rather than only widening them.
+    \item Validate the lower-bound assumptions and avoid presenting the cluster subclass as a lower bound for a narrower structured graph class without justification.
+    \item Report nuisance error in overlap-weighted norms or controlled misspecification sweeps.
+    \item Keep discovery and certification data separated through nuisance fitting, auditor selection, and hyperparameter tuning.
+    \item Replace every placeholder in \cref{tab:main-placeholder}; remove the table if the full comparison is not run.
+    \item Check all dataset licenses, outcome definitions, and intervention claims.
+    \item Recompile with the exact official ICLR 2027 style files, verify the nine-page main-text limit, anonymity, references, and the required AI use statement.
+\end{enumerate}
