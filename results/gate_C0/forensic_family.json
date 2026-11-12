@@ -1,0 +1,40 @@
+[
+  {
+    "nominal_level": 0.95,
+    "nominal_delta": 0.05,
+    "replications": 30,
+    "family_size": 4,
+    "family_issued": 30,
+    "family_issuance_rate": 1.0,
+    "familywise_coverage": 1.0,
+    "familywise_coverage_given_issued": 1.0,
+    "issued_and_family_covered_rate": 1.0,
+    "familywise_nontrivial_rate_some": 0.0,
+    "familywise_nontrivial_rate_all": 0.0,
+    "marginal_nontrivial_rate": 0.0,
+    "median_width_fraction": 1.0,
+    "median_raw_radius_fraction": 22.452913386722948,
+    "abstention_rate": 0.0,
+    "false_safe_certification": null,
+    "false_safe_reason": "NOT_APPLICABLE_NO_SAFETY_THRESHOLD_OR_REPAIR_RULE"
+  },
+  {
+    "nominal_level": 0.9,
+    "nominal_delta": 0.1,
+    "replications": 30,
+    "family_size": 4,
+    "family_issued": 30,
+    "family_issuance_rate": 1.0,
+    "familywise_coverage": 1.0,
+    "familywise_coverage_given_issued": 1.0,
+    "issued_and_family_covered_rate": 1.0,
+    "familywise_nontrivial_rate_some": 0.0,
+    "familywise_nontrivial_rate_all": 0.0,
+    "marginal_nontrivial_rate": 0.0,
+    "median_width_fraction": 1.0,
+    "median_raw_radius_fraction": 22.452913386722948,
+    "abstention_rate": 0.0,
+    "false_safe_certification": null,
+    "false_safe_reason": "NOT_APPLICABLE_NO_SAFETY_THRESHOLD_OR_REPAIR_RULE"
+  }
+]

@@ -1,0 +1,247 @@
+{
+  "scope": "Gate C0 debugging only, no final empirical coverage claim",
+  "criterion": "GO requires a proved new radius and nontriviality in at least one predeclared bounded/exact-e scenario; validity guards and tests must pass",
+  "alphas": [
+    0.05,
+    0.1
+  ],
+  "eta": 0.125,
+  "mom_rules": [
+    "conservative_hoeffding",
+    "exact_binomial"
+  ],
+  "other_methods": [
+    "bounded_graph_chebyshev",
+    "trivial_support"
+  ],
+  "constraint_per_subgroup_mass": 0.2,
+  "max_new_replication_cells": 400,
+  "planned_new_replication_cells": 210,
+  "confidence_and_methods": "Both confidence levels and all methods reuse identical logs; 210 independent DGP draws, not new draws per method/alpha",
+  "stress_scope": "The p=1.5 stress cell still has bounded Y; Chebyshev is valid here because finite variance is known, not because p<2 implies finite variance",
+  "selection": "Cells, eta, K rules, family, nuisance and safety thresholds fixed before pilot outcomes; no eta/cap/method optimization from outcomes",
+  "cells": [
+    {
+      "cell_id": "iid_single_8192",
+      "replications": 30,
+      "base_seed": 2026111200,
+      "p": 2,
+      "synthetic": {
+        "B": 128,
+        "n0": 64,
+        "chi": 1,
+        "e_by_context": [
+          0.5,
+          0.5
+        ],
+        "mu_hat": [
+          0.5,
+          0.5
+        ],
+        "reference": 0.25,
+        "q_probs": [
+          0.5
+        ],
+        "auditors": [
+          "all"
+        ]
+      }
+    },
+    {
+      "cell_id": "iid_single_32768",
+      "replications": 30,
+      "base_seed": 2026112200,
+      "p": 2,
+      "synthetic": {
+        "B": 128,
+        "n0": 256,
+        "chi": 1,
+        "e_by_context": [
+          0.5,
+          0.5
+        ],
+        "mu_hat": [
+          0.5,
+          0.5
+        ],
+        "reference": 0.25,
+        "q_probs": [
+          0.5
+        ],
+        "auditors": [
+          "all"
+        ]
+      }
+    },
+    {
+      "cell_id": "iid_family16_8192",
+      "replications": 30,
+      "base_seed": 2026113200,
+      "p": 2,
+      "synthetic": {
+        "B": 128,
+        "n0": 64,
+        "chi": 1,
+        "e_by_context": [
+          0.4,
+          0.6
+        ],
+        "mu_hat": [
+          0.5,
+          0.5
+        ],
+        "reference": 0.25,
+        "q_probs": [
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "auditors": [
+          "all",
+          "group1"
+        ]
+      }
+    },
+    {
+      "cell_id": "iid_family16_32768",
+      "replications": 30,
+      "base_seed": 2026114200,
+      "p": 2,
+      "synthetic": {
+        "B": 128,
+        "n0": 256,
+        "chi": 1,
+        "e_by_context": [
+          0.4,
+          0.6
+        ],
+        "mu_hat": [
+          0.5,
+          0.5
+        ],
+        "reference": 0.25,
+        "q_probs": [
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "auditors": [
+          "all",
+          "group1"
+        ]
+      }
+    },
+    {
+      "cell_id": "clique4_family16_32768",
+      "replications": 30,
+      "base_seed": 2026115200,
+      "p": 2,
+      "synthetic": {
+        "B": 128,
+        "n0": 256,
+        "chi": 4,
+        "e_by_context": [
+          0.4,
+          0.6
+        ],
+        "mu_hat": [
+          0.5,
+          0.5
+        ],
+        "reference": 0.25,
+        "q_probs": [
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "auditors": [
+          "all",
+          "group1"
+        ]
+      }
+    },
+    {
+      "cell_id": "weak_e_family16_32768",
+      "replications": 30,
+      "base_seed": 2026116200,
+      "p": 2,
+      "synthetic": {
+        "B": 128,
+        "n0": 256,
+        "chi": 1,
+        "e_by_context": [
+          0.01,
+          0.02
+        ],
+        "mu_hat": [
+          0.5,
+          0.5
+        ],
+        "reference": 0.25,
+        "q_probs": [
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "auditors": [
+          "all",
+          "group1"
+        ]
+      }
+    },
+    {
+      "cell_id": "finite_p15_family16_32768",
+      "replications": 30,
+      "base_seed": 2026117200,
+      "p": 1.5,
+      "synthetic": {
+        "B": 128,
+        "n0": 256,
+        "chi": 1,
+        "e_by_context": [
+          0.4,
+          0.6
+        ],
+        "mu_hat": [
+          0.5,
+          0.5
+        ],
+        "reference": 0.25,
+        "q_probs": [
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "auditors": [
+          "all",
+          "group1"
+        ]
+      }
+    }
+  ]
+}

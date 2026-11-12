@@ -1,0 +1,6 @@
+{
+  "zip_sha256": "eea110a82e60ee131691046224fd33dabbcb4b3dd73c23dcd8fa63be031e1538",
+  "task_sha256": "b22f1d36460a5f3f4057d8fec63f120b20485fb0cce86f9359ab32c70bd562cb",
+  "baseline": "d11a36f3b967165f4e0cdf56bf6a262d178e41bd",
+  "scope": "Gate C0 only"
+}

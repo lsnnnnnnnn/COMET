@@ -1,0 +1,35 @@
+Gate C0 outcome-free sample-budget unit-test history
+
+Actual initial failure, reconstructed from the captured tool output rather than
+rerunning the old broken test. This is an excerpt/summary, not a byte-for-byte
+copy of the complete original pytest output.
+
+Command:
+MPLCONFIGDIR=/tmp/comet-c0-matplotlib .venv/bin/python -m pytest tests/test_nonvacuity_budget.py -q
+
+Observed result:
+FAILED tests/test_nonvacuity_budget.py::test_independent_exact_tail_and_k_fixture
+1 failed, 12 passed in 2.69s
+
+The failing assertion was:
+    assert 16 * tail == Fraction(5331045, 134217728)
+where tail = binomial_tail_fraction(9), eta = 1/8.
+
+Cause: the hand-entered expected fraction/decimal in the test was wrong.
+Independent integer expansion of sum_{j=5}^9 comb(9,j)*7^(9-j)/8^9 gives
+tail = 166583/67108864, hence 16*tail = 166583/4194304
+= 0.039716482162475586. The implementation was unchanged; the expected
+fraction and decimal in the test were corrected. K=9 remains the smallest
+feasible odd K for m=16, delta_stat=0.05; K=7 fails the budget.
+
+Final explicitly observed verification, after correcting the fixture:
+MPLCONFIGDIR=/tmp/comet-c0-matplotlib .venv/bin/python -m pytest tests/test_nonvacuity_budget.py -q
+.............                                                            [100%]
+13 passed in 2.58s
+Exit code: 0
+
+The deterministic budget generation command also completed:
+MPLCONFIGDIR=/tmp/comet-c0-matplotlib .venv/bin/python experiments/nonvacuity_budget.py
+It generated 200 CSV rows and theoretical_sample_need.png/.pdf. No evaluation
+outcomes, nuisance estimates, or oracle truth enter this calculator. PNG and
+PDF reproducibility is checked by the final passing test suite.

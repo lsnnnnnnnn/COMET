@@ -1,0 +1,40 @@
+{
+  "baseline": "d11a36f3b967165f4e0cdf56bf6a262d178e41bd",
+  "input_records": 240,
+  "logging_replay": "historical seeds only; no outcome draws; seed 0 full assignment equality verified",
+  "new_outcomes_generated": 0,
+  "new_replication_cells": 0,
+  "original_report_sha256": {
+    "reports/access_diagnostics.md": "6056f6340f8ff6d756fbc8548844d9538e11c79906329efe8619347b0391f68a",
+    "reports/commands.md": "b1c5c0de1216717613b971a2b4099a64b1c82bf01c98a80091aea9c91e29f962",
+    "reports/gate_A_report.md": "2ec58020456b1fbc82cc6824cef7fb88e91e83589e884d2708fc83142a27983c",
+    "reports/gate_B_report.md": "d09019f0235b198f8caa175b18d1961beb5cb7968f0248cf9872d4357eec01c9",
+    "reports/install.txt": "b4c2e2ad3bbac605194ed6ba39b19e25f579627f9ea7358a2945e4598a0d76bd",
+    "reports/latex/full_working_draft_latexmk.log": "851a3a521b79aa4e570ee3db853f0da01c63d97a56a493a5b1c00f951ddbaf9a",
+    "reports/latex/main_latexmk.log": "251836469e10188a227f807b8d108c91899b7f145185ce7f2f5d3f394a26afa5",
+    "reports/latex/render_preview.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "reports/modified_files.txt": "84dfec0fbbd2262dbfaf1bb4962cb33e9c1dcc0fe6c7631f1341c95051846503",
+    "reports/pytest.txt": "6ff991d56932fe22df50517c58a4ebe73e3d26d9e6819a5b52ea66697d6e8dab",
+    "reports/smoke_initial_failure.txt": "8c37b52c78437eb78704d20db0d4762906b89cfdf403c32ef9cc40c0ad01a24a",
+    "reports/smoke_stdout.txt": "b451a90c25db6b8c7c3456af4302974d763ec2933b9c5a5d45abe140f60b4ab6",
+    "reports/source_diff.patch": "75368c60fb0d01d1fcc2a679b2b85f9a3e37bed6757659b71ff8fdafca9cf183",
+    "reports/sync_status.md": "7f8094eea0079332f30025b86a1de4758013ce7172680999f46c8ef6b6ae5bde"
+  },
+  "saved_interval_sha256": "f5f7eecc345af8051f28da724d0534a829e68dd97363443f34cd32db1bd9ee35",
+  "saved_run_git_dirty": true,
+  "saved_run_git_head": "58ad7bdf8965418cb8c3b48b2214fbc2aadd2a56",
+  "saved_source_hashes_match_finalized_baseline": true,
+  "source_module_sha256": {
+    "comet/__init__.py": "f98b3783ffe62b437d6b78f8884bc0549eb2dd69623899b90d273c439db6ef6f",
+    "comet/certification.py": "178b8e87c85b30a285e1c1fc6796c55e06116b7f62df751e0defbbf918914d6e",
+    "comet/conflict_graph.py": "a25e354954357793dea8b75b1350e983a97a18a82af00a4948d05b1365d1cb3d",
+    "comet/dr_scores.py": "6d0704b4b908543fea3b6956b6cd60c1381ec879d261f9392fe7aba7879b3a5a",
+    "comet/exposure.py": "7c273f08c67d5d5255a156079e7f7e42436300d9439a2813324d9971e886fa0c",
+    "comet/metrics.py": "c669acdae63f4c358d92d2a70bb6d0c4c320c355c8fa860ccfe0243b85a7fdae",
+    "comet/robust_mean.py": "bef0d0552d8d1e249d215a5ebeae57d34b9979927e8701ea03c43e586d1f2ea5",
+    "comet/schema.py": "89a4b3eaebb90c3af91f7d7338f9b616795d0f47d0520fe93a5ab61a4e468c8a",
+    "comet/smoke.py": "52e73e650ee40401e6f2ca151389a4e897d82c3ca4479fc555b615470560578f",
+    "comet/synthetic.py": "d98dbb4c5f50c254f814c60d194e6116ca34d398b2d0aef07437545a8feb3a53",
+    "comet/truth.py": "32ef47d780df447f00dc60403950c0ddb01c4c601449c74fcc9b5d9b35557db5"
+  }
+}

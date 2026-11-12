@@ -4,11 +4,14 @@ Stochastic assumptions come from the registered DGP, never from empirical
 correlations or a provenance label on arbitrary external data. No oracle input.
 """
 
-from math import isfinite
+from math import isfinite, nextafter, inf
+from fractions import Fraction
 
 from .conflict_graph import clique_graph, greedy_coloring, is_proper_coloring
 from .dr_scores import centered_bounded_envelope, dr_score
-from .robust_mean import confidence_budget, mom_estimate, mom_radius, partition_blocks, required_groups
+from .robust_mean import (confidence_budget, mom_estimate, mom_radius, partition_blocks,
+                          required_groups, exact_binomial_groups,
+                          binomial_majority_tail_fraction, binomial_majority_tail)
 from .schema import CertificationError, EXPOSURE_PROVENANCE, PROOF_MODEL
 
 
@@ -33,7 +36,7 @@ def _validate_registered_log(log):
             raise CertificationError("REGISTERED_EXOGENOUS_DESIGN_MISMATCH", "UNVERIFIED_ASSUMPTION")
         if row.features_available_at != 0 or row.exposure_provenance != EXPOSURE_PROVENANCE:
             raise CertificationError("PREACTION_OR_EXPOSURE_PROVENANCE_MISMATCH", "UNVERIFIED_ASSUMPTION")
-        if row.observed_exposure_s not in (0, 1) or row.observed_action != row.observed_exposure_s:
+        if type(row.observed_exposure_s) is not int or row.observed_exposure_s not in (0, 1) or row.observed_action != row.observed_exposure_s:
             raise CertificationError("EXPOSURE_SPACE_MISMATCH")
         if row.e_vector != expected_e or row.e_s_logged != expected_e[row.observed_exposure_s]:
             raise CertificationError("EXACT_LOGGING_PROPENSITY_MISMATCH", "UNVERIFIED_ASSUMPTION")
@@ -68,7 +71,24 @@ def _base(log, candidate, alpha, p):
     }
 
 
-def certify(log, alpha=0.05, p=1.5):
+def _registered_scores(log, candidate):
+    """Reuse identical score arithmetic after full registered-design validation.
+
+    Only eight (context, exposure, binary outcome) states exist per candidate.
+    Row order and the arithmetic of every individual score remain unchanged.
+    """
+    cache, scores = {}, []
+    for row in log.rows:
+        key = (row.context, row.observed_exposure_s, row.reward_y)
+        if key not in cache:
+            cache[key] = dr_score(row.reward_y, row.observed_exposure_s,
+                                  candidate.q_vector, row.e_vector, row.mu_hat,
+                                  candidate.h(row.context), row.reference_f)
+        scores.append(cache[key])
+    return scores
+
+
+def certify(log, alpha=0.05, p=1.5, mom_majority_rule="conservative_hoeffding"):
     """Simultaneous intervals over log.family, under the registered model.
 
     No empirical tail scale, learned nuisance, drift or coupling knobs exist.
@@ -81,10 +101,31 @@ def certify(log, alpha=0.05, p=1.5):
             raise CertificationError("P_MUST_BE_IN_1_2")
         delta_stat = confidence_budget(alpha)
         config = log.config
-        K = required_groups(len(log.family), delta_stat)
+        family_size = len(log.family)
+        if mom_majority_rule == "conservative_hoeffding":
+            K = required_groups(family_size, delta_stat)
+        elif mom_majority_rule == "exact_binomial":
+            K = exact_binomial_groups(family_size, delta_stat, config.B)["K"]
+        else:
+            raise CertificationError("UNSUPPORTED_MOM_MAJORITY_RULE")
         for record in records:
-            record.update(K=K, delta_stat=delta_stat)
+            record.update(K=K, delta_stat=delta_stat, eta=0.125,
+                          mom_majority_rule=mom_majority_rule)
+        # Refuse infeasible designs before computing potentially huge exact
+        # tail diagnostics (e.g. a subnormal positive confidence budget).
         groups = partition_blocks(config.B, K)
+        tail = binomial_majority_tail_fraction(K)
+        family_tail = family_size*tail
+        family_tail_float = float(family_tail)
+        if Fraction.from_float(family_tail_float) < family_tail:
+            family_tail_float = nextafter(family_tail_float, inf)
+        for record in records:
+            record.update(K=K, delta_stat=delta_stat, eta=0.125,
+                          mom_majority_rule=mom_majority_rule,
+                          binomial_failure_bound=binomial_majority_tail(K),
+                          binomial_familywise_failure_bound=family_tail_float,
+                          binomial_familywise_failure_numerator=str(family_tail.numerator),
+                          binomial_familywise_failure_denominator=str(family_tail.denominator))
         L_min = min(map(len, groups))
         graph = clique_graph(config.n0, config.chi)
         colors = greedy_coloring(graph)
@@ -93,10 +134,7 @@ def certify(log, alpha=0.05, p=1.5):
         chi = max(colors)+1
         N = len(log.rows)
         for candidate, record in zip(log.family, records):
-            scores = [dr_score(row.reward_y, row.observed_exposure_s,
-                              candidate.q_vector, row.e_vector, row.mu_hat,
-                              candidate.h(row.context), row.reference_f)
-                      for row in log.rows]
+            scores = _registered_scores(log, candidate)
             block_means = [sum(scores[b*config.n0:(b+1)*config.n0])/config.n0
                            for b in range(config.B)]
             if not all(isfinite(value) for value in block_means):

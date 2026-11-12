@@ -1,0 +1,228 @@
+% GATE C0 SUGGESTION ONLY: this file is not included by either manuscript.
+% Suggested location: after the Gate A independent-block certificate.
+% It requires the existing amsmath, amssymb, amsthm theorem environments.
+% These additions preserve the Gate A estimand and do not replace the broad
+% adaptive/cross-fit claim by silently changing its assumptions.
+% No pilot coverage, novelty, or deployment-safety claim is made here.
+
+\subsection{Exact majority calibration for independent-block MOM}
+\label{sec:c0-exact-majority}
+
+Let $\mathcal D$ be an exogenous design fixed before evaluation randomization,
+possibly augmented by a nuisance pilot independent of the evaluation sample
+conditional on that design. Conditional on $\mathcal D$, let the $B$ complete
+evaluation blocks be independent, each with $n_0$ rows. Let $\Theta$ be a frozen
+family of size $m$, and suppose each block has a sufficient conditional
+dependency graph with a proper coloring using at most $\chi$ colors.
+The score fits and policy--auditor functions are fixed given $\mathcal D$.
+For each $\theta$, write $m_{bi}(\theta)=\mathbb E[Z_{bi}(\theta)\mid\mathcal D]$,
+and assume
+\[
+ \frac{1}{n_0}\sum_i m_{bi}(\theta)=M_{\mathcal D}(\theta)
+ \quad\text{for every block }b,
+ \qquad
+ \mathbb E[|Z_{bi}(\theta)-m_{bi}(\theta)|^p\mid\mathcal D]
+ \le \nu_\theta^p,
+ \quad 1<p\le2,
+\]
+where the finite envelopes $\nu_\theta$ are known and
+$\mathcal D$-measurable. These are the stable-target assumptions of the
+independent-block certificate, not assumptions inferred from an observed
+autocorrelation or from row-wise cross-fitting.
+
+\begin{theorem}[Exact binomial calibration of graph/block MOM]
+\label{thm:c0-exact-majority}
+Fix $0<\eta<1/2$ and $0<\delta<1$ before evaluation. For an odd integer $K$,
+define
+\[
+ t(K,\eta)
+ =\sum_{j=(K+1)/2}^{K}{K\choose j}\eta^j(1-\eta)^{K-j}.
+\]
+Choose the smallest odd $K$ satisfying $B\ge2K$ and $m t(K,\eta)\le\delta$,
+if one exists. Partition all $B$ blocks deterministically into $K$ disjoint
+groups with sizes $L_g\in\{\lfloor B/K\rfloor,\lceil B/K\rceil\}$, and let
+$L_{\min}=\lfloor B/K\rfloor$. Let $T_g(\theta)$ be the mean of the actual
+$L_g$ block means, and let $\widehat M_{\rm MOM}(\theta)$ be the middle order
+statistic of the $K$ values. Set
+\[
+ a_\theta
+ =\left(\frac4\eta\right)^{1/p}\nu_\theta
+   \left(\frac{\chi}{L_{\min}n_0}\right)^{(p-1)/p}.
+\]
+Then
+\[
+ \mathbb P\!\left(
+  |\widehat M_{\rm MOM}(\theta)-M_{\mathcal D}(\theta)|\le a_\theta
+  \text{ for all }\theta\in\Theta\,\middle|\,\mathcal D\right)
+ \ge 1-\delta.
+\]
+If no such $K$ exists, this construction issues no certificate. No retained
+block or row is discarded to force feasibility.
+\end{theorem}
+
+\begin{proof}
+For a fixed $\theta$, center each row at $m_{bi}(\theta)$. Conditional
+von Bahr--Esseen with constant at most $2$ inside each independent color class,
+followed by convexity across the at most $\chi$ color sums, gives
+\[
+ \mathbb E[|\bar Z_b(\theta)-M_{\mathcal D}(\theta)|^p\mid\mathcal D]
+ \le2\nu_\theta^p(\chi/n_0)^{p-1}.
+\]
+A second application across the independent complete blocks in group $g$ gives
+\[
+ \mathbb E[|T_g(\theta)-M_{\mathcal D}(\theta)|^p\mid\mathcal D]
+ \le4\nu_\theta^p
+       \left(\frac{\chi}{L_gn_0}\right)^{p-1}
+ \le4\nu_\theta^p
+       \left(\frac{\chi}{L_{\min}n_0}\right)^{p-1}.
+\]
+If $\nu_\theta=0$, the claim is immediate. Otherwise Markov's inequality
+bounds each group's failure probability at threshold $a_\theta$ by $\eta$.
+Their bad-event indicators are independent conditional on $\mathcal D$,
+because the groups use disjoint independent blocks. Their probabilities
+$p_g\le\eta$ need not be identical. For independent auxiliary uniforms $U_g$,
+the indicators $\mathbf1\{U_g\le p_g\}$ have the same conditional joint law,
+and are bounded pointwise by independent $\mathbf1\{U_g\le\eta\}$.
+Their sum is therefore stochastically dominated by $\operatorname{Bin}(K,\eta)$.
+
+When fewer than $(K+1)/2$ groups fail, a strict majority of group means lies
+inside $[M_{\mathcal D}-a_\theta,M_{\mathcal D}+a_\theta]$, which contains
+the median. The single-candidate failure probability is thus at most
+$t(K,\eta)$. A union bound over the frozen family gives $m t(K,\eta)\le\delta$;
+independence across candidates is not needed. Stable block targets ensure
+that all group means have the same target even when their lengths differ.
+The conditional statement integrates to an unconditional statement for
+$M_{\mathcal D}$.
+\end{proof}
+
+\paragraph{Numerical rule and scope.}
+The first comparison fixes $\eta=1/8$, retaining the constant $32^{1/p}$.
+For $m=16$ and $\delta=.05$, exact rational summation gives
+\[
+ 16t(9,1/8)=0.039716482162475586<.05,
+ \qquad 16t(7,1/8)=0.099822998046875>.05.
+\]
+Thus $K=9$ replaces the sufficient conservative choice
+$\lceil8\log(2m/\delta)\rceil=52$. At $B=128$, $L_{\min}$ changes from $2$
+to $14$, reducing the radius by $7^{-(p-1)/p}$ with every other input fixed.
+This improvement alone does not guarantee a useful interval when the known
+moment envelope is large. Exact arithmetic is used for the tail-budget
+comparison; a rounded floating-point tail is only a diagnostic.
+
+For even $K$ with the average-of-two-middle-values convention, fewer than
+$K/2$ bad groups suffice, so the valid sufficient tail threshold is $K/2$.
+The new selector restricts to odd $K$. A design-only selection is fixed in the
+conditional proof; selection using evaluation outcomes or oracle truth requires
+additional justification or simultaneous adjustment. Unequal block targets,
+future-outcome-conditioned designs, mutually trained nuisance fits, and
+uncontrolled cross-block dependence remain outside this theorem.
+
+\subsection{A separate bounded-outcome graph variance certificate}
+\label{sec:c0-bounded-variance}
+
+For this alternative, let $\mathcal D$ be legitimate exogenous pre-action
+information as above. Conditional on $\mathcal D$, the evaluation blocks are
+independent, but their sizes and their conditional target means may differ.
+Within block $b$, a sufficient dependency graph has a verified proper coloring
+using $\chi_b$ colors. The frozen family $\Theta$ has $m$ members.
+For each unit $u$, require $Y_u(s)\in[0,1]$, consistency, conditional
+exchangeability, and exact exposure probabilities $e_u(s)$ on the same finite
+state space as the nonnegative target distribution $q_u(s)$.
+Require $q_u(s)>0\Rightarrow e_u(s)>0$.
+The functions $h_u,f_u,\widehat\mu_u(s)$ are $\mathcal D$-measurable, with
+$|h_u|\le1$ and $\widehat\mu_u(s)\in[0,1]$.
+
+Define
+\begin{align*}
+ Z_u(\theta)
+ &=h_u\left[\sum_s q_u(s)\widehat\mu_u(s)-f_u
+       +\frac{q_u(S_u)}{e_u(S_u)}
+        \{Y_u-\widehat\mu_u(S_u)\}\right],\\
+ M_{\mathcal D}(\theta)
+ &=\frac1N\sum_u h_u
+       \left[\sum_s q_u(s)\mathbb E[Y_u(s)\mid\mathcal D]-f_u\right],\\
+ v_u(\theta)
+ &=h_u^2\sum_{s:e_u(s)>0}\frac{q_u(s)^2}{e_u(s)},
+ \qquad
+ V_\theta=\frac1{N^2}\sum_b\chi_b\sum_{u\in b}v_u(\theta).
+\end{align*}
+Terms with $q_u(s)=e_u(s)=0$ contribute zero. Unsupported target mass is an
+identification failure, not a reason to clip the propensity numerically.
+
+\begin{theorem}[Bounded-outcome graph Chebyshev certificate]
+\label{thm:c0-bounded-chebyshev}
+Under the preceding assumptions, let
+$\widehat M_{\rm mean}(\theta)=N^{-1}\sum_u Z_u(\theta)$ and fix
+$\delta\in(0,1)$ before evaluation. The intervals
+\[
+ \left[\widehat M_{\rm mean}(\theta)-r_\theta,
+       \widehat M_{\rm mean}(\theta)+r_\theta\right],
+ \qquad
+ r_\theta=\sqrt{\frac{mV_\theta}{\delta}},
+\]
+simultaneously cover $M_{\mathcal D}(\theta)$ for all $\theta\in\Theta$
+with conditional probability at least $1-\delta$ given $\mathcal D$.
+\end{theorem}
+
+\begin{proof}
+The exact-propensity DR identity with a fixed permissible fit gives
+$\mathbb E[\widehat M_{\rm mean}(\theta)\mid\mathcal D]
+=M_{\mathcal D}(\theta)$. Write the score as a $\mathcal D$-measurable
+direct term plus $h_uR_u$, where
+$R_u=q_u(S_u)\{Y_u-\widehat\mu_u(S_u)\}/e_u(S_u)$.
+The residual is bounded in absolute value by one before multiplication by
+the weight. Consequently,
+\[
+ \operatorname{Var}(Z_u\mid\mathcal D)
+ =h_u^2\operatorname{Var}(R_u\mid\mathcal D)
+ \le h_u^2\mathbb E[R_u^2\mid\mathcal D]
+ \le h_u^2\sum_{s:e_u(s)>0}\frac{q_u(s)^2}{e_u(s)}=v_u.
+\]
+Center every row score and sum within each color class in block $b$.
+Variance additivity within the independent color classes and
+Cauchy--Schwarz across their possibly dependent sums imply
+\[
+ \operatorname{Var}\left(\sum_{u\in b}Z_u\,\middle|\,\mathcal D\right)
+ \le\chi_b\sum_{u\in b}\operatorname{Var}(Z_u\mid\mathcal D)
+ \le\chi_b\sum_{u\in b}v_u.
+\]
+Independence of the entire block vectors then yields
+$\operatorname{Var}(\widehat M_{\rm mean}\mid\mathcal D)\le V_\theta$.
+For $V_\theta>0$, conditional Chebyshev bounds a candidate's failure by
+$V_\theta/r_\theta^2=\delta/m$. If $V_\theta=0$, its centered estimator
+vanishes almost surely. Union bounding over the family proves the claim.
+No equal-block-target or MOM drift argument is used: the raw-row sample mean
+has the raw-row fixed-design target even when block means differ.
+\end{proof}
+
+\paragraph{Known support and separate interpretation.}
+For a binary fixed-design auditor, the target surely belongs to
+\[
+ \left[-\frac1N\sum_u h_uf_u,
+        \frac1N\sum_u h_u(1-f_u)\right].
+\]
+Intersecting a valid confidence interval with this known set preserves its
+coverage. Raw and support-intersected endpoints should both be retained;
+returning the whole support range provides no information beyond the model.
+An empty intersection remains an empty confidence set and counts as a
+coverage failure. A subgroup ratio additionally requires positive known mass.
+
+This is a bounded-reward, exact-e sample-mean theorem, not a replacement for
+finite-$p$ MOM when finite variance is unavailable, and not a proof of fully
+adaptive pathwise inference. The initial implementation still uses the original
+registered stable-target simulator; the theorem's allowance for heterogeneous
+means is not a claim that arbitrary external logs satisfy its assumptions.
+A small supported propensity can make $V_\theta$ very large. Missing graph
+edges, a permanent cross-block shock, evaluation-trained fits, or a future
+outcome-dependent conditioning field invalidate the relevant assumptions even
+if a particular observed log passes schema checks. Graph coloring plus
+Chebyshev is a standard argument, not in itself a major novelty claim.
+
+% OPTIONAL FUTURE ADDITION, NOT A C0 CLIPPED-CERTIFICATE API:
+% A fixed design-only cap c has worst-case bias
+% b_c = N^{-1} sum_u |h_u| sum_s (q_u(s)-c e_u(s))_+ and variance envelope
+% v_u(c) = h_u^2 sum_s e_u(s) min(q_u(s)/e_u(s),c)^2.
+% A valid original-target radius would be sqrt(m V_theta(c)/delta)+b_c.
+% Choosing c from outcomes/truth without further adjustment is not covered.
+% Coupling failure, if introduced by a separate proved extension, spends
+% failure probability. It is never added directly as a numerical radius.
