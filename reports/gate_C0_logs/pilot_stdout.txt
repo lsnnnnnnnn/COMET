@@ -1,0 +1,7 @@
+completed iid_single_8192: 30 replications
+completed iid_single_32768: 30 replications
+completed iid_family16_8192: 30 replications
+completed iid_family16_32768: 30 replications
+completed clique4_family16_32768: 30 replications
+completed weak_e_family16_32768: 30 replications
+completed finite_p15_family16_32768: 30 replications

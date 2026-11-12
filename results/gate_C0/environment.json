@@ -1,0 +1,20 @@
+{
+  "packages": {
+    "Pillow": "12.3.0",
+    "contourpy": "1.2.0",
+    "cycler": "0.11.0",
+    "fonttools": "4.51.0",
+    "iniconfig": "1.1.1",
+    "kiwisolver": "1.4.4",
+    "matplotlib": "3.8.4",
+    "numpy": "1.26.4",
+    "packaging": "23.2",
+    "pluggy": "1.0.0",
+    "pyparsing": "3.0.9",
+    "pytest": "7.4.4",
+    "python-dateutil": "2.9.0.post0",
+    "six": "1.16.0"
+  },
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "python": "3.12.2"
+}

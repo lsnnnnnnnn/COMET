@@ -1,0 +1,63 @@
+{
+  "all_per_record_math_checks_pass": true,
+  "all_summary_checks_pass": true,
+  "audit_kind": "independent_recalculation_from_persisted_CSV_and_counts",
+  "candidate_records": 19680,
+  "candidate_status_counts": {
+    "CERTIFIED": 19680
+  },
+  "cells": 7,
+  "complete_family_evaluations": 1680,
+  "complete_summary_rows": 56,
+  "config_sha256_verified": "32ff81d41b1bf008d62ade8a02ecc0a2625df0ba4ae796ed1ae7ddff30b7a98a",
+  "easy_95_percent_fixtures": [
+    {
+      "K": "30",
+      "L_min": "4",
+      "method": "conservative_hoeffding",
+      "raw_radius": "1.4142135623730951",
+      "variance_bound": "",
+      "width_fraction": "1.0"
+    },
+    {
+      "K": "3",
+      "L_min": "42",
+      "method": "exact_binomial",
+      "raw_radius": "0.4364357804719848",
+      "variance_bound": "",
+      "width_fraction": "0.8728715609439696"
+    },
+    {
+      "K": "",
+      "L_min": "",
+      "method": "bounded_graph_chebyshev",
+      "raw_radius": "0.04941058844013093",
+      "variance_bound": "0.0001220703125",
+      "width_fraction": "0.09882117688026185"
+    },
+    {
+      "K": "",
+      "L_min": "",
+      "method": "trivial_support",
+      "raw_radius": "0.5",
+      "variance_bound": "",
+      "width_fraction": "1.0"
+    }
+  ],
+  "false_safe_count": 0,
+  "family_coverage_counts": {
+    "30": 56
+  },
+  "frozen_commit": "15af1842dff7dddf89bbad1c98e8b3ac7a8de3b0",
+  "limits": "No raw outcome sequence regenerated. Persisted observed counts verify score/weight quantiles and sample means; raw-data digests checked for consistency across paired methods/levels, not recomputed from counts, which omit ordering. Debugging audit does not establish empirical nominal coverage.",
+  "methods": 4,
+  "new_outcomes_generated": 0,
+  "nominal_levels": 2,
+  "observed_quantile_checks": 236160,
+  "old_and_trivial_full_range_rate": 1.0,
+  "old_and_trivial_full_range_records": 9840,
+  "old_and_trivial_full_range_summary_rows": 28,
+  "source_hashes_verified": 17,
+  "unique_dgp_draws": 210,
+  "unique_seeds": 210
+}
