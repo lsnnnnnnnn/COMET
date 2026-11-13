@@ -117,3 +117,15 @@ remain the authoritative observations.
 its column rename (exit2). Only the two new D-proposal CSV exports were made LF
 and their new exporter given `lineterminator='\n'`; numerical cells are unchanged.
 All frozen CSV files retain their original bytes. The next diff check passed.
+
+Resource-only read checks during the long batch used escalated read-only
+`ps -o pid,ppid,%cpu,rss,etime,command -ax | rg 'gate_c_confirmatory|spawn_main|resource_tracker'`,
+`man taskpolicy | col -b`, the SDK's PRIO constants, and
+`ps -o pid,stat,nice,pri,command -p 49062,49071,49072,49073,49074,49075,49076`.
+The six workers were running with NI0/PRI31. No priority, worker count,
+scientific setting or scheduling policy was changed after these observations.
+A read-only monitoring process prints completed-ID/failure counts every50s;
+it does not inspect coverage for selection and consumes no random streams.
+A transient `caffeinate -i -w 49062` assertion keeps idle system sleep from
+interrupting the active local batch and ends when that batch process exits.
+It does not change scientific code, settings or permanent power configuration.
