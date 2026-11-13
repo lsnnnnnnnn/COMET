@@ -1,0 +1,1 @@
+{"candidate_records":2268,"checks":62646,"independent_logs":12,"phase":"preflight","process_peak_rss_bytes":61456384,"status":"PASS","wall_seconds":0.6147722919704393}
