@@ -1,0 +1,11 @@
+{
+  "status": "FAILED_POSTRUN_METADATA_EQUALITY_PROBE",
+  "observed_exit_code": 1,
+  "observed_expression": "b['no_certified_decision_fraction']==.5099375",
+  "reported_float": 0.5099374999999999,
+  "integer_abstentions": 8159,
+  "candidate_denominator": 16000,
+  "integer_count_fraction": 0.5099375,
+  "difference": -1.1102230246251565e-16,
+  "explanation": "One-ULP rounding from complement arithmetic versus direct division. The main validator already uses its declared floating tolerance; no scientific statistic, tolerance or checkpoint was changed. This probe is not pytest or a confirmatory execution failure."
+}

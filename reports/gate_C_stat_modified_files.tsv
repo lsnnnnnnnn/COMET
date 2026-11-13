@@ -42,6 +42,7 @@ A	reports/gate_C_stat_audit/finish_after_batch.py
 A	reports/gate_C_stat_audit/independent_proof_checks.json
 A	reports/gate_C_stat_audit/validate_confirmatory.py
 A	reports/gate_C_stat_commands.md
+A	reports/gate_C_stat_delivery.md
 A	reports/gate_C_stat_execution.md
 A	reports/gate_C_stat_figure_review.md
 A	reports/gate_C_stat_independent_proof_audit.md
@@ -70,6 +71,8 @@ A	reports/gate_C_stat_logs/platform_diagnostic_local.log
 A	reports/gate_C_stat_logs/platform_diagnostic_server.log
 A	reports/gate_C_stat_logs/postprocessing_commands.jsonl
 A	reports/gate_C_stat_logs/postprocessing_controller.txt
+A	reports/gate_C_stat_logs/postrun_metadata_equality_probe.json
+A	reports/gate_C_stat_logs/remote_results_commit.txt
 A	reports/gate_C_stat_logs/scientific_lock_audit.txt
 A	reports/gate_C_stat_methods_validation.md
 A	reports/gate_C_stat_modified_files.tsv

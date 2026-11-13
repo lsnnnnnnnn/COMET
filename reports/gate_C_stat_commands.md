@@ -227,3 +227,32 @@ git apply --check paper/rewrite_proposals/cstat/paper_rewrite_diff.patch
 
 These inspection/presentation issues did not alter scientific outputs or
 produce any failed confirmatory log. All485 pytest tests passed.
+
+## Local commit and GitHub synchronization
+
+The staged source/prose whitespace check passed, as did patch applicability.
+The full diff against06a39 contains only added paths; all222 original files
+are unchanged. The result commit and initial push both succeeded:
+
+```sh
+git add experiments tests reports results paper/rewrite_proposals task_materials
+git diff --cached --check -- '*.py' 'reports/*.md' 'paper/rewrite_proposals/cstat/*.md' 'paper/rewrite_proposals/cstat/overlay/*.tex'
+git commit -q -m 'Complete frozen C-STAT and deliver audited manuscript proposal'
+GIT_TERMINAL_PROMPT=0 git -c http.proxy=http://proxy-dku.oit.duke.edu:3128 push origin codex/gate-c-stat
+GIT_TERMINAL_PROMPT=0 git -c http.proxy=http://proxy-dku.oit.duke.edu:3128 ls-remote origin refs/heads/codex/gate-c-stat refs/heads/codex/gate-c-preflight refs/heads/codex/gate-c0-informativeness refs/heads/codex/gates-a-b
+```
+
+All exited0. Result commit:`dd59ec61a08b72cf241e87bcf575f9ce5ae585a7`; remote branch matched exactly.
+The verification output is saved in `remote_results_commit.txt`. A subsequent
+metadata-only commit records this result anchor, command history and complete
+path inventory; it does not alter scientific outputs, the proposal or checkpoints.
+
+A final metadata-only probe incorrectly required bitwise equality between
+`1 - issued_fraction` and the decimal/direct-division value for B abstention.
+It exited1:0.5099374999999999 versus0.5099375 (one ULP). The exact count is
+8159/16000, confirming the reported50.99375%. The failed probe is recorded
+in `postrun_metadata_equality_probe.json`. Integer-count reconciliation and
+the already declared independent-validator float tolerance passed; no stored
+metric, compatibility rule, confidence calculation or tolerance was changed.
+The subsequent127 export checksums and all proposal provenance hashes passed.
+This was not a pytest or confirmatory-run failure.
