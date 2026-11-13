@@ -11,8 +11,8 @@ numbered but unproved adaptive theorem. The proposal presents the original
 MOM result, exact-majority MOM result, and bounded graph-variance result as
 separate certificates with their actual constants and assumptions.
 
-- `review_proposal.pdf`: eight-page review rendering, with a visible proposal
-  notice and an explicitly pending confirmatory-results section.
+- `review_proposal.pdf`: review rendering, with a visible proposal notice and the completed,
+  independently validated confirmatory-results section.
 - `overlay/`: editable replacement LaTeX for the main manuscript, nine sections
   including a rewritten appendix, and three added bibliography entries.
 - `paper_rewrite_diff.patch`: reviewable unified diff against the existing
@@ -44,12 +44,12 @@ second scope-correct submission manuscript.
 
 **Ready for scope/theorem review; not ready for submission.** The proposal has
 complete mathematical arguments for the stated results and a compilable source
-assembly. Its experiment section is deliberately an integration template: it
-contains the frozen design and reporting contract, but no newly claimed
-coverage, runtime, detection or repair result. The final C-STAT report must be
-reviewed before numerical results enter this proposal. If the scientific lock
-is blocked, that status must replace the pending template rather than being
-hidden by a narrative rewrite.
+assembly. Its experiment section now incorporates the completed C-STAT study: 6,000
+independent logs, 1,134,000 records and 28,884,898 independent validation checks.
+All seventeen primary 95% comparisons covered 1000/1000 families (Wilson
+[0.996173,1], raw/Holm p=1). Width, non-vacuity, abstention, false decisions,
+secondary 90% results and actual resources are reported, including unfavorable
+E/F findings. These results do not validate unrun discovery or repair studies.
 
 The proof tools are standard. A competitive methodological claim still needs a
 clear advance beyond their assembly, for example genuinely demonstrated
@@ -62,6 +62,5 @@ Moment Certificates under Graph Dependence**. The old “Dependent Feedback”
 framing needs a matching adaptive-feedback theorem before reuse.
 
 Before adoption, the authors should choose the contribution emphasis, inspect
-the proof-to-code lock outcome, replace the results template only with validated
-outputs, and assess the substantive novelty. Adoption and independent Overleaf
+the proof-to-code lock and complete results, and assess the substantive novelty. Adoption and independent Overleaf
 synchronization are outside this proposal's actions.

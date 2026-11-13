@@ -10,7 +10,10 @@ radius inversion, chi in {1,4,8}, group masses {.02,.05,.10,.20}, family sizes
 {1,16,64}, strong e=.5 and weak e=.01. Choose integer cluster counts consistent
 with each mass; exact masses .02/.05 require cluster counts divisible by 100/20.
 Every candidate must be substantively defined in a committed design rather than
-padding the library with duplicates to change the multiplicity.
+padding the library with duplicates to change the multiplicity. The scalar
+gap axis labels a predeclared probe candidate (q1=.5 in the feasibility table);
+all other candidate truths must be derived from the same potential-outcome
+model, not assigned independently to incompatible policy marginals.
 
 Raw signed gap is M_D-.2*pi, with grid {0,±.025,±.05,±.10,±.20}. Keep impossible
 raw-gap/mass crossings in the design inventory as INFEASIBLE_BEFORE_DRAW. Add

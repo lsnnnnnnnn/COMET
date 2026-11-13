@@ -18,7 +18,7 @@ relative to `overlay/`. The proposal is not an edit of the archival manuscript.
 | “Matching” dependence-tail lower bound; original `01_introduction.tex:22`, `04_theory.tex:55–66` | Explicit ν_p/8 expected-risk bound for exact χ-clique replication; remove generic graph/high-confidence sharpness prose. | `theory/lower_bound.md`; corrected `paper/sections/appendix.tex:191–222`. | ε=1/(2n), a=ν_p(2ε)^(-1/p), centered moment≤ν_p^p, TV≤1/2. An n-dependent minimax construction, not a prediction for fixed F. |
 | Discover–certify; original `05_discover_repair.tex:4–11` | Independent pilot only, freeze all selected tests, pay full policy×auditor×constraint multiplicity. | Conditional finite-family theorem, conditioning on an independent pilot. | Eventwise validity is justified; learned discovery effectiveness has not been tested by A–F. D2 remains future. |
 | Repair / long-run safety; original `05_discover_repair.tex:13–37` | Retain and prove eventwise local feasibility and the 2r robust-margin comparator; state empty-library abstention. | Proposed `05_discover_repair.tex`, complete deterministic proof; original simultaneous-event algebra `05_discover_repair.tex:14–35`. | Utility and all costs need a common simultaneous budget. No future path guarantee and no D3 performance results. |
-| Planned dynamic / real-data studies; original `06_experiments.tex:4–45` | Replace with an explicitly pending frozen A–F results section and unrun D1–D5 plan. | Frozen config and seed manifests; existing `reports/gate_C_report.md:79–85`. | No confirmatory numbers inserted until validated complete C-STAT. Preflight is debugging evidence and is excluded from all confirmatory denominators. |
+| Planned dynamic / real-data studies; original `06_experiments.tex:4–45` | Replace with complete validated frozen A–F results and an unrun D1–D5 plan. | Frozen config and seed manifests; existing `reports/gate_C_report.md:79–85`. | Complete C-STAT: 6,000 logs, 1,134,000 records, seventeen 1000/1000 primary coverages, independent validation PASS. Preflight is excluded from all confirmatory denominators. |
 | Novelty claim; original `07_related_work.tex:5–11` | Four verified source comparisons and explicit distinction from standard components. | `bibliography_crosswalk.md` and added BibTeX. | Scope-correct exposition alone does not establish competitive methodological novelty. |
 
 ## Exact differences in theorem domains
@@ -43,5 +43,5 @@ relative to `overlay/`. The proposal is not an edit of the archival manuscript.
 The proposed main and appendix contain no theorem labeled `thm:uniform-comet`,
 no operational mutually cross-fitted certificate, no invented C-STAT number,
 and no claim of tested real-slate exposures or long-run safety. Original paper
-files and full working versions remain unchanged. The final phase audit, not
-this writing proposal, determines whether the frozen C-STAT result may be used.
+files and full working versions remain unchanged. The independent phase audit passed before the actual results were integrated.
+This writing proposal does not alter that audit or the frozen scientific code.

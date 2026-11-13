@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "completed_checkpoint_files": 6000,
+  "all_checkpoint_bytes_unchanged": true,
+  "new_outcome_logs": 0,
+  "skipped_completed_logs": 6000,
+  "invocation_id": "1794596154274708000",
+  "checkpoint_inventory_sha256": "39c5728b06b33bc644c868249db4217e2ae4c4ea7aa987bc61e3f74467adcd13",
+  "derived_exports": "regenerated from immutable checkpoints; gzip header times may differ, scientific rows unchanged"
+}

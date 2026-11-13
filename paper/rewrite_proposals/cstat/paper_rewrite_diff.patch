@@ -12,11 +12,11 @@
  \begin{document}
  \maketitle
  
-+\noindent\textbf{Review proposal only.} This overlay has not been applied to the manuscript or Overleaf. Confirmatory numerical results are pending validated completion.
++\noindent\textbf{Review proposal only.} This overlay has not been applied to the manuscript or Overleaf. The results section incorporates the completed, independently validated frozen C-STAT study; this document remains a proposal.
 +
  \begin{abstract}
 -Logged decision systems increasingly combine learned policies, adaptive data collection, and interacting units. Their counterfactual statistics can be unstable for three distinct reasons: target and logging policies may have only weak overlap, outcomes may be heavy-tailed, and observations may be dependent through repeated users, slates, networks, or temporal feedback. We introduce \COMET, a general framework for estimating and testing families of counterfactual moments in this regime. The framework begins with an orthogonal score that covers off-policy value, subgroup effects, counterfactual calibration, safety constraints, and exposure-mediated spillovers. It then combines dependence-separated cross-fitting with graph--time robust aggregation to produce simultaneous certificates over target policies and auditors. The proposed rate separates heavy-tail difficulty, an observable conflict-graph design effect, nuisance-estimation error, temporal coupling, and within-window drift. Building on these certificates, we formulate a discover--certify procedure for finding hidden failure subgroups without reusing the certification data, and a pessimistic policy-repair rule with high-probability feasibility. We specify a complete empirical program spanning controlled synthetic processes, semi-synthetic temporal graphs, and real logged recommendation data. The resulting problem is broader than counterfactual fairness on evolving graphs: that setting is recovered as one instance of a common counterfactual-moment interface.
-+Rare exposures and correlated observations can make counterfactual point estimates too uncertain for subgroup auditing or constraint certification. We study simultaneous inference for a finite family of counterfactual moments with known exposure propensities, independent evaluation macro-blocks, and sufficient within-block dependency graphs. Policies, auditors and nuisance predictions are fixed before evaluation or learned from an independent pilot. We give two separate certificates: a median-of-means construction with a known conditional finite-$p$ moment envelope and exact-binomial group selection, and a graph-aware mean certificate for bounded outcomes. Both have explicit finite-sample constants and applicability conditions. An expected-risk lower bound applies to an exact clique-replication subclass; a simultaneous coverage event also yields local feasibility and a robust-margin utility comparison for pessimistic policy selection. The analysis distinguishes validity from informativeness: weak overlap or heavy tails can leave a valid interval vacuous and require abstention. General adaptive feedback, mutually trained nuisance estimators and future deployment trajectories remain outside the proved scope.
++Rare exposures and correlated observations can make counterfactual point estimates too uncertain for subgroup auditing or constraint certification. We study simultaneous inference for a finite family of counterfactual moments with known exposure propensities, independent evaluation macro-blocks, and sufficient within-block dependency graphs. Policies, auditors and nuisance predictions are fixed before evaluation or learned from an independent pilot. We give two separate certificates: a median-of-means construction with a known conditional finite-$p$ moment envelope and exact-binomial group selection, and a graph-aware mean certificate for bounded outcomes. Both have explicit finite-sample constants and applicability conditions. An expected-risk lower bound applies to an exact clique-replication subclass; a simultaneous coverage event also yields local feasibility and a robust-margin utility comparison for pessimistic policy selection. In a frozen six-cell study with 1,000 independent logs per cell, every eligible procedure covers all families, yet heavy-tail MOM intervals remain vacuous and combined weak overlap and dependence can force complete decision abstention. The analysis distinguishes validity from informativeness. General adaptive feedback, mutually trained nuisance estimators and future deployment trajectories remain outside the proved scope.
  \end{abstract}
 -
 -\paragraph{Gate A scope notice.}
@@ -37,7 +37,7 @@
  
  \section*{Reproducibility Statement}
 -The estimands, assumptions, algorithms, and evaluation metrics are stated in the main paper. The appendix provides derivations, proof blueprints, dependence-construction details, synthetic data-generating processes, dataset-specific protocols, and a checklist of claims that must be verified before submission. The final version will include an anonymous code package containing data preprocessing, simulation, estimator implementations, and scripts that reproduce every table and figure from fixed configuration files and random seeds.
-+The experiment repository preserves the scientific freeze, configuration, seed manifest and prior Gate A+B+C0/preflight artifacts. The separate C-STAT phase uses the frozen six-cell design and excludes preflight seeds. Final empirical statements require complete checkpoints, source checksums and independent aggregation. This proposal changes narrative and theorem presentation only; it does not modify the scientific experiment.
++The experiment repository preserves the scientific freeze, configuration, seed manifest and prior Gate A+B+C0/preflight artifacts. The separate C-STAT phase uses the frozen six-cell design and excludes preflight seeds. All 6,000 confirmatory checkpoints and 1,134,000 candidate records were independently validated; a zero-draw resume preserved the checkpoints byte-for-byte. This proposal changes narrative and theorem presentation only; it does not modify the scientific experiment.
  
  \section*{Ethics Statement}
  The framework is intended to diagnose and constrain counterfactual failures in deployed decision systems, but a valid certificate is conditional on the exposure mapping, logged propensities, identification assumptions, auditor family, and data quality. Misspecified interference neighborhoods or unmeasured confounding can create false assurance. Sensitive group labels should be collected and processed only with appropriate legal, organizational, and privacy safeguards. Dataset experiments will follow the licenses and intended-use conditions of the original releases. Policy repair should not be treated as a substitute for domain review, stakeholder consultation, or prospective evaluation.
@@ -107,7 +107,7 @@
 -\end{enumerate}
 -
 -Counterfactual online performative fairness (COPF) on evolving graphs \citep{li2026copf} is recovered by choosing shown/not-shown exposure, group--score auditors, and exposure-effect constraints. Here it is one instance rather than the paper's organizing premise: strict overlap is replaced by finite-moment weak overlap, fixed slices are augmented by learned auditors, and generic online control is replaced by certificate-guided repair.
-+The frozen six-cell study evaluates coverage, width, non-vacuity and abstention under the declared model. It does not simulate feedback-adaptive histories, general network interference or learned cross-fitting. The result section will contain only verified confirmatory outputs; integration preflight observations are excluded from its coverage denominators.
++The frozen six-cell study evaluates coverage, width, non-vacuity and abstention under the declared model. It does not simulate feedback-adaptive histories, general network interference or learned cross-fitting. The result section reports the complete independently validated confirmatory outputs; integration preflight observations are excluded from its coverage denominators.
 --- a/paper/sections/02_setup.tex
 +++ b/paper/sections/02_setup.tex
 @@ -1,81 +1,36 @@
@@ -487,16 +487,15 @@
 +This deterministic consequence concerns the same design and candidate library as the certificate. It does not compare automatically to the best truly feasible boundary policy, nor guarantee a future trajectory after deployment changes contexts. Discovery and repair performance require the separately planned D2/D3 experiments; the six-cell C study does not test them.
 --- a/paper/sections/06_experiments.tex
 +++ b/paper/sections/06_experiments.tex
-@@ -1,45 +1,15 @@
+@@ -1,45 +1,49 @@
 -\section{Experimental Design}
-+\section{Frozen Evaluation Protocol and Evidence Status}
++\section{Frozen Confirmatory Evaluation}
  \label{sec:experiments}
-+\paragraph{Proposal status.}
-+This section is an integration template. Insert measured C-STAT results only after its scientific-lock audit, all 6,000 complete checkpoints and independent aggregation pass. No confirmatory coverage, power or runtime value is asserted here. The twelve earlier integration logs are excluded from confirmatory numerators and denominators.
++\paragraph{Design and completeness.}
++The frozen study completed all 1,000 independent logs in each of six cells, with 128 independent macro-blocks per log. A uses $N=8192$, $\chi=1$ and one candidate. B--F use $N=32768$ and sixteen candidates: eight target exposure probabilities crossed with two fixed auditors. B/C/F have logging probabilities $(.4,.6)$ by context, D/E have $(.01,.02)$, and A uses $(.5,.5)$. C/E/F replicate each independent cluster four times; the other cells use $\chi=1$. All fits are fixed at $.5$ and references at $.25$. A--E have Bernoulli rewards. F adds symmetric Pareto noise with exponent $1.75$, scale $.1$ and known moment order $p=1.5$. Its ideal law has infinite variance; the finite-grid machine law does not literally have infinite representable support. No outcome clipping is used.
  
 -The empirical claim is reliable certification, not minimum point error in one simulator. We ask whether intervals attain nominal coverage; errors scale with $N_{\eff}^{-(p-1)/p}$; graph, time, robustification, and nuisance separation matter in the regimes they target; hidden subgroups can be discovered and replicated; and pessimistic repair improves the utility--constraint frontier.
-+\paragraph{Design.}
-+The frozen study assigns 1,000 independent logs to each of six cells, with 128 independent macro-blocks per log. A uses $N=8192$, $\chi=1$ and one candidate. B--F use $N=32768$ and sixteen candidates: eight target exposure probabilities crossed with two fixed auditors. B/C/F have logging probabilities $(.4,.6)$ by context, D/E have $(.01,.02)$, and A uses $(.5,.5)$. C/E/F replicate each independent cluster four times; the remaining cells use $\chi=1$. All fits are fixed at $.5$ and references at $.25$. A--E have Bernoulli rewards. F adds symmetric Pareto noise with exponent $1.75$, scale $.1$ and known moment order $p=1.5$; its ideal law has infinite variance, whereas the finite-grid computer sampler does not literally have infinite representable support. No outcome clipping is used.
++All seven methods and both confidence levels share each log, producing 1,134,000 candidate records. The twelve preflight logs are excluded. Immutable-checkpoint resume generated zero new logs and preserved all 6,000 checkpoint files byte-for-byte. An independent aggregation checked all assigned IDs, statuses and scientific records and matched all 84 summary rows. The scientific model, methods, seeds and preregistered analyses were unchanged.
  
 -\paragraph{Controlled dynamic process.}
 -We use a dynamic degree-corrected block model and a preferential-attachment stream. A logging policy selects an item or Top-$K$ slate via
@@ -512,37 +511,65 @@
 -\label{eq:synthetic-outcome}
 -\end{equation}
 -with direct and spillover effects, repeated-entity dependence, and Gaussian, Student-$t$, or Pareto/Lomax noise. Four regimes separate light tails, weak overlap only, outcome tails only, and both. Sweeps vary sample size, $p$, exploration, candidate budget, hub strength, interference radius, temporal persistence, auditor count, and nuisance misspecification. Ground truth is analytic or obtained from an independent intervention run whose Monte Carlo error is negligible relative to interval width. The key log--log plot compares scaling against raw $N$ and against $N_{\eff}$.
-+\paragraph{Eligibility and reporting.}
-+Historical and exact-majority MOM are eligible in A--F; bounded graph Chebyshev is eligible only in A--E. IPS, DM and ordinary DR are point-only. The full feasible target range is a deterministic mean-class benchmark. Every method and both confidence levels share the same log. The primary observation is whether the entire candidate family is covered in one independent replication, not sixteen independent Bernoulli observations. Report successes/1000, Wilson $95\%$ intervals and exact lower-tail undercoverage tests for the seventeen prespecified eligible cell--method $95\%$ comparisons, with Holm adjustment across exactly those seventeen. Nonrejection is not a proof of coverage. The $90\%$ analysis is secondary.
- 
+-
 -\paragraph{Complementary real-data studies.}
 -TGB preserves real temporal-graph structure while the logging policy and potential outcomes are simulated, yielding exact counterfactual truth with realistic conflict graphs \citep{huang2023tgb}. Open Bandit uses real propensities and multiple behavior policies; one policy's log evaluates another whose on-policy mean supplies an external target, isolating importance-ratio tails with mostly binary rewards \citep{saito2021open}. KuaiRand adds repeated-user sequences, randomized exposures, and heavy-tailed watch time; its randomized portion supports held-out intervention checks, but arbitrary target policies are not treated as having exact ground truth \citep{gao2022kuairand}.
-+Report raw and target-range-intersected widths, nontriviality for some/all candidates in a log, candidate error/radius diagnostics, false-safe and false-violation counts, true-violation detection and abstention at threshold $.2\pi_h$. Label candidate-level detection separately from replication-level family events. Show unfavorable overlap/dependence cells and F even if every interval is vacuous. Report measured invocation wall time, CPU time and peak RSS, with failures and resumes retained.
++\paragraph{Family coverage and uncertainty.}
++Each of the seventeen prespecified eligible cell--method comparisons at nominal $95\%$ covered its entire family in 1000/1000 logs. Each descriptive Wilson $95\%$ interval is $[0.996173,1]$. The exact inclusive lower-tail undercoverage $p$-values and their Holm adjustments across exactly seventeen tests are all one. These conservative results neither prove nominal validity empirically nor imply useful decisions. The independent observation is one whole log family; its sixteen candidate indicators are correlated. Bounded graph Chebyshev is \texttt{NOT\_APPLICABLE} in F. IPS, DM and ordinary DR remain \texttt{POINT\_ONLY}, while the full target range is a deterministic mean-class benchmark, not a concentration result.
  
--\begin{table}[t]
--\centering\small
+ \begin{table}[t]
+ \centering\small
 -\setlength{\tabcolsep}{3pt}
 -\begin{tabularx}{\linewidth}{@{}lccccX@{}}
--\toprule
++\begin{tabular}{@{}llrrr@{}}
+ \toprule
 -Setting & Truth & Overlap & $Y$ tail & Dependence & Main role \\
--\midrule
++Cell & Procedure & Width/diam. & Nontrivial & Abstain \\
+ \midrule
 -Synthetic DCSBM/PA & Exact & Controlled & Controlled & Controlled & Coverage and rates \\
 -TGB semi-synthetic & Exact & Controlled & Controlled & Real graph & Graph/time correction \\
 -Open Bandit & On-policy & Real/graded & Limited & Temporal & Real-propensity OPE \\
 -KuaiRand & Partial check & Real & Watch time & User/time & Drift and subgroup replication \\
--\bottomrule
++A--F & Historical MOM & 1.000 & 0.000\% & 100.000\% \\
++A & Exact MOM & 0.873 & 100.000\% & 100.000\% \\
++A & Graph mean & 0.099 & 100.000\% & 98.800\% \\
++B & Exact MOM & 0.916 & 50.000\% & 100.000\% \\
++B & Graph mean & 0.269 & 100.000\% & 50.994\% \\
++C & Exact MOM & 1.000 & 0.000\% & 100.000\% \\
++C & Graph mean & 0.531 & 100.000\% & 99.981\% \\
++D & Exact MOM & 1.000 & 11.188\% & 100.000\% \\
++D & Graph mean & 0.866 & 61.806\% & 93.794\% \\
++E & Exact MOM & 1.000 & 0.000\% & 100.000\% \\
++E & Graph mean & 1.000 & 31.244\% & 100.000\% \\
++F & Exact MOM & 1.000 & 0.000\% & 100.000\% \\
++F & Graph mean (N/A) & -- & -- & -- \\
+ \bottomrule
 -\end{tabularx}
 -\caption{No single dataset is asked to validate every claim.}
 -\label{tab:datasets}
--\end{table}
--
++\end{tabular}
++\caption{Nominal $95\%$ results. Width is the median target-range-intersected width divided by the known feasible diameter. Nontriviality and abstention are descriptive candidate-level fractions, not independent-replication rates. Every eligible row has 1000/1000 family coverage; the first row summarizes the same values in all six cells. N/A is retained without fabricated intervals.}
++\label{tab:frozen-cstat}
+ \end{table}
+ 
 -\paragraph{Baselines and ablations.}
 -We compare DM, IPS, self-normalized IPS, ordinary DR, clipped/switch DR, more-robust DR, i.i.d. MOM-DR, temporal block-MOM, graph-corrected non-robust DR, and \COMET. Subgroup baselines are fixed slices, in-sample search, and sample-split search without dependence separation. Repair baselines are utility-only selection, empirical constraints without radii, clipped-DR constraints, and the COPF controller in the evolving-link application \citep{li2026copf}. Ablations remove graph edges, temporal gaps, robust aggregation, cross-fitting separation, denominator uncertainty, and drift allowance.
--
++\paragraph{Informativeness and decisions.}
++Table~\ref{tab:frozen-cstat} separates coverage from practical information. Exact-majority MOM reduces width in A/B but makes no certified constraint decision in any cell. The graph mean is narrower in these frozen bounded-outcome comparisons, with strong dependence or weak overlap reducing its usefulness. This is not a universal dominance claim: the graph radius pays $\sqrt m$, whereas MOM's grouping pays a logarithmic family-size factor.
+ 
 -\paragraph{Metrics and protocol.}
 -Primary endpoints are empirical $90\%/95\%$ coverage, interval width, worst-policy/auditor coverage, false certification, power, and abstention. We additionally report bias/RMSE, planted-subgroup recovery and certification replication, true utility, maximum true constraint violation, detection delay after shift, runtime, memory, graph-construction cost, and overlap/$N_{\eff}$ diagnostics. Synthetic repetitions are chosen so Monte Carlo uncertainty around $95\%$ coverage is at most two percentage points. Hyperparameters are selected without counterfactual truth except in labeled oracle-tail experiments; all preprocessing, candidate rules, policy mixtures, and seeds are configuration-controlled. Detailed grids and dataset protocols are in \cref{app:experiments}.
++At the fixed constraint $M_{\mathcal D}\le .2\pi_h$, the $95\%$ graph method detects at least one true violation in 12/1000 A logs (Wilson interval $[.006878,.020857]$), 1000/1000 B logs ($[.996173,1]$), 3/1000 C logs ($[.001021,.008783]$), and no D or E logs ($[0,.003827]$ each). B's separate candidate-level detection fraction is $70\%$ among truly violating candidates; it is not the probability of detection per independent log. Every eligible procedure has zero observed false-safe or false-violation family events; the Wilson interval for each zero-of-1000 event is $[0,.003827]$, not a zero-risk statement.
++
++E's graph intervals have median normalized width one and abstain on every candidate despite some non-full-range intersections. Both MOM procedures in F return the full feasible range and always abstain; the bounded-outcome method is inapplicable. These unfavorable findings remain part of the primary comparison. Perfect observed coverage alone would conceal them.
++
++\paragraph{Secondary level and resources.}
++At nominal $90\%$, all seventeen eligible cell--method combinations also have 1000/1000 family coverage; these are secondary summaries, not another jointly corrected seventeen-test confirmation. The graph median normalized widths in A/B/C/D/E are $.0699/.1902/.3803/.6500/1.0000$, with candidate abstention $31.700/37.575/72.513/93.750/100.000\%$. E and F therefore remain decision-limited even at this lower nominal level. The repository retains raw and intersected width quantiles, some/all family nontriviality, marginal coverage, error/radius diagnostics and all statuses.
++
++The six-worker main batch took 10,389.879 wall seconds and 55,394.379 parent-plus-child CPU seconds. The subsequent zero-draw resume took 288.065 wall seconds and 282.354 CPU seconds, for combined totals of 10,677.944 wall seconds and 55,676.733 CPU seconds. Across these two invocations, the maximum parent peak RSS was 211.500 MiB and the maximum individual worker peak was 116.828 MiB; their separate high-water marks do not measure simultaneous total memory. Checkpoints and both invocation resource records are retained. Five regenerated figure families show coverage uncertainty, widths, nontriviality/abstention, error/radius and resource cost.
++
 +\paragraph{Planned studies.}
-+D1 varies violation margins and group prevalence; D2 tests independent discover--freeze--certify; D3 tests competing utility/cost policy selection; D4 requires a new proof for shared primitives and compatible joint policies; D5 studies overlap/tail feasibility and independent-pilot nuisance fits. These and large real-data studies remain unrun in this phase. No fixed-Pareto error slope is claimed to establish minimax sharpness.
++D1 varies violation margins and group prevalence; D2 tests independent discover--freeze--certify; D3 tests competing utility/cost selection; D4 requires a new proof for shared primitives and compatible joint policies; D5 studies overlap/tail feasibility and independent-pilot nuisance fits. These and large real-data studies remain unrun. No fixed-Pareto error slope is claimed to establish minimax sharpness.
 --- a/paper/sections/07_related_work.tex
 +++ b/paper/sections/07_related_work.tex
 @@ -1,11 +1,10 @@
@@ -571,7 +598,7 @@
 +The proved result is simultaneous counterfactual moment inference under an exogenous design, independent evaluation blocks, sufficient within-block dependency graphs, exact exposure propensities and fixed or independent-pilot nuisances. Finite-$p$ MOM and bounded-outcome graph variance supply different certificates with explicit constants and applicability conditions. A valid but full-range interval supports abstention, not a useful safety decision.
  
 -\COMET\ reframes robust counterfactual auditing as estimation and testing of intervention-specific moments from weak-overlap, heavy-tailed, dependent logs. Its orthogonal-score interface, observable graph--time correction, robust simultaneous bounds, learn-then-certify auditors, and pessimistic repair rule form one testable pipeline. The remaining empirical burden is explicit: verify coverage and effective-sample-size scaling, validate adaptive tuning, and determine when the added conservatism buys reliable decisions on realistic logs.
-+The analysis does not establish arbitrary adaptive pathwise coverage, mutually trained cross-fitting, unknown tail-scale fitting, hidden cross-block shocks, optimality for every sparse graph or long-run deployment safety. Exposure mappings and joint-policy compatibility require substantive modeling. Heavy-tail F may remain wholly vacuous. The manuscript's empirical claims must follow completed frozen results, and its broader discovery, repair and network program requires separate proofs and experiments.
++The analysis does not establish arbitrary adaptive pathwise coverage, mutually trained cross-fitting, unknown tail-scale fitting, hidden cross-block shocks, optimality for every sparse graph or long-run deployment safety. Exposure mappings and joint-policy compatibility require substantive modeling. In the completed frozen experiment, both MOM methods in heavy-tail F remain wholly vacuous, and the bounded-outcome graph method in E always abstains. The broader discovery, repair and network program requires separate proofs and experiments.
 --- a/paper/sections/appendix.tex
 +++ b/paper/sections/appendix.tex
 @@ -1,331 +1,37 @@

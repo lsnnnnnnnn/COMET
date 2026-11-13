@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  13 NOV 2026 23:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  14 NOV 2026 03:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -921,11 +921,11 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-(./sections/01_introduction.tex) (./sections/02_setup.tex [1
+(./sections/01_introduction.tex [1
 
 {/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc}]) (./sections/03_method
-.tex [2]
+al/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc}]) (./sections/02_setup.
+tex) (./sections/03_method.tex [2]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
@@ -939,30 +939,48 @@ OML/cmm/m/it/10 ^^V[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s\OT1/cmr/m/n/10 ) \OMS/
 cmsy/m/n/10 ^^T \OT1/cmr/m/n/10 1$\OT1/ptm/m/n/10 (+20) , the range is
  []
 
-[3]) (./sections/05_discover_repair.tex [4]) (./sections/06_experiments.tex)
-(./sections/07_related_work.tex [5]) (./sections/08_conclusion.tex) [6]
-(./main.bbl
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 2
-1.
- (/usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+[3]) (./sections/05_discover_repair.tex [4]) (./sections/06_experiments.tex
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 9
+.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-))
-(./sections/appendix.tex [7]) [8] (./main.aux)
+) [5]
+Underfull \hbox (badness 3168) in paragraph at lines 44--45
+ []\OT1/ptm/b/n/10 (+20) Secondary level and re-sources.[] \OT1/ptm/m/n/10 (+20
+) At nom-i-nal $\OT1/cmr/m/n/10 90%$\OT1/ptm/m/n/10 (+20) , all sev-en-teen el-
+i-gi-ble cell--method
+ []
+
+
+Underfull \hbox (badness 5711) in paragraph at lines 44--45
+\OT1/ptm/m/n/10 (+20) com-bi-na-tions also have 1000/1000 fam-ily cov-er-age; t
+hese are sec-ondary sum-maries,
+ []
+
+
+Underfull \hbox (badness 3568) in paragraph at lines 44--45
+\OT1/ptm/m/n/10 (+20) not an-other jointly cor-rected seventeen-test con-fir-ma
+-tion. The graph me-dian nor-mal-
+ []
+
+) (./sections/07_related_work.tex [6]) (./sections/08_conclusion.tex)
+(./main.bbl [7]) (./sections/appendix.tex [8]) [9] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: BF3543C5056647F3FDCD12C0FF8A5F71;2167.
+(rerunfilecheck)             Checksum: FC7BDB24F1B5E2C787557964D7222A72;2078.
  ) 
 Here is how much of TeX's memory you used:
- 27652 strings out of 467525
- 512715 string characters out of 5418982
- 968330 words of memory out of 5000000
- 55781 multiletter control sequences out of 15000+600000
- 658038 words of font info for 232 fonts, out of 8000000 for 9000
+ 27725 strings out of 467525
+ 513719 string characters out of 5418982
+ 968329 words of memory out of 5000000
+ 55826 multiletter control sequences out of 15000+600000
+ 664928 words of font info for 258 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,11n,94p,1255b,573s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,12n,94p,1404b,573s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></
@@ -976,10 +994,10 @@ cal/texlive/2026/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texl
 ive/2026/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2026/t
 exmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2026/texmf-dist/
 fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (8 pages, 205739 bytes).
+Output written on main.pdf (9 pages, 212088 bytes).
 PDF statistics:
- 247 PDF objects out of 1000 (max. 8388607)
- 208 compressed objects within 3 object streams
- 59 named destinations out of 1000 (max. 500000)
- 40549 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 260 PDF objects out of 1000 (max. 8388607)
+ 220 compressed objects within 3 object streams
+ 62 named destinations out of 1000 (max. 500000)
+ 46693 words of extra memory for PDF output out of 51595 (max. 10000000)
 

@@ -2,7 +2,8 @@
 
 Fresh domain: `COMET-D2-v1`. Construct at least four exogenous pre-action features
 G, degree, new_user and Z. Define degree's q80 from the fixed design, before
-outcomes. Plant the interaction 1{G=1, degree>q80, new_user=1, Z=high}; explicitly
+outcomes. A variable degree covariate may come from a separate fixed context
+graph; it must not be substituted for the sufficient stochastic conflict graph. Plant the interaction 1{G=1, degree>q80, new_user=1, Z=high}; explicitly
 allocate its mass through a fixed feature table repeated across independent
 blocks. Do not obtain the interaction from evaluation residuals. Define
 intervention-dependent mean shifts, bounded in [0,1], for null and alternative

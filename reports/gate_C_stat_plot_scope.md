@@ -19,3 +19,12 @@ MPLCONFIGDIR=/tmp/comet-matplotlib .venv/bin/python reports/gate_C_stat_audit/va
 ```
 
 The actual rerun log is `reports/gate_C_stat_logs/independent_preflight_maximum_markers.txt`.
+
+The nontriviality heatmap also labels the three `POINT_ONLY` methods and the F
+bounded-graph method as **N/A**, reflecting their predeclared interval
+ineligibility. This is annotation only: the frozen metric
+`marginal_nontrivial_fraction` remains zero for these allocated rows. The
+adjacent no-certified-decision heatmap keeps **100%**, which is the defined
+fraction for methods that issue no certificate, and the figure caption states
+this distinction. This styling was specified from known theorem eligibility
+before reading confirmatory outcomes; it does not change any summary values.

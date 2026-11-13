@@ -1,15 +1,49 @@
-\section{Frozen Evaluation Protocol and Evidence Status}
+\section{Frozen Confirmatory Evaluation}
 \label{sec:experiments}
-\paragraph{Proposal status.}
-This section is an integration template. Insert measured C-STAT results only after its scientific-lock audit, all 6,000 complete checkpoints and independent aggregation pass. No confirmatory coverage, power or runtime value is asserted here. The twelve earlier integration logs are excluded from confirmatory numerators and denominators.
+\paragraph{Design and completeness.}
+The frozen study completed all 1,000 independent logs in each of six cells, with 128 independent macro-blocks per log. A uses $N=8192$, $\chi=1$ and one candidate. B--F use $N=32768$ and sixteen candidates: eight target exposure probabilities crossed with two fixed auditors. B/C/F have logging probabilities $(.4,.6)$ by context, D/E have $(.01,.02)$, and A uses $(.5,.5)$. C/E/F replicate each independent cluster four times; the other cells use $\chi=1$. All fits are fixed at $.5$ and references at $.25$. A--E have Bernoulli rewards. F adds symmetric Pareto noise with exponent $1.75$, scale $.1$ and known moment order $p=1.5$. Its ideal law has infinite variance; the finite-grid machine law does not literally have infinite representable support. No outcome clipping is used.
 
-\paragraph{Design.}
-The frozen study assigns 1,000 independent logs to each of six cells, with 128 independent macro-blocks per log. A uses $N=8192$, $\chi=1$ and one candidate. B--F use $N=32768$ and sixteen candidates: eight target exposure probabilities crossed with two fixed auditors. B/C/F have logging probabilities $(.4,.6)$ by context, D/E have $(.01,.02)$, and A uses $(.5,.5)$. C/E/F replicate each independent cluster four times; the remaining cells use $\chi=1$. All fits are fixed at $.5$ and references at $.25$. A--E have Bernoulli rewards. F adds symmetric Pareto noise with exponent $1.75$, scale $.1$ and known moment order $p=1.5$; its ideal law has infinite variance, whereas the finite-grid computer sampler does not literally have infinite representable support. No outcome clipping is used.
+All seven methods and both confidence levels share each log, producing 1,134,000 candidate records. The twelve preflight logs are excluded. Immutable-checkpoint resume generated zero new logs and preserved all 6,000 checkpoint files byte-for-byte. An independent aggregation checked all assigned IDs, statuses and scientific records and matched all 84 summary rows. The scientific model, methods, seeds and preregistered analyses were unchanged.
 
-\paragraph{Eligibility and reporting.}
-Historical and exact-majority MOM are eligible in A--F; bounded graph Chebyshev is eligible only in A--E. IPS, DM and ordinary DR are point-only. The full feasible target range is a deterministic mean-class benchmark. Every method and both confidence levels share the same log. The primary observation is whether the entire candidate family is covered in one independent replication, not sixteen independent Bernoulli observations. Report successes/1000, Wilson $95\%$ intervals and exact lower-tail undercoverage tests for the seventeen prespecified eligible cell--method $95\%$ comparisons, with Holm adjustment across exactly those seventeen. Nonrejection is not a proof of coverage. The $90\%$ analysis is secondary.
+\paragraph{Family coverage and uncertainty.}
+Each of the seventeen prespecified eligible cell--method comparisons at nominal $95\%$ covered its entire family in 1000/1000 logs. Each descriptive Wilson $95\%$ interval is $[0.996173,1]$. The exact inclusive lower-tail undercoverage $p$-values and their Holm adjustments across exactly seventeen tests are all one. These conservative results neither prove nominal validity empirically nor imply useful decisions. The independent observation is one whole log family; its sixteen candidate indicators are correlated. Bounded graph Chebyshev is \texttt{NOT\_APPLICABLE} in F. IPS, DM and ordinary DR remain \texttt{POINT\_ONLY}, while the full target range is a deterministic mean-class benchmark, not a concentration result.
 
-Report raw and target-range-intersected widths, nontriviality for some/all candidates in a log, candidate error/radius diagnostics, false-safe and false-violation counts, true-violation detection and abstention at threshold $.2\pi_h$. Label candidate-level detection separately from replication-level family events. Show unfavorable overlap/dependence cells and F even if every interval is vacuous. Report measured invocation wall time, CPU time and peak RSS, with failures and resumes retained.
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+Cell & Procedure & Width/diam. & Nontrivial & Abstain \\
+\midrule
+A--F & Historical MOM & 1.000 & 0.000\% & 100.000\% \\
+A & Exact MOM & 0.873 & 100.000\% & 100.000\% \\
+A & Graph mean & 0.099 & 100.000\% & 98.800\% \\
+B & Exact MOM & 0.916 & 50.000\% & 100.000\% \\
+B & Graph mean & 0.269 & 100.000\% & 50.994\% \\
+C & Exact MOM & 1.000 & 0.000\% & 100.000\% \\
+C & Graph mean & 0.531 & 100.000\% & 99.981\% \\
+D & Exact MOM & 1.000 & 11.188\% & 100.000\% \\
+D & Graph mean & 0.866 & 61.806\% & 93.794\% \\
+E & Exact MOM & 1.000 & 0.000\% & 100.000\% \\
+E & Graph mean & 1.000 & 31.244\% & 100.000\% \\
+F & Exact MOM & 1.000 & 0.000\% & 100.000\% \\
+F & Graph mean (N/A) & -- & -- & -- \\
+\bottomrule
+\end{tabular}
+\caption{Nominal $95\%$ results. Width is the median target-range-intersected width divided by the known feasible diameter. Nontriviality and abstention are descriptive candidate-level fractions, not independent-replication rates. Every eligible row has 1000/1000 family coverage; the first row summarizes the same values in all six cells. N/A is retained without fabricated intervals.}
+\label{tab:frozen-cstat}
+\end{table}
+
+\paragraph{Informativeness and decisions.}
+Table~\ref{tab:frozen-cstat} separates coverage from practical information. Exact-majority MOM reduces width in A/B but makes no certified constraint decision in any cell. The graph mean is narrower in these frozen bounded-outcome comparisons, with strong dependence or weak overlap reducing its usefulness. This is not a universal dominance claim: the graph radius pays $\sqrt m$, whereas MOM's grouping pays a logarithmic family-size factor.
+
+At the fixed constraint $M_{\mathcal D}\le .2\pi_h$, the $95\%$ graph method detects at least one true violation in 12/1000 A logs (Wilson interval $[.006878,.020857]$), 1000/1000 B logs ($[.996173,1]$), 3/1000 C logs ($[.001021,.008783]$), and no D or E logs ($[0,.003827]$ each). B's separate candidate-level detection fraction is $70\%$ among truly violating candidates; it is not the probability of detection per independent log. Every eligible procedure has zero observed false-safe or false-violation family events; the Wilson interval for each zero-of-1000 event is $[0,.003827]$, not a zero-risk statement.
+
+E's graph intervals have median normalized width one and abstain on every candidate despite some non-full-range intersections. Both MOM procedures in F return the full feasible range and always abstain; the bounded-outcome method is inapplicable. These unfavorable findings remain part of the primary comparison. Perfect observed coverage alone would conceal them.
+
+\paragraph{Secondary level and resources.}
+At nominal $90\%$, all seventeen eligible cell--method combinations also have 1000/1000 family coverage; these are secondary summaries, not another jointly corrected seventeen-test confirmation. The graph median normalized widths in A/B/C/D/E are $.0699/.1902/.3803/.6500/1.0000$, with candidate abstention $31.700/37.575/72.513/93.750/100.000\%$. E and F therefore remain decision-limited even at this lower nominal level. The repository retains raw and intersected width quantiles, some/all family nontriviality, marginal coverage, error/radius diagnostics and all statuses.
+
+The six-worker main batch took 10,389.879 wall seconds and 55,394.379 parent-plus-child CPU seconds. The subsequent zero-draw resume took 288.065 wall seconds and 282.354 CPU seconds, for combined totals of 10,677.944 wall seconds and 55,676.733 CPU seconds. Across these two invocations, the maximum parent peak RSS was 211.500 MiB and the maximum individual worker peak was 116.828 MiB; their separate high-water marks do not measure simultaneous total memory. Checkpoints and both invocation resource records are retained. Five regenerated figure families show coverage uncertainty, widths, nontriviality/abstention, error/radius and resource cost.
 
 \paragraph{Planned studies.}
-D1 varies violation margins and group prevalence; D2 tests independent discover--freeze--certify; D3 tests competing utility/cost policy selection; D4 requires a new proof for shared primitives and compatible joint policies; D5 studies overlap/tail feasibility and independent-pilot nuisance fits. These and large real-data studies remain unrun in this phase. No fixed-Pareto error slope is claimed to establish minimax sharpness.
+D1 varies violation margins and group prevalence; D2 tests independent discover--freeze--certify; D3 tests competing utility/cost selection; D4 requires a new proof for shared primitives and compatible joint policies; D5 studies overlap/tail feasibility and independent-pilot nuisance fits. These and large real-data studies remain unrun. No fixed-Pareto error slope is claimed to establish minimax sharpness.

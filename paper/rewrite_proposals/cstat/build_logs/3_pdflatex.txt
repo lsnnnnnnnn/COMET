@@ -207,9 +207,9 @@ ty (/usr/local/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msa.cfg)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msb.cfg)
-(./sections/01_introduction.tex) (./sections/02_setup.tex [1{/usr/local/texlive
-/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2026/tex
-mf-dist/fonts/enc/dvips/base/8r.enc}]) (./sections/03_method.tex [2]
+(./sections/01_introduction.tex [1{/usr/local/texlive/2026/texmf-var/fonts/map/
+pdftex/updmap/pdftex.map}{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/ba
+se/8r.enc}]) (./sections/02_setup.tex) (./sections/03_method.tex [2]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
@@ -221,25 +221,37 @@ Underfull \hbox (badness 1259) in paragraph at lines 34--1
 10 h$ \OT1/ptm/m/n/10 (+20) and known $\OT1/cmr/m/n/10 0 \OMS/cmsy/m/n/10 ^^T \
 OML/cmm/m/it/10 ^^V[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s\OT1/cmr/m/n/10 ) \OMS/
 cmsy/m/n/10 ^^T \OT1/cmr/m/n/10 1$\OT1/ptm/m/n/10 (+20) , the range is
-[3]) (./sections/05_discover_repair.tex [4]) (./sections/06_experiments.tex)
-(./sections/07_related_work.tex
+[3]) (./sections/05_discover_repair.tex [4]) (./sections/06_experiments.tex
+(/usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd) [5]
+Underfull \hbox (badness 3168) in paragraph at lines 44--45
+ []\OT1/ptm/b/n/10 (+20) Secondary level and re-sources.[] \OT1/ptm/m/n/10 (+20
+) At nom-i-nal $\OT1/cmr/m/n/10 90%$\OT1/ptm/m/n/10 (+20) , all sev-en-teen el-
+i-gi-ble cell--method
 
-Package natbib Warning: Citation `dudik2011doubly' on page 5 undefined on input
+Underfull \hbox (badness 5711) in paragraph at lines 44--45
+\OT1/ptm/m/n/10 (+20) com-bi-na-tions also have 1000/1000 fam-ily cov-er-age; t
+hese are sec-ondary sum-maries,
+
+Underfull \hbox (badness 3568) in paragraph at lines 44--45
+\OT1/ptm/m/n/10 (+20) not an-other jointly cor-rected seventeen-test con-fir-ma
+-tion. The graph me-dian nor-mal-
+) (./sections/07_related_work.tex
+
+Package natbib Warning: Citation `dudik2011doubly' on page 6 undefined on input
  line 4.
 
 
-Package natbib Warning: Citation `jiang2016doubly' on page 5 undefined on input
+Package natbib Warning: Citation `jiang2016doubly' on page 6 undefined on input
  line 4.
 
 
-Package natbib Warning: Citation `karampatziakis2021sequences' on page 5 undefi
+Package natbib Warning: Citation `karampatziakis2021sequences' on page 6 undefi
 ned on input line 4.
 
 
-Package natbib Warning: Citation `mehrabi2024weak' on page 5 undefined on input
+Package natbib Warning: Citation `mehrabi2024weak' on page 6 undefined on input
  line 4.
 
-[5]
 
 Package natbib Warning: Citation `hogsgaard2025uniform' on page 6 undefined on 
 input line 7.
@@ -252,18 +264,18 @@ Package natbib Warning: Citation `janson2004large' on page 6 undefined on input
 Package natbib Warning: Citation `lugosi2019mean' on page 6 undefined on input 
 line 7.
 
+[6]
 
-Package natbib Warning: Citation `shimizu2024combinatorial' on page 6 undefined
+Package natbib Warning: Citation `shimizu2024combinatorial' on page 7 undefined
  on input line 10.
 
-) (./sections/08_conclusion.tex)
-Underfull \vbox (badness 2318) has occurred while \output is active [6]
-(./main.bbl (/usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd))
-(./sections/appendix.tex [7])
+) (./sections/08_conclusion.tex) (./main.bbl
+Underfull \vbox (badness 2343) has occurred while \output is active [7])
+(./sections/appendix.tex [8])
 
 Package natbib Warning: There were undefined citations.
 
-[8] (./main.aux
+[9] (./main.aux
 
 Package natbib Warning: Citation(s) may have changed.
 (natbib)                Rerun to get citations correct.
@@ -287,5 +299,5 @@ onts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2026/texmf-dist/fonts/typ
 e1/urw/times/utmb8a.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/urw/tim
 es/utmr8a.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/urw/times/utmri8a
 .pfb>
-Output written on main.pdf (8 pages, 205026 bytes).
+Output written on main.pdf (9 pages, 211257 bytes).
 Transcript written on main.log.

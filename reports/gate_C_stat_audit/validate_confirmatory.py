@@ -241,10 +241,13 @@ def figures(output,groups,summary,resource_rows,invocations,phase):
         values=np.array([[sm[c,.05,m][field] for m in METHODS] for c in 'ABCDEF'])
         im=ax.imshow(values,cmap='cividis',vmin=0,vmax=1,aspect='auto')
         for row in range(6):
-            for col in range(7):ax.text(col,row,f'{values[row,col]:.2f}',ha='center',va='center',color='white' if values[row,col]<.5 else 'black',fontsize=9)
+            for col in range(7):
+                no_interval=(METHODS[col] in ('ips','dm','dr') or (row==5 and METHODS[col]=='bounded_graph_chebyshev'))
+                annotation='N/A' if field=='marginal_nontrivial_fraction' and no_interval else f'{values[row,col]:.2f}'
+                ax.text(col,row,annotation,ha='center',va='center',color='white' if values[row,col]<.5 else 'black',fontsize=9)
         ax.set(xticks=range(7),xticklabels=[labels[m] for m in METHODS],yticks=range(6),yticklabels=list('ABCDEF'),title=title)
         plt.setp(ax.get_xticklabels(),rotation=40,ha='right');fig.colorbar(im,ax=ax,shrink=.8)
-    fig.suptitle(subtitle+'\nCandidate-level fractions; 95% methods');save(fig,'03_nontriviality_abstention')
+    fig.suptitle(subtitle+'\nCandidate fractions; N/A = point-only or inapplicable interval; those methods have 100% no certified decision');save(fig,'03_nontriviality_abstention')
     fig,axes=plt.subplots(2,3,figsize=(13,7),constrained_layout=True)
     for ax,cell in zip(axes.flat,'ABCDEF'):
         observed_max=0.

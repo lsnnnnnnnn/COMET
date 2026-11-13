@@ -1,0 +1,17 @@
+{
+  "phase": "C-STAT",
+  "status": "COMPLETE_VALIDATED",
+  "independent_logs": 6000,
+  "candidate_records": 1134000,
+  "checks": 28884898,
+  "primary_tests": 17,
+  "sources_sha256": {
+    "results/gate_C/confirmatory/independent_validation/validation.json": "371ae627faed10579f6cae32bd1d755dade4caa84fa16058f215a774361883f2",
+    "results/gate_C/confirmatory/independent_validation/independent_summary.csv": "d9bf856ada565a33c91365b3436383b0170b39c610840412e653ff419119e18d",
+    "results/gate_C/confirmatory/independent_validation/family_decisions_and_widths.csv": "8ab663011466c550cae5232cf087a6344dacf4b41de778ae200d7cafab23bd22",
+    "reports/gate_C_stat_results.md": "54b65f21d0a760dc1c50cf96266ab2341d76ed18768926ed2ec1f077de3359f4",
+    "results/gate_C/confirmatory/resume_integrity.json": "4f8140e15e6eb8cea73e22302d3ac162b523ec68de264d244715e4398f338330",
+    "reports/gate_C_stat_execution.md": "60fd6f0c84bc3bf6791c7a3a21b12e96a0e6f0e97e0260795ea5523b6f65e9aa"
+  },
+  "scientific_inputs_modified": false
+}

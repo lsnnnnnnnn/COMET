@@ -1,0 +1,74 @@
+{
+  "additional_outcomes_generated": 0,
+  "candidate_records": 1134000,
+  "files": [
+    {
+      "bytes": 118610,
+      "path": "results/gate_C/confirmatory/independent_validation/figures/01_family_coverage.png",
+      "sha256": "36586d8966a3d1c90c282cd3759b580adf94ff137647febc704a39a22d7a288c",
+      "visual_review": "PNG inspected directly"
+    },
+    {
+      "bytes": 25384,
+      "path": "results/gate_C/confirmatory/independent_validation/figures/01_family_coverage.pdf",
+      "sha256": "e0d08217710ad00d85b09dd6d93c0654a965df584e83c87fe3bff301ae73a90e",
+      "visual_review": "companion vector export from same figure"
+    },
+    {
+      "bytes": 98313,
+      "path": "results/gate_C/confirmatory/independent_validation/figures/02_width_distributions.png",
+      "sha256": "4d3238587242bdce39e4be720ff1b9ee354e47dd2499e5e9cbba34fac66f10ca",
+      "visual_review": "PNG inspected directly"
+    },
+    {
+      "bytes": 21337,
+      "path": "results/gate_C/confirmatory/independent_validation/figures/02_width_distributions.pdf",
+      "sha256": "a0e751603965bcd4f30f44c4ab5ba4c8eb8506454a1e571a080b8aded81afc59",
+      "visual_review": "companion vector export from same figure"
+    },
+    {
+      "bytes": 123784,
+      "path": "results/gate_C/confirmatory/independent_validation/figures/03_nontriviality_abstention.png",
+      "sha256": "30bfd89f5c38334292515af3221ca2003ad77180205667e3dda283d9fd62f448",
+      "visual_review": "PNG inspected directly"
+    },
+    {
+      "bytes": 28242,
+      "path": "results/gate_C/confirmatory/independent_validation/figures/03_nontriviality_abstention.pdf",
+      "sha256": "6663b8be44f290fcdeb26f0ae03882ed186051cb94425a51ba63668779da1e55",
+      "visual_review": "companion vector export from same figure"
+    },
+    {
+      "bytes": 100717,
+      "path": "results/gate_C/confirmatory/independent_validation/figures/04_error_radius.png",
+      "sha256": "4e68f985908351d73ba82c1562f2cb790ab4fbae9b6b7e6cbfa6a038e183bfbf",
+      "visual_review": "PNG inspected directly"
+    },
+    {
+      "bytes": 21286,
+      "path": "results/gate_C/confirmatory/independent_validation/figures/04_error_radius.pdf",
+      "sha256": "a589704bd0814839193c32ee7f9b231004e23f91b5bf2da623db1f6a0cade64a",
+      "visual_review": "companion vector export from same figure"
+    },
+    {
+      "bytes": 82259,
+      "path": "results/gate_C/confirmatory/independent_validation/figures/05_resources.png",
+      "sha256": "baec928c630e2141017653ac8b67f6000307adf4b493a8f3ab51200a6a50dc38",
+      "visual_review": "PNG inspected directly"
+    },
+    {
+      "bytes": 18934,
+      "path": "results/gate_C/confirmatory/independent_validation/figures/05_resources.pdf",
+      "sha256": "cca301d0c190f32c22023055b7a78d2dce9c030d5b2ab0ba659d217635684365",
+      "visual_review": "companion vector export from same figure"
+    }
+  ],
+  "independent_logs": 6000,
+  "plots_regenerated_for_review": false,
+  "review_date_client": "2026-11-14",
+  "reviewed_after_validation_complete": true,
+  "statistics_modified": false,
+  "validation_checks": 28884898,
+  "validation_sha256": "371ae627faed10579f6cae32bd1d755dade4caa84fa16058f215a774361883f2",
+  "verdict": "PASS_VISUAL_AND_LABEL_REVIEW"
+}

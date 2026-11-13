@@ -1,0 +1,3 @@
+Filesystem      Size    Used   Avail Capacity iused ifree %iused  Mounted on
+/dev/disk3s5   460Gi   324Gi    86Gi    80%    2.5M  902M    0%   /System/Volumes/Data
+ 64M	results/gate_C/confirmatory

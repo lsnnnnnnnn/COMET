@@ -1,6 +1,6 @@
 # D1–D5 future preregistration proposals — no experiments run
 
-These are separate future protocols, written before C-STAT confirmation outcomes.
+These are separate future protocols, prepared without consulting C-STAT confirmation outcomes.
 No D-stage outcome, fitted model, pilot, or seed draw has been generated. The
 only computations are deterministic feasibility algebra in
 `experiments/gate_d_design_only.py`. Each document must become a separately

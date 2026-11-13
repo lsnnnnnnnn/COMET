@@ -69,7 +69,7 @@ rsync -a 10.200.13.23:/data1/shengen/COMET_C_STAT_20261113/results/gate_C/stat_l
 scp 10.200.13.23:/data1/shengen/COMET_C_STAT_20261113/reports/gate_C_stat_logs/compatibility_server.txt reports/gate_C_stat_logs/compatibility_server.txt
 ```
 
-Inspection succeeded: host amax, Python3.12.3,256 CPUs, about476GiB available
+Inspection succeeded: host amax, Python3.12.3,256 CPUs, 476,385 MiB available (about 465 GiB)
 memory and6.7TiB disk available at inspection. These are environment observations,
 not resources consumed by C-STAT. Clone/copy succeeded. The server compatibility
 command exited1 at F/0000 after the ten A–E fixtures matched; its mismatch and
@@ -129,3 +129,101 @@ it does not inspect coverage for selection and consumes no random streams.
 A transient `caffeinate -i -w 49062` assertion keeps idle system sleep from
 interrupting the active local batch and ends when that batch process exits.
 It does not change scientific code, settings or permanent power configuration.
+
+A local storage check (`df -h .` and `du -sh results/gate_C/confirmatory`,
+exit0) recorded86GiB available and64MiB partial outputs in `local_disk_space.txt`.
+The future D1 proposal clarifies that its gap labels a predeclared probe and
+other candidate truths derive from one common potential-outcome model; D2
+clarifies context-graph degree versus the stochastic conflict graph. These are
+outcome-blind proposal clarifications, with no new draws or C-STAT change.
+The nontriviality heatmap labels POINT_ONLY/F-graph cells N/A while retaining
+the frozen numeric metrics; the no-certified-decision panel correctly retains
+100% for those methods. This presentation change does not change an endpoint.
+
+Two reporting-only inspection errors occurred while the batch continued:
+`cat reports/gate_C_stat_audit/methods_validation.md` exited1 because that
+report lives under the independent-validation output directory, not the script
+directory. A subsequent log-append patch failed its context check and made no
+change; the corrected patch succeeded. Neither error ran an experiment or
+affected a checkpoint, statistic, source lock, or test result.
+
+Final delivery check:
+
+```sh
+.venv/bin/python -m pytest -q > reports/gate_C_stat_logs/delivery_pytest.txt 2>&1
+```
+
+Exit0: **485 passed in23.20s**. No pytest run failed. The main confirmatory
+process subsequently exited0 with all6,000 logs complete. Its immutable
+run-manifest/candidate provenance is launch commit `5f9a221062e67af492f1145dfd7ed3bec050de15`.
+The invocation JSON's `git_sha` is sampled at completion and therefore records
+`3542853df786f32cce5d1b49ae7b7910919a76d3`, after new reporting/proposal commits.
+The actual runner SHA and all26 scientific source hashes stayed unchanged;
+this is a metadata timestamp distinction, not a scientific code revision.
+
+## Completed confirmation, recovery and independent analysis
+
+The main command exited0. The completion-gated controller then ran these
+commands, each with exit0; exact subprocess argument arrays and log filenames
+are saved in `gate_C_stat_logs/postprocessing_commands.jsonl`:
+
+```sh
+.venv/bin/python -m experiments.gate_c_confirmatory --confirmatory --resume --aggregate-only --compatibility-report results/gate_C/stat_lock/compatibility_local_final/compatibility_result.json --workers 6 --output results/gate_C/confirmatory
+MPLCONFIGDIR=/tmp/comet-matplotlib .venv/bin/python reports/gate_C_stat_audit/validate_confirmatory.py --input results/gate_C/confirmatory --output results/gate_C/confirmatory/independent_validation --phase confirmatory --figures
+.venv/bin/python reports/gate_C_stat_audit/finalize_reports.py
+```
+
+The resume skipped all6,000 assigned IDs, drew zero new logs, and preserved
+every completed checkpoint byte. The independent analysis passed28,884,898
+checks over1,134,000 candidate records and all84 summaries, including exactly17
+primary Holm diagnostics. All222 files present at the starting evidence commit
+and all26 science modules remain byte-identical. The original12 preflight logs
+are outside every confirmatory numerator and denominator.
+
+Main invocation:10,389.879 wall seconds,55,394.379 combined parent/child CPU
+seconds. Zero-draw resume:288.065 wall seconds,282.354 CPU seconds. The total
+recorded invocation cost is10,677.944 wall seconds and55,676.733 CPU seconds.
+Parent peak RSS211.500MiB and maximum child peak116.828MiB are separate process
+high-water marks, not summed concurrent memory. The independent statistical
+validation measured87.861s wall and86.030s CPU before export/figure rendering;
+its measured peak at that point was112,590,848 bytes. No per-method memory was
+inferred from these measurements.
+
+After reviewing the completed outputs, report presentation was regenerated
+with the following command (exit0; separate log preserves the original run):
+
+```sh
+.venv/bin/python reports/gate_C_stat_audit/finalize_reports.py > reports/gate_C_stat_logs/confirmatory_report_presentation.txt 2>&1
+```
+
+It states the actual successful resume, distinguishes launch/finish provenance,
+and displays the inapplicable F graph nontriviality cell as NA. The frozen CSV
+metric, statistics, plots and checkpoints did not change. All five actual
+figures were visually reviewed; their companion captions and ten export hashes
+are preserved in the figure-review artifacts. No D-stage outcomes were drawn.
+
+Final resource-caption clarification used the same report renderer (exit0),
+with output saved separately as `confirmatory_report_resource_caption.txt`.
+It now explicitly labels the combined main-plus-resume total. The manuscript
+proposal was rebuilt with separate main/resume costs and refreshed provenance;
+all five TeX/BibTeX commands and `git apply --check` exited0. All nine pages
+were reviewed, including the corrected resource paragraph, and all45 original
+paper files remained unchanged.
+
+Packaging computed SHA-256 for127 completed export/analysis files in
+`export_checksums.json`; checkpoint hashes remain in the complete checkpoint
+index. No file is50MiB or larger. A complete new-path inventory is saved as
+`reports/gate_C_stat_modified_files.tsv`; every starting file is unchanged.
+
+`git diff --check` with CR-at-EOL allowed exited2 only on two blank context
+lines encoded inside the reviewable unified patch (lines554 and559). Those
+spaces are patch syntax and were retained; the patch applicability check
+exited0. The source/prose check excluding that literal patch file exited0:
+
+```sh
+git -c core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol diff --check -- . ':(exclude)paper/rewrite_proposals/cstat/paper_rewrite_diff.patch'
+git apply --check paper/rewrite_proposals/cstat/paper_rewrite_diff.patch
+```
+
+These inspection/presentation issues did not alter scientific outputs or
+produce any failed confirmatory log. All485 pytest tests passed.

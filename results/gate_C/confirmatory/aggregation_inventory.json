@@ -1,0 +1,16 @@
+{
+  "all_planned_ids_complete": true,
+  "candidate_records": 1134000,
+  "completed_logs": 6000,
+  "phase": "confirmatory",
+  "planned_logs": 6000,
+  "records_by_cell": {
+    "A": 14000,
+    "B": 224000,
+    "C": 224000,
+    "D": 224000,
+    "E": 224000,
+    "F": 224000
+  },
+  "summary_rows": 84
+}

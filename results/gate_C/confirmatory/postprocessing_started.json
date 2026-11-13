@@ -1,0 +1,5 @@
+{
+  "checkpoint_count_before_resume": 6000,
+  "before_sha256": "39c5728b06b33bc644c868249db4217e2ae4c4ea7aa987bc61e3f74467adcd13",
+  "source": "reports/gate_C_stat_audit/finish_after_batch.py"
+}

@@ -40,6 +40,7 @@ def main():
         commands = [['pdflatex','-interaction=nonstopmode','-halt-on-error','main.tex'],
                     ['bibtex','main'],
                     ['pdflatex','-interaction=nonstopmode','-halt-on-error','main.tex'],
+                    ['pdflatex','-interaction=nonstopmode','-halt-on-error','main.tex'],
                     ['pdflatex','-interaction=nonstopmode','-halt-on-error','main.tex']]
         outcomes=[]
         for i,command in enumerate(commands,1):
