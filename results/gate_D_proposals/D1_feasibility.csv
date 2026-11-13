@@ -1,0 +1,649 @@
+study,pi,chi,family_size,overlap,e1,q1,signed_raw_gap,implied_target_mean,mean_class_feasible,N_reference,design_radius,minimum_integer_N_for_abs_gap_gt_2r,eligible_for_run,reason
+D1,0.02,1,1,strong,0.5,0.5,0,0.45,True,32768,0.0034938562148434213,,False,proposal_only; no outcomes
+D1,0.02,1,1,strong,0.5,0.5,0.025,1.7,False,32768,0.0034938562148434213,2561,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,1,strong,0.5,0.5,-0.025,-0.8,False,32768,0.0034938562148434213,2561,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,1,strong,0.5,0.5,0.05,2.95,False,32768,0.0034938562148434213,641,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,1,strong,0.5,0.5,-0.05,-2.05,False,32768,0.0034938562148434213,641,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,1,strong,0.5,0.5,0.1,5.45,False,32768,0.0034938562148434213,161,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,1,strong,0.5,0.5,-0.1,-4.55,False,32768,0.0034938562148434213,161,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,1,strong,0.5,0.5,0.2,10.45,False,32768,0.0034938562148434213,41,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,1,strong,0.5,0.5,-0.2,-9.55,False,32768,0.0034938562148434213,41,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,1,weak,0.01,0.5,0,0.45,True,32768,0.017557288084980263,,False,proposal_only; no outcomes
+D1,0.02,1,1,weak,0.01,0.5,0.025,1.7,False,32768,0.017557288084980263,64648,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,1,weak,0.01,0.5,-0.025,-0.8,False,32768,0.017557288084980263,64648,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,1,weak,0.01,0.5,0.05,2.95,False,32768,0.017557288084980263,16163,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,1,weak,0.01,0.5,-0.05,-2.05,False,32768,0.017557288084980263,16163,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,1,weak,0.01,0.5,0.1,5.45,False,32768,0.017557288084980263,4042,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,1,weak,0.01,0.5,-0.1,-4.55,False,32768,0.017557288084980263,4042,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,1,weak,0.01,0.5,0.2,10.45,False,32768,0.017557288084980263,1012,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,1,weak,0.01,0.5,-0.2,-9.55,False,32768,0.017557288084980263,1012,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,16,strong,0.5,0.5,0,0.45,True,32768,0.013975424859373685,,False,proposal_only; no outcomes
+D1,0.02,1,16,strong,0.5,0.5,0.025,1.7,False,32768,0.013975424859373685,40961,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,16,strong,0.5,0.5,-0.025,-0.8,False,32768,0.013975424859373685,40961,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,16,strong,0.5,0.5,0.05,2.95,False,32768,0.013975424859373685,10241,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,16,strong,0.5,0.5,-0.05,-2.05,False,32768,0.013975424859373685,10241,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,16,strong,0.5,0.5,0.1,5.45,False,32768,0.013975424859373685,2561,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,16,strong,0.5,0.5,-0.1,-4.55,False,32768,0.013975424859373685,2561,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,16,strong,0.5,0.5,0.2,10.45,False,32768,0.013975424859373685,641,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,16,strong,0.5,0.5,-0.2,-9.55,False,32768,0.013975424859373685,641,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,16,weak,0.01,0.5,0,0.45,True,32768,0.07022915233992105,,False,proposal_only; no outcomes
+D1,0.02,1,16,weak,0.01,0.5,0.025,1.7,False,32768,0.07022915233992105,1034345,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,16,weak,0.01,0.5,-0.025,-0.8,False,32768,0.07022915233992105,1034345,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,16,weak,0.01,0.5,0.05,2.95,False,32768,0.07022915233992105,258587,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,16,weak,0.01,0.5,-0.05,-2.05,False,32768,0.07022915233992105,258587,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,16,weak,0.01,0.5,0.1,5.45,False,32768,0.07022915233992105,64648,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,16,weak,0.01,0.5,-0.1,-4.55,False,32768,0.07022915233992105,64648,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,16,weak,0.01,0.5,0.2,10.45,False,32768,0.07022915233992105,16163,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,16,weak,0.01,0.5,-0.2,-9.55,False,32768,0.07022915233992105,16163,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,64,strong,0.5,0.5,0,0.45,True,32768,0.02795084971874737,,False,proposal_only; no outcomes
+D1,0.02,1,64,strong,0.5,0.5,0.025,1.7,False,32768,0.02795084971874737,163841,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,64,strong,0.5,0.5,-0.025,-0.8,False,32768,0.02795084971874737,163841,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,64,strong,0.5,0.5,0.05,2.95,False,32768,0.02795084971874737,40961,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,64,strong,0.5,0.5,-0.05,-2.05,False,32768,0.02795084971874737,40961,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,64,strong,0.5,0.5,0.1,5.45,False,32768,0.02795084971874737,10241,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,64,strong,0.5,0.5,-0.1,-4.55,False,32768,0.02795084971874737,10241,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,64,strong,0.5,0.5,0.2,10.45,False,32768,0.02795084971874737,2561,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,64,strong,0.5,0.5,-0.2,-9.55,False,32768,0.02795084971874737,2561,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,64,weak,0.01,0.5,0,0.45,True,32768,0.1404583046798421,,False,proposal_only; no outcomes
+D1,0.02,1,64,weak,0.01,0.5,0.025,1.7,False,32768,0.1404583046798421,4137375,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,64,weak,0.01,0.5,-0.025,-0.8,False,32768,0.1404583046798421,4137375,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,64,weak,0.01,0.5,0.05,2.95,False,32768,0.1404583046798421,1034345,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,64,weak,0.01,0.5,-0.05,-2.05,False,32768,0.1404583046798421,1034345,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,64,weak,0.01,0.5,0.1,5.45,False,32768,0.1404583046798421,258587,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,64,weak,0.01,0.5,-0.1,-4.55,False,32768,0.1404583046798421,258587,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,64,weak,0.01,0.5,0.2,10.45,False,32768,0.1404583046798421,64648,False,proposal_only; impossible means excluded before draws
+D1,0.02,1,64,weak,0.01,0.5,-0.2,-9.55,False,32768,0.1404583046798421,64648,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,1,strong,0.5,0.5,0,0.45,True,32768,0.006987712429686843,,False,proposal_only; no outcomes
+D1,0.02,4,1,strong,0.5,0.5,0.025,1.7,False,32768,0.006987712429686843,10241,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,1,strong,0.5,0.5,-0.025,-0.8,False,32768,0.006987712429686843,10241,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,1,strong,0.5,0.5,0.05,2.95,False,32768,0.006987712429686843,2561,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,1,strong,0.5,0.5,-0.05,-2.05,False,32768,0.006987712429686843,2561,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,1,strong,0.5,0.5,0.1,5.45,False,32768,0.006987712429686843,641,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,1,strong,0.5,0.5,-0.1,-4.55,False,32768,0.006987712429686843,641,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,1,strong,0.5,0.5,0.2,10.45,False,32768,0.006987712429686843,161,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,1,strong,0.5,0.5,-0.2,-9.55,False,32768,0.006987712429686843,161,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,1,weak,0.01,0.5,0,0.45,True,32768,0.035114576169960526,,False,proposal_only; no outcomes
+D1,0.02,4,1,weak,0.01,0.5,0.025,1.7,False,32768,0.035114576169960526,258587,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,1,weak,0.01,0.5,-0.025,-0.8,False,32768,0.035114576169960526,258587,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,1,weak,0.01,0.5,0.05,2.95,False,32768,0.035114576169960526,64648,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,1,weak,0.01,0.5,-0.05,-2.05,False,32768,0.035114576169960526,64648,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,1,weak,0.01,0.5,0.1,5.45,False,32768,0.035114576169960526,16163,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,1,weak,0.01,0.5,-0.1,-4.55,False,32768,0.035114576169960526,16163,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,1,weak,0.01,0.5,0.2,10.45,False,32768,0.035114576169960526,4042,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,1,weak,0.01,0.5,-0.2,-9.55,False,32768,0.035114576169960526,4042,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,16,strong,0.5,0.5,0,0.45,True,32768,0.02795084971874737,,False,proposal_only; no outcomes
+D1,0.02,4,16,strong,0.5,0.5,0.025,1.7,False,32768,0.02795084971874737,163841,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,16,strong,0.5,0.5,-0.025,-0.8,False,32768,0.02795084971874737,163841,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,16,strong,0.5,0.5,0.05,2.95,False,32768,0.02795084971874737,40961,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,16,strong,0.5,0.5,-0.05,-2.05,False,32768,0.02795084971874737,40961,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,16,strong,0.5,0.5,0.1,5.45,False,32768,0.02795084971874737,10241,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,16,strong,0.5,0.5,-0.1,-4.55,False,32768,0.02795084971874737,10241,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,16,strong,0.5,0.5,0.2,10.45,False,32768,0.02795084971874737,2561,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,16,strong,0.5,0.5,-0.2,-9.55,False,32768,0.02795084971874737,2561,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,16,weak,0.01,0.5,0,0.45,True,32768,0.1404583046798421,,False,proposal_only; no outcomes
+D1,0.02,4,16,weak,0.01,0.5,0.025,1.7,False,32768,0.1404583046798421,4137375,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,16,weak,0.01,0.5,-0.025,-0.8,False,32768,0.1404583046798421,4137375,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,16,weak,0.01,0.5,0.05,2.95,False,32768,0.1404583046798421,1034345,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,16,weak,0.01,0.5,-0.05,-2.05,False,32768,0.1404583046798421,1034345,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,16,weak,0.01,0.5,0.1,5.45,False,32768,0.1404583046798421,258587,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,16,weak,0.01,0.5,-0.1,-4.55,False,32768,0.1404583046798421,258587,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,16,weak,0.01,0.5,0.2,10.45,False,32768,0.1404583046798421,64648,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,16,weak,0.01,0.5,-0.2,-9.55,False,32768,0.1404583046798421,64648,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,64,strong,0.5,0.5,0,0.45,True,32768,0.05590169943749474,,False,proposal_only; no outcomes
+D1,0.02,4,64,strong,0.5,0.5,0.025,1.7,False,32768,0.05590169943749474,655361,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,64,strong,0.5,0.5,-0.025,-0.8,False,32768,0.05590169943749474,655361,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,64,strong,0.5,0.5,0.05,2.95,False,32768,0.05590169943749474,163841,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,64,strong,0.5,0.5,-0.05,-2.05,False,32768,0.05590169943749474,163841,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,64,strong,0.5,0.5,0.1,5.45,False,32768,0.05590169943749474,40961,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,64,strong,0.5,0.5,-0.1,-4.55,False,32768,0.05590169943749474,40961,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,64,strong,0.5,0.5,0.2,10.45,False,32768,0.05590169943749474,10241,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,64,strong,0.5,0.5,-0.2,-9.55,False,32768,0.05590169943749474,10241,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,64,weak,0.01,0.5,0,0.45,True,32768,0.2809166093596842,,False,proposal_only; no outcomes
+D1,0.02,4,64,weak,0.01,0.5,0.025,1.7,False,32768,0.2809166093596842,16549496,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,64,weak,0.01,0.5,-0.025,-0.8,False,32768,0.2809166093596842,16549496,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,64,weak,0.01,0.5,0.05,2.95,False,32768,0.2809166093596842,4137375,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,64,weak,0.01,0.5,-0.05,-2.05,False,32768,0.2809166093596842,4137375,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,64,weak,0.01,0.5,0.1,5.45,False,32768,0.2809166093596842,1034345,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,64,weak,0.01,0.5,-0.1,-4.55,False,32768,0.2809166093596842,1034345,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,64,weak,0.01,0.5,0.2,10.45,False,32768,0.2809166093596842,258587,False,proposal_only; impossible means excluded before draws
+D1,0.02,4,64,weak,0.01,0.5,-0.2,-9.55,False,32768,0.2809166093596842,258587,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,1,strong,0.5,0.5,0,0.45,True,32768,0.009882117688026186,,False,proposal_only; no outcomes
+D1,0.02,8,1,strong,0.5,0.5,0.025,1.7,False,32768,0.009882117688026186,20481,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,1,strong,0.5,0.5,-0.025,-0.8,False,32768,0.009882117688026186,20481,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,1,strong,0.5,0.5,0.05,2.95,False,32768,0.009882117688026186,5121,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,1,strong,0.5,0.5,-0.05,-2.05,False,32768,0.009882117688026186,5121,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,1,strong,0.5,0.5,0.1,5.45,False,32768,0.009882117688026186,1281,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,1,strong,0.5,0.5,-0.1,-4.55,False,32768,0.009882117688026186,1281,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,1,strong,0.5,0.5,0.2,10.45,False,32768,0.009882117688026186,321,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,1,strong,0.5,0.5,-0.2,-9.55,False,32768,0.009882117688026186,321,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,1,weak,0.01,0.5,0,0.45,True,32768,0.049659509856541266,,False,proposal_only; no outcomes
+D1,0.02,8,1,weak,0.01,0.5,0.025,1.7,False,32768,0.049659509856541266,517173,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,1,weak,0.01,0.5,-0.025,-0.8,False,32768,0.049659509856541266,517173,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,1,weak,0.01,0.5,0.05,2.95,False,32768,0.049659509856541266,129294,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,1,weak,0.01,0.5,-0.05,-2.05,False,32768,0.049659509856541266,129294,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,1,weak,0.01,0.5,0.1,5.45,False,32768,0.049659509856541266,32325,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,1,weak,0.01,0.5,-0.1,-4.55,False,32768,0.049659509856541266,32325,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,1,weak,0.01,0.5,0.2,10.45,False,32768,0.049659509856541266,8082,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,1,weak,0.01,0.5,-0.2,-9.55,False,32768,0.049659509856541266,8082,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,16,strong,0.5,0.5,0,0.45,True,32768,0.03952847075210474,,False,proposal_only; no outcomes
+D1,0.02,8,16,strong,0.5,0.5,0.025,1.7,False,32768,0.03952847075210474,327681,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,16,strong,0.5,0.5,-0.025,-0.8,False,32768,0.03952847075210474,327681,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,16,strong,0.5,0.5,0.05,2.95,False,32768,0.03952847075210474,81921,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,16,strong,0.5,0.5,-0.05,-2.05,False,32768,0.03952847075210474,81921,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,16,strong,0.5,0.5,0.1,5.45,False,32768,0.03952847075210474,20481,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,16,strong,0.5,0.5,-0.1,-4.55,False,32768,0.03952847075210474,20481,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,16,strong,0.5,0.5,0.2,10.45,False,32768,0.03952847075210474,5121,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,16,strong,0.5,0.5,-0.2,-9.55,False,32768,0.03952847075210474,5121,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,16,weak,0.01,0.5,0,0.45,True,32768,0.19863803942616506,,False,proposal_only; no outcomes
+D1,0.02,8,16,weak,0.01,0.5,0.025,1.7,False,32768,0.19863803942616506,8274749,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,16,weak,0.01,0.5,-0.025,-0.8,False,32768,0.19863803942616506,8274749,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,16,weak,0.01,0.5,0.05,2.95,False,32768,0.19863803942616506,2068688,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,16,weak,0.01,0.5,-0.05,-2.05,False,32768,0.19863803942616506,2068688,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,16,weak,0.01,0.5,0.1,5.45,False,32768,0.19863803942616506,517173,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,16,weak,0.01,0.5,-0.1,-4.55,False,32768,0.19863803942616506,517173,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,16,weak,0.01,0.5,0.2,10.45,False,32768,0.19863803942616506,129294,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,16,weak,0.01,0.5,-0.2,-9.55,False,32768,0.19863803942616506,129294,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,64,strong,0.5,0.5,0,0.45,True,32768,0.07905694150420949,,False,proposal_only; no outcomes
+D1,0.02,8,64,strong,0.5,0.5,0.025,1.7,False,32768,0.07905694150420949,1310721,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,64,strong,0.5,0.5,-0.025,-0.8,False,32768,0.07905694150420949,1310721,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,64,strong,0.5,0.5,0.05,2.95,False,32768,0.07905694150420949,327681,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,64,strong,0.5,0.5,-0.05,-2.05,False,32768,0.07905694150420949,327681,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,64,strong,0.5,0.5,0.1,5.45,False,32768,0.07905694150420949,81921,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,64,strong,0.5,0.5,-0.1,-4.55,False,32768,0.07905694150420949,81921,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,64,strong,0.5,0.5,0.2,10.45,False,32768,0.07905694150420949,20481,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,64,strong,0.5,0.5,-0.2,-9.55,False,32768,0.07905694150420949,20481,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,64,weak,0.01,0.5,0,0.45,True,32768,0.39727607885233013,,False,proposal_only; no outcomes
+D1,0.02,8,64,weak,0.01,0.5,0.025,1.7,False,32768,0.39727607885233013,33098991,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,64,weak,0.01,0.5,-0.025,-0.8,False,32768,0.39727607885233013,33098991,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,64,weak,0.01,0.5,0.05,2.95,False,32768,0.39727607885233013,8274749,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,64,weak,0.01,0.5,-0.05,-2.05,False,32768,0.39727607885233013,8274749,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,64,weak,0.01,0.5,0.1,5.45,False,32768,0.39727607885233013,2068688,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,64,weak,0.01,0.5,-0.1,-4.55,False,32768,0.39727607885233013,2068688,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,64,weak,0.01,0.5,0.2,10.45,False,32768,0.39727607885233013,517173,False,proposal_only; impossible means excluded before draws
+D1,0.02,8,64,weak,0.01,0.5,-0.2,-9.55,False,32768,0.39727607885233013,517173,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,1,strong,0.5,0.5,0,0.45,True,32768,0.005524271728019903,,False,proposal_only; no outcomes
+D1,0.05,1,1,strong,0.5,0.5,0.025,0.95,True,32768,0.005524271728019903,6401,False,proposal_only; no outcomes
+D1,0.05,1,1,strong,0.5,0.5,-0.025,-0.04999999999999999,False,32768,0.005524271728019903,6401,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,1,strong,0.5,0.5,0.05,1.45,False,32768,0.005524271728019903,1601,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,1,strong,0.5,0.5,-0.05,-0.55,False,32768,0.005524271728019903,1601,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,1,strong,0.5,0.5,0.1,2.45,False,32768,0.005524271728019903,401,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,1,strong,0.5,0.5,-0.1,-1.55,False,32768,0.005524271728019903,401,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,1,strong,0.5,0.5,0.2,4.45,False,32768,0.005524271728019903,101,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,1,strong,0.5,0.5,-0.2,-3.55,False,32768,0.005524271728019903,101,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,1,weak,0.01,0.5,0,0.45,True,32768,0.027760509942136774,,False,proposal_only; no outcomes
+D1,0.05,1,1,weak,0.01,0.5,0.025,0.95,True,32768,0.027760509942136774,161618,False,proposal_only; no outcomes
+D1,0.05,1,1,weak,0.01,0.5,-0.025,-0.04999999999999999,False,32768,0.027760509942136774,161618,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,1,weak,0.01,0.5,0.05,1.45,False,32768,0.027760509942136774,40406,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,1,weak,0.01,0.5,-0.05,-0.55,False,32768,0.027760509942136774,40406,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,1,weak,0.01,0.5,0.1,2.45,False,32768,0.027760509942136774,10103,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,1,weak,0.01,0.5,-0.1,-1.55,False,32768,0.027760509942136774,10103,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,1,weak,0.01,0.5,0.2,4.45,False,32768,0.027760509942136774,2527,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,1,weak,0.01,0.5,-0.2,-3.55,False,32768,0.027760509942136774,2527,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,16,strong,0.5,0.5,0,0.45,True,32768,0.02209708691207961,,False,proposal_only; no outcomes
+D1,0.05,1,16,strong,0.5,0.5,0.025,0.95,True,32768,0.02209708691207961,102401,False,proposal_only; no outcomes
+D1,0.05,1,16,strong,0.5,0.5,-0.025,-0.04999999999999999,False,32768,0.02209708691207961,102401,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,16,strong,0.5,0.5,0.05,1.45,False,32768,0.02209708691207961,25601,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,16,strong,0.5,0.5,-0.05,-0.55,False,32768,0.02209708691207961,25601,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,16,strong,0.5,0.5,0.1,2.45,False,32768,0.02209708691207961,6401,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,16,strong,0.5,0.5,-0.1,-1.55,False,32768,0.02209708691207961,6401,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,16,strong,0.5,0.5,0.2,4.45,False,32768,0.02209708691207961,1601,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,16,strong,0.5,0.5,-0.2,-3.55,False,32768,0.02209708691207961,1601,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,16,weak,0.01,0.5,0,0.45,True,32768,0.1110420397685471,,False,proposal_only; no outcomes
+D1,0.05,1,16,weak,0.01,0.5,0.025,0.95,True,32768,0.1110420397685471,2585860,False,proposal_only; no outcomes
+D1,0.05,1,16,weak,0.01,0.5,-0.025,-0.04999999999999999,False,32768,0.1110420397685471,2585860,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,16,weak,0.01,0.5,0.05,1.45,False,32768,0.1110420397685471,646466,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,16,weak,0.01,0.5,-0.05,-0.55,False,32768,0.1110420397685471,646466,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,16,weak,0.01,0.5,0.1,2.45,False,32768,0.1110420397685471,161618,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,16,weak,0.01,0.5,-0.1,-1.55,False,32768,0.1110420397685471,161618,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,16,weak,0.01,0.5,0.2,4.45,False,32768,0.1110420397685471,40406,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,16,weak,0.01,0.5,-0.2,-3.55,False,32768,0.1110420397685471,40406,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,64,strong,0.5,0.5,0,0.45,True,32768,0.04419417382415922,,False,proposal_only; no outcomes
+D1,0.05,1,64,strong,0.5,0.5,0.025,0.95,True,32768,0.04419417382415922,409601,False,proposal_only; no outcomes
+D1,0.05,1,64,strong,0.5,0.5,-0.025,-0.04999999999999999,False,32768,0.04419417382415922,409601,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,64,strong,0.5,0.5,0.05,1.45,False,32768,0.04419417382415922,102401,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,64,strong,0.5,0.5,-0.05,-0.55,False,32768,0.04419417382415922,102401,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,64,strong,0.5,0.5,0.1,2.45,False,32768,0.04419417382415922,25601,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,64,strong,0.5,0.5,-0.1,-1.55,False,32768,0.04419417382415922,25601,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,64,strong,0.5,0.5,0.2,4.45,False,32768,0.04419417382415922,6401,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,64,strong,0.5,0.5,-0.2,-3.55,False,32768,0.04419417382415922,6401,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,64,weak,0.01,0.5,0,0.45,True,32768,0.2220840795370942,,False,proposal_only; no outcomes
+D1,0.05,1,64,weak,0.01,0.5,0.025,0.95,True,32768,0.2220840795370942,10343436,False,proposal_only; no outcomes
+D1,0.05,1,64,weak,0.01,0.5,-0.025,-0.04999999999999999,False,32768,0.2220840795370942,10343436,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,64,weak,0.01,0.5,0.05,1.45,False,32768,0.2220840795370942,2585860,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,64,weak,0.01,0.5,-0.05,-0.55,False,32768,0.2220840795370942,2585860,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,64,weak,0.01,0.5,0.1,2.45,False,32768,0.2220840795370942,646466,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,64,weak,0.01,0.5,-0.1,-1.55,False,32768,0.2220840795370942,646466,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,64,weak,0.01,0.5,0.2,4.45,False,32768,0.2220840795370942,161618,False,proposal_only; impossible means excluded before draws
+D1,0.05,1,64,weak,0.01,0.5,-0.2,-3.55,False,32768,0.2220840795370942,161618,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,1,strong,0.5,0.5,0,0.45,True,32768,0.011048543456039806,,False,proposal_only; no outcomes
+D1,0.05,4,1,strong,0.5,0.5,0.025,0.95,True,32768,0.011048543456039806,25601,False,proposal_only; no outcomes
+D1,0.05,4,1,strong,0.5,0.5,-0.025,-0.04999999999999999,False,32768,0.011048543456039806,25601,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,1,strong,0.5,0.5,0.05,1.45,False,32768,0.011048543456039806,6401,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,1,strong,0.5,0.5,-0.05,-0.55,False,32768,0.011048543456039806,6401,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,1,strong,0.5,0.5,0.1,2.45,False,32768,0.011048543456039806,1601,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,1,strong,0.5,0.5,-0.1,-1.55,False,32768,0.011048543456039806,1601,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,1,strong,0.5,0.5,0.2,4.45,False,32768,0.011048543456039806,401,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,1,strong,0.5,0.5,-0.2,-3.55,False,32768,0.011048543456039806,401,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,1,weak,0.01,0.5,0,0.45,True,32768,0.05552101988427355,,False,proposal_only; no outcomes
+D1,0.05,4,1,weak,0.01,0.5,0.025,0.95,True,32768,0.05552101988427355,646466,False,proposal_only; no outcomes
+D1,0.05,4,1,weak,0.01,0.5,-0.025,-0.04999999999999999,False,32768,0.05552101988427355,646466,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,1,weak,0.01,0.5,0.05,1.45,False,32768,0.05552101988427355,161618,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,1,weak,0.01,0.5,-0.05,-0.55,False,32768,0.05552101988427355,161618,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,1,weak,0.01,0.5,0.1,2.45,False,32768,0.05552101988427355,40406,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,1,weak,0.01,0.5,-0.1,-1.55,False,32768,0.05552101988427355,40406,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,1,weak,0.01,0.5,0.2,4.45,False,32768,0.05552101988427355,10103,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,1,weak,0.01,0.5,-0.2,-3.55,False,32768,0.05552101988427355,10103,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,16,strong,0.5,0.5,0,0.45,True,32768,0.04419417382415922,,False,proposal_only; no outcomes
+D1,0.05,4,16,strong,0.5,0.5,0.025,0.95,True,32768,0.04419417382415922,409601,False,proposal_only; no outcomes
+D1,0.05,4,16,strong,0.5,0.5,-0.025,-0.04999999999999999,False,32768,0.04419417382415922,409601,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,16,strong,0.5,0.5,0.05,1.45,False,32768,0.04419417382415922,102401,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,16,strong,0.5,0.5,-0.05,-0.55,False,32768,0.04419417382415922,102401,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,16,strong,0.5,0.5,0.1,2.45,False,32768,0.04419417382415922,25601,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,16,strong,0.5,0.5,-0.1,-1.55,False,32768,0.04419417382415922,25601,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,16,strong,0.5,0.5,0.2,4.45,False,32768,0.04419417382415922,6401,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,16,strong,0.5,0.5,-0.2,-3.55,False,32768,0.04419417382415922,6401,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,16,weak,0.01,0.5,0,0.45,True,32768,0.2220840795370942,,False,proposal_only; no outcomes
+D1,0.05,4,16,weak,0.01,0.5,0.025,0.95,True,32768,0.2220840795370942,10343436,False,proposal_only; no outcomes
+D1,0.05,4,16,weak,0.01,0.5,-0.025,-0.04999999999999999,False,32768,0.2220840795370942,10343436,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,16,weak,0.01,0.5,0.05,1.45,False,32768,0.2220840795370942,2585860,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,16,weak,0.01,0.5,-0.05,-0.55,False,32768,0.2220840795370942,2585860,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,16,weak,0.01,0.5,0.1,2.45,False,32768,0.2220840795370942,646466,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,16,weak,0.01,0.5,-0.1,-1.55,False,32768,0.2220840795370942,646466,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,16,weak,0.01,0.5,0.2,4.45,False,32768,0.2220840795370942,161618,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,16,weak,0.01,0.5,-0.2,-3.55,False,32768,0.2220840795370942,161618,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,64,strong,0.5,0.5,0,0.45,True,32768,0.08838834764831845,,False,proposal_only; no outcomes
+D1,0.05,4,64,strong,0.5,0.5,0.025,0.95,True,32768,0.08838834764831845,1638401,False,proposal_only; no outcomes
+D1,0.05,4,64,strong,0.5,0.5,-0.025,-0.04999999999999999,False,32768,0.08838834764831845,1638401,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,64,strong,0.5,0.5,0.05,1.45,False,32768,0.08838834764831845,409601,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,64,strong,0.5,0.5,-0.05,-0.55,False,32768,0.08838834764831845,409601,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,64,strong,0.5,0.5,0.1,2.45,False,32768,0.08838834764831845,102401,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,64,strong,0.5,0.5,-0.1,-1.55,False,32768,0.08838834764831845,102401,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,64,strong,0.5,0.5,0.2,4.45,False,32768,0.08838834764831845,25601,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,64,strong,0.5,0.5,-0.2,-3.55,False,32768,0.08838834764831845,25601,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,64,weak,0.01,0.5,0,0.45,True,32768,0.4441681590741884,,False,proposal_only; no outcomes
+D1,0.05,4,64,weak,0.01,0.5,0.025,0.95,True,32768,0.4441681590741884,41373739,False,proposal_only; no outcomes
+D1,0.05,4,64,weak,0.01,0.5,-0.025,-0.04999999999999999,False,32768,0.4441681590741884,41373739,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,64,weak,0.01,0.5,0.05,1.45,False,32768,0.4441681590741884,10343436,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,64,weak,0.01,0.5,-0.05,-0.55,False,32768,0.4441681590741884,10343436,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,64,weak,0.01,0.5,0.1,2.45,False,32768,0.4441681590741884,2585860,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,64,weak,0.01,0.5,-0.1,-1.55,False,32768,0.4441681590741884,2585860,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,64,weak,0.01,0.5,0.2,4.45,False,32768,0.4441681590741884,646466,False,proposal_only; impossible means excluded before draws
+D1,0.05,4,64,weak,0.01,0.5,-0.2,-3.55,False,32768,0.4441681590741884,646466,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,1,strong,0.5,0.5,0,0.45,True,32768,0.015625,,False,proposal_only; no outcomes
+D1,0.05,8,1,strong,0.5,0.5,0.025,0.95,True,32768,0.015625,51201,False,proposal_only; no outcomes
+D1,0.05,8,1,strong,0.5,0.5,-0.025,-0.04999999999999999,False,32768,0.015625,51201,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,1,strong,0.5,0.5,0.05,1.45,False,32768,0.015625,12801,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,1,strong,0.5,0.5,-0.05,-0.55,False,32768,0.015625,12801,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,1,strong,0.5,0.5,0.1,2.45,False,32768,0.015625,3201,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,1,strong,0.5,0.5,-0.1,-1.55,False,32768,0.015625,3201,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,1,strong,0.5,0.5,0.2,4.45,False,32768,0.015625,801,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,1,strong,0.5,0.5,-0.2,-3.55,False,32768,0.015625,801,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,1,weak,0.01,0.5,0,0.45,True,32768,0.07851857931712594,,False,proposal_only; no outcomes
+D1,0.05,8,1,weak,0.01,0.5,0.025,0.95,True,32768,0.07851857931712594,1292931,False,proposal_only; no outcomes
+D1,0.05,8,1,weak,0.01,0.5,-0.025,-0.04999999999999999,False,32768,0.07851857931712594,1292931,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,1,weak,0.01,0.5,0.05,1.45,False,32768,0.07851857931712594,323234,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,1,weak,0.01,0.5,-0.05,-0.55,False,32768,0.07851857931712594,323234,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,1,weak,0.01,0.5,0.1,2.45,False,32768,0.07851857931712594,80810,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,1,weak,0.01,0.5,-0.1,-1.55,False,32768,0.07851857931712594,80810,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,1,weak,0.01,0.5,0.2,4.45,False,32768,0.07851857931712594,20204,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,1,weak,0.01,0.5,-0.2,-3.55,False,32768,0.07851857931712594,20204,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,16,strong,0.5,0.5,0,0.45,True,32768,0.0625,,False,proposal_only; no outcomes
+D1,0.05,8,16,strong,0.5,0.5,0.025,0.95,True,32768,0.0625,819201,False,proposal_only; no outcomes
+D1,0.05,8,16,strong,0.5,0.5,-0.025,-0.04999999999999999,False,32768,0.0625,819201,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,16,strong,0.5,0.5,0.05,1.45,False,32768,0.0625,204801,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,16,strong,0.5,0.5,-0.05,-0.55,False,32768,0.0625,204801,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,16,strong,0.5,0.5,0.1,2.45,False,32768,0.0625,51201,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,16,strong,0.5,0.5,-0.1,-1.55,False,32768,0.0625,51201,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,16,strong,0.5,0.5,0.2,4.45,False,32768,0.0625,12801,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,16,strong,0.5,0.5,-0.2,-3.55,False,32768,0.0625,12801,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,16,weak,0.01,0.5,0,0.45,True,32768,0.31407431726850377,,False,proposal_only; no outcomes
+D1,0.05,8,16,weak,0.01,0.5,0.025,0.95,True,32768,0.31407431726850377,20686870,False,proposal_only; no outcomes
+D1,0.05,8,16,weak,0.01,0.5,-0.025,-0.04999999999999999,False,32768,0.31407431726850377,20686870,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,16,weak,0.01,0.5,0.05,1.45,False,32768,0.31407431726850377,5171719,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,16,weak,0.01,0.5,-0.05,-0.55,False,32768,0.31407431726850377,5171719,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,16,weak,0.01,0.5,0.1,2.45,False,32768,0.31407431726850377,1292931,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,16,weak,0.01,0.5,-0.1,-1.55,False,32768,0.31407431726850377,1292931,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,16,weak,0.01,0.5,0.2,4.45,False,32768,0.31407431726850377,323234,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,16,weak,0.01,0.5,-0.2,-3.55,False,32768,0.31407431726850377,323234,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,64,strong,0.5,0.5,0,0.45,True,32768,0.125,,False,proposal_only; no outcomes
+D1,0.05,8,64,strong,0.5,0.5,0.025,0.95,True,32768,0.125,3276801,False,proposal_only; no outcomes
+D1,0.05,8,64,strong,0.5,0.5,-0.025,-0.04999999999999999,False,32768,0.125,3276801,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,64,strong,0.5,0.5,0.05,1.45,False,32768,0.125,819201,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,64,strong,0.5,0.5,-0.05,-0.55,False,32768,0.125,819201,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,64,strong,0.5,0.5,0.1,2.45,False,32768,0.125,204801,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,64,strong,0.5,0.5,-0.1,-1.55,False,32768,0.125,204801,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,64,strong,0.5,0.5,0.2,4.45,False,32768,0.125,51201,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,64,strong,0.5,0.5,-0.2,-3.55,False,32768,0.125,51201,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,64,weak,0.01,0.5,0,0.45,True,32768,0.6281486345370075,,False,proposal_only; no outcomes
+D1,0.05,8,64,weak,0.01,0.5,0.025,0.95,True,32768,0.6281486345370075,82747476,False,proposal_only; no outcomes
+D1,0.05,8,64,weak,0.01,0.5,-0.025,-0.04999999999999999,False,32768,0.6281486345370075,82747476,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,64,weak,0.01,0.5,0.05,1.45,False,32768,0.6281486345370075,20686870,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,64,weak,0.01,0.5,-0.05,-0.55,False,32768,0.6281486345370075,20686870,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,64,weak,0.01,0.5,0.1,2.45,False,32768,0.6281486345370075,5171719,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,64,weak,0.01,0.5,-0.1,-1.55,False,32768,0.6281486345370075,5171719,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,64,weak,0.01,0.5,0.2,4.45,False,32768,0.6281486345370075,1292931,False,proposal_only; impossible means excluded before draws
+D1,0.05,8,64,weak,0.01,0.5,-0.2,-3.55,False,32768,0.6281486345370075,1292931,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,1,strong,0.5,0.5,0,0.45,True,32768,0.0078125,,False,proposal_only; no outcomes
+D1,0.1,1,1,strong,0.5,0.5,0.025,0.7,True,32768,0.0078125,12801,False,proposal_only; no outcomes
+D1,0.1,1,1,strong,0.5,0.5,-0.025,0.2,True,32768,0.0078125,12801,False,proposal_only; no outcomes
+D1,0.1,1,1,strong,0.5,0.5,0.05,0.95,True,32768,0.0078125,3201,False,proposal_only; no outcomes
+D1,0.1,1,1,strong,0.5,0.5,-0.05,-0.04999999999999999,False,32768,0.0078125,3201,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,1,strong,0.5,0.5,0.1,1.45,False,32768,0.0078125,801,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,1,strong,0.5,0.5,-0.1,-0.55,False,32768,0.0078125,801,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,1,strong,0.5,0.5,0.2,2.45,False,32768,0.0078125,201,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,1,strong,0.5,0.5,-0.2,-1.55,False,32768,0.0078125,201,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,1,weak,0.01,0.5,0,0.45,True,32768,0.03925928965856297,,False,proposal_only; no outcomes
+D1,0.1,1,1,weak,0.01,0.5,0.025,0.7,True,32768,0.03925928965856297,323234,False,proposal_only; no outcomes
+D1,0.1,1,1,weak,0.01,0.5,-0.025,0.2,True,32768,0.03925928965856297,323234,False,proposal_only; no outcomes
+D1,0.1,1,1,weak,0.01,0.5,0.05,0.95,True,32768,0.03925928965856297,80810,False,proposal_only; no outcomes
+D1,0.1,1,1,weak,0.01,0.5,-0.05,-0.04999999999999999,False,32768,0.03925928965856297,80810,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,1,weak,0.01,0.5,0.1,1.45,False,32768,0.03925928965856297,20204,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,1,weak,0.01,0.5,-0.1,-0.55,False,32768,0.03925928965856297,20204,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,1,weak,0.01,0.5,0.2,2.45,False,32768,0.03925928965856297,5052,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,1,weak,0.01,0.5,-0.2,-1.55,False,32768,0.03925928965856297,5052,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,16,strong,0.5,0.5,0,0.45,True,32768,0.03125,,False,proposal_only; no outcomes
+D1,0.1,1,16,strong,0.5,0.5,0.025,0.7,True,32768,0.03125,204801,False,proposal_only; no outcomes
+D1,0.1,1,16,strong,0.5,0.5,-0.025,0.2,True,32768,0.03125,204801,False,proposal_only; no outcomes
+D1,0.1,1,16,strong,0.5,0.5,0.05,0.95,True,32768,0.03125,51201,False,proposal_only; no outcomes
+D1,0.1,1,16,strong,0.5,0.5,-0.05,-0.04999999999999999,False,32768,0.03125,51201,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,16,strong,0.5,0.5,0.1,1.45,False,32768,0.03125,12801,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,16,strong,0.5,0.5,-0.1,-0.55,False,32768,0.03125,12801,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,16,strong,0.5,0.5,0.2,2.45,False,32768,0.03125,3201,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,16,strong,0.5,0.5,-0.2,-1.55,False,32768,0.03125,3201,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,16,weak,0.01,0.5,0,0.45,True,32768,0.15703715863425188,,False,proposal_only; no outcomes
+D1,0.1,1,16,weak,0.01,0.5,0.025,0.7,True,32768,0.15703715863425188,5171719,False,proposal_only; no outcomes
+D1,0.1,1,16,weak,0.01,0.5,-0.025,0.2,True,32768,0.15703715863425188,5171719,False,proposal_only; no outcomes
+D1,0.1,1,16,weak,0.01,0.5,0.05,0.95,True,32768,0.15703715863425188,1292931,False,proposal_only; no outcomes
+D1,0.1,1,16,weak,0.01,0.5,-0.05,-0.04999999999999999,False,32768,0.15703715863425188,1292931,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,16,weak,0.01,0.5,0.1,1.45,False,32768,0.15703715863425188,323234,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,16,weak,0.01,0.5,-0.1,-0.55,False,32768,0.15703715863425188,323234,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,16,weak,0.01,0.5,0.2,2.45,False,32768,0.15703715863425188,80810,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,16,weak,0.01,0.5,-0.2,-1.55,False,32768,0.15703715863425188,80810,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,64,strong,0.5,0.5,0,0.45,True,32768,0.0625,,False,proposal_only; no outcomes
+D1,0.1,1,64,strong,0.5,0.5,0.025,0.7,True,32768,0.0625,819201,False,proposal_only; no outcomes
+D1,0.1,1,64,strong,0.5,0.5,-0.025,0.2,True,32768,0.0625,819201,False,proposal_only; no outcomes
+D1,0.1,1,64,strong,0.5,0.5,0.05,0.95,True,32768,0.0625,204801,False,proposal_only; no outcomes
+D1,0.1,1,64,strong,0.5,0.5,-0.05,-0.04999999999999999,False,32768,0.0625,204801,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,64,strong,0.5,0.5,0.1,1.45,False,32768,0.0625,51201,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,64,strong,0.5,0.5,-0.1,-0.55,False,32768,0.0625,51201,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,64,strong,0.5,0.5,0.2,2.45,False,32768,0.0625,12801,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,64,strong,0.5,0.5,-0.2,-1.55,False,32768,0.0625,12801,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,64,weak,0.01,0.5,0,0.45,True,32768,0.31407431726850377,,False,proposal_only; no outcomes
+D1,0.1,1,64,weak,0.01,0.5,0.025,0.7,True,32768,0.31407431726850377,20686870,False,proposal_only; no outcomes
+D1,0.1,1,64,weak,0.01,0.5,-0.025,0.2,True,32768,0.31407431726850377,20686870,False,proposal_only; no outcomes
+D1,0.1,1,64,weak,0.01,0.5,0.05,0.95,True,32768,0.31407431726850377,5171719,False,proposal_only; no outcomes
+D1,0.1,1,64,weak,0.01,0.5,-0.05,-0.04999999999999999,False,32768,0.31407431726850377,5171719,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,64,weak,0.01,0.5,0.1,1.45,False,32768,0.31407431726850377,1292931,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,64,weak,0.01,0.5,-0.1,-0.55,False,32768,0.31407431726850377,1292931,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,64,weak,0.01,0.5,0.2,2.45,False,32768,0.31407431726850377,323234,False,proposal_only; impossible means excluded before draws
+D1,0.1,1,64,weak,0.01,0.5,-0.2,-1.55,False,32768,0.31407431726850377,323234,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,1,strong,0.5,0.5,0,0.45,True,32768,0.015625,,False,proposal_only; no outcomes
+D1,0.1,4,1,strong,0.5,0.5,0.025,0.7,True,32768,0.015625,51201,False,proposal_only; no outcomes
+D1,0.1,4,1,strong,0.5,0.5,-0.025,0.2,True,32768,0.015625,51201,False,proposal_only; no outcomes
+D1,0.1,4,1,strong,0.5,0.5,0.05,0.95,True,32768,0.015625,12801,False,proposal_only; no outcomes
+D1,0.1,4,1,strong,0.5,0.5,-0.05,-0.04999999999999999,False,32768,0.015625,12801,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,1,strong,0.5,0.5,0.1,1.45,False,32768,0.015625,3201,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,1,strong,0.5,0.5,-0.1,-0.55,False,32768,0.015625,3201,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,1,strong,0.5,0.5,0.2,2.45,False,32768,0.015625,801,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,1,strong,0.5,0.5,-0.2,-1.55,False,32768,0.015625,801,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,1,weak,0.01,0.5,0,0.45,True,32768,0.07851857931712594,,False,proposal_only; no outcomes
+D1,0.1,4,1,weak,0.01,0.5,0.025,0.7,True,32768,0.07851857931712594,1292931,False,proposal_only; no outcomes
+D1,0.1,4,1,weak,0.01,0.5,-0.025,0.2,True,32768,0.07851857931712594,1292931,False,proposal_only; no outcomes
+D1,0.1,4,1,weak,0.01,0.5,0.05,0.95,True,32768,0.07851857931712594,323234,False,proposal_only; no outcomes
+D1,0.1,4,1,weak,0.01,0.5,-0.05,-0.04999999999999999,False,32768,0.07851857931712594,323234,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,1,weak,0.01,0.5,0.1,1.45,False,32768,0.07851857931712594,80810,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,1,weak,0.01,0.5,-0.1,-0.55,False,32768,0.07851857931712594,80810,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,1,weak,0.01,0.5,0.2,2.45,False,32768,0.07851857931712594,20204,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,1,weak,0.01,0.5,-0.2,-1.55,False,32768,0.07851857931712594,20204,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,16,strong,0.5,0.5,0,0.45,True,32768,0.0625,,False,proposal_only; no outcomes
+D1,0.1,4,16,strong,0.5,0.5,0.025,0.7,True,32768,0.0625,819201,False,proposal_only; no outcomes
+D1,0.1,4,16,strong,0.5,0.5,-0.025,0.2,True,32768,0.0625,819201,False,proposal_only; no outcomes
+D1,0.1,4,16,strong,0.5,0.5,0.05,0.95,True,32768,0.0625,204801,False,proposal_only; no outcomes
+D1,0.1,4,16,strong,0.5,0.5,-0.05,-0.04999999999999999,False,32768,0.0625,204801,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,16,strong,0.5,0.5,0.1,1.45,False,32768,0.0625,51201,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,16,strong,0.5,0.5,-0.1,-0.55,False,32768,0.0625,51201,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,16,strong,0.5,0.5,0.2,2.45,False,32768,0.0625,12801,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,16,strong,0.5,0.5,-0.2,-1.55,False,32768,0.0625,12801,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,16,weak,0.01,0.5,0,0.45,True,32768,0.31407431726850377,,False,proposal_only; no outcomes
+D1,0.1,4,16,weak,0.01,0.5,0.025,0.7,True,32768,0.31407431726850377,20686870,False,proposal_only; no outcomes
+D1,0.1,4,16,weak,0.01,0.5,-0.025,0.2,True,32768,0.31407431726850377,20686870,False,proposal_only; no outcomes
+D1,0.1,4,16,weak,0.01,0.5,0.05,0.95,True,32768,0.31407431726850377,5171719,False,proposal_only; no outcomes
+D1,0.1,4,16,weak,0.01,0.5,-0.05,-0.04999999999999999,False,32768,0.31407431726850377,5171719,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,16,weak,0.01,0.5,0.1,1.45,False,32768,0.31407431726850377,1292931,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,16,weak,0.01,0.5,-0.1,-0.55,False,32768,0.31407431726850377,1292931,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,16,weak,0.01,0.5,0.2,2.45,False,32768,0.31407431726850377,323234,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,16,weak,0.01,0.5,-0.2,-1.55,False,32768,0.31407431726850377,323234,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,64,strong,0.5,0.5,0,0.45,True,32768,0.125,,False,proposal_only; no outcomes
+D1,0.1,4,64,strong,0.5,0.5,0.025,0.7,True,32768,0.125,3276801,False,proposal_only; no outcomes
+D1,0.1,4,64,strong,0.5,0.5,-0.025,0.2,True,32768,0.125,3276801,False,proposal_only; no outcomes
+D1,0.1,4,64,strong,0.5,0.5,0.05,0.95,True,32768,0.125,819201,False,proposal_only; no outcomes
+D1,0.1,4,64,strong,0.5,0.5,-0.05,-0.04999999999999999,False,32768,0.125,819201,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,64,strong,0.5,0.5,0.1,1.45,False,32768,0.125,204801,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,64,strong,0.5,0.5,-0.1,-0.55,False,32768,0.125,204801,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,64,strong,0.5,0.5,0.2,2.45,False,32768,0.125,51201,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,64,strong,0.5,0.5,-0.2,-1.55,False,32768,0.125,51201,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,64,weak,0.01,0.5,0,0.45,True,32768,0.6281486345370075,,False,proposal_only; no outcomes
+D1,0.1,4,64,weak,0.01,0.5,0.025,0.7,True,32768,0.6281486345370075,82747476,False,proposal_only; no outcomes
+D1,0.1,4,64,weak,0.01,0.5,-0.025,0.2,True,32768,0.6281486345370075,82747476,False,proposal_only; no outcomes
+D1,0.1,4,64,weak,0.01,0.5,0.05,0.95,True,32768,0.6281486345370075,20686870,False,proposal_only; no outcomes
+D1,0.1,4,64,weak,0.01,0.5,-0.05,-0.04999999999999999,False,32768,0.6281486345370075,20686870,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,64,weak,0.01,0.5,0.1,1.45,False,32768,0.6281486345370075,5171719,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,64,weak,0.01,0.5,-0.1,-0.55,False,32768,0.6281486345370075,5171719,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,64,weak,0.01,0.5,0.2,2.45,False,32768,0.6281486345370075,1292931,False,proposal_only; impossible means excluded before draws
+D1,0.1,4,64,weak,0.01,0.5,-0.2,-1.55,False,32768,0.6281486345370075,1292931,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,1,strong,0.5,0.5,0,0.45,True,32768,0.02209708691207961,,False,proposal_only; no outcomes
+D1,0.1,8,1,strong,0.5,0.5,0.025,0.7,True,32768,0.02209708691207961,102401,False,proposal_only; no outcomes
+D1,0.1,8,1,strong,0.5,0.5,-0.025,0.2,True,32768,0.02209708691207961,102401,False,proposal_only; no outcomes
+D1,0.1,8,1,strong,0.5,0.5,0.05,0.95,True,32768,0.02209708691207961,25601,False,proposal_only; no outcomes
+D1,0.1,8,1,strong,0.5,0.5,-0.05,-0.04999999999999999,False,32768,0.02209708691207961,25601,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,1,strong,0.5,0.5,0.1,1.45,False,32768,0.02209708691207961,6401,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,1,strong,0.5,0.5,-0.1,-0.55,False,32768,0.02209708691207961,6401,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,1,strong,0.5,0.5,0.2,2.45,False,32768,0.02209708691207961,1601,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,1,strong,0.5,0.5,-0.2,-1.55,False,32768,0.02209708691207961,1601,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,1,weak,0.01,0.5,0,0.45,True,32768,0.1110420397685471,,False,proposal_only; no outcomes
+D1,0.1,8,1,weak,0.01,0.5,0.025,0.7,True,32768,0.1110420397685471,2585860,False,proposal_only; no outcomes
+D1,0.1,8,1,weak,0.01,0.5,-0.025,0.2,True,32768,0.1110420397685471,2585860,False,proposal_only; no outcomes
+D1,0.1,8,1,weak,0.01,0.5,0.05,0.95,True,32768,0.1110420397685471,646466,False,proposal_only; no outcomes
+D1,0.1,8,1,weak,0.01,0.5,-0.05,-0.04999999999999999,False,32768,0.1110420397685471,646466,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,1,weak,0.01,0.5,0.1,1.45,False,32768,0.1110420397685471,161618,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,1,weak,0.01,0.5,-0.1,-0.55,False,32768,0.1110420397685471,161618,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,1,weak,0.01,0.5,0.2,2.45,False,32768,0.1110420397685471,40406,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,1,weak,0.01,0.5,-0.2,-1.55,False,32768,0.1110420397685471,40406,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,16,strong,0.5,0.5,0,0.45,True,32768,0.08838834764831845,,False,proposal_only; no outcomes
+D1,0.1,8,16,strong,0.5,0.5,0.025,0.7,True,32768,0.08838834764831845,1638401,False,proposal_only; no outcomes
+D1,0.1,8,16,strong,0.5,0.5,-0.025,0.2,True,32768,0.08838834764831845,1638401,False,proposal_only; no outcomes
+D1,0.1,8,16,strong,0.5,0.5,0.05,0.95,True,32768,0.08838834764831845,409601,False,proposal_only; no outcomes
+D1,0.1,8,16,strong,0.5,0.5,-0.05,-0.04999999999999999,False,32768,0.08838834764831845,409601,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,16,strong,0.5,0.5,0.1,1.45,False,32768,0.08838834764831845,102401,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,16,strong,0.5,0.5,-0.1,-0.55,False,32768,0.08838834764831845,102401,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,16,strong,0.5,0.5,0.2,2.45,False,32768,0.08838834764831845,25601,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,16,strong,0.5,0.5,-0.2,-1.55,False,32768,0.08838834764831845,25601,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,16,weak,0.01,0.5,0,0.45,True,32768,0.4441681590741884,,False,proposal_only; no outcomes
+D1,0.1,8,16,weak,0.01,0.5,0.025,0.7,True,32768,0.4441681590741884,41373739,False,proposal_only; no outcomes
+D1,0.1,8,16,weak,0.01,0.5,-0.025,0.2,True,32768,0.4441681590741884,41373739,False,proposal_only; no outcomes
+D1,0.1,8,16,weak,0.01,0.5,0.05,0.95,True,32768,0.4441681590741884,10343436,False,proposal_only; no outcomes
+D1,0.1,8,16,weak,0.01,0.5,-0.05,-0.04999999999999999,False,32768,0.4441681590741884,10343436,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,16,weak,0.01,0.5,0.1,1.45,False,32768,0.4441681590741884,2585860,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,16,weak,0.01,0.5,-0.1,-0.55,False,32768,0.4441681590741884,2585860,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,16,weak,0.01,0.5,0.2,2.45,False,32768,0.4441681590741884,646466,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,16,weak,0.01,0.5,-0.2,-1.55,False,32768,0.4441681590741884,646466,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,64,strong,0.5,0.5,0,0.45,True,32768,0.1767766952966369,,False,proposal_only; no outcomes
+D1,0.1,8,64,strong,0.5,0.5,0.025,0.7,True,32768,0.1767766952966369,6553601,False,proposal_only; no outcomes
+D1,0.1,8,64,strong,0.5,0.5,-0.025,0.2,True,32768,0.1767766952966369,6553601,False,proposal_only; no outcomes
+D1,0.1,8,64,strong,0.5,0.5,0.05,0.95,True,32768,0.1767766952966369,1638401,False,proposal_only; no outcomes
+D1,0.1,8,64,strong,0.5,0.5,-0.05,-0.04999999999999999,False,32768,0.1767766952966369,1638401,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,64,strong,0.5,0.5,0.1,1.45,False,32768,0.1767766952966369,409601,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,64,strong,0.5,0.5,-0.1,-0.55,False,32768,0.1767766952966369,409601,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,64,strong,0.5,0.5,0.2,2.45,False,32768,0.1767766952966369,102401,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,64,strong,0.5,0.5,-0.2,-1.55,False,32768,0.1767766952966369,102401,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,64,weak,0.01,0.5,0,0.45,True,32768,0.8883363181483768,,False,proposal_only; no outcomes
+D1,0.1,8,64,weak,0.01,0.5,0.025,0.7,True,32768,0.8883363181483768,165494951,False,proposal_only; no outcomes
+D1,0.1,8,64,weak,0.01,0.5,-0.025,0.2,True,32768,0.8883363181483768,165494951,False,proposal_only; no outcomes
+D1,0.1,8,64,weak,0.01,0.5,0.05,0.95,True,32768,0.8883363181483768,41373739,False,proposal_only; no outcomes
+D1,0.1,8,64,weak,0.01,0.5,-0.05,-0.04999999999999999,False,32768,0.8883363181483768,41373739,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,64,weak,0.01,0.5,0.1,1.45,False,32768,0.8883363181483768,10343436,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,64,weak,0.01,0.5,-0.1,-0.55,False,32768,0.8883363181483768,10343436,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,64,weak,0.01,0.5,0.2,2.45,False,32768,0.8883363181483768,2585860,False,proposal_only; impossible means excluded before draws
+D1,0.1,8,64,weak,0.01,0.5,-0.2,-1.55,False,32768,0.8883363181483768,2585860,False,proposal_only; impossible means excluded before draws
+D1,0.2,1,1,strong,0.5,0.5,0,0.45,True,32768,0.011048543456039806,,False,proposal_only; no outcomes
+D1,0.2,1,1,strong,0.5,0.5,0.025,0.575,True,32768,0.011048543456039806,25601,False,proposal_only; no outcomes
+D1,0.2,1,1,strong,0.5,0.5,-0.025,0.325,True,32768,0.011048543456039806,25601,False,proposal_only; no outcomes
+D1,0.2,1,1,strong,0.5,0.5,0.05,0.7,True,32768,0.011048543456039806,6401,False,proposal_only; no outcomes
+D1,0.2,1,1,strong,0.5,0.5,-0.05,0.2,True,32768,0.011048543456039806,6401,False,proposal_only; no outcomes
+D1,0.2,1,1,strong,0.5,0.5,0.1,0.95,True,32768,0.011048543456039806,1601,False,proposal_only; no outcomes
+D1,0.2,1,1,strong,0.5,0.5,-0.1,-0.04999999999999999,False,32768,0.011048543456039806,1601,False,proposal_only; impossible means excluded before draws
+D1,0.2,1,1,strong,0.5,0.5,0.2,1.45,False,32768,0.011048543456039806,401,False,proposal_only; impossible means excluded before draws
+D1,0.2,1,1,strong,0.5,0.5,-0.2,-0.55,False,32768,0.011048543456039806,401,False,proposal_only; impossible means excluded before draws
+D1,0.2,1,1,weak,0.01,0.5,0,0.45,True,32768,0.05552101988427355,,False,proposal_only; no outcomes
+D1,0.2,1,1,weak,0.01,0.5,0.025,0.575,True,32768,0.05552101988427355,646466,False,proposal_only; no outcomes
+D1,0.2,1,1,weak,0.01,0.5,-0.025,0.325,True,32768,0.05552101988427355,646466,False,proposal_only; no outcomes
+D1,0.2,1,1,weak,0.01,0.5,0.05,0.7,True,32768,0.05552101988427355,161618,False,proposal_only; no outcomes
+D1,0.2,1,1,weak,0.01,0.5,-0.05,0.2,True,32768,0.05552101988427355,161618,False,proposal_only; no outcomes
+D1,0.2,1,1,weak,0.01,0.5,0.1,0.95,True,32768,0.05552101988427355,40406,False,proposal_only; no outcomes
+D1,0.2,1,1,weak,0.01,0.5,-0.1,-0.04999999999999999,False,32768,0.05552101988427355,40406,False,proposal_only; impossible means excluded before draws
+D1,0.2,1,1,weak,0.01,0.5,0.2,1.45,False,32768,0.05552101988427355,10103,False,proposal_only; impossible means excluded before draws
+D1,0.2,1,1,weak,0.01,0.5,-0.2,-0.55,False,32768,0.05552101988427355,10103,False,proposal_only; impossible means excluded before draws
+D1,0.2,1,16,strong,0.5,0.5,0,0.45,True,32768,0.04419417382415922,,False,proposal_only; no outcomes
+D1,0.2,1,16,strong,0.5,0.5,0.025,0.575,True,32768,0.04419417382415922,409601,False,proposal_only; no outcomes
+D1,0.2,1,16,strong,0.5,0.5,-0.025,0.325,True,32768,0.04419417382415922,409601,False,proposal_only; no outcomes
+D1,0.2,1,16,strong,0.5,0.5,0.05,0.7,True,32768,0.04419417382415922,102401,False,proposal_only; no outcomes
+D1,0.2,1,16,strong,0.5,0.5,-0.05,0.2,True,32768,0.04419417382415922,102401,False,proposal_only; no outcomes
+D1,0.2,1,16,strong,0.5,0.5,0.1,0.95,True,32768,0.04419417382415922,25601,False,proposal_only; no outcomes
+D1,0.2,1,16,strong,0.5,0.5,-0.1,-0.04999999999999999,False,32768,0.04419417382415922,25601,False,proposal_only; impossible means excluded before draws
+D1,0.2,1,16,strong,0.5,0.5,0.2,1.45,False,32768,0.04419417382415922,6401,False,proposal_only; impossible means excluded before draws
+D1,0.2,1,16,strong,0.5,0.5,-0.2,-0.55,False,32768,0.04419417382415922,6401,False,proposal_only; impossible means excluded before draws
+D1,0.2,1,16,weak,0.01,0.5,0,0.45,True,32768,0.2220840795370942,,False,proposal_only; no outcomes
+D1,0.2,1,16,weak,0.01,0.5,0.025,0.575,True,32768,0.2220840795370942,10343436,False,proposal_only; no outcomes
+D1,0.2,1,16,weak,0.01,0.5,-0.025,0.325,True,32768,0.2220840795370942,10343436,False,proposal_only; no outcomes
+D1,0.2,1,16,weak,0.01,0.5,0.05,0.7,True,32768,0.2220840795370942,2585860,False,proposal_only; no outcomes
+D1,0.2,1,16,weak,0.01,0.5,-0.05,0.2,True,32768,0.2220840795370942,2585860,False,proposal_only; no outcomes
+D1,0.2,1,16,weak,0.01,0.5,0.1,0.95,True,32768,0.2220840795370942,646466,False,proposal_only; no outcomes
+D1,0.2,1,16,weak,0.01,0.5,-0.1,-0.04999999999999999,False,32768,0.2220840795370942,646466,False,proposal_only; impossible means excluded before draws
+D1,0.2,1,16,weak,0.01,0.5,0.2,1.45,False,32768,0.2220840795370942,161618,False,proposal_only; impossible means excluded before draws
+D1,0.2,1,16,weak,0.01,0.5,-0.2,-0.55,False,32768,0.2220840795370942,161618,False,proposal_only; impossible means excluded before draws
+D1,0.2,1,64,strong,0.5,0.5,0,0.45,True,32768,0.08838834764831845,,False,proposal_only; no outcomes
+D1,0.2,1,64,strong,0.5,0.5,0.025,0.575,True,32768,0.08838834764831845,1638401,False,proposal_only; no outcomes
+D1,0.2,1,64,strong,0.5,0.5,-0.025,0.325,True,32768,0.08838834764831845,1638401,False,proposal_only; no outcomes
+D1,0.2,1,64,strong,0.5,0.5,0.05,0.7,True,32768,0.08838834764831845,409601,False,proposal_only; no outcomes
+D1,0.2,1,64,strong,0.5,0.5,-0.05,0.2,True,32768,0.08838834764831845,409601,False,proposal_only; no outcomes
+D1,0.2,1,64,strong,0.5,0.5,0.1,0.95,True,32768,0.08838834764831845,102401,False,proposal_only; no outcomes
+D1,0.2,1,64,strong,0.5,0.5,-0.1,-0.04999999999999999,False,32768,0.08838834764831845,102401,False,proposal_only; impossible means excluded before draws
+D1,0.2,1,64,strong,0.5,0.5,0.2,1.45,False,32768,0.08838834764831845,25601,False,proposal_only; impossible means excluded before draws
+D1,0.2,1,64,strong,0.5,0.5,-0.2,-0.55,False,32768,0.08838834764831845,25601,False,proposal_only; impossible means excluded before draws
+D1,0.2,1,64,weak,0.01,0.5,0,0.45,True,32768,0.4441681590741884,,False,proposal_only; no outcomes
+D1,0.2,1,64,weak,0.01,0.5,0.025,0.575,True,32768,0.4441681590741884,41373739,False,proposal_only; no outcomes
+D1,0.2,1,64,weak,0.01,0.5,-0.025,0.325,True,32768,0.4441681590741884,41373739,False,proposal_only; no outcomes
+D1,0.2,1,64,weak,0.01,0.5,0.05,0.7,True,32768,0.4441681590741884,10343436,False,proposal_only; no outcomes
+D1,0.2,1,64,weak,0.01,0.5,-0.05,0.2,True,32768,0.4441681590741884,10343436,False,proposal_only; no outcomes
+D1,0.2,1,64,weak,0.01,0.5,0.1,0.95,True,32768,0.4441681590741884,2585860,False,proposal_only; no outcomes
+D1,0.2,1,64,weak,0.01,0.5,-0.1,-0.04999999999999999,False,32768,0.4441681590741884,2585860,False,proposal_only; impossible means excluded before draws
+D1,0.2,1,64,weak,0.01,0.5,0.2,1.45,False,32768,0.4441681590741884,646466,False,proposal_only; impossible means excluded before draws
+D1,0.2,1,64,weak,0.01,0.5,-0.2,-0.55,False,32768,0.4441681590741884,646466,False,proposal_only; impossible means excluded before draws
+D1,0.2,4,1,strong,0.5,0.5,0,0.45,True,32768,0.02209708691207961,,False,proposal_only; no outcomes
+D1,0.2,4,1,strong,0.5,0.5,0.025,0.575,True,32768,0.02209708691207961,102401,False,proposal_only; no outcomes
+D1,0.2,4,1,strong,0.5,0.5,-0.025,0.325,True,32768,0.02209708691207961,102401,False,proposal_only; no outcomes
+D1,0.2,4,1,strong,0.5,0.5,0.05,0.7,True,32768,0.02209708691207961,25601,False,proposal_only; no outcomes
+D1,0.2,4,1,strong,0.5,0.5,-0.05,0.2,True,32768,0.02209708691207961,25601,False,proposal_only; no outcomes
+D1,0.2,4,1,strong,0.5,0.5,0.1,0.95,True,32768,0.02209708691207961,6401,False,proposal_only; no outcomes
+D1,0.2,4,1,strong,0.5,0.5,-0.1,-0.04999999999999999,False,32768,0.02209708691207961,6401,False,proposal_only; impossible means excluded before draws
+D1,0.2,4,1,strong,0.5,0.5,0.2,1.45,False,32768,0.02209708691207961,1601,False,proposal_only; impossible means excluded before draws
+D1,0.2,4,1,strong,0.5,0.5,-0.2,-0.55,False,32768,0.02209708691207961,1601,False,proposal_only; impossible means excluded before draws
+D1,0.2,4,1,weak,0.01,0.5,0,0.45,True,32768,0.1110420397685471,,False,proposal_only; no outcomes
+D1,0.2,4,1,weak,0.01,0.5,0.025,0.575,True,32768,0.1110420397685471,2585860,False,proposal_only; no outcomes
+D1,0.2,4,1,weak,0.01,0.5,-0.025,0.325,True,32768,0.1110420397685471,2585860,False,proposal_only; no outcomes
+D1,0.2,4,1,weak,0.01,0.5,0.05,0.7,True,32768,0.1110420397685471,646466,False,proposal_only; no outcomes
+D1,0.2,4,1,weak,0.01,0.5,-0.05,0.2,True,32768,0.1110420397685471,646466,False,proposal_only; no outcomes
+D1,0.2,4,1,weak,0.01,0.5,0.1,0.95,True,32768,0.1110420397685471,161618,False,proposal_only; no outcomes
+D1,0.2,4,1,weak,0.01,0.5,-0.1,-0.04999999999999999,False,32768,0.1110420397685471,161618,False,proposal_only; impossible means excluded before draws
+D1,0.2,4,1,weak,0.01,0.5,0.2,1.45,False,32768,0.1110420397685471,40406,False,proposal_only; impossible means excluded before draws
+D1,0.2,4,1,weak,0.01,0.5,-0.2,-0.55,False,32768,0.1110420397685471,40406,False,proposal_only; impossible means excluded before draws
+D1,0.2,4,16,strong,0.5,0.5,0,0.45,True,32768,0.08838834764831845,,False,proposal_only; no outcomes
+D1,0.2,4,16,strong,0.5,0.5,0.025,0.575,True,32768,0.08838834764831845,1638401,False,proposal_only; no outcomes
+D1,0.2,4,16,strong,0.5,0.5,-0.025,0.325,True,32768,0.08838834764831845,1638401,False,proposal_only; no outcomes
+D1,0.2,4,16,strong,0.5,0.5,0.05,0.7,True,32768,0.08838834764831845,409601,False,proposal_only; no outcomes
+D1,0.2,4,16,strong,0.5,0.5,-0.05,0.2,True,32768,0.08838834764831845,409601,False,proposal_only; no outcomes
+D1,0.2,4,16,strong,0.5,0.5,0.1,0.95,True,32768,0.08838834764831845,102401,False,proposal_only; no outcomes
+D1,0.2,4,16,strong,0.5,0.5,-0.1,-0.04999999999999999,False,32768,0.08838834764831845,102401,False,proposal_only; impossible means excluded before draws
+D1,0.2,4,16,strong,0.5,0.5,0.2,1.45,False,32768,0.08838834764831845,25601,False,proposal_only; impossible means excluded before draws
+D1,0.2,4,16,strong,0.5,0.5,-0.2,-0.55,False,32768,0.08838834764831845,25601,False,proposal_only; impossible means excluded before draws
+D1,0.2,4,16,weak,0.01,0.5,0,0.45,True,32768,0.4441681590741884,,False,proposal_only; no outcomes
+D1,0.2,4,16,weak,0.01,0.5,0.025,0.575,True,32768,0.4441681590741884,41373739,False,proposal_only; no outcomes
+D1,0.2,4,16,weak,0.01,0.5,-0.025,0.325,True,32768,0.4441681590741884,41373739,False,proposal_only; no outcomes
+D1,0.2,4,16,weak,0.01,0.5,0.05,0.7,True,32768,0.4441681590741884,10343436,False,proposal_only; no outcomes
+D1,0.2,4,16,weak,0.01,0.5,-0.05,0.2,True,32768,0.4441681590741884,10343436,False,proposal_only; no outcomes
+D1,0.2,4,16,weak,0.01,0.5,0.1,0.95,True,32768,0.4441681590741884,2585860,False,proposal_only; no outcomes
+D1,0.2,4,16,weak,0.01,0.5,-0.1,-0.04999999999999999,False,32768,0.4441681590741884,2585860,False,proposal_only; impossible means excluded before draws
+D1,0.2,4,16,weak,0.01,0.5,0.2,1.45,False,32768,0.4441681590741884,646466,False,proposal_only; impossible means excluded before draws
+D1,0.2,4,16,weak,0.01,0.5,-0.2,-0.55,False,32768,0.4441681590741884,646466,False,proposal_only; impossible means excluded before draws
+D1,0.2,4,64,strong,0.5,0.5,0,0.45,True,32768,0.1767766952966369,,False,proposal_only; no outcomes
+D1,0.2,4,64,strong,0.5,0.5,0.025,0.575,True,32768,0.1767766952966369,6553601,False,proposal_only; no outcomes
+D1,0.2,4,64,strong,0.5,0.5,-0.025,0.325,True,32768,0.1767766952966369,6553601,False,proposal_only; no outcomes
+D1,0.2,4,64,strong,0.5,0.5,0.05,0.7,True,32768,0.1767766952966369,1638401,False,proposal_only; no outcomes
+D1,0.2,4,64,strong,0.5,0.5,-0.05,0.2,True,32768,0.1767766952966369,1638401,False,proposal_only; no outcomes
+D1,0.2,4,64,strong,0.5,0.5,0.1,0.95,True,32768,0.1767766952966369,409601,False,proposal_only; no outcomes
+D1,0.2,4,64,strong,0.5,0.5,-0.1,-0.04999999999999999,False,32768,0.1767766952966369,409601,False,proposal_only; impossible means excluded before draws
+D1,0.2,4,64,strong,0.5,0.5,0.2,1.45,False,32768,0.1767766952966369,102401,False,proposal_only; impossible means excluded before draws
+D1,0.2,4,64,strong,0.5,0.5,-0.2,-0.55,False,32768,0.1767766952966369,102401,False,proposal_only; impossible means excluded before draws
+D1,0.2,4,64,weak,0.01,0.5,0,0.45,True,32768,0.8883363181483768,,False,proposal_only; no outcomes
+D1,0.2,4,64,weak,0.01,0.5,0.025,0.575,True,32768,0.8883363181483768,165494951,False,proposal_only; no outcomes
+D1,0.2,4,64,weak,0.01,0.5,-0.025,0.325,True,32768,0.8883363181483768,165494951,False,proposal_only; no outcomes
+D1,0.2,4,64,weak,0.01,0.5,0.05,0.7,True,32768,0.8883363181483768,41373739,False,proposal_only; no outcomes
+D1,0.2,4,64,weak,0.01,0.5,-0.05,0.2,True,32768,0.8883363181483768,41373739,False,proposal_only; no outcomes
+D1,0.2,4,64,weak,0.01,0.5,0.1,0.95,True,32768,0.8883363181483768,10343436,False,proposal_only; no outcomes
+D1,0.2,4,64,weak,0.01,0.5,-0.1,-0.04999999999999999,False,32768,0.8883363181483768,10343436,False,proposal_only; impossible means excluded before draws
+D1,0.2,4,64,weak,0.01,0.5,0.2,1.45,False,32768,0.8883363181483768,2585860,False,proposal_only; impossible means excluded before draws
+D1,0.2,4,64,weak,0.01,0.5,-0.2,-0.55,False,32768,0.8883363181483768,2585860,False,proposal_only; impossible means excluded before draws
+D1,0.2,8,1,strong,0.5,0.5,0,0.45,True,32768,0.03125,,False,proposal_only; no outcomes
+D1,0.2,8,1,strong,0.5,0.5,0.025,0.575,True,32768,0.03125,204801,False,proposal_only; no outcomes
+D1,0.2,8,1,strong,0.5,0.5,-0.025,0.325,True,32768,0.03125,204801,False,proposal_only; no outcomes
+D1,0.2,8,1,strong,0.5,0.5,0.05,0.7,True,32768,0.03125,51201,False,proposal_only; no outcomes
+D1,0.2,8,1,strong,0.5,0.5,-0.05,0.2,True,32768,0.03125,51201,False,proposal_only; no outcomes
+D1,0.2,8,1,strong,0.5,0.5,0.1,0.95,True,32768,0.03125,12801,False,proposal_only; no outcomes
+D1,0.2,8,1,strong,0.5,0.5,-0.1,-0.04999999999999999,False,32768,0.03125,12801,False,proposal_only; impossible means excluded before draws
+D1,0.2,8,1,strong,0.5,0.5,0.2,1.45,False,32768,0.03125,3201,False,proposal_only; impossible means excluded before draws
+D1,0.2,8,1,strong,0.5,0.5,-0.2,-0.55,False,32768,0.03125,3201,False,proposal_only; impossible means excluded before draws
+D1,0.2,8,1,weak,0.01,0.5,0,0.45,True,32768,0.15703715863425188,,False,proposal_only; no outcomes
+D1,0.2,8,1,weak,0.01,0.5,0.025,0.575,True,32768,0.15703715863425188,5171719,False,proposal_only; no outcomes
+D1,0.2,8,1,weak,0.01,0.5,-0.025,0.325,True,32768,0.15703715863425188,5171719,False,proposal_only; no outcomes
+D1,0.2,8,1,weak,0.01,0.5,0.05,0.7,True,32768,0.15703715863425188,1292931,False,proposal_only; no outcomes
+D1,0.2,8,1,weak,0.01,0.5,-0.05,0.2,True,32768,0.15703715863425188,1292931,False,proposal_only; no outcomes
+D1,0.2,8,1,weak,0.01,0.5,0.1,0.95,True,32768,0.15703715863425188,323234,False,proposal_only; no outcomes
+D1,0.2,8,1,weak,0.01,0.5,-0.1,-0.04999999999999999,False,32768,0.15703715863425188,323234,False,proposal_only; impossible means excluded before draws
+D1,0.2,8,1,weak,0.01,0.5,0.2,1.45,False,32768,0.15703715863425188,80810,False,proposal_only; impossible means excluded before draws
+D1,0.2,8,1,weak,0.01,0.5,-0.2,-0.55,False,32768,0.15703715863425188,80810,False,proposal_only; impossible means excluded before draws
+D1,0.2,8,16,strong,0.5,0.5,0,0.45,True,32768,0.125,,False,proposal_only; no outcomes
+D1,0.2,8,16,strong,0.5,0.5,0.025,0.575,True,32768,0.125,3276801,False,proposal_only; no outcomes
+D1,0.2,8,16,strong,0.5,0.5,-0.025,0.325,True,32768,0.125,3276801,False,proposal_only; no outcomes
+D1,0.2,8,16,strong,0.5,0.5,0.05,0.7,True,32768,0.125,819201,False,proposal_only; no outcomes
+D1,0.2,8,16,strong,0.5,0.5,-0.05,0.2,True,32768,0.125,819201,False,proposal_only; no outcomes
+D1,0.2,8,16,strong,0.5,0.5,0.1,0.95,True,32768,0.125,204801,False,proposal_only; no outcomes
+D1,0.2,8,16,strong,0.5,0.5,-0.1,-0.04999999999999999,False,32768,0.125,204801,False,proposal_only; impossible means excluded before draws
+D1,0.2,8,16,strong,0.5,0.5,0.2,1.45,False,32768,0.125,51201,False,proposal_only; impossible means excluded before draws
+D1,0.2,8,16,strong,0.5,0.5,-0.2,-0.55,False,32768,0.125,51201,False,proposal_only; impossible means excluded before draws
+D1,0.2,8,16,weak,0.01,0.5,0,0.45,True,32768,0.6281486345370075,,False,proposal_only; no outcomes
+D1,0.2,8,16,weak,0.01,0.5,0.025,0.575,True,32768,0.6281486345370075,82747476,False,proposal_only; no outcomes
+D1,0.2,8,16,weak,0.01,0.5,-0.025,0.325,True,32768,0.6281486345370075,82747476,False,proposal_only; no outcomes
+D1,0.2,8,16,weak,0.01,0.5,0.05,0.7,True,32768,0.6281486345370075,20686870,False,proposal_only; no outcomes
+D1,0.2,8,16,weak,0.01,0.5,-0.05,0.2,True,32768,0.6281486345370075,20686870,False,proposal_only; no outcomes
+D1,0.2,8,16,weak,0.01,0.5,0.1,0.95,True,32768,0.6281486345370075,5171719,False,proposal_only; no outcomes
+D1,0.2,8,16,weak,0.01,0.5,-0.1,-0.04999999999999999,False,32768,0.6281486345370075,5171719,False,proposal_only; impossible means excluded before draws
+D1,0.2,8,16,weak,0.01,0.5,0.2,1.45,False,32768,0.6281486345370075,1292931,False,proposal_only; impossible means excluded before draws
+D1,0.2,8,16,weak,0.01,0.5,-0.2,-0.55,False,32768,0.6281486345370075,1292931,False,proposal_only; impossible means excluded before draws
+D1,0.2,8,64,strong,0.5,0.5,0,0.45,True,32768,0.25,,False,proposal_only; no outcomes
+D1,0.2,8,64,strong,0.5,0.5,0.025,0.575,True,32768,0.25,13107201,False,proposal_only; no outcomes
+D1,0.2,8,64,strong,0.5,0.5,-0.025,0.325,True,32768,0.25,13107201,False,proposal_only; no outcomes
+D1,0.2,8,64,strong,0.5,0.5,0.05,0.7,True,32768,0.25,3276801,False,proposal_only; no outcomes
+D1,0.2,8,64,strong,0.5,0.5,-0.05,0.2,True,32768,0.25,3276801,False,proposal_only; no outcomes
+D1,0.2,8,64,strong,0.5,0.5,0.1,0.95,True,32768,0.25,819201,False,proposal_only; no outcomes
+D1,0.2,8,64,strong,0.5,0.5,-0.1,-0.04999999999999999,False,32768,0.25,819201,False,proposal_only; impossible means excluded before draws
+D1,0.2,8,64,strong,0.5,0.5,0.2,1.45,False,32768,0.25,204801,False,proposal_only; impossible means excluded before draws
+D1,0.2,8,64,strong,0.5,0.5,-0.2,-0.55,False,32768,0.25,204801,False,proposal_only; impossible means excluded before draws
+D1,0.2,8,64,weak,0.01,0.5,0,0.45,True,32768,1.256297269074015,,False,proposal_only; no outcomes
+D1,0.2,8,64,weak,0.01,0.5,0.025,0.575,True,32768,1.256297269074015,330989900,False,proposal_only; no outcomes
+D1,0.2,8,64,weak,0.01,0.5,-0.025,0.325,True,32768,1.256297269074015,330989900,False,proposal_only; no outcomes
+D1,0.2,8,64,weak,0.01,0.5,0.05,0.7,True,32768,1.256297269074015,82747476,False,proposal_only; no outcomes
+D1,0.2,8,64,weak,0.01,0.5,-0.05,0.2,True,32768,1.256297269074015,82747476,False,proposal_only; no outcomes
+D1,0.2,8,64,weak,0.01,0.5,0.1,0.95,True,32768,1.256297269074015,20686870,False,proposal_only; no outcomes
+D1,0.2,8,64,weak,0.01,0.5,-0.1,-0.04999999999999999,False,32768,1.256297269074015,20686870,False,proposal_only; impossible means excluded before draws
+D1,0.2,8,64,weak,0.01,0.5,0.2,1.45,False,32768,1.256297269074015,5171719,False,proposal_only; impossible means excluded before draws
+D1,0.2,8,64,weak,0.01,0.5,-0.2,-0.55,False,32768,1.256297269074015,5171719,False,proposal_only; impossible means excluded before draws

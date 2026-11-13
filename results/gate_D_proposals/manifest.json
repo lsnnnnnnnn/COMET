@@ -1,0 +1,8 @@
+{
+  "status": "UNRUN_DESIGN_ONLY",
+  "new_outcome_draws": 0,
+  "scope": "Analytic feasibility, not confirmed power or allocated samples",
+  "D1_rows": 648,
+  "D5_rows": 16,
+  "memory_note": "Linear extrapolation from preflight process peak, not a measured D-stage resource or a tight bound"
+}
