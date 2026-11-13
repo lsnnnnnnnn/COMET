@@ -1,0 +1,22 @@
+\section{Held-Out Auditing and Local Policy Selection}
+\label{sec:discover-repair}
+An independent discovery pilot may choose auditors, target policies and bounded nuisance fits. Freeze their definitions before evaluation and include the pilot in $\mathcal D$. Conditional evaluation-block independence must still hold. A temporal guard or mutually trained evaluation folds alone does not prove this premise. Certification pays for the full frozen policy--auditor--constraint family; selecting the top $L$ auditors does not remove the policy and constraint multiplicities.
+
+For distinct utility and cost channels, let $V(q)$ and $C_j(q)$ be fixed-design moments over a finite policy library. Suppose a single simultaneous event covers every utility and cost estimate:
+\begin{equation}
+ |\widehat V(q)-V(q)|\le r_V(q),\qquad
+ |\widehat C_j(q)-C_j(q)|\le r_j(q)\quad\text{for all }q,j.
+ \label{eq:sim-policy-event}
+\end{equation}
+With $J$ costs, a direct application uses $m=|\Qcal|(J+1)$ coordinates, or an explicitly proved allocation summing to the total confidence budget. Define the certified feasible library by $\widehat C_j(q)+r_j(q)\le a_j$ for all $j$, and maximize $\widehat V(q)-r_V(q)$ within it. If it is empty, abstain or use a separately justified safe fallback; the theorem does not create a feasible candidate.
+
+\begin{proposition}[Eventwise fixed-design feasibility and utility]
+\label{prop:repair}
+On \eqref{eq:sim-policy-event}, every selected policy satisfies $C_j(\widehat q)\le a_j$ for all $j$. For every comparator $q$ with $C_j(q)+2r_j(q)\le a_j$ for all $j$,
+$V(\widehat q)\ge V(q)-2r_V(q)$.
+\end{proposition}
+\begin{proof}
+The upper confidence bound exceeds the true cost on the event, proving feasibility. The comparator's margin gives $\widehat C_j(q)+r_j(q)\le C_j(q)+2r_j(q)\le a_j$, so it is in the certified library. Maximization and the two utility bounds give
+$V(\widehat q)\ge\widehat V(\widehat q)-r_V(\widehat q)\ge\widehat V(q)-r_V(q)\ge V(q)-2r_V(q)$.
+\end{proof}
+This deterministic consequence concerns the same design and candidate library as the certificate. It does not compare automatically to the best truly feasible boundary policy, nor guarantee a future trajectory after deployment changes contexts. Discovery and repair performance require the separately planned D2/D3 experiments; the six-cell C study does not test them.

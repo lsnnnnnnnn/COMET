@@ -1,0 +1,15 @@
+\section{Frozen Evaluation Protocol and Evidence Status}
+\label{sec:experiments}
+\paragraph{Proposal status.}
+This section is an integration template. Insert measured C-STAT results only after its scientific-lock audit, all 6,000 complete checkpoints and independent aggregation pass. No confirmatory coverage, power or runtime value is asserted here. The twelve earlier integration logs are excluded from confirmatory numerators and denominators.
+
+\paragraph{Design.}
+The frozen study assigns 1,000 independent logs to each of six cells, with 128 independent macro-blocks per log. A uses $N=8192$, $\chi=1$ and one candidate. B--F use $N=32768$ and sixteen candidates: eight target exposure probabilities crossed with two fixed auditors. B/C/F have logging probabilities $(.4,.6)$ by context, D/E have $(.01,.02)$, and A uses $(.5,.5)$. C/E/F replicate each independent cluster four times; the remaining cells use $\chi=1$. All fits are fixed at $.5$ and references at $.25$. A--E have Bernoulli rewards. F adds symmetric Pareto noise with exponent $1.75$, scale $.1$ and known moment order $p=1.5$; its ideal law has infinite variance, whereas the finite-grid computer sampler does not literally have infinite representable support. No outcome clipping is used.
+
+\paragraph{Eligibility and reporting.}
+Historical and exact-majority MOM are eligible in A--F; bounded graph Chebyshev is eligible only in A--E. IPS, DM and ordinary DR are point-only. The full feasible target range is a deterministic mean-class benchmark. Every method and both confidence levels share the same log. The primary observation is whether the entire candidate family is covered in one independent replication, not sixteen independent Bernoulli observations. Report successes/1000, Wilson $95\%$ intervals and exact lower-tail undercoverage tests for the seventeen prespecified eligible cell--method $95\%$ comparisons, with Holm adjustment across exactly those seventeen. Nonrejection is not a proof of coverage. The $90\%$ analysis is secondary.
+
+Report raw and target-range-intersected widths, nontriviality for some/all candidates in a log, candidate error/radius diagnostics, false-safe and false-violation counts, true-violation detection and abstention at threshold $.2\pi_h$. Label candidate-level detection separately from replication-level family events. Show unfavorable overlap/dependence cells and F even if every interval is vacuous. Report measured invocation wall time, CPU time and peak RSS, with failures and resumes retained.
+
+\paragraph{Planned studies.}
+D1 varies violation margins and group prevalence; D2 tests independent discover--freeze--certify; D3 tests competing utility/cost policy selection; D4 requires a new proof for shared primitives and compatible joint policies; D5 studies overlap/tail feasibility and independent-pilot nuisance fits. These and large real-data studies remain unrun in this phase. No fixed-Pareto error slope is claimed to establish minimax sharpness.

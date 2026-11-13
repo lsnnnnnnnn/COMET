@@ -1,0 +1,34 @@
+\section{Two Certified Procedures}
+\label{sec:method}
+Both branches use \eqref{eq:gate-a-score}, exact $e$, a frozen finite family, and a permissible fixed or independent-pilot fit. The implemented study uses the predeclared fit $(.5,.5)$; it does not fit a nuisance model on evaluation blocks.
+
+\paragraph{Finite-$p$ MOM.}
+Partition all $B$ complete blocks, before outcomes, into $K$ groups with lengths $L_g\in\{\lfloor B/K\rfloor,\lceil B/K\rceil\}$. Require $B\ge2K$ and put $L_{\min}=\lfloor B/K\rfloor$. For each candidate, average scores within blocks and block means within each group using its actual length. Let $\widehat M_\theta^{\rm MOM}$ be the median of these group means. The historical rule uses $K=\lceil8\log(2m/\alpha)\rceil$ and averages the central two values if $K$ is even. The exact-majority rule uses the smallest feasible odd $K$ satisfying
+\begin{equation}
+ m\sum_{j=(K+1)/2}^{K}{K\choose j}(1/8)^j(7/8)^{K-j}\le\alpha.
+ \label{eq:exact-K}
+\end{equation}
+Both use the explicit half-width
+\begin{equation}
+ r_\theta^{\rm MOM}=32^{1/p}\nu_\theta
+ \left(\frac{\chi}{L_{\min}n_0}\right)^{(p-1)/p}.
+ \label{eq:gate-a-radius}
+\end{equation}
+The exact selector uses rational arithmetic for its binomial comparison. Score and radius calculations use ordinary floating-point arithmetic; the implementation is not an interval-arithmetic proof for every rounding bit. Infeasible block counts cause refusal at the requested level, not a changed confidence budget. Every complete block is retained.
+
+\paragraph{Bounded-outcome graph mean.}
+For $Y,\widehat\mu\in[0,1]$, set
+\begin{equation}
+ v_{u,\theta}=h_u^2\sum_{s:e_u(s)>0}\frac{q_u(s)^2}{e_u(s)},\quad
+ V_\theta=\frac1{N^2}\sum_b\chi_b\sum_{u\in b}v_{u,\theta},\quad
+ r_\theta^{\rm GV}=\sqrt{mV_\theta/\alpha}.
+ \label{eq:graph-radius}
+\end{equation}
+The center is the raw-row mean $N^{-1}\sum_uZ_u(\theta)$. This procedure uses no MOM grouping and no empirical variance estimate. It is inapplicable to the unbounded-outcome F model even if one observed sample happens to lie in $[0,1]$.
+
+\paragraph{Known scales, intervals and decisions.}
+The model supplies $p$ and $\nu_\theta$; empirical tail summaries never enter a certified radius. For bounded rewards a valid choice is
+$\nu_\theta^p=\max_u2^{2p-1}[1+\sum_s q_u(s)^p e_u(s)^{1-p}]$.
+Appendix~\ref{app:envelopes} gives the heavy-tail envelope. A missing target-supported exposure is nonidentification. An invalid model, unknown moment envelope or infeasible grouping receives an explicit refusal status; IPS, DM and ordinary DR comparators are point-only.
+
+Report the raw confidence interval and, when a deterministic target range is known, its intersection with that range. For binary $h$ and known $0\le\mu_u(s)\le1$, the range is $[-N^{-1}\sum_uh_uf_u,N^{-1}\sum_uh_u(1-f_u)]$, even if individual rewards are unbounded. An interval equal to this full range is vacuous; an empty intersection is a coverage failure. For a constraint $M\le t$, certify safe if the upper endpoint is at most $t$, certify violation if the lower endpoint exceeds $t$, and otherwise abstain. Each method and each confidence level has its own within-family guarantee. Data-dependent selection among their intervals is not covered by those separate statements.

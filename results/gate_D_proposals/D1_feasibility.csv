@@ -1,4 +1,4 @@
-study,pi,chi,family_size,overlap,e1,q1,signed_raw_gap,implied_target_mean,mean_class_feasible,N_reference,design_radius,minimum_integer_N_for_abs_gap_gt_2r,eligible_for_run,reason
+study,pi,chi,family_size,overlap,e1,q1,signed_raw_gap,implied_target_mean,mean_class_feasible,N_reference,design_radius,sufficient_integer_N_for_abs_gap_gt_2r,eligible_for_run,reason
 D1,0.02,1,1,strong,0.5,0.5,0,0.45,True,32768,0.0034938562148434213,,False,proposal_only; no outcomes
 D1,0.02,1,1,strong,0.5,0.5,0.025,1.7,False,32768,0.0034938562148434213,2561,False,proposal_only; impossible means excluded before draws
 D1,0.02,1,1,strong,0.5,0.5,-0.025,-0.8,False,32768,0.0034938562148434213,2561,False,proposal_only; impossible means excluded before draws

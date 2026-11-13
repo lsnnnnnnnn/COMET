@@ -1,0 +1,942 @@
+--- a/paper/main.tex
++++ b/paper/main.tex
+@@ -51,27 +51,18 @@
+ \newtheorem{remark}[theorem]{Remark}
+ \newtheorem{example}[theorem]{Example}
+ 
+-\title{\COMET: Counterfactual Moment Auditing\\under Weak Overlap and Dependent Feedback}
++\title{\COMET: Certified Counterfactual Auditing\\under Weak Overlap and Block Dependence}
+ 
+ \author{Anonymous Authors}
+ 
+ \begin{document}
+ \maketitle
+ 
++\noindent\textbf{Review proposal only.} This overlay has not been applied to the manuscript or Overleaf. Confirmatory numerical results are pending validated completion.
++
+ \begin{abstract}
+-Logged decision systems increasingly combine learned policies, adaptive data collection, and interacting units. Their counterfactual statistics can be unstable for three distinct reasons: target and logging policies may have only weak overlap, outcomes may be heavy-tailed, and observations may be dependent through repeated users, slates, networks, or temporal feedback. We introduce \COMET, a general framework for estimating and testing families of counterfactual moments in this regime. The framework begins with an orthogonal score that covers off-policy value, subgroup effects, counterfactual calibration, safety constraints, and exposure-mediated spillovers. It then combines dependence-separated cross-fitting with graph--time robust aggregation to produce simultaneous certificates over target policies and auditors. The proposed rate separates heavy-tail difficulty, an observable conflict-graph design effect, nuisance-estimation error, temporal coupling, and within-window drift. Building on these certificates, we formulate a discover--certify procedure for finding hidden failure subgroups without reusing the certification data, and a pessimistic policy-repair rule with high-probability feasibility. We specify a complete empirical program spanning controlled synthetic processes, semi-synthetic temporal graphs, and real logged recommendation data. The resulting problem is broader than counterfactual fairness on evolving graphs: that setting is recovered as one instance of a common counterfactual-moment interface.
++Rare exposures and correlated observations can make counterfactual point estimates too uncertain for subgroup auditing or constraint certification. We study simultaneous inference for a finite family of counterfactual moments with known exposure propensities, independent evaluation macro-blocks, and sufficient within-block dependency graphs. Policies, auditors and nuisance predictions are fixed before evaluation or learned from an independent pilot. We give two separate certificates: a median-of-means construction with a known conditional finite-$p$ moment envelope and exact-binomial group selection, and a graph-aware mean certificate for bounded outcomes. Both have explicit finite-sample constants and applicability conditions. An expected-risk lower bound applies to an exact clique-replication subclass; a simultaneous coverage event also yields local feasibility and a robust-margin utility comparison for pessimistic policy selection. The analysis distinguishes validity from informativeness: weak overlap or heavy tails can leave a valid interval vacuous and require abstention. General adaptive feedback, mutually trained nuisance estimators and future deployment trajectories remain outside the proved scope.
+ \end{abstract}
+-
+-\paragraph{Gate A scope notice.}
+-The abstract and original sections describe the broader research program.
+-The proved certificate in this audited draft is \cref{thm:gate-a-clean}:
+-a fixed-design, independent-evaluation-block result with explicit constants
+-and known moment envelopes. The original adaptive-history and mutually
+-cross-fitted concentration claims remain unproved outside that model.
+-The corrected lower bound concerns exact clique replication and expected
+-absolute risk. No final empirical coverage or long-run deployment-safety
+-claim is established by this first-stage audit.
+-
+ 
+ \input{sections/01_introduction}
+ \input{sections/02_setup}
+@@ -83,7 +74,7 @@
+ \input{sections/08_conclusion}
+ 
+ \section*{Reproducibility Statement}
+-The estimands, assumptions, algorithms, and evaluation metrics are stated in the main paper. The appendix provides derivations, proof blueprints, dependence-construction details, synthetic data-generating processes, dataset-specific protocols, and a checklist of claims that must be verified before submission. The final version will include an anonymous code package containing data preprocessing, simulation, estimator implementations, and scripts that reproduce every table and figure from fixed configuration files and random seeds.
++The experiment repository preserves the scientific freeze, configuration, seed manifest and prior Gate A+B+C0/preflight artifacts. The separate C-STAT phase uses the frozen six-cell design and excludes preflight seeds. Final empirical statements require complete checkpoints, source checksums and independent aggregation. This proposal changes narrative and theorem presentation only; it does not modify the scientific experiment.
+ 
+ \section*{Ethics Statement}
+ The framework is intended to diagnose and constrain counterfactual failures in deployed decision systems, but a valid certificate is conditional on the exposure mapping, logged propensities, identification assumptions, auditor family, and data quality. Misspecified interference neighborhoods or unmeasured confounding can create false assurance. Sensitive group labels should be collected and processed only with appropriate legal, organizational, and privacy safeguards. Dataset experiments will follow the licenses and intended-use conditions of the original releases. Policy repair should not be treated as a substitute for domain review, stakeholder consultation, or prospective evaluation.
+@@ -91,7 +82,7 @@
+ \section*{AI Use Statement}
+ Generative AI tools were used in research ideation and to help reorganize prior technical notes, draft portions of the prose and LaTeX, propose mathematical formulations, and outline theoretical and experimental directions. The authors are responsible for independently checking every definition, proof, citation, implementation, and empirical claim; unverified suggestions must not be presented as established results.
+ 
+-\bibliography{references}
++\bibliography{references,references_proposal}
+ \bibliographystyle{iclr2027_conference}
+ 
+ \appendix
+--- /dev/null
++++ b/paper/references_proposal.bib
+@@ -0,0 +1,20 @@
++@inproceedings{karampatziakis2021sequences,
++  title={Off-Policy Confidence Sequences},
++  author={Karampatziakis, Nikos and Mineiro, Paul and Ramdas, Aaditya},
++  booktitle={Proceedings of the 38th International Conference on Machine Learning},
++  series={Proceedings of Machine Learning Research}, volume={139}, pages={5301--5310}, year={2021},
++  url={https://proceedings.mlr.press/v139/karampatziakis21a.html}
++}
++@inproceedings{hogsgaard2025uniform,
++  title={Uniform Mean Estimation for Heavy-Tailed Distributions via Median-of-Means},
++  author={H{\o}gsgaard, Mikael M{\o}ller and Paudice, Andrea},
++  booktitle={Proceedings of the 42nd International Conference on Machine Learning},
++  series={Proceedings of Machine Learning Research}, volume={267}, pages={23357--23381}, year={2025},
++  url={https://proceedings.mlr.press/v267/hogsgaard25a.html}
++}
++@article{shimizu2024combinatorial,
++  title={Effective Off-Policy Evaluation and Learning in Contextual Combinatorial Bandits},
++  author={Shimizu, Tatsuhiro and Tanaka, Koichi and Kishimoto, Ren and Kiyohara, Haruka and Nomura, Masahiro and Saito, Yuta},
++  journal={arXiv preprint arXiv:2408.11202}, year={2024},
++  note={Accepted at RecSys 2024}, url={https://arxiv.org/abs/2408.11202}
++}
+--- a/paper/sections/01_introduction.tex
++++ b/paper/sections/01_introduction.tex
+@@ -1,27 +1,11 @@
+ \section{Introduction}
+ \label{sec:intro}
++Counterfactual auditing asks whether a policy's value or a subgroup's outcome would satisfy a declared requirement under a target exposure distribution. A point estimate cannot answer this question when rare logged exposures or correlated records make its uncertainty large. The relevant distinction is between a valid certificate and a certificate narrow enough to support a decision.
+ 
+-Logged decision systems increasingly learn from data generated by earlier versions of themselves. A logging policy selects an exposure, only the corresponding outcome is observed, and the resulting log is reused to evaluate or constrain a target policy. The relevant questions extend beyond average policy value: is a score calibrated under an intervention, does a policy violate a safety constraint, are direct or spillover effects unequal across subgroups, and can a hidden failure population be detected? Each can be expressed as a \emph{counterfactual moment}: an intervention-specific orthogonal score multiplied by an auditor or constraint function.
++We study a finite family of counterfactual moments under a fixed exogenous evaluation design. Exposure propensities are known, evaluation macro-blocks are independent, and a sufficient dependency graph describes dependence within each block. Policies, auditors and outcome predictions are fixed before evaluation; an independent pilot may supply them. This model permits weak positive overlap and finite-$p$ score moments while keeping the conditioning needed for finite-sample inference explicit.
+ 
+-Reliable inference is difficult when three pathologies interact. \emph{Weak overlap} produces large importance ratios for actions rarely chosen by the logging policy, even with bounded rewards. Outcomes such as watch time, transaction value, and medical cost may themselves be heavy-tailed. Finally, units are dependent through shared slates, repeated users, local interference, and temporal feedback. Doubly robust estimation \citep{dudik2011doubly,jiang2016doubly,farajtabar2018more}, weak-overlap analysis \citep{wang2017optimal,mehrabi2024weak,khan2024beyond}, robust mean estimation \citep{lugosi2019mean}, and causal inference under interference \citep{aronow2017estimating,savje2021average} address important parts of this problem, but do not by themselves provide simultaneous, operational certificates for families of counterfactual questions in dependent logs.
++\COMET\ provides two separate inference routes. A graph-adjusted median of means (MOM) uses a known conditional moment envelope and a common target across blocks. Its number of groups can be chosen by an exact binomial majority bound. For bounded outcomes, a graph-aware ordinary mean instead uses a known variance upper bound and Chebyshev's inequality. Each procedure spends its own confidence budget over the whole frozen family. Neither choosing the narrower observed interval nor pooling their guarantees is justified without an additional argument.
+ 
+-We introduce \textbf{\COMET} (\textbf{CO}unterfactual \textbf{M}oment \textbf{E}stimation and \textbf{T}esting). A generalized exposure mapping converts a joint assignment into a local exposure state; a cross-fitted orthogonal score identifies a target intervention; a logged conflict graph records dependence induced by slates, entities, and declared interference neighborhoods; and graph--time median-of-means aggregation produces simultaneous confidence radii under only a finite $p$th moment, $p\in(1,2]$. The target is a predictable window average, so adaptive deployment and within-window drift are visible rather than hidden inside a stationary population mean.
++The contribution is an explicit proof-to-computation contract for these counterfactual certificates: the target, dependence assumptions, constants, confidence budget, feasible group counts, and refusal conditions are stated together. The underlying DR identity, MOM argument, graph coloring and pessimistic selection are established tools, not new concentration principles. An exact-replication subclass supplies an expected-risk lower bound with an explicit constant; it does not establish graph-specific optimality. On a simultaneous coverage event, the same moment interface supports held-out subgroup tests and local constrained selection. Empirical discovery and repair remain separate future studies.
+ 
+-\begin{figure}[t]
+-  \centering
+-  \resizebox{\linewidth}{!}{\input{figures/comet_overview}}
+-  \caption{\COMET separates counterfactual scoring, dependence-aware robust inference, and downstream use. Auditors may be learned on a discovery split, but certification and policy repair use a separate graph--time split.}
+-  \label{fig:overview}
+-\end{figure}
+-
+-The certificates support a \emph{discover--certify--repair} workflow (\cref{fig:overview}). A flexible auditor searches for a violating subgroup on one split and is frozen before testing on a dependence-separated certification split. Certified upper and lower bounds are then used for pessimistic policy selection: optimize a utility lower confidence bound while enforcing risk, fairness, or resource upper confidence bounds.
+-
+-\paragraph{Contributions.}
+-\begin{enumerate}[leftmargin=1.35em,itemsep=1pt,topsep=2pt]
+-    \item We give one counterfactual-moment interface covering off-policy and subgroup value, intervention-specific calibration, heterogeneous effects, safety constraints, and local spillovers.
+-    \item We propose graph--time separated cross-fitting and robust aggregation. The main bound separates a heavy-tail term of order $N_{\eff}^{-(p-1)/p}$, an observable conflict-graph design effect, nuisance bias, temporal coupling, and drift. A cluster construction gives a matching dependence--tail lower bound up to logarithms.
+-    \item We develop learn-then-certify subgroup auditing, ratio certificates that account for denominator uncertainty and abstain under insufficient support, and pessimistic policy repair with high-probability feasibility.
+-    \item We specify coverage-centered experiments on controlled dynamic processes, real temporal-graph structures, Open Bandit, and KuaiRand, with separate stress tests for weak overlap and heavy-tailed outcomes.
+-\end{enumerate}
+-
+-Counterfactual online performative fairness (COPF) on evolving graphs \citep{li2026copf} is recovered by choosing shown/not-shown exposure, group--score auditors, and exposure-effect constraints. Here it is one instance rather than the paper's organizing premise: strict overlap is replaced by finite-moment weak overlap, fixed slices are augmented by learned auditors, and generic online control is replaced by certificate-guided repair.
++The frozen six-cell study evaluates coverage, width, non-vacuity and abstention under the declared model. It does not simulate feedback-adaptive histories, general network interference or learned cross-fitting. The result section will contain only verified confirmatory outputs; integration preflight observations are excluded from its coverage denominators.
+--- a/paper/sections/02_setup.tex
++++ b/paper/sections/02_setup.tex
+@@ -1,81 +1,36 @@
+-\section{Counterfactual Moments from Adaptive Dependent Logs}
++\section{Counterfactual Moments under an Exogenous Block Design}
+ \label{sec:setup}
++Let $\mathcal D$ contain a design fixed before evaluation randomization and, optionally, pilot data independent of the evaluation experiment conditional on that design. All statements below condition on $\mathcal D$. It fixes the retained units, contexts, references $f_u\in[0,1]$, a finite family $\Theta$ of $m$ pairs $\theta=(q,h)$, and predictions $\widehat\mu_u(s)\in[0,1]$. We allow $|h_u|\le1$; reported subgroup moments use binary auditors. No evaluation outcome or future outcome-derived context enters $\mathcal D$.
+ 
+-At round $t$, the system observes history $\F_{t-1}$ and units $\Ical_t$, then draws a possibly joint action $A_t$. For $u=(t,i)$ with context $X_u$, a known exposure mapping
++For a finite exposure space $\Scal$, let $Y_u(s)$ denote the potential outcome and $Y_u=Y_u(S_u)$. The known logging probability is $e_u(s)=\Prb(S_u=s\mid\mathcal D)$, with $q_u(s)\ge0$, $\sum_s q_u(s)=1$, and $q_u(s)>0\Rightarrow e_u(s)>0$. Assume $Y_u(s)\perp S_u\mid\mathcal D$. Write $\mu_u(s)=\E[Y_u(s)\mid\mathcal D]$. Our target is
+ \begin{equation}
+-S_u=g_u(A_{I(u)})\in\Scal
+-\label{eq:exposure-map}
++ M_{\mathcal D}(q,h;f)=\frac1N\sum_u h_u\left[\sum_s q_u(s)\mu_u(s)-f_u\right].
++ \label{eq:target-moment}
+ \end{equation}
+-compresses the relevant assignment into a finite local state (e.g., shown/not shown, slate position, or treatment plus neighbor exposure). Let $Y_u(s)$ be the potential outcome and $Y_u=Y_u(S_u)$. Define
++This is a conditional finite-design mean, not a realized-potential-outcome average or the value along an arbitrary adaptive deployment path.
++
++\paragraph{Exposure probabilities and implementable policies.}
++If $S_u=g_u(A)$ arises from a joint assignment, then $e_u(s)=\sum_{a:g_u(a)=s}P(A=a\mid\mathcal D)$. Products of item marginals generally do not equal these probabilities. To call $q$ a globally implementable policy, require a valid joint law $Q(A\mid\mathcal D)$ inducing every $q_u(s)=\sum_{a:g_u(a)=s}Q(a\mid\mathcal D)$. Two units competing for one display slot cannot both have target display probability one. Without such a joint construction, \eqref{eq:target-moment} is an exposure-marginal functional. The frozen simulator uses the simpler binary exposure $S=A$.
++
++\paragraph{Score and identification.}
++With a fit fixed given $\mathcal D$, define
+ \begin{equation}
+-e_u(s)=\Prb(S_u=s\mid X_u,\F_{t-1}),\qquad
+-\mu_u(s)=\E[Y_u(s)\mid X_u,\F_{t-1}].
+-\label{eq:nuisance}
++ Z_u(\theta)=h_u\left[\sum_s q_u(s)\widehat\mu_u(s)-f_u+
++ \frac{q_u(S_u)}{e_u(S_u)}\{Y_u-\widehat\mu_u(S_u)\}\right].
++ \label{eq:gate-a-score}
+ \end{equation}
+-A predictable target intervention $q\in\Qcal$ assigns mass $q_u(s\mid X_u,\F_{t-1})$.
++Conditional randomization gives
++$\E[Z_u\mid\mathcal D]=m_u(\theta):=h_u[\sum_s q_u(s)\mu_u(s)-f_u]$.
++This exact-propensity DR identity does not require a correct outcome fit. It does require a legitimate fixed/independent-pilot fit for the concentration results below.
+ 
+-\begin{assumption}[Local identification]
+-\label{ass:identification}
+-Consistency holds through \cref{eq:exposure-map}; $Y_u(s)\perp S_u\mid X_u,\F_{t-1}$; and $q_u(s)>0$ implies $e_u(s)>0$ almost surely.
+-\end{assumption}
+-This is support positivity, not a uniform lower bound. The generalized doubly robust score is
++\paragraph{Dependence and moment conditions.}
++There are $B$ conditionally independent evaluation-block vectors. A sufficient dependency graph within each block means that disjoint vertex sets with no connecting edges have independent score vectors given $\mathcal D$. Pairwise zero covariance or a network adjacency list alone does not establish this property. A proper coloring uses $\chi_b$ colors. The MOM route additionally requires equal block size $n_0$, $\chi_b\le\chi$, stable block means $n_0^{-1}\sum_{u\in b}m_u(\theta)=M_{\mathcal D}(\theta)$, and a known finite envelope
+ \begin{equation}
+-\psi_u^q(\eta)=\sum_{s\in\Scal}q_u(s)
+-\left[\mu_u(s)+\frac{\ind\{S_u=s\}}{e_u(s)}\{Y_u-\mu_u(s)\}\right],
+-\label{eq:orthogonal-score}
++ \E[|Z_u(\theta)-m_u(\theta)|^p\mid\mathcal D]\le\nu_\theta^p,
++ \qquad 1<p\le2.
++ \label{eq:gate-a-moment}
+ \end{equation}
+-where $\eta=(\mu,e)$. For auditor $h\in\Hcal$, predictable reference $f_u$, and window $\Ical_W$ of size $N_W$, we target the pathwise predictable moment
+-\begin{equation}
+-M_W(q,h;f)=\frac1{N_W}\sum_{u\in\Ical_W}
+-\E[h_u\{\psi_u^q(\eta_0)-f_u\}\mid\F_{t(u)-1}].
+-\label{eq:target-moment}
+-\end{equation}
+-Unlike a stationary estimand, \cref{eq:target-moment} follows the realized deployment path.
++An unconditional integrated moment does not imply this uniform conditional bound when $q/e$ is unbounded across designs. The envelope may depend on the realized exogenous design and must be reported. The bounded-outcome mean route instead assumes $Y_u(s)\in[0,1]$ and permits unequal block means.
+ 
+-\begin{proposition}[Identification and double robustness]
+-\label{prop:dr}
+-Under \cref{ass:identification}, $\E[\psi_u^q(\eta_0)\mid X_u,\F_{t-1}]=\sum_s q_u(s)\mu_u(s)$. For generic $\bar\eta=(\bar\mu,\bar e)$,
+-\begin{equation}
+-\E[\psi_u^q(\bar\eta)-\psi_u^q(\eta_0)\mid X_u,\F_{t-1}]
+-=\sum_s q_u(s)\{\bar\mu_u(s)-\mu_u(s)\}
+-\frac{\bar e_u(s)-e_u(s)}{\bar e_u(s)}.
+-\label{eq:dr-remainder}
+-\end{equation}
+-\end{proposition}
+-
+-\begin{table}[t]
+-\centering\small
+-\setlength{\tabcolsep}{3.5pt}
+-\begin{tabularx}{\linewidth}{@{}p{.25\linewidth}p{.28\linewidth}X@{}}
+-\toprule
+-Question & $(q,f)$ & Auditor / contrast \\
+-\midrule
+-Policy or subgroup value & target policy, $f=0$ & $h=1$ or subgroup indicator \\
+-Counterfactual calibration & intervention, $f=\widehat p$ & group/score tests or learned $h$ \\
+-Heterogeneous effects & $\psi^{q_1}-\psi^{q_0}$ & group, role, or learned subgroup \\
+-Safety / spillovers / COPF & cost or local exposure state & one-sided constraints or parity tests \\
+-\bottomrule
+-\end{tabularx}
+-\caption{Representative instantiations; details are in \cref{app:examples}.}
+-\label{tab:moment-examples}
+-\end{table}
+-
+-\paragraph{Weak overlap and heavy tails.}
+-For some $p\in(1,2]$, assume uniformly over $(q,h)$
+-\begin{equation}
+-\frac1{N_W}\sum_u\E[|h_u\{\psi_u^q(\eta_0)-f_u\}|^p\mid\F_{t(u)-1}]\le\nu_p^p.
+-\label{eq:p-moment}
+-\end{equation}
+-\begin{assumption}[Finite-$p$ score moments]
+-\label{ass:p-moment}
+-Equation~\eqref{eq:p-moment} holds for the oracle score; the theorem additionally requires the centered cross-fitted score to obey a stated conditional envelope.
+-\end{assumption}
+-A sufficient residual condition contains $q_u(s)^p e_u(s)^{1-p}\E[|Y_u(s)-\mu_u(s)|^p\mid X_u,\F_{t-1}]$, exposing separate failure modes from small propensities and heavy-tailed outcomes.
+-
+-\paragraph{Observable dependence and drift.}
+-Construct a conflict graph $G_W$ on audited units: connect units sharing randomized exposure, a slate, repeated entity, outcome shock, or declared interference neighborhood. In temporal block $b$, let $\chi_b$ be a proper-coloring count. Blocks are separated by a gap $\ell$; an offline coupling fails with probability at most $\varepsilon_{\coup}$, while adaptive analysis conditions on the past. Nonstationarity is measured by
+-\begin{equation}
+-\Delta_W(q,h)=\max_{b\le B}|M_b(q,h)-M_W(q,h)|.
+-\label{eq:drift}
+-\end{equation}
+-Thus window length trades effective sample size against drift.
++\paragraph{Subgroups.}
++For binary $h$, the design mass $\pi_{\mathcal D,h}=N^{-1}\sum_u h_u$ is known. A numerator interval divided by positive $\pi_{\mathcal D,h}$ certifies the corresponding fixed-design subgroup mean. At zero mass the ratio is undefined. No superpopulation mass theorem is claimed.
+--- a/paper/sections/03_method.tex
++++ b/paper/sections/03_method.tex
+@@ -1,71 +1,34 @@
+-\section{The \COMET\ Estimator}
++\section{Two Certified Procedures}
+ \label{sec:method}
++Both branches use \eqref{eq:gate-a-score}, exact $e$, a frozen finite family, and a permissible fixed or independent-pilot fit. The implemented study uses the predeclared fit $(.5,.5)$; it does not fit a nuisance model on evaluation blocks.
+ 
+-\COMET separates nuisance learning, dependence control, and heavy-tail robustification. This permits independent diagnostics of propensity support, outcome-model error, conflict-graph inflation, and tail sensitivity.
++\paragraph{Finite-$p$ MOM.}
++Partition all $B$ complete blocks, before outcomes, into $K$ groups with lengths $L_g\in\{\lfloor B/K\rfloor,\lceil B/K\rceil\}$. Require $B\ge2K$ and put $L_{\min}=\lfloor B/K\rfloor$. For each candidate, average scores within blocks and block means within each group using its actual length. Let $\widehat M_\theta^{\rm MOM}$ be the median of these group means. The historical rule uses $K=\lceil8\log(2m/\alpha)\rceil$ and averages the central two values if $K$ is even. The exact-majority rule uses the smallest feasible odd $K$ satisfying
++\begin{equation}
++ m\sum_{j=(K+1)/2}^{K}{K\choose j}(1/8)^j(7/8)^{K-j}\le\alpha.
++ \label{eq:exact-K}
++\end{equation}
++Both use the explicit half-width
++\begin{equation}
++ r_\theta^{\rm MOM}=32^{1/p}\nu_\theta
++ \left(\frac{\chi}{L_{\min}n_0}\right)^{(p-1)/p}.
++ \label{eq:gate-a-radius}
++\end{equation}
++The exact selector uses rational arithmetic for its binomial comparison. Score and radius calculations use ordinary floating-point arithmetic; the implementation is not an interval-arithmetic proof for every rounding bit. Infeasible block counts cause refusal at the requested level, not a changed confidence budget. Every complete block is retained.
+ 
+-\paragraph{Dependence-separated cross-fitting.}
+-Random row-wise folds leak information when rows share a user, slate, neighborhood, or nearby latent state. We form evaluation folds from time macro-blocks with guard gaps and prohibited-entity separation. For unit $u$ in fold $k(u)$, nuisances are trained only on allowed blocks and the score is
++\paragraph{Bounded-outcome graph mean.}
++For $Y,\widehat\mu\in[0,1]$, set
+ \begin{equation}
+-\widehat Z_u(q,h)=h_u\{\psi_u^q(\widehat\eta^{(-k(u))})-f_u\}.
+-\label{eq:crossfit-score}
++ v_{u,\theta}=h_u^2\sum_{s:e_u(s)>0}\frac{q_u(s)^2}{e_u(s)},\quad
++ V_\theta=\frac1{N^2}\sum_b\chi_b\sum_{u\in b}v_{u,\theta},\quad
++ r_\theta^{\rm GV}=\sqrt{mV_\theta/\alpha}.
++ \label{eq:graph-radius}
+ \end{equation}
+-Fold construction uses design variables available before observing outcomes. When exact logging propensities are available, only $\mu$ is learned and the propensity component of the double-robust remainder is zero.
++The center is the raw-row mean $N^{-1}\sum_uZ_u(\theta)$. This procedure uses no MOM grouping and no empirical variance estimate. It is inapplicable to the unbounded-outcome F model even if one observed sample happens to lie in $[0,1]$.
+ 
+-\paragraph{Graph--time median of means.}
+-Retain $B$ temporally separated blocks of common size $n_0$, so $N_W=Bn_0$. Properly color each block conflict graph, set $\bar\chi_W=\max_b\chi_b$, and define the conservative effective sample size
+-\begin{equation}
+-N_{\eff}=N_W/\bar\chi_W.
+-\label{eq:neff}
+-\end{equation}
+-For each $\theta=(q,h)$, compute block means $\bar Z_b(\theta)=n_0^{-1}\sum_{u\in b}\widehat Z_u(\theta)$. Partition the $B$ blocks into $K$ equal-count super-blocks, average within each super-block, and take
+-\begin{equation}
+-\widehat M_W(\theta)=\operatorname{median}_{g\le K}
+-\left\{\frac1{|g|}\sum_{b\in g}\bar Z_b(\theta)\right\}.
+-\label{eq:comet-estimator}
+-\end{equation}
+-Equal block sizes preserve the raw-unit target; variable-size extensions and a streaming truncation variant appear in the appendix.
++\paragraph{Known scales, intervals and decisions.}
++The model supplies $p$ and $\nu_\theta$; empirical tail summaries never enter a certified radius. For bounded rewards a valid choice is
++$\nu_\theta^p=\max_u2^{2p-1}[1+\sum_s q_u(s)^p e_u(s)^{1-p}]$.
++Appendix~\ref{app:envelopes} gives the heavy-tail envelope. A missing target-supported exposure is nonidentification. An invalid model, unknown moment envelope or infeasible grouping receives an explicit refusal status; IPS, DM and ordinary DR comparators are point-only.
+ 
+-\begin{algorithm}[t]
+-\caption{\COMET\ certification for finite $\Theta=\Qcal\times\Hcal$}
+-\label{alg:comet}
+-\begin{algorithmic}[1]
+-\Require Logs, exposure map, policies $\Qcal$, auditors $\Hcal$, confidence $\delta$.
+-\State Build guarded time blocks and logged conflict graphs; create separated cross-fitting folds.
+-\State Fit $\widehat\eta^{(-k)}$ and compute $\widehat Z_u(q,h)$ for all $(q,h)\in\Theta$.
+-\State Color each block, compute $N_{\eff}$, and aggregate by \cref{eq:comet-estimator}.
+-\State Form simultaneous radii with tail, nuisance, coupling, and drift terms.
+-\State \Return intervals, $N_{\eff}$, overlap/tail diagnostics, and support-based abstentions.
+-\end{algorithmic}
+-\end{algorithm}
+-
+-\paragraph{Radius decomposition.}
+-The working radius is
+-\begin{equation}
+-\begin{split}
+-r_W(q,h;\delta)={}&C_p\widehat\nu_p(q,h)
+-\left(\frac{\log(2|\Theta|/\delta)}{N_{\eff}}\right)^{\frac{p-1}{p}}
+-+r_{\nuis}(q,h)\\
+-&+r_{\coup}(q,h)+r_{\drift}(q,h).
+-\end{split}
+-\label{eq:radius}
+-\end{equation}
+-The terms answer different operational questions: insufficient support/tail mass, nuisance misspecification, inadequate time separation, or an overly long window. For estimated propensities, the exact bias is bounded by
+-\begin{equation}
+-R_{\nuis}(q,h)=\frac1{N_W}\sum_u\E\!\left[
+-|h_u|\sum_s q_u(s)|\widehat\mu_u(s)-\mu_u(s)|
+-\frac{|\widehat e_u(s)-e_u(s)|}{\widehat e_u(s)}\right].
+-\label{eq:nuisance-rem}
+-\end{equation}
+-A valid certificate must use either exact propensities/one correct nuisance or a justified high-probability upper bound $r_{\nuis}\ge R_{\nuis}$; a plug-in diagnostic alone is not a proof of coverage.
+-
+-\paragraph{Ratio certificates and abstention.}
+-For a subgroup ratio $|m_h|/\pi_h$, construct simultaneous radii $r_{m,h}$ and $r_{\pi,h}$. If $\widehat\pi_h-r_{\pi,h}>0$, then
+-\begin{equation}
+-\frac{|m_h|}{\pi_h}\le
+-\frac{|\widehat m_h|+r_{m,h}}{\widehat\pi_h-r_{\pi,h}}.
+-\label{eq:ratio-cert}
+-\end{equation}
+-Otherwise \COMET\ returns \emph{insufficient support to certify}. This prevents tiny slices from receiving precise-looking but unsupported calibration or fairness scores.
+-
+-\paragraph{Tail tuning.}
+-The clean theorem treats $p$ and an envelope $\nu_p$ as known. Experiments compare oracle tuning, a sensitivity grid whose intervals are unioned, and an adaptive Lepski-style rule. Only variants with a proved or separately validated tuning guarantee are presented as confidence procedures.
++Report the raw confidence interval and, when a deterministic target range is known, its intersection with that range. For binary $h$ and known $0\le\mu_u(s)\le1$, the range is $[-N^{-1}\sum_uh_uf_u,N^{-1}\sum_uh_u(1-f_u)]$, even if individual rewards are unbounded. An interval equal to this full range is vacuous; an empty intersection is a coverage failure. For a constraint $M\le t$, certify safe if the upper endpoint is at most $t$, certify violation if the lower endpoint exceeds $t$, and otherwise abstain. Each method and each confidence level has its own within-family guarantee. Data-dependent selection among their intervals is not covered by those separate statements.
+--- a/paper/sections/04_theory.tex
++++ b/paper/sections/04_theory.tex
+@@ -1,69 +1,45 @@
+ \section{Finite-Sample Guarantees}
+ \label{sec:theory}
+-
+-We state the core result for a finite family $\Theta=\Qcal\times\Hcal$; the certification stage of a learned auditor is finite because the discovered tests are frozen before evaluation.
+-
+-\begin{lemma}[Conflict-graph moment reduction]
+-\label{lem:graph-moment}
+-Let $X_1,\ldots,X_n$ be conditionally mean-zero with a conditional dependency graph admitting a proper coloring with $\chi$ colors. If $p\in(1,2]$ and $\E[|X_i|^p\mid\mathcal D]\le\nu^p$, then
++\begin{theorem}[Independent-block MOM certificate]
++\label{thm:gate-a-clean}
++Under the MOM conditions in Section~\ref{sec:setup}, use the complete-block partition, historical group count and radius in Section~\ref{sec:method}. If $B\ge2K$, then
+ \begin{equation}
+-\E\!\left[\left|\frac1n\sum_{i=1}^nX_i\right|^p\middle|\mathcal D\right]
+-\le C_p\nu^p\left(\frac{\chi}{n}\right)^{p-1}.
+-\label{eq:graph-moment}
+-\end{equation}
+-\end{lemma}
+-The proof colors the graph, applies the von Bahr--Esseen inequality within independent color classes, and combines color sums by convexity (\cref{app:proof-graph}). Thus $n/\chi$ acts as a conservative effective sample size.
+-
+-Let retained blocks have size $n_0$, coloring count at most $\bar\chi_W$, and total coupling failure $\varepsilon_{\coup}$. Split $B$ blocks into $K$ MOM super-blocks.
+-
+-\paragraph{Gate A audit status.}
+-The following original theorem is retained as an \emph{unproved statement in
+-its adaptive and mutually cross-fitted scope}. Dependence-separated folds and
+-history-specific moment bounds do not establish the common conditioning and
+-independence required by its proof blueprint. The proved initial certificate is
+-\cref{thm:gate-a-clean}, under an exogenous design, independent evaluation
+-macro-blocks, fixed nuisances or an independent pilot, stable block targets,
+-exact logging probabilities, and known moment envelopes. Its explicit radius
+-is \cref{eq:gate-a-radius}. This narrowing closes mathematical proof gaps;
+-it is not a claim that the original adaptive estimand has been validated.
+-
+-\begin{theorem}[Uniform \COMET\ certificate]
+-\label{thm:uniform-comet}
+-Suppose \cref{ass:identification,ass:p-moment} hold; cross-fitting is dependence-separated; the centered cross-fitted scores satisfy the conditional $p$-moment envelope $\nu_p$; and \cref{lem:graph-moment} applies within each block. Let
+-\begin{equation*}
+-K=\left\lceil8\log\frac{2|\Theta|}{\delta}\right\rceil\le B/2.
+-\end{equation*}
+-If $r_{\nuis}\ge R_{\nuis}^{\star}$ is a valid simultaneous nuisance-bias bound, then with probability at least $1-\delta-\varepsilon_{\coup}$,
+-\begin{equation}
+-\sup_{\theta\in\Theta}|\widehat M_W(\theta)-M_W(\theta)|
+-\le C_p\nu_p\left(
+-\frac{\log(2|\Theta|/\delta)}{N_{\eff}}
+-\right)^{\frac{p-1}{p}}
+-+r_{\nuis}+\Delta_W^{\star},
+-\label{eq:main-bound}
+-\end{equation}
+-where $\Delta_W^{\star}=\sup_{\theta}\Delta_W(\theta)$. With exact block independence and stable targets, the coupling failure and drift correction vanish.
+-\end{theorem}
+-
+-At $p=2$, the stochastic term is $N_{\eff}^{-1/2}$ up to logarithms; for $p<2$, it is $N_{\eff}^{-(p-1)/p}$. The proof conditions on design and nuisance-training data, applies \cref{lem:graph-moment} to each block, averages independent coupled blocks inside super-blocks, and uses a majority argument plus a union bound over $\Theta$. Equation~\eqref{eq:dr-remainder} supplies the nuisance product term, and nonidentical block targets cost at most $\Delta_W^{\star}$. Full details are in \cref{app:proof-main}.
+-
+-\begin{corollary}[Certified ratios]
+-\label{cor:ratio}
+-On the event in \cref{thm:uniform-comet}, every ratio $|m_h|/\pi_h$ obeys \cref{eq:ratio-cert} when the subgroup-mass lower confidence bound is positive; otherwise the data justify only abstention.
+-\end{corollary}
+-
+-\paragraph{Lower bound.}
+-The dependence penalty is not only a proof artifact. Consider $N/\chi$ independent clusters, each replicated exactly $\chi$ times.
+-\begin{theorem}[Cluster-replication lower bound]
+-\label{thm:lower}
+-For $p\in(1,2]$ and $\chi\mid N$, over distributions satisfying $\E|X-\E X|^p\le\nu_p^p$ under the cluster model, every estimator $\widetilde M$ obeys
+-\begin{equation}
+-\inf_{\widetilde M}\sup_P\E_P|\widetilde M-M(P)|
+-\ge c_p\nu_p\left(\frac{\chi}{N}\right)^{\frac{p-1}{p}}.
+-\label{eq:lower-bound}
++ \Prb\left(\forall\theta\in\Theta:
++ |\widehat M_\theta^{\rm MOM}-M_{\mathcal D}(\theta)|\le r_\theta^{\rm MOM}
++ \mid\mathcal D\right)\ge1-\alpha.
++ \label{eq:gate-a-coverage}
+ \end{equation}
+ \end{theorem}
+-The proof reduces to finite-$p$ mean estimation from $N/\chi$ independent samples using a two-point construction (\cref{app:lower}). Hence the tail--dependence interaction in \cref{eq:main-bound} is minimax unavoidable for this general class, up to logarithmic factors. Sharper fractional-coloring parameters remain possible under additional graph structure.
++\begin{theorem}[Exact-binomial MOM certificate]
++\label{thm:exact-mom}
++Under the same conditions, replace the historical group count by the smallest feasible odd $K$ in \eqref{eq:exact-K}. The same statement \eqref{eq:gate-a-coverage} holds, with its own $L_{\min}$ and unchanged explicit constant $32^{1/p}$. If no such $K$ exists, this procedure issues no certificate.
++\end{theorem}
++\begin{proof}
++Write $X_u=Z_u-m_u$. Within each independent color class, von Bahr--Esseen gives $\E|\sum X_u|^p\le2\sum\E|X_u|^p$. Convexity across at most $\chi$ color sums yields $\E|\bar Z_b-M_{\mathcal D}|^p\le2\nu_\theta^p(\chi/n_0)^{p-1}$. Applying the same inequality across the independent blocks in group $g$ gives
++$\E|T_g-M_{\mathcal D}|^p\le4\nu_\theta^p(\chi/(L_gn_0))^{p-1}$.
++All expectations are conditional on $\mathcal D$. Markov at \eqref{eq:gate-a-radius} bounds each group's failure probability by $1/8$; zero envelope gives exact estimation directly. Group failures are independent, though not identically distributed, and are stochastically dominated by independent Bernoulli$(1/8)$ indicators. For odd $K$ a failed median requires at least $(K+1)/2$ bad groups, proving the exact tail. For the historical rule, fewer than $K/2$ failures place both central order statistics inside the target interval; Hoeffding gives failure at most $e^{-9K/32}\le e^{-K/8}$. The historical family bound is $me^{-K/8}\le\alpha/2$, while \eqref{eq:exact-K} bounds the exact-rule family failure by $\alpha$. Neither union bound requires independent candidates.
++\end{proof}
+ 
+-\paragraph{Scope.}
+-The theorem certifies an identified moment; it cannot test ignorability or an incorrect exposure mapping from logs alone. Estimated propensities require a defensible nuisance bound, and adaptive tail tuning requires its own validity argument. These are explicit assumptions rather than hidden implementation choices.
++\begin{theorem}[Bounded-outcome graph variance certificate]
++\label{thm:graph-variance}
++Under the bounded-outcome conditions in Section~\ref{sec:setup}, the mean and radius \eqref{eq:graph-radius} satisfy
++\[
++ \Prb\left(\forall\theta:\left|N^{-1}\sum_uZ_u(\theta)-M_{\mathcal D}(\theta)\right|
++ \le r_\theta^{\rm GV}\mid\mathcal D\right)\ge1-\alpha.
++\]
++Stable block means are unnecessary for this theorem.
++\end{theorem}
++\begin{proof}
++The direct score term is fixed. Since $|Y-\widehat\mu|\le1$, the conditional second moment of the weighted residual bounds $\Var(Z_u\mid\mathcal D)$ by $v_{u,\theta}$. Within a color class the centered scores are mutually independent. Applying $(\sum_{c=1}^{\chi_b}T_c)^2\le\chi_b\sum_cT_c^2$ to the color sums gives $\Var(\sum_{u\in b}Z_u\mid\mathcal D)\le\chi_b\sum_{u\in b}v_{u,\theta}$. Block independence then bounds the mean variance by $V_\theta$. Chebyshev gives failure at most $\alpha/m$ for each candidate; union bounding proves the claim. If $V_\theta=0$, the centered mean is zero almost surely.
++\end{proof}
++All three conditional statements integrate to unconditional coverage of the same random conditional target $M_{\mathcal D}$. They do not turn it into an unconditional population target. Coupling failure is zero in this model. A future coupling construction would spend failure probability from $\alpha$; it cannot be inserted as a numerical half-width without a separate argument.
++
++\begin{theorem}[Expected-risk lower bound for exact clique replication]
++\label{thm:lower}
++Let $1<p\le2$, $\chi\mid N$, and observe $n=N/\chi$ independent scalar draws, each copied exactly $\chi$ times. Over distributions with $\E|X-\E X|^p\le\nu_p^p$,
++\[
++ \inf_T\sup_P\E_P|T-\E_PX|\ge\frac{\nu_p}{8}
++ \left(\frac\chi N\right)^{(p-1)/p}.
++\]
++\end{theorem}
++Appendix~\ref{app:lower} proves the explicit constant. The scalar mean problem embeds in an unbounded counterfactual-moment class with one exposure, $q=e=1$, $h=1$ and $f=0$. The lower bound concerns this subclass and containing classes; it is not a sharp bound for every sparse graph, a lower bound for a specified $95\%$ interval, or a lower bound for the particular bounded-mean-class F simulator at every sample size.
+--- a/paper/sections/05_discover_repair.tex
++++ b/paper/sections/05_discover_repair.tex
+@@ -1,37 +1,22 @@
+-\section{Discover, Certify, and Repair}
++\section{Held-Out Auditing and Local Policy Selection}
+ \label{sec:discover-repair}
++An independent discovery pilot may choose auditors, target policies and bounded nuisance fits. Freeze their definitions before evaluation and include the pilot in $\mathcal D$. Conditional evaluation-block independence must still hold. A temporal guard or mutually trained evaluation folds alone does not prove this premise. Certification pays for the full frozen policy--auditor--constraint family; selecting the top $L$ auditors does not remove the policy and constraint multiplicities.
+ 
+-\paragraph{Learn then certify.}
+-Fixed score bins can miss failures defined by interactions among group, activity, device, time, and graph position. On a discovery split, fit a rich auditor by
++For distinct utility and cost channels, let $V(q)$ and $C_j(q)$ be fixed-design moments over a finite policy library. Suppose a single simultaneous event covers every utility and cost estimate:
+ \begin{equation}
+-\widehat h\in\argmax_{h\in\Hcal_{\rm rich}}
+-|\widehat M_{\rm disc}(q,h)|-\lambda\Omega(h),
+-\label{eq:auditor-learning}
++ |\widehat V(q)-V(q)|\le r_V(q),\qquad
++ |\widehat C_j(q)-C_j(q)|\le r_j(q)\quad\text{for all }q,j.
++ \label{eq:sim-policy-event}
+ \end{equation}
+-subject to a minimum-support rule. The auditor's parameters and human-readable definition are then frozen. Nuisances and scores are recomputed using only training data allowed for a graph--time separated certification split, where \COMET\ tests $\widehat h$. Conditional on discovery data, the selected auditor is fixed; certifying the top $L$ frozen candidates pays only $\log L$ in the finite-family radius. This separates \emph{finding a suspicious pattern} from \emph{showing that fresh dependent data support it counterfactually}.
++With $J$ costs, a direct application uses $m=|\Qcal|(J+1)$ coordinates, or an explicitly proved allocation summing to the total confidence budget. Define the certified feasible library by $\widehat C_j(q)+r_j(q)\le a_j$ for all $j$, and maximize $\widehat V(q)-r_V(q)$ within it. If it is empty, abstain or use a separately justified safe fallback; the theorem does not create a feasible candidate.
+ 
+-\paragraph{Pessimistic policy repair.}
+-Let $V(q)$ be utility and $C_j(q)$, $j\le J$, be risk, cost, calibration, spillover, or fairness moments with limits $\alpha_j$. Suppose simultaneous estimates satisfy
+-\begin{equation}
+-|\widehat V(q)-V(q)|\le r_V(q),\qquad
+-|\widehat C_j(q)-C_j(q)|\le r_j(q)
+-\label{eq:sim-policy-event}
+-\end{equation}
+-for all policies in a frozen library $\Qcal$. Choose
+-\begin{equation}
+-\widehat q\in\argmax_{q\in\Qcal}\{\widehat V(q)-r_V(q)\}
+-\quad\text{s.t.}\quad
+-\widehat C_j(q)+r_j(q)\le\alpha_j\quad\forall j.
+-\label{eq:policy-repair}
+-\end{equation}
+-The library may include the deployed policy, exploration mixtures, threshold/group-offset variants, and candidates produced by an unconstrained learner; only the frozen library is covered by the simultaneous theorem.
+-
+-\begin{proposition}[Feasibility and utility]
++\begin{proposition}[Eventwise fixed-design feasibility and utility]
+ \label{prop:repair}
+-On the event \eqref{eq:sim-policy-event}, every solution of \cref{eq:policy-repair} satisfies $C_j(\widehat q)\le\alpha_j$. For any comparator $q$ with $C_j(q)+2r_j(q)\le\alpha_j$ for all $j$,
+-\begin{equation}
+-V(\widehat q)\ge V(q)-2r_V(q).
+-\label{eq:repair-utility}
+-\end{equation}
++On \eqref{eq:sim-policy-event}, every selected policy satisfies $C_j(\widehat q)\le a_j$ for all $j$. For every comparator $q$ with $C_j(q)+2r_j(q)\le a_j$ for all $j$,
++$V(\widehat q)\ge V(q)-2r_V(q)$.
+ \end{proposition}
+-The robust margin is substantive: a policy estimated exactly at a constraint boundary cannot be certified without more information. As support improves and $N_{\eff}$ grows, the certified feasible set expands. Sequential deployment repeats the procedure by epoch with an explicit error-spending schedule and never reuses a discovery split as certification data.
++\begin{proof}
++The upper confidence bound exceeds the true cost on the event, proving feasibility. The comparator's margin gives $\widehat C_j(q)+r_j(q)\le C_j(q)+2r_j(q)\le a_j$, so it is in the certified library. Maximization and the two utility bounds give
++$V(\widehat q)\ge\widehat V(\widehat q)-r_V(\widehat q)\ge\widehat V(q)-r_V(q)\ge V(q)-2r_V(q)$.
++\end{proof}
++This deterministic consequence concerns the same design and candidate library as the certificate. It does not compare automatically to the best truly feasible boundary policy, nor guarantee a future trajectory after deployment changes contexts. Discovery and repair performance require the separately planned D2/D3 experiments; the six-cell C study does not test them.
+--- a/paper/sections/06_experiments.tex
++++ b/paper/sections/06_experiments.tex
+@@ -1,45 +1,15 @@
+-\section{Experimental Design}
++\section{Frozen Evaluation Protocol and Evidence Status}
+ \label{sec:experiments}
++\paragraph{Proposal status.}
++This section is an integration template. Insert measured C-STAT results only after its scientific-lock audit, all 6,000 complete checkpoints and independent aggregation pass. No confirmatory coverage, power or runtime value is asserted here. The twelve earlier integration logs are excluded from confirmatory numerators and denominators.
+ 
+-The empirical claim is reliable certification, not minimum point error in one simulator. We ask whether intervals attain nominal coverage; errors scale with $N_{\eff}^{-(p-1)/p}$; graph, time, robustification, and nuisance separation matter in the regimes they target; hidden subgroups can be discovered and replicated; and pessimistic repair improves the utility--constraint frontier.
++\paragraph{Design.}
++The frozen study assigns 1,000 independent logs to each of six cells, with 128 independent macro-blocks per log. A uses $N=8192$, $\chi=1$ and one candidate. B--F use $N=32768$ and sixteen candidates: eight target exposure probabilities crossed with two fixed auditors. B/C/F have logging probabilities $(.4,.6)$ by context, D/E have $(.01,.02)$, and A uses $(.5,.5)$. C/E/F replicate each independent cluster four times; the remaining cells use $\chi=1$. All fits are fixed at $.5$ and references at $.25$. A--E have Bernoulli rewards. F adds symmetric Pareto noise with exponent $1.75$, scale $.1$ and known moment order $p=1.5$; its ideal law has infinite variance, whereas the finite-grid computer sampler does not literally have infinite representable support. No outcome clipping is used.
+ 
+-\paragraph{Controlled dynamic process.}
+-We use a dynamic degree-corrected block model and a preferential-attachment stream. A logging policy selects an item or Top-$K$ slate via
+-\begin{equation}
+-\pi_t=(1-\epsilon_{\rm exp})\operatorname{Softmax}(s_t/\tau)
+-+\epsilon_{\rm exp}\operatorname{UniformTopK},
+-\label{eq:synthetic-policy}
+-\end{equation}
+-and a sticky latent regime induces temporal persistence. Outcomes follow
+-\begin{equation}
+-Y_u=\mu(X_u,Z_t)+\tau_{G_u}A_u+\rho_{G_u}\bar A_{N(u),t}
+-+b_{\mathrm{entity}(u)}+\varepsilon_u,
+-\label{eq:synthetic-outcome}
+-\end{equation}
+-with direct and spillover effects, repeated-entity dependence, and Gaussian, Student-$t$, or Pareto/Lomax noise. Four regimes separate light tails, weak overlap only, outcome tails only, and both. Sweeps vary sample size, $p$, exploration, candidate budget, hub strength, interference radius, temporal persistence, auditor count, and nuisance misspecification. Ground truth is analytic or obtained from an independent intervention run whose Monte Carlo error is negligible relative to interval width. The key log--log plot compares scaling against raw $N$ and against $N_{\eff}$.
++\paragraph{Eligibility and reporting.}
++Historical and exact-majority MOM are eligible in A--F; bounded graph Chebyshev is eligible only in A--E. IPS, DM and ordinary DR are point-only. The full feasible target range is a deterministic mean-class benchmark. Every method and both confidence levels share the same log. The primary observation is whether the entire candidate family is covered in one independent replication, not sixteen independent Bernoulli observations. Report successes/1000, Wilson $95\%$ intervals and exact lower-tail undercoverage tests for the seventeen prespecified eligible cell--method $95\%$ comparisons, with Holm adjustment across exactly those seventeen. Nonrejection is not a proof of coverage. The $90\%$ analysis is secondary.
+ 
+-\paragraph{Complementary real-data studies.}
+-TGB preserves real temporal-graph structure while the logging policy and potential outcomes are simulated, yielding exact counterfactual truth with realistic conflict graphs \citep{huang2023tgb}. Open Bandit uses real propensities and multiple behavior policies; one policy's log evaluates another whose on-policy mean supplies an external target, isolating importance-ratio tails with mostly binary rewards \citep{saito2021open}. KuaiRand adds repeated-user sequences, randomized exposures, and heavy-tailed watch time; its randomized portion supports held-out intervention checks, but arbitrary target policies are not treated as having exact ground truth \citep{gao2022kuairand}.
++Report raw and target-range-intersected widths, nontriviality for some/all candidates in a log, candidate error/radius diagnostics, false-safe and false-violation counts, true-violation detection and abstention at threshold $.2\pi_h$. Label candidate-level detection separately from replication-level family events. Show unfavorable overlap/dependence cells and F even if every interval is vacuous. Report measured invocation wall time, CPU time and peak RSS, with failures and resumes retained.
+ 
+-\begin{table}[t]
+-\centering\small
+-\setlength{\tabcolsep}{3pt}
+-\begin{tabularx}{\linewidth}{@{}lccccX@{}}
+-\toprule
+-Setting & Truth & Overlap & $Y$ tail & Dependence & Main role \\
+-\midrule
+-Synthetic DCSBM/PA & Exact & Controlled & Controlled & Controlled & Coverage and rates \\
+-TGB semi-synthetic & Exact & Controlled & Controlled & Real graph & Graph/time correction \\
+-Open Bandit & On-policy & Real/graded & Limited & Temporal & Real-propensity OPE \\
+-KuaiRand & Partial check & Real & Watch time & User/time & Drift and subgroup replication \\
+-\bottomrule
+-\end{tabularx}
+-\caption{No single dataset is asked to validate every claim.}
+-\label{tab:datasets}
+-\end{table}
+-
+-\paragraph{Baselines and ablations.}
+-We compare DM, IPS, self-normalized IPS, ordinary DR, clipped/switch DR, more-robust DR, i.i.d. MOM-DR, temporal block-MOM, graph-corrected non-robust DR, and \COMET. Subgroup baselines are fixed slices, in-sample search, and sample-split search without dependence separation. Repair baselines are utility-only selection, empirical constraints without radii, clipped-DR constraints, and the COPF controller in the evolving-link application \citep{li2026copf}. Ablations remove graph edges, temporal gaps, robust aggregation, cross-fitting separation, denominator uncertainty, and drift allowance.
+-
+-\paragraph{Metrics and protocol.}
+-Primary endpoints are empirical $90\%/95\%$ coverage, interval width, worst-policy/auditor coverage, false certification, power, and abstention. We additionally report bias/RMSE, planted-subgroup recovery and certification replication, true utility, maximum true constraint violation, detection delay after shift, runtime, memory, graph-construction cost, and overlap/$N_{\eff}$ diagnostics. Synthetic repetitions are chosen so Monte Carlo uncertainty around $95\%$ coverage is at most two percentage points. Hyperparameters are selected without counterfactual truth except in labeled oracle-tail experiments; all preprocessing, candidate rules, policy mixtures, and seeds are configuration-controlled. Detailed grids and dataset protocols are in \cref{app:experiments}.
++\paragraph{Planned studies.}
++D1 varies violation margins and group prevalence; D2 tests independent discover--freeze--certify; D3 tests competing utility/cost policy selection; D4 requires a new proof for shared primitives and compatible joint policies; D5 studies overlap/tail feasibility and independent-pilot nuisance fits. These and large real-data studies remain unrun in this phase. No fixed-Pareto error slope is claimed to establish minimax sharpness.
+--- a/paper/sections/07_related_work.tex
++++ b/paper/sections/07_related_work.tex
+@@ -1,11 +1,10 @@
+ \section{Related Work}
+ \label{sec:related}
+-
+-\paragraph{Orthogonal estimation and overlap.}
+-Doubly robust OPE combines outcome regression and importance weighting \citep{dudik2011doubly,jiang2016doubly,farajtabar2018more}; cross-fitting and orthogonality permit flexible nuisance learning \citep{chernozhukov2018double,foster2019orthogonal}. Weak-overlap work studies slower rates, truncation, or partial identification \citep{wang2017optimal,mehrabi2024weak,khan2024beyond}. \COMET\ differs by certifying a simultaneous policy--auditor family under both score tails and observable dependence.
++\paragraph{Off-policy inference.}
++Doubly robust scores combine regression and importance weighting \citep{dudik2011doubly,jiang2016doubly}. Karampatziakis, Mineiro and Ramdas develop contextual-bandit confidence sequences valid uniformly over time and at arbitrary stopping times \citep{karampatziakis2021sequences}. Our fixed-window block certificates do not provide that time-uniform guarantee. Mehrabi and Wager study truncated doubly robust evaluation in Markov decision processes under weak distributional overlap, including slower-rate regimes \citep{mehrabi2024weak}. Their stationary-distribution-ratio setting differs from our design-conditional finite-exposure moments; COMET does not subsume their MDP analysis.
+ 
+ \paragraph{Heavy tails and dependence.}
+-Median-of-means and related robust estimators provide exponential-confidence mean estimation under finite moments \citep{lugosi2019mean}. Exposure mappings formalize causal effects under interference \citep{aronow2017estimating,savje2021average}; dependency graphs and temporal blocking control partial and mixing dependence \citep{janson2004large,merlevede2009bernstein}. Our contribution is their integration with cross-fitted counterfactual scores, a reported conflict-graph design effect, ratio abstention, and downstream certified decisions.
++Uniform finite-$p$ MOM estimation is itself established: H{\o}gsgaard and Paudice analyze simultaneous means over function classes with $p\in(1,2]$ \citep{hogsgaard2025uniform}. Our finite-family union bound and exact-binomial group selection should be read as an explicit implementation of standard tools under a different block/graph contract. Graph-dependent concentration and robust mean estimation also predate this work \citep{janson2004large,lugosi2019mean}. Neither coloring plus Chebyshev nor the two von Bahr--Esseen steps is claimed as a new concentration inequality.
+ 
+-\paragraph{Auditing and performativity.}
+-Multicalibration and outcome indistinguishability motivate testing predictions over rich subpopulations \citep{hebertjohnson2018multicalibration,dwork2021outcome}; performative prediction studies distributional response to deployment \citep{perdomo2020performative}. COPF specializes these ideas to exposure fairness in evolving-graph link recommendation \citep{li2026copf}. \COMET\ generalizes the residual-moment abstraction, separates subgroup discovery from certification, and uses simultaneous uncertainty directly for policy repair.
++\paragraph{Combinatorial actions and application scope.}
++Shimizu et al. study contextual combinatorial-bandit OPE/learning by factoring actions and separating main and residual effects \citep{shimizu2024combinatorial}. Their work motivates careful action-space modeling; it does not make arbitrary local target marginals jointly implementable. COMET's current experiments use binary actions and replicated cliques. A substantive next application contribution would require demonstrated held-out subgroup discovery or constrained selection, or a proved richer dependence model, rather than relabeling the existing components as new algorithms.
+--- a/paper/sections/08_conclusion.tex
++++ b/paper/sections/08_conclusion.tex
+@@ -1,4 +1,5 @@
+-\section{Conclusion}
++\section{Discussion and Limitations}
+ \label{sec:conclusion}
++The proved result is simultaneous counterfactual moment inference under an exogenous design, independent evaluation blocks, sufficient within-block dependency graphs, exact exposure propensities and fixed or independent-pilot nuisances. Finite-$p$ MOM and bounded-outcome graph variance supply different certificates with explicit constants and applicability conditions. A valid but full-range interval supports abstention, not a useful safety decision.
+ 
+-\COMET\ reframes robust counterfactual auditing as estimation and testing of intervention-specific moments from weak-overlap, heavy-tailed, dependent logs. Its orthogonal-score interface, observable graph--time correction, robust simultaneous bounds, learn-then-certify auditors, and pessimistic repair rule form one testable pipeline. The remaining empirical burden is explicit: verify coverage and effective-sample-size scaling, validate adaptive tuning, and determine when the added conservatism buys reliable decisions on realistic logs.
++The analysis does not establish arbitrary adaptive pathwise coverage, mutually trained cross-fitting, unknown tail-scale fitting, hidden cross-block shocks, optimality for every sparse graph or long-run deployment safety. Exposure mappings and joint-policy compatibility require substantive modeling. Heavy-tail F may remain wholly vacuous. The manuscript's empirical claims must follow completed frozen results, and its broader discovery, repair and network program requires separate proofs and experiments.
+--- a/paper/sections/appendix.tex
++++ b/paper/sections/appendix.tex
+@@ -1,331 +1,37 @@
+-\section{Extended Notation and Application Instantiations}
+-\label{app:examples}
++\section{Known Conditional Moment Envelopes}
++\label{app:envelopes}
++For bounded rewards, $|Z_u|\le1+q_u(S_u)/e_u(S_u)$ and
++\[
++ \E[|Z_u|^p\mid\mathcal D]\le2^{p-1}\left[1+\sum_s q_u(s)^p e_u(s)^{1-p}\right].
++\]
++Convexity and conditional Jensen give the valid centering inequality
++$\E|Z_u-\E(Z_u\mid\mathcal D)|^p\le2^p\E|Z_u|^p$.
++Centering does not in general reduce a raw $p$th moment for $1<p<2$.
+ 
+-This appendix expands the compact interface in \cref{tab:moment-examples}. For binary action $A\in\{0,1\}$ without interference, set $S=A$. For a target treatment rule $q(1\mid X)$, \cref{eq:orthogonal-score} is the familiar augmented inverse-propensity score. For a slate, $S$ may be a position, a shown/not-shown indicator, or a coarser exposure summary. For network interference, $S=(A_i,b(\{A_j:j\in N(i)\}))$, where $b$ discretizes neighbor exposure. The validity of every estimand is relative to this mapping: two assignments treated as the same exposure state are assumed to induce the same potential outcome for the unit.
++For F, write $Y(s)=\mu(s)+\varepsilon_s$, where $0\le\mu(s)\le1$ and $\varepsilon=R\sigma U^{-1/a}$ has independent fair sign $R$ and continuous uniform $U\in(0,1)$. For $p<a$,
++$k_p=\E|\varepsilon|^p=a\sigma^p/(a-p)$; sign symmetry and $a>1$ give zero mean. The residual moment is at most $2^{p-1}(1+k_p)$. Thus a sufficient known centered envelope is
++\[
++ \nu_\theta^p=\max_u2^{2p-1}\left[1+2^{p-1}(1+k_p)\sum_s q_u(s)^p e_u(s)^{1-p}\right].
++\]
++These scales depend on the known law and design, not observed tail estimates or oracle response locations. In the implementation's positive right-endpoint uniform grid, the decreasing-integrand Riemann sum is bounded by the same continuous integral, apart from ordinary arithmetic rounding. The finite computer law is distinguished from the ideal infinite-variance law. The target interval in F uses the known conditional-mean class, not bounded outcomes.
+ 
+-\paragraph{Off-policy value.}
+-Set $h\equiv1$ and $f=0$. Then $M_W(q,1;0)$ is the window-average value of target intervention $q$ along the observed context path.
++\section{Clique-Replication Lower Bound}
++\label{app:lower}
++\begin{proof}[Proof of Theorem~\ref{thm:lower}]
++Put $n=N/\chi$, $\epsilon=1/(2n)$, $a=\nu_p(2\epsilon)^{-1/p}$, $P_0=\delta_0$ and $P_1=(1-\epsilon)\delta_0+\epsilon\delta_a$. Their mean separation is $\Delta=\epsilon a=(\nu_p/2)n^{-(p-1)/p}$. The nonzero law satisfies
++\[
++ \E_1|X-\E_1X|^p=a^p[(1-\epsilon)\epsilon^p+\epsilon(1-\epsilon)^p]
++ \le2\epsilon a^p=\nu_p^p,
++\]
++while $P_0$ has centered moment zero. Since $P_0^n$ is concentrated at zero,
++$\operatorname{TV}(P_0^n,P_1^n)=1-(1-\epsilon)^n\le n\epsilon=1/2$.
++The common subprobability measure $Q=P_0^n\wedge P_1^n$ has mass at least $1/2$. For any estimator, including its independent randomization,
++\[
++ R_0(T)+R_1(T)\ge\int(|T|+|T-\Delta|)\,dQ\ge\Delta/2.
++\]
++Thus $\max_iR_i(T)\ge\Delta/4=(\nu_p/8)(\chi/N)^{(p-1)/p}$. Exact replication is invertible by choosing one row per cluster, so it preserves the statistical experiment and total variation. The bound holds for every integer $n\ge1$.
++\end{proof}
++This is an expected absolute-risk statement for an $N$-dependent two-point family; a fixed Pareto experiment is not this least-favorable construction.
+ 
+-\paragraph{Counterfactual calibration.}
+-Let $f_u=\widehat p_u$ be a deployed score and let $q$ specify the intervention under which calibration is desired. For a group/score slice $h_{g,I}=\ind\{G=g,\widehat p\in I\}$, the ratio $\E[h_{g,I}(\psi^q-\widehat p)]/\E[h_{g,I}]$ is a signed counterfactual calibration residual. Absolute-value and maximum-over-slice metrics follow from simultaneous numerator and denominator bounds.
+-
+-\paragraph{Heterogeneous direct or spillover effects.}
+-For two interventions $q_1,q_0$, replace $\psi^q$ by $\psi^{q_1}-\psi^{q_0}$. Auditors can be protected-group indicators, network roles, or learned subgroup functions. Direct and spillover contrasts are obtained by changing only one coordinate of a multicomponent exposure state.
+-
+-\paragraph{Safety and resource use.}
+-Let $Y$ be cost, harm, latency, or resource consumption and set $f=\alpha$. A one-sided moment certificate determines whether the target policy satisfies a constraint. The same policy can be evaluated against many costs and subgroups without redefining the estimator.
+-
+-\section{Identification and Orthogonality}
+-\label{app:identification}
+-
+-\begin{proof}[Proof of \cref{prop:dr}]
+-Condition on $(X_u,\F_{t-1})$ and suppress the unit index. Under consistency and local ignorability,
+-\begin{align*}
+-\E\!\left[
+-\frac{\ind\{S=s\}}{e(s)}\{Y-\mu(s)\}
+-\middle|X,\F_{t-1}
+-\right]
+-&=\frac{\Prb(S=s\mid X,\F_{t-1})}{e(s)}
+-\E[Y(s)-\mu(s)\mid X,\F_{t-1}]\\
+-&=0.
+-\end{align*}
+-Summing with weights $q(s)$ yields
+-$\E[\psi^q(\eta_0)\mid X,\F_{t-1}]=\sum_sq(s)\mu(s)$.
+-For generic $\bar\eta$, the conditional expectation of the augmentation term is
+-\begin{align*}
+-\E\!\left[
+-\frac{\ind\{S=s\}}{\bar e(s)}\{Y-\bar\mu(s)\}
+-\middle|X,\F_{t-1}
+-\right]
+-=\frac{e(s)}{\bar e(s)}\{\mu(s)-\bar\mu(s)\}.
+-\end{align*}
+-Adding the regression term and subtracting the oracle target gives
+-\begin{align*}
+-\bar\mu(s)-\mu(s)
+-+\frac{e(s)}{\bar e(s)}\{\mu(s)-\bar\mu(s)\}
+-=\{\bar\mu(s)-\mu(s)\}\frac{\bar e(s)-e(s)}{\bar e(s)}.
+-\end{align*}
+-Multiplying by $q(s)$ and summing proves \cref{eq:dr-remainder}.
+-\end{proof}
+-
+-A useful deterministic consequence is
+-\begin{equation}
+-\abs{\E[h\{\psi^q(\bar\eta)-\psi^q(\eta_0)\}]}
+-\le
+-\E\!\left[
+-\abs h\sum_s q(s)\abs{\bar\mu(s)-\mu(s)}
+-\frac{\abs{\bar e(s)-e(s)}}{\bar e(s)}
+-\right],
+-\end{equation}
+-which motivates \cref{eq:nuisance-rem}. Cross-fitting makes $\bar\eta$ fixed relative to the evaluation fold when applying concentration. It does not by itself guarantee that this remainder is small; that requires nuisance quality in norms weighted by the target policy and inverse propensity.
+-
+-\section{Proof of the Conflict-Graph Moment Lemma}
+-\label{app:proof-graph}
+-
+-\begin{proof}[Proof of \cref{lem:graph-moment}]
+-Condition on $\mathcal D$ and let $C_1,\ldots,C_\chi$ be the color classes. Write $S_c=\sum_{i\in C_c}X_i$. Variables inside a color class are conditionally independent and mean zero. For $1<p\le2$, the von Bahr--Esseen inequality gives
+-\begin{equation}
+-    \E[\abs{S_c}^p\mid\mathcal D]
+-    \le C_p\sum_{i\in C_c}\E[\abs{X_i}^p\mid\mathcal D]
+-    \le C_p\abs{C_c}\nu^p.
+-\end{equation}
+-The color sums need not be mutually independent. Convexity nevertheless implies
+-\begin{equation}
+-\abs{\textstyle\sum_{c=1}^\chi S_c}^p
+-\le\chi^{p-1}\sum_{c=1}^\chi\abs{S_c}^p.
+-\end{equation}
+-Taking conditional expectations, summing $\abs{C_c}=n$, and dividing by $n^p$ yields
+-\begin{equation}
+-\E\!\left[\abs{n^{-1}\sum_iX_i}^p\mid\mathcal D\right]
+-\le C_p\nu^p\chi^{p-1}n^{1-p},
+-\end{equation}
+-which is \cref{eq:graph-moment}.
+-\end{proof}
+-
+-The bound is conservative because it uses an integral coloring and ignores cancellations across colors. A fractional coloring or a graph-specific moment inequality may replace $\chi$ by a smaller parameter; this is a theorem-strengthening opportunity rather than a change to the estimator interface.
+-
+-\section{Proof Blueprint for the Uniform \COMET\ Bound}
+-\label{app:proof-main}
+-
+-\paragraph{Gate A audit status: unresolved blueprint.}
+-The argument below is retained as a research blueprint, not an established proof
+-of the adaptive or mutually cross-fitted theorem. Its unspecified conditioning,
+-coupling-event independence, average nuisance-bias transfer, and leftover-block
+-handling require further assumptions or corrections. The proved implementation
+-uses the separate model, complete-block grouping, and explicit constants of
+-\cref{thm:gate-a-clean}; the coupling transfer there does not condition on
+-successful coupling.
+-
+-Fix $\theta\in\Theta$ and condition on the design and nuisance-training data. Let $\mu_b(\theta)=\E[\bar Z_b(\theta)]$ for a block of size $n_0$. By \cref{lem:graph-moment},
+-\begin{equation}
+-\E\abs{\bar Z_b(\theta)-\mu_b(\theta)}^p
+-\le C_p\nu_p^p\left(\frac{\bar\chi_W}{n_0}\right)^{p-1}.
+-\label{eq:block-p}
+-\end{equation}
+-On the coupling event, the $B$ block means can be replaced by independent copies with the same marginals. Partition them into $K$ super-blocks of size $L=\lfloor B/K\rfloor$; at most $K-1$ excess blocks can be discarded or deterministically distributed without changing constants. For group $g$, define
+-\begin{equation}
+-\widetilde Z_g=\frac1L\sum_{b\in g}\bar Z_b,
+-\qquad
+-\mu_g=\frac1L\sum_{b\in g}\mu_b.
+-\end{equation}
+-The von Bahr--Esseen inequality across independent temporal blocks and \cref{eq:block-p} imply
+-\begin{align}
+-\E\abs{\widetilde Z_g-\mu_g}^p
+-&\le \frac{C_p}{L^p}\sum_{b\in g}
+-\E\abs{\bar Z_b-\mu_b}^p\\
+-&\le C_p'\nu_p^p
+-\left(\frac{\bar\chi_W}{Ln_0}\right)^{p-1}
+-\le C_p''\nu_p^p
+-\left(\frac{K}{N_{\eff}}\right)^{p-1}.
+-\label{eq:superblock-p}
+-\end{align}
+-Choose
+-\begin{equation}
+- a=C_p'''\nu_p\left(\frac{K}{N_{\eff}}\right)^{(p-1)/p}
+-\end{equation}
+-with a constant making $\Prb(\abs{\widetilde Z_g-\mu_g}>a)\le1/8$ by Markov's inequality. Since super-blocks are independent on the coupling event, a Chernoff bound gives
+-\begin{equation}
+-\Prb\left(\text{at least }K/2\text{ groups are bad}\right)
+-\le e^{-cK}.
+-\end{equation}
+-The window target is the average of equal-size block targets. By \cref{eq:drift}, $\abs{\mu_g-M_W}\le\Delta_W$. Hence, whenever a majority of groups are good, their estimates all lie in $[M_W-a-\Delta_W,M_W+a+\Delta_W]$, and so does their median. Taking $K\ge8\log(2\abs\Theta/\delta)$ and union bounding over $\Theta$ proves the stochastic and drift terms.
+-
+-The argument above is centered at the expectation of the cross-fitted plug-in score. Proposition~\ref{prop:dr} bounds its difference from the oracle counterfactual target by $R_{\nuis}$. Finally, the independent-block result transfers to the original blocks outside a coupling event of probability $\varepsilon_{\coup}$. Combining the events gives \cref{eq:main-bound}.
+-
+-\paragraph{Variable block sizes.}
+-A valid extension can preserve the raw-row target by constructing super-blocks with equal total raw mass and using raw-mass weights inside each group. Its moment bound depends on
+-\begin{equation}
+-\max_g
+-\frac{\sum_{b\in g}n_b^p(\chi_b/n_b)^{p-1}}
+-     {(\sum_{b\in g}n_b)^p}
+-=
+-\max_g
+-\frac{\sum_{b\in g}n_b\chi_b^{p-1}}
+-     {(\sum_{b\in g}n_b)^p}.
+-\end{equation}
+-The equal-block estimator in the main text is preferred for the first implementation because its target and design effect are immediately auditable.
+-
+-\section{Nuisance Learning under Dependence}
+-\label{app:nuisance}
+-
+-A cross-fitting fold is defined by temporal blocks, entity clusters, and conflict edges rather than rows. The following rules prevent common leakage modes.
+-\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+-    \item All observations from an entity that can carry latent state across time belong to the same side of a fold boundary or are separated by a declared washout period.
+-    \item Units whose exposure neighborhoods overlap are not split between nuisance training and evaluation when that overlap would reveal the evaluation assignment or outcome.
+-    \item Features are timestamped and constructed only from information available before the logged action.
+-    \item Propensities are taken from the logging mechanism when available; an estimated propensity is evaluated on held-out folds and its lower-tail calibration is reported.
+-\end{enumerate}
+-
+-For theoretical statements, the cross-fitted score must have a finite conditional $p$-moment. Exact logged propensities make this condition easier to diagnose. Estimated propensities can introduce artificial near-zero denominators even when the true behavior policy has adequate support. The implementation therefore reports quantiles of both logged and estimated target-to-logging ratios and treats numerical zeros as support failures. Propensity clipping is included as a baseline, not silently built into the estimand. Robustifying the final orthogonal score is distinct from asserting that the propensity ratio is bounded.
+-
+-A Cauchy--Schwarz version of the nuisance remainder is available when suitable weighted second moments exist. Define
+-\begin{align*}
+-A_q^2&=\E\left[\abs h\sum_s q(s)\{\widehat\mu(s)-\mu(s)\}^2w_s\right],\\
+-B_q^2&=\E\left[\abs h\sum_s q(s)
+-\frac{\{\widehat e(s)-e(s)\}^2}{\widehat e(s)^2w_s}\right]
+-\end{align*}
+-for positive weights $w_s$. Then $R_{\nuis}(q,h)\le A_qB_q$. Under weak overlap, choosing and estimating these weighted norms is more informative than reporting unweighted nuisance RMSE.
+-
+-\section{Temporal Coupling and Conflict-Graph Construction}
+-\label{app:dependence}
+-
+-\subsection{Conflict edges}
+-An edge is added between two scored units when any of the following holds under the declared data-generating interface: they share a randomized slate; one lies in the other's interference neighborhood; they share a user or item state not absorbed by the context; their outcomes share a cluster shock; or their feature construction uses a common post-action random variable. Edges are not inferred from outcome correlation after the fact. This keeps the design penalty checkable and prevents outcome-dependent graph selection.
+-
+-\subsection{A protocol-level degree bound}
+-The original evolving-graph application motivates a useful design corollary. Suppose each round processes at most $M$ scored candidate units and an evaluated unit can interact only with units from $L_{\mathrm{int}}$ previous or future rounds. If the within-round protocol creates at most $cM$ conflicts for each unit, then
+-\begin{equation}
+-    \Delta(G_W)\le c(2L_{\mathrm{int}}+1)M,
+-    \qquad
+-    \bar\chi_W\le c(2L_{\mathrm{int}}+1)M+1.
+-\label{eq:protocol-degree}
+-\end{equation}
+-This is a protocol bound, not a claim that the underlying graph has bounded degree. Hubs can exist; capping candidate processing and interference memory still controls the logged instance graph. The experiment varying $M$ exposes the resulting compute--statistics tradeoff.
+-
+-\subsection{Mixing blocks}
+-For a stationary $\beta$-mixing sequence of block summaries, blocks separated by $\ell$ can be coupled to independent copies with total failure probability bounded by a constant times $(B-1)\beta(\ell)$. Geometric decay $\beta(\ell)\le C\rho^\ell$ yields a logarithmic guard length for a specified coupling budget. In an adaptive system, stationarity may be implausible; the main text therefore reports window drift separately and treats the mixing result as an offline corollary rather than the definition of the target.
+-
+-\section{Heavy-Tail Lower Bound}
+-\label{app:lower}
+-
+-\begin{proof}[Proof of \cref{thm:lower}]
+-Let $n=N/\chi\ge1$ be the number of independent clusters. Every cluster contains $\chi$ identical copies of a scalar $X_j$, so observing all $N$ rows is statistically equivalent to observing $X_1,\ldots,X_n$.
+-
+-Set $\varepsilon=1/(2n)$ and $a=\nu_p(2\varepsilon)^{-1/p}$. Consider $P_0=\delta_0$ and $P_1=(1-\varepsilon)\delta_0+\varepsilon\delta_a$. Their means differ by
+-\begin{equation}
+-\Delta=\varepsilon a=\frac{\nu_p}{2}n^{-(p-1)/p}.
+-\end{equation}
+-The centered moment of $P_0$ is zero. For $P_1$, using $0<\varepsilon\le1/2$ and $p>1$ gives the explicit bound
+-\begin{align*}
+-\E_{P_1}\abs{X-\E_{P_1}X}^p
+-&=a^p\{(1-\varepsilon)\varepsilon^p
+-       +\varepsilon(1-\varepsilon)^p\}\\
+-&\le a^p(\varepsilon^p+\varepsilon)
+- \le2\varepsilon a^p=\nu_p^p.
+-\end{align*}
+-No inequality comparing a centered moment directly with the raw moment is used. Since $P_0^n$ is concentrated at the all-zero sample,
+-\begin{equation}
+-\operatorname{TV}(P_0^n,P_1^n)=1-(1-\varepsilon)^n\le n\varepsilon=\frac12.
+-\end{equation}
+-For completeness, let $Q=P_0^n\wedge P_1^n$ be the common subprobability measure, of mass $1-\operatorname{TV}(P_0^n,P_1^n)$. For any estimator $T$ (including randomized estimators, by integrating over their common randomization), the triangle inequality implies
+-\begin{align*}
+-\E_{P_0^n}|T|+\E_{P_1^n}|T-\Delta|
+-&\ge\int\bigl(|T|+|T-\Delta|\bigr)\,dQ\\
+-&\ge\Delta\{1-\operatorname{TV}(P_0^n,P_1^n)\}.
+-\end{align*}
+-Consequently,
+-\begin{equation}
+-\max_{i\in\{0,1\}}\E_{P_i^n}|T-M(P_i)|
+-\ge\frac{\Delta}{2}\{1-\operatorname{TV}(P_0^n,P_1^n)\}
+-\ge\frac{\nu_p}{8}\left(\frac{\chi}{N}\right)^{(p-1)/p}.
+-\end{equation}
+-Taking the infimum over $T$ proves \cref{eq:lower-bound} with $c_p=1/8$. This is an expected absolute-risk lower bound for the exact $\chi$-clique replication subclass, hence also for any model class containing that subclass. It does not establish a sharp bound for every fixed sparse graph, or a matching simultaneous high-probability confidence radius.
+-\end{proof}
+-
+-\section{Streaming Truncation Variant}
+-\label{app:streaming}
+-
+-For online monitoring, storing enough blocks for a MOM estimate may be undesirable. Define a score-truncated estimator
+-\begin{equation}
+-\widehat M_{\tau}(q,h)
+-=\frac1{N_W}\sum_{u\in\Ical_W}
+-\widehat Z_u(q,h)\ind\{\abs{\widehat Z_u(q,h)}\le\tau\}.
+-\end{equation}
+-Under a conditional $p$-moment bound, truncation bias is at most $\nu_p^p\tau^{-(p-1)}$. Applying a bounded dependency-graph/mixing inequality to the truncated score gives a deviation term that balances at
+-\begin{equation}
+-\tau\asymp
+-\left(
+-\frac{\nu_p^pN_{\eff}}
+-     {\log(\abs\Theta/\delta)}
+-\right)^{1/p},
+-\end{equation}
+-leading to the same $\nu_p\{\log(\abs\Theta/\delta)/N_{\eff}\}^{(p-1)/p}$ rate up to coupling and nuisance corrections. This variant estimates a path-average mean even when block targets vary, but its scale selection is more sensitive and its finite-sample constants can be worse than MOM. It is therefore useful as a streaming method and an ablation, not as an excuse to claim that the method uses no truncation anywhere.
+-
+-\section{Policy-Repair Guarantee}
+-\label{app:repair-proof}
+-
+-\begin{proof}[Proof of \cref{prop:repair}]
+-On the simultaneous event, every selected constraint satisfies
+-\begin{equation}
+-C_j(\widehat q)\le\widehat C_j(\widehat q)+r_j(\widehat q)\le\alpha_j.
+-\end{equation}
+-Let $q$ satisfy $C_j(q)+2r_j(q)\le\alpha_j$. Then
+-\begin{equation}
+-\widehat C_j(q)+r_j(q)
+-\le C_j(q)+2r_j(q)\le\alpha_j,
+-\end{equation}
+-so $q$ is feasible for \cref{eq:policy-repair}. Optimality of $\widehat q$ and the utility confidence bounds imply
+-\begin{align*}
+-V(\widehat q)
+-&\ge\widehat V(\widehat q)-r_V(\widehat q)\\
+-&\ge\widehat V(q)-r_V(q)\\
+-&\ge V(q)-2r_V(q).
+-\end{align*}
+-\end{proof}
+-
+-\section{Detailed Experimental Protocol}
+-\label{app:experiments}
+-
+-\subsection{Synthetic parameters}
+-The initial grid should include $p\in\{1.2,1.5,1.8,2.0\}$; exploration $\epsilon_{\mathrm{exp}}\in\{0.01,0.05,0.1,0.2\}$; candidate budgets $M\in\{20,100,500\}$; interference radii $r\in\{0,1,2\}$; temporal persistence values yielding short, medium, and long correlation; and sample sizes spanning at least one order of magnitude. Pareto/Lomax parameters must be chosen so that the asserted moment exists and the next higher diagnostic moment can fail. A bounded-outcome weak-overlap generator and a strong-overlap heavy-outcome generator are both required.
+-
+-The planted hidden subgroup should depend on an interaction not represented by the fixed slices, for example
+-\begin{equation}
+-\ind\{G=1,\ \deg(v)>q_{0.9},\ \text{new-user}=1,\ Z_t=\text{high-load}\}.
+-\end{equation}
+-Its support and effect are varied independently. Discovery models are constrained by a minimum support rule; certification evaluates both the planted effect and false discoveries under a null generator.
+-
+-\subsection{Open Bandit protocol}
+-Use one logged policy as behavior data and estimate the value of the other policy. The on-policy mean from the target log is computed on a disjoint time range when possible. Repeat in both directions and across policy mixtures. Report overlap diagnostics, effective sample size, and any context strata where the target action has inadequate support. Binary reward makes this a clean test of importance-weight tails but not of outcome-heavy-tail robustness.
+-
+-\subsection{TGB semi-synthetic protocol}
+-Use the original timestamps and node identities. The logging score may be generated from a fixed temporal-graph backbone or a transparent structural score; the counterfactual estimator should not be credited for backbone accuracy. Potential outcomes depend on source/destination features, latent communities, direct exposure, and neighborhood exposure. Candidate-set construction is fixed before comparing estimators. Ground truth is obtained by replaying the known outcome function under target interventions on the same context stream.
+-
+-\subsection{KuaiRand protocol}
+-Preserve user-level chronology and build folds by user/time blocks. Analyze binary interactions and watch time separately. Use the random-exposure records for intervention-oriented validation and the standard-feed records for weak-overlap stress tests. Claims must distinguish exact randomization-based checks from model-assisted extrapolation to target policies not represented by the random exposure mechanism.
+-
+-\subsection{Coverage computation}
+-For each configuration and estimator, generate $R$ independent repetitions. Empirical coverage is the fraction of intervals containing the ground truth; Wilson or Clopper--Pearson intervals quantify Monte Carlo uncertainty. A method with a high abstention rate is not assigned artificial coverage: coverage conditional on non-abstention and overall decision error are reported together. The final plots include a nominal-versus-empirical coverage curve and support-stratified coverage.
+-
+-\section{Relation to COPF and Reuse of the Earlier Draft}
+-\label{app:copf}
+-
+-The earlier project studied counterfactual online performative fairness for exposure in evolving-graph link recommendation. Its useful ingredients map into the present framework as follows.
+-\begin{center}
+-\small
+-\begin{tabularx}{.97\linewidth}{@{}p{.28\linewidth}X@{}}
+-\toprule
+-Earlier component & Role in \COMET \\
+-\midrule
+-Shown/not-shown potential outcomes & One binary exposure mapping $S\in\{0,1\}$ \\
+-Graph-aware doubly robust pseudo-outcomes & Special case of \cref{eq:orthogonal-score} \\
+-Residual-OI over group/score slices & Counterfactual moments with fixed auditors \\
+-Local-interference dependency graph & One source of the general conflict graph \\
+-Exposure-effect parity and calibration & Two examples in \cref{tab:moment-examples} \\
+-Primal--dual decision controller & Baseline; replaced by certificate-guided repair \\
+-Strict propensity overlap & Replaced by target-support positivity and finite-$p$ moments \\
+-Random-graph generative task & Optional protocol/design corollary, not a main contribution \\
+-\bottomrule
+-\end{tabularx}
+-\end{center}
+-
+-The new paper should cite the earlier work in third person and explicitly state the difference in the introduction and appendix. Reusing notation or a special-case lemma is not enough to establish novelty; the main theorem, estimator, learned-auditor protocol, policy-repair result, and experiments must answer the general moment problem stated here.
+-
+-\section{Limitations and Pre-Submission Claim Audit}
+-\label{app:limitations}
+-
+-Before submission, every item below should be resolved in the manuscript or removed from the claimed contributions.
+-\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+-    \item Prove the exact conditional version of \cref{thm:uniform-comet} used by the implementation, including coupling constants and the adaptive scale rule.
+-    \item Verify that the conflict graph corresponds to the synthetic and real-data preprocessing; report its construction algorithm, not only $\bar\chi_W$.
+-    \item Show empirical coverage, not merely RMSE, across weak-overlap and outcome-tail regimes.
+-    \item Demonstrate that graph/time corrections improve calibration of intervals rather than only widening them.
+-    \item Validate the lower-bound assumptions and avoid presenting the cluster subclass as a lower bound for a narrower structured graph class without justification.
+-    \item Report nuisance error in overlap-weighted norms or controlled misspecification sweeps.
+-    \item Keep discovery and certification data separated through nuisance fitting, auditor selection, and hyperparameter tuning.
+-    \item Replace every numerical or tabular result placeholder in the overlength working draft; remove comparisons that are not run.
+-    \item Check all dataset licenses, outcome definitions, and intervention claims.
+-    \item Recompile with the exact official ICLR 2027 style files, verify the nine-page main-text limit, anonymity, references, and the required AI use statement.
+-\end{enumerate}
+-
+-\input{sections/gate_a_certificate}
++\section{Open Extensions}
++The adaptive-history target $M_{\rm path}=N^{-1}\sum_u\E[Z_u\mid\mathcal F_{t(u)-1}]$ requires a separate concentration argument. Conditioning on the full realized adaptive path or on mutually trained fits does not supply independent blocks. A future coupling proof must first analyze an independent copy law and add its mismatch probability to the total failure budget. No such adaptive, learned-tail or nonzero-coupling certificate is asserted here.

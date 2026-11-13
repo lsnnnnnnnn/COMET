@@ -1,0 +1,69 @@
+{
+  "status": "SERVER_COMPATIBILITY_BLOCKED_LOCAL_ONLY",
+  "diagnosis": "floating_point_power_evaluation_differs_across_verified_execution_environments",
+  "run_id": "gate-c-v1/preflight/F/0000",
+  "confirmatory_draws": 0,
+  "local_environment": {
+    "machine": "arm64",
+    "platform": "macOS-27.2-arm64-arm-64bit",
+    "python": "3.12.2 | packaged by conda-forge | (main, Feb 16 2024, 20:54:21) [Clang 16.0.6 ]"
+  },
+  "server_environment": {
+    "machine": "x86_64",
+    "platform": "Linux-5.15.0-136-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3 (main, Feb  4 2025, 14:48:35) [GCC 13.3.0]"
+  },
+  "sampler_source_identical": true,
+  "sampler_sha256": "60c7d2bf5b3dfd68974784306f48d846858257cc75aff5ee0c30c817203cb1c8",
+  "primitive_draws": 16384,
+  "primitive_rng_uniform_sign_exponent_mean_identical": true,
+  "primitive_difference_counts": {
+    "noise_hex": 20,
+    "power_hex": 20,
+    "outcome_hex": 13
+  },
+  "raw_rows": 32768,
+  "differing_reward_rows": 28,
+  "differing_independent_clusters": 7,
+  "max_reward_absolute_difference": 2.220446049250313e-16,
+  "max_reward_difference_over_local_ulp": 16.0,
+  "max_power_difference_over_local_ulp": 1.0,
+  "local_observed_data_sha256": "a059470a5e004089ecaff45180c6fac9b1c7c7f5e0ff730b8d6bdb90f35ae794",
+  "server_observed_data_sha256": "976df42468de97458204f2a8294833c7b695a306ce11be3b3bef7fa5cc14b117",
+  "mismatched_scientific_payload_leaves": 225,
+  "all_payload_leaf_differences_only_observed_data_hash": true,
+  "all_reported_estimates_intervals_truth_status_decisions_metrics_identical": true,
+  "record_count": 224,
+  "response": "No tolerance relaxed; no scientific source or floating-point formula changed; server rejected for C-STAT; historical-compatible local environment only.",
+  "theorem_scope": "No new theorem/model/formula discrepancy found. Existing exact-real theorem and acknowledged ordinary floating-point implementation convention remain unchanged. This diagnostic does not establish exact finite-precision coverage.",
+  "evidence_sha256": {
+    "results/gate_C/stat_lock/platform_diagnostic_local_F0000.json.gz": "78449cab0fdc58374fca3bb8aa46910a2ca35480c9797f377b0e83424a864300",
+    "results/gate_C/stat_lock/platform_diagnostic_server_F0000.json.gz": "236993702a7ade4368a23117d47d646b1eea70242e6341e3feadefa8b676ed36",
+    "results/gate_C/stat_lock/compatibility_server/mismatch.json": "67d66ed12986d0e9660f089146a76a54bc020cc7d2ac3fd56bd9560b854d71f0",
+    "reports/gate_C_stat_audit/diagnose_platform_pareto.py": "99ad6887b1180ad747f0fa31b1a6faf0d37bbf8bf81f2fbc01aa519918841e46"
+  },
+  "commands": [
+    {
+      "command": ".venv/bin/python reports/gate_C_stat_audit/diagnose_platform_pareto.py --output results/gate_C/stat_lock/platform_diagnostic_local_F0000.json.gz",
+      "exit_code": 0
+    },
+    {
+      "command": "ssh -o BatchMode=yes 10.200.13.23 'cd /data1/shengen/COMET_C_STAT_20261113 && python3 - --output results/gate_C/stat_lock/platform_diagnostic_server_F0000.json.gz' < reports/gate_C_stat_audit/diagnose_platform_pareto.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scp -o BatchMode=yes 10.200.13.23:/data1/shengen/COMET_C_STAT_20261113/results/gate_C/stat_lock/platform_diagnostic_server_F0000.json.gz results/gate_C/stat_lock/platform_diagnostic_server_F0000.json.gz",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python /tmp/compare_cstat_platform.py",
+      "exit_code": 0,
+      "note": "Initial comparison before adding command provenance to the preserved program."
+    },
+    {
+      "command": ".venv/bin/python reports/gate_C_stat_audit/compare_platform_pareto.py",
+      "exit_code": 0
+    }
+  ],
+  "comparison_script_sha256": "79dd3434fa44ec772a9ec364f1164d38d5db0b8d2b2acff098cc513c4f551ef5"
+}

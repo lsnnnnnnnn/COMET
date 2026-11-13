@@ -1,0 +1,12 @@
+{
+  "run_id": "gate-c-v1/preflight/F/0000",
+  "phase": "historical_preflight_diagnostic",
+  "confirmatory_draws": 0,
+  "environment": {
+    "python": "3.12.2 | packaged by conda-forge | (main, Feb 16 2024, 20:54:21) [Clang 16.0.6 ]",
+    "platform": "macOS-27.2-arm64-arm-64bit",
+    "machine": "arm64"
+  },
+  "sampler_sha256": "60c7d2bf5b3dfd68974784306f48d846858257cc75aff5ee0c30c817203cb1c8",
+  "observed_data_sha256": "a059470a5e004089ecaff45180c6fac9b1c7c7f5e0ff730b8d6bdb90f35ae794"
+}

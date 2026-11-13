@@ -80,3 +80,33 @@ metadata (phase/schema/provenance/timing/RSS), plus exact partitioned-summary
 agreement. It must run on the actual execution environment. No confirmatory
 ID may be drawn for tuning this test. Passing evidence, final runner hash,
 execution commit and launch decision are appended after completion.
+
+## Completed compatibility and actual readiness decision
+
+The final launcher was committed as
+`5f9a221062e67af492f1145dfd7ed3bec050de15`, SHA-256
+`1628b05f843975ee19f3fd48cf5868717c67f0646a3f927ea8fa4cab860865ed`.
+Local final compatibility passed all12 historical seeds and exact84-row
+partitioned summaries; the final report hash is
+`e59494043569eaf9fdec1b4e61a8f91a4015ecd34fb768a55005cd8e6b153fd4`.
+The prelaunch full suite passed481 tests, including9 launcher checks; the
+existing472 remained unchanged. The new independent statistical validator
+matched all84 preflight summaries in62,646 checks and later added4 passing
+analysis tests. Full final suite then passed485 in20.18s. No test failed.
+
+The Linux/x86 server failed the strict historical F/0000 data-byte comparison.
+A same-seed primitive-level diagnosis identified20 one-ULP power differences
+among16,384 power calls, resulting in28 different copied observed rows, with
+maximum absolute reward difference2.220446049250313e-16. The224 numerical
+certificate rows were identical; only the observed-data hash differed. This
+is an execution-platform incompatibility under the required bytewise rule,
+not a new proof-to-code formula discrepancy. Both host traces and the failed
+comparison are preserved; the comparison was not relaxed and the server drew
+zero confirmatory logs.
+
+The actual decision is **GO_LOCAL_ONLY**, recorded in
+`results/gate_C/stat_lock/readiness_decision.json` before any confirmation draw.
+The full6000-ID command started in the passing local environment with6 CPU
+workers. No scientific parameter or source changed. Its completion, resources
+and final PASS/BLOCKED result belong in the execution/results reports, not this
+prelaunch gate decision. The old preflight-only runner/config remain unchanged.

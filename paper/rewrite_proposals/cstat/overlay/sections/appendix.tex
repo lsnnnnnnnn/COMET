@@ -1,0 +1,37 @@
+\section{Known Conditional Moment Envelopes}
+\label{app:envelopes}
+For bounded rewards, $|Z_u|\le1+q_u(S_u)/e_u(S_u)$ and
+\[
+ \E[|Z_u|^p\mid\mathcal D]\le2^{p-1}\left[1+\sum_s q_u(s)^p e_u(s)^{1-p}\right].
+\]
+Convexity and conditional Jensen give the valid centering inequality
+$\E|Z_u-\E(Z_u\mid\mathcal D)|^p\le2^p\E|Z_u|^p$.
+Centering does not in general reduce a raw $p$th moment for $1<p<2$.
+
+For F, write $Y(s)=\mu(s)+\varepsilon_s$, where $0\le\mu(s)\le1$ and $\varepsilon=R\sigma U^{-1/a}$ has independent fair sign $R$ and continuous uniform $U\in(0,1)$. For $p<a$,
+$k_p=\E|\varepsilon|^p=a\sigma^p/(a-p)$; sign symmetry and $a>1$ give zero mean. The residual moment is at most $2^{p-1}(1+k_p)$. Thus a sufficient known centered envelope is
+\[
+ \nu_\theta^p=\max_u2^{2p-1}\left[1+2^{p-1}(1+k_p)\sum_s q_u(s)^p e_u(s)^{1-p}\right].
+\]
+These scales depend on the known law and design, not observed tail estimates or oracle response locations. In the implementation's positive right-endpoint uniform grid, the decreasing-integrand Riemann sum is bounded by the same continuous integral, apart from ordinary arithmetic rounding. The finite computer law is distinguished from the ideal infinite-variance law. The target interval in F uses the known conditional-mean class, not bounded outcomes.
+
+\section{Clique-Replication Lower Bound}
+\label{app:lower}
+\begin{proof}[Proof of Theorem~\ref{thm:lower}]
+Put $n=N/\chi$, $\epsilon=1/(2n)$, $a=\nu_p(2\epsilon)^{-1/p}$, $P_0=\delta_0$ and $P_1=(1-\epsilon)\delta_0+\epsilon\delta_a$. Their mean separation is $\Delta=\epsilon a=(\nu_p/2)n^{-(p-1)/p}$. The nonzero law satisfies
+\[
+ \E_1|X-\E_1X|^p=a^p[(1-\epsilon)\epsilon^p+\epsilon(1-\epsilon)^p]
+ \le2\epsilon a^p=\nu_p^p,
+\]
+while $P_0$ has centered moment zero. Since $P_0^n$ is concentrated at zero,
+$\operatorname{TV}(P_0^n,P_1^n)=1-(1-\epsilon)^n\le n\epsilon=1/2$.
+The common subprobability measure $Q=P_0^n\wedge P_1^n$ has mass at least $1/2$. For any estimator, including its independent randomization,
+\[
+ R_0(T)+R_1(T)\ge\int(|T|+|T-\Delta|)\,dQ\ge\Delta/2.
+\]
+Thus $\max_iR_i(T)\ge\Delta/4=(\nu_p/8)(\chi/N)^{(p-1)/p}$. Exact replication is invertible by choosing one row per cluster, so it preserves the statistical experiment and total variation. The bound holds for every integer $n\ge1$.
+\end{proof}
+This is an expected absolute-risk statement for an $N$-dependent two-point family; a fixed Pareto experiment is not this least-favorable construction.
+
+\section{Open Extensions}
+The adaptive-history target $M_{\rm path}=N^{-1}\sum_u\E[Z_u\mid\mathcal F_{t(u)-1}]$ requires a separate concentration argument. Conditioning on the full realized adaptive path or on mutually trained fits does not supply independent blocks. A future coupling proof must first analyze an independent copy law and add its mismatch probability to the total failure budget. No such adaptive, learned-tail or nonzero-coupling certificate is asserted here.

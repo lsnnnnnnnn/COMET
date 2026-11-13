@@ -28,10 +28,10 @@ def export():
           needed=None if gap==0 else ceil(4*m*chi*pi*J/(.05*gap*gap))+1
           rows.append(dict(study='D1',pi=pi,chi=chi,family_size=m,overlap=overlap,e1=e,q1=.5,
             signed_raw_gap=gap,implied_target_mean=mean,mean_class_feasible=0<=mean<=1,
-            N_reference=32768,design_radius=radius,minimum_integer_N_for_abs_gap_gt_2r=needed,
+            N_reference=32768,design_radius=radius,sufficient_integer_N_for_abs_gap_gt_2r=needed,
             eligible_for_run=False,reason='proposal_only; impossible means excluded before draws' if not 0<=mean<=1 else 'proposal_only; no outcomes'))
     with (out/'D1_feasibility.csv').open('w',newline='') as f:
-      w=csv.DictWriter(f,fieldnames=rows[0]);w.writeheader();w.writerows(rows)
+      w=csv.DictWriter(f,fieldnames=rows[0],lineterminator='\n');w.writeheader();w.writerows(rows)
     settings=json.loads((ROOT/'configs/gate_C_frozen.json').read_text())
     cell=cell_from_dict(settings['cells'][-1]);d=cell.design
     # Fixed B=128,K=9,Lmin=14 from the registered exact-binomial calculation.
@@ -53,7 +53,7 @@ def export():
         idealized_memory_MiB_at_preflight_bytes_per_row=118.44*(d.B*n0)/32768,
         run_authorized=False))
     with (out/'D5_F_radius_inversion.csv').open('w',newline='') as f:
-      w=csv.DictWriter(f,fieldnames=rows[0]);w.writeheader();w.writerows(rows)
+      w=csv.DictWriter(f,fieldnames=rows[0],lineterminator='\n');w.writeheader();w.writerows(rows)
     (out/'manifest.json').write_text(json.dumps(dict(status='UNRUN_DESIGN_ONLY',new_outcome_draws=0,
       scope='Analytic feasibility, not confirmed power or allocated samples',D1_rows=648,D5_rows=len(rows),
       memory_note='Linear extrapolation from preflight process peak, not a measured D-stage resource or a tight bound'),indent=2)+'\n')

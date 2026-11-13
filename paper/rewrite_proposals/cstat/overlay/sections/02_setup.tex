@@ -1,0 +1,36 @@
+\section{Counterfactual Moments under an Exogenous Block Design}
+\label{sec:setup}
+Let $\mathcal D$ contain a design fixed before evaluation randomization and, optionally, pilot data independent of the evaluation experiment conditional on that design. All statements below condition on $\mathcal D$. It fixes the retained units, contexts, references $f_u\in[0,1]$, a finite family $\Theta$ of $m$ pairs $\theta=(q,h)$, and predictions $\widehat\mu_u(s)\in[0,1]$. We allow $|h_u|\le1$; reported subgroup moments use binary auditors. No evaluation outcome or future outcome-derived context enters $\mathcal D$.
+
+For a finite exposure space $\Scal$, let $Y_u(s)$ denote the potential outcome and $Y_u=Y_u(S_u)$. The known logging probability is $e_u(s)=\Prb(S_u=s\mid\mathcal D)$, with $q_u(s)\ge0$, $\sum_s q_u(s)=1$, and $q_u(s)>0\Rightarrow e_u(s)>0$. Assume $Y_u(s)\perp S_u\mid\mathcal D$. Write $\mu_u(s)=\E[Y_u(s)\mid\mathcal D]$. Our target is
+\begin{equation}
+ M_{\mathcal D}(q,h;f)=\frac1N\sum_u h_u\left[\sum_s q_u(s)\mu_u(s)-f_u\right].
+ \label{eq:target-moment}
+\end{equation}
+This is a conditional finite-design mean, not a realized-potential-outcome average or the value along an arbitrary adaptive deployment path.
+
+\paragraph{Exposure probabilities and implementable policies.}
+If $S_u=g_u(A)$ arises from a joint assignment, then $e_u(s)=\sum_{a:g_u(a)=s}P(A=a\mid\mathcal D)$. Products of item marginals generally do not equal these probabilities. To call $q$ a globally implementable policy, require a valid joint law $Q(A\mid\mathcal D)$ inducing every $q_u(s)=\sum_{a:g_u(a)=s}Q(a\mid\mathcal D)$. Two units competing for one display slot cannot both have target display probability one. Without such a joint construction, \eqref{eq:target-moment} is an exposure-marginal functional. The frozen simulator uses the simpler binary exposure $S=A$.
+
+\paragraph{Score and identification.}
+With a fit fixed given $\mathcal D$, define
+\begin{equation}
+ Z_u(\theta)=h_u\left[\sum_s q_u(s)\widehat\mu_u(s)-f_u+
+ \frac{q_u(S_u)}{e_u(S_u)}\{Y_u-\widehat\mu_u(S_u)\}\right].
+ \label{eq:gate-a-score}
+\end{equation}
+Conditional randomization gives
+$\E[Z_u\mid\mathcal D]=m_u(\theta):=h_u[\sum_s q_u(s)\mu_u(s)-f_u]$.
+This exact-propensity DR identity does not require a correct outcome fit. It does require a legitimate fixed/independent-pilot fit for the concentration results below.
+
+\paragraph{Dependence and moment conditions.}
+There are $B$ conditionally independent evaluation-block vectors. A sufficient dependency graph within each block means that disjoint vertex sets with no connecting edges have independent score vectors given $\mathcal D$. Pairwise zero covariance or a network adjacency list alone does not establish this property. A proper coloring uses $\chi_b$ colors. The MOM route additionally requires equal block size $n_0$, $\chi_b\le\chi$, stable block means $n_0^{-1}\sum_{u\in b}m_u(\theta)=M_{\mathcal D}(\theta)$, and a known finite envelope
+\begin{equation}
+ \E[|Z_u(\theta)-m_u(\theta)|^p\mid\mathcal D]\le\nu_\theta^p,
+ \qquad 1<p\le2.
+ \label{eq:gate-a-moment}
+\end{equation}
+An unconditional integrated moment does not imply this uniform conditional bound when $q/e$ is unbounded across designs. The envelope may depend on the realized exogenous design and must be reported. The bounded-outcome mean route instead assumes $Y_u(s)\in[0,1]$ and permits unequal block means.
+
+\paragraph{Subgroups.}
+For binary $h$, the design mass $\pi_{\mathcal D,h}=N^{-1}\sum_u h_u$ is known. A numerator interval divided by positive $\pi_{\mathcal D,h}$ certifies the corresponding fixed-design subgroup mean. At zero mass the ratio is undefined. No superpopulation mass theorem is claimed.

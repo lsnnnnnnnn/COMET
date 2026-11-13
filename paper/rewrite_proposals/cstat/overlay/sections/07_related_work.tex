@@ -1,0 +1,10 @@
+\section{Related Work}
+\label{sec:related}
+\paragraph{Off-policy inference.}
+Doubly robust scores combine regression and importance weighting \citep{dudik2011doubly,jiang2016doubly}. Karampatziakis, Mineiro and Ramdas develop contextual-bandit confidence sequences valid uniformly over time and at arbitrary stopping times \citep{karampatziakis2021sequences}. Our fixed-window block certificates do not provide that time-uniform guarantee. Mehrabi and Wager study truncated doubly robust evaluation in Markov decision processes under weak distributional overlap, including slower-rate regimes \citep{mehrabi2024weak}. Their stationary-distribution-ratio setting differs from our design-conditional finite-exposure moments; COMET does not subsume their MDP analysis.
+
+\paragraph{Heavy tails and dependence.}
+Uniform finite-$p$ MOM estimation is itself established: H{\o}gsgaard and Paudice analyze simultaneous means over function classes with $p\in(1,2]$ \citep{hogsgaard2025uniform}. Our finite-family union bound and exact-binomial group selection should be read as an explicit implementation of standard tools under a different block/graph contract. Graph-dependent concentration and robust mean estimation also predate this work \citep{janson2004large,lugosi2019mean}. Neither coloring plus Chebyshev nor the two von Bahr--Esseen steps is claimed as a new concentration inequality.
+
+\paragraph{Combinatorial actions and application scope.}
+Shimizu et al. study contextual combinatorial-bandit OPE/learning by factoring actions and separating main and residual effects \citep{shimizu2024combinatorial}. Their work motivates careful action-space modeling; it does not make arbitrary local target marginals jointly implementable. COMET's current experiments use binary actions and replicated cliques. A substantive next application contribution would require demonstrated held-out subgroup discovery or constrained selection, or a proved richer dependence model, rather than relabeling the existing components as new algorithms.

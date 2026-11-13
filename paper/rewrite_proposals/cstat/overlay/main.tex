@@ -1,0 +1,91 @@
+% !TEX program = pdflatex
+% ================================================================
+% COMET -- ICLR 2027 working draft
+% ================================================================
+% Submission mode is anonymous by default. For camera-ready only:
+%   \iclrfinalcopy
+% The exact official 2027 style files should replace the local copies
+% before submission. See STYLE_NOTICE.md.
+% ================================================================
+
+\documentclass{article}
+
+\usepackage{iclr2027_conference,times}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs,multirow,array,tabularx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+% Make hyperref destinations for algorithmic lines unique across algorithms.
+\makeatletter
+\renewcommand{\theHALG@line}{\thealgorithm.\arabic{ALG@line}}
+\makeatother
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black}
+
+\input{math_commands}
+
+% Draft annotations are intentionally disabled in the compiled paper.
+% Change to \showdraftnotestrue while developing.
+\newif\ifshowdraftnotes
+\showdraftnotesfalse
+\newcommand{\draftnote}[1]{\ifshowdraftnotes\par\noindent\fcolorbox{orange!70!black}{orange!8}{\parbox{0.95\linewidth}{\textbf{Draft note.} #1}}\par\fi}
+\newcommand{\todo}[1]{\ifshowdraftnotes\textcolor{red!70!black}{[TODO: #1]}\fi}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\title{\COMET: Certified Counterfactual Auditing\\under Weak Overlap and Block Dependence}
+
+\author{Anonymous Authors}
+
+\begin{document}
+\maketitle
+
+\noindent\textbf{Review proposal only.} This overlay has not been applied to the manuscript or Overleaf. Confirmatory numerical results are pending validated completion.
+
+\begin{abstract}
+Rare exposures and correlated observations can make counterfactual point estimates too uncertain for subgroup auditing or constraint certification. We study simultaneous inference for a finite family of counterfactual moments with known exposure propensities, independent evaluation macro-blocks, and sufficient within-block dependency graphs. Policies, auditors and nuisance predictions are fixed before evaluation or learned from an independent pilot. We give two separate certificates: a median-of-means construction with a known conditional finite-$p$ moment envelope and exact-binomial group selection, and a graph-aware mean certificate for bounded outcomes. Both have explicit finite-sample constants and applicability conditions. An expected-risk lower bound applies to an exact clique-replication subclass; a simultaneous coverage event also yields local feasibility and a robust-margin utility comparison for pessimistic policy selection. The analysis distinguishes validity from informativeness: weak overlap or heavy tails can leave a valid interval vacuous and require abstention. General adaptive feedback, mutually trained nuisance estimators and future deployment trajectories remain outside the proved scope.
+\end{abstract}
+
+\input{sections/01_introduction}
+\input{sections/02_setup}
+\input{sections/03_method}
+\input{sections/04_theory}
+\input{sections/05_discover_repair}
+\input{sections/06_experiments}
+\input{sections/07_related_work}
+\input{sections/08_conclusion}
+
+\section*{Reproducibility Statement}
+The experiment repository preserves the scientific freeze, configuration, seed manifest and prior Gate A+B+C0/preflight artifacts. The separate C-STAT phase uses the frozen six-cell design and excludes preflight seeds. Final empirical statements require complete checkpoints, source checksums and independent aggregation. This proposal changes narrative and theorem presentation only; it does not modify the scientific experiment.
+
+\section*{Ethics Statement}
+The framework is intended to diagnose and constrain counterfactual failures in deployed decision systems, but a valid certificate is conditional on the exposure mapping, logged propensities, identification assumptions, auditor family, and data quality. Misspecified interference neighborhoods or unmeasured confounding can create false assurance. Sensitive group labels should be collected and processed only with appropriate legal, organizational, and privacy safeguards. Dataset experiments will follow the licenses and intended-use conditions of the original releases. Policy repair should not be treated as a substitute for domain review, stakeholder consultation, or prospective evaluation.
+
+\section*{AI Use Statement}
+Generative AI tools were used in research ideation and to help reorganize prior technical notes, draft portions of the prose and LaTeX, propose mathematical formulations, and outline theoretical and experimental directions. The authors are responsible for independently checking every definition, proof, citation, implementation, and empirical claim; unverified suggestions must not be presented as established results.
+
+\bibliography{references,references_proposal}
+\bibliographystyle{iclr2027_conference}
+
+\appendix
+\input{sections/appendix}
+
+\end{document}

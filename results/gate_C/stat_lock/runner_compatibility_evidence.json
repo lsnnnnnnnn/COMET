@@ -1,0 +1,31 @@
+{
+  "checksums": {
+    "experiments/gate_c_confirmatory.py": "1628b05f843975ee19f3fd48cf5868717c67f0646a3f927ea8fa4cab860865ed",
+    "reports/gate_C_stat_logs/compatibility_local_final.log": "3d7a258891767ac0254bb5634de8b7865e98459b2eeeaaf640184931808fb62f",
+    "reports/gate_C_stat_logs/compatibility_local_initial.log": "3d7a258891767ac0254bb5634de8b7865e98459b2eeeaaf640184931808fb62f",
+    "results/gate_C/stat_lock/compatibility_local/compatibility_result.json": "12d79687495b2097d965cc6b6618a5c89f9496cdb0a9f7d904d7453c65913cb9",
+    "results/gate_C/stat_lock/compatibility_local_final/compatibility_result.json": "e59494043569eaf9fdec1b4e61a8f91a4015ecd34fb768a55005cd8e6b153fd4",
+    "tests/test_gate_c_confirmatory.py": "35df14799a55445aedd58867428ca2348e1171e2defb781e2106dd8808e569ad"
+  },
+  "commands": [
+    {
+      "command": ".venv/bin/python -m pytest -q tests/test_gate_c_confirmatory.py",
+      "exit_code": 0,
+      "seconds": 3.44,
+      "tests_passed": 9
+    },
+    {
+      "command": ".venv/bin/python -m experiments.gate_c_confirmatory --compatibility-only --output results/gate_C/stat_lock/compatibility_local",
+      "exit_code": 0,
+      "note": "Initial runner revision; retained, not launch authority after requested orchestration-validation additions."
+    },
+    {
+      "command": ".venv/bin/python -m experiments.gate_c_confirmatory --compatibility-only --output results/gate_C/stat_lock/compatibility_local_final",
+      "exit_code": 0,
+      "note": "All12 historical seeds and84summary rows bytewise equal; final runner hash matches5f9a221."
+    }
+  ],
+  "confirmatory_draws_by_this_agent": 0,
+  "orchestration_test": "Historical payloads only; two fake IDs unit-fixture-only/A/0 and /1. First job checkpoint survives second job injected failure. Resume skips first, retries failed second, final idempotent resume runs zero jobs. Two failure artifacts and three invocation statuses FAILED,COMPLETE,COMPLETE verified; no simulator called.",
+  "status": "PASS"
+}

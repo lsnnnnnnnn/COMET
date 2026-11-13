@@ -1,0 +1,15 @@
+{
+  "baseline_commit": "06a39b89e579aef57d14ae51e86d74ecf9b6b768",
+  "sha256": {
+    "main.tex": "cac90864eff91e3e4245d74af0c4a3a16f6b3be2e5087319d70452e663a231b4",
+    "sections/01_introduction.tex": "9db207ee69a28881549cc732d4ce684f3f462205fbc42aa4d610fa87ff028668",
+    "sections/02_setup.tex": "2113ca6135b8755645dd882c40d0a162b754e19f69567e76daa42803fd7dc4f0",
+    "sections/03_method.tex": "10da78bae50b6ca097dde298a74b23ce44993b2bd377b343bb759b8737359a3e",
+    "sections/04_theory.tex": "24654a4920f5e3a6d027016237c501b2bddca9b433ae88be07ecee285aa88bf0",
+    "sections/05_discover_repair.tex": "2b9ab4b7bf47c81f9fd3f856c59d25876df38dec03724dc4446d3855a25a0e5c",
+    "sections/06_experiments.tex": "583a3545a6549187610492b74431e1132cc77c884babb09a4b3967d4943b210e",
+    "sections/07_related_work.tex": "1636277f862297d0d6f1e69f65c767d06717a558d92d1e1600fed84a4c505915",
+    "sections/08_conclusion.tex": "bb48aa21847285c7f52c999783e5346249e2974771f0dd388a79aa9dfecea548",
+    "sections/appendix.tex": "e67d61c801a39dc620814281ad73670e87ab7ef681df8fe5260c83f759a4888d"
+  }
+}

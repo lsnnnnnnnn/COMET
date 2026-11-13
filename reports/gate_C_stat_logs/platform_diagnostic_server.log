@@ -1,0 +1,12 @@
+{
+  "run_id": "gate-c-v1/preflight/F/0000",
+  "phase": "historical_preflight_diagnostic",
+  "confirmatory_draws": 0,
+  "environment": {
+    "python": "3.12.3 (main, Feb  4 2025, 14:48:35) [GCC 13.3.0]",
+    "platform": "Linux-5.15.0-136-generic-x86_64-with-glibc2.39",
+    "machine": "x86_64"
+  },
+  "sampler_sha256": "60c7d2bf5b3dfd68974784306f48d846858257cc75aff5ee0c30c817203cb1c8",
+  "observed_data_sha256": "976df42468de97458204f2a8294833c7b695a306ce11be3b3bef7fa5cc14b117"
+}

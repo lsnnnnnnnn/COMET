@@ -1,0 +1,22 @@
+{
+  "status": "GO_LOCAL_ONLY",
+  "utc": "2026-11-13T16:02:10.036182+00:00",
+  "launcher_commit": "5f9a221062e67af492f1145dfd7ed3bec050de15",
+  "science_freeze": "ab4c74fbf1ae84c0e5ffd72d77ce5b48d3fba8cb",
+  "runner_sha256": "1628b05f843975ee19f3fd48cf5868717c67f0646a3f927ea8fa4cab860865ed",
+  "compatibility_sha256": "e59494043569eaf9fdec1b4e61a8f91a4015ecd34fb768a55005cd8e6b153fd4",
+  "checks": {
+    "baseline_static": 328,
+    "independent_proof": 22837,
+    "pytest_passed": 481,
+    "historical_seeds_bytewise": 12,
+    "summary_rows_bytewise": 84
+  },
+  "confirmatory_logs_generated_before_gate": 0,
+  "planned_confirmatory_logs": 6000,
+  "workers": 6,
+  "device": "local CPU only",
+  "server": "NOT_ELIGIBLE: F preflight bytewise compatibility failed; preserved for diagnosis",
+  "stopping": "all6000; infrastructure interruptions preserve incompleteIDs and completedcheckpoints; no outcome-dependenttuning",
+  "scope": "proved exogenous independentmacroblocks; unchangedfrozen scientificcode,settings,seeds,analysis"
+}

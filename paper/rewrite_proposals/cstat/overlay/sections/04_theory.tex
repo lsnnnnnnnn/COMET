@@ -1,0 +1,45 @@
+\section{Finite-Sample Guarantees}
+\label{sec:theory}
+\begin{theorem}[Independent-block MOM certificate]
+\label{thm:gate-a-clean}
+Under the MOM conditions in Section~\ref{sec:setup}, use the complete-block partition, historical group count and radius in Section~\ref{sec:method}. If $B\ge2K$, then
+\begin{equation}
+ \Prb\left(\forall\theta\in\Theta:
+ |\widehat M_\theta^{\rm MOM}-M_{\mathcal D}(\theta)|\le r_\theta^{\rm MOM}
+ \mid\mathcal D\right)\ge1-\alpha.
+ \label{eq:gate-a-coverage}
+\end{equation}
+\end{theorem}
+\begin{theorem}[Exact-binomial MOM certificate]
+\label{thm:exact-mom}
+Under the same conditions, replace the historical group count by the smallest feasible odd $K$ in \eqref{eq:exact-K}. The same statement \eqref{eq:gate-a-coverage} holds, with its own $L_{\min}$ and unchanged explicit constant $32^{1/p}$. If no such $K$ exists, this procedure issues no certificate.
+\end{theorem}
+\begin{proof}
+Write $X_u=Z_u-m_u$. Within each independent color class, von Bahr--Esseen gives $\E|\sum X_u|^p\le2\sum\E|X_u|^p$. Convexity across at most $\chi$ color sums yields $\E|\bar Z_b-M_{\mathcal D}|^p\le2\nu_\theta^p(\chi/n_0)^{p-1}$. Applying the same inequality across the independent blocks in group $g$ gives
+$\E|T_g-M_{\mathcal D}|^p\le4\nu_\theta^p(\chi/(L_gn_0))^{p-1}$.
+All expectations are conditional on $\mathcal D$. Markov at \eqref{eq:gate-a-radius} bounds each group's failure probability by $1/8$; zero envelope gives exact estimation directly. Group failures are independent, though not identically distributed, and are stochastically dominated by independent Bernoulli$(1/8)$ indicators. For odd $K$ a failed median requires at least $(K+1)/2$ bad groups, proving the exact tail. For the historical rule, fewer than $K/2$ failures place both central order statistics inside the target interval; Hoeffding gives failure at most $e^{-9K/32}\le e^{-K/8}$. The historical family bound is $me^{-K/8}\le\alpha/2$, while \eqref{eq:exact-K} bounds the exact-rule family failure by $\alpha$. Neither union bound requires independent candidates.
+\end{proof}
+
+\begin{theorem}[Bounded-outcome graph variance certificate]
+\label{thm:graph-variance}
+Under the bounded-outcome conditions in Section~\ref{sec:setup}, the mean and radius \eqref{eq:graph-radius} satisfy
+\[
+ \Prb\left(\forall\theta:\left|N^{-1}\sum_uZ_u(\theta)-M_{\mathcal D}(\theta)\right|
+ \le r_\theta^{\rm GV}\mid\mathcal D\right)\ge1-\alpha.
+\]
+Stable block means are unnecessary for this theorem.
+\end{theorem}
+\begin{proof}
+The direct score term is fixed. Since $|Y-\widehat\mu|\le1$, the conditional second moment of the weighted residual bounds $\Var(Z_u\mid\mathcal D)$ by $v_{u,\theta}$. Within a color class the centered scores are mutually independent. Applying $(\sum_{c=1}^{\chi_b}T_c)^2\le\chi_b\sum_cT_c^2$ to the color sums gives $\Var(\sum_{u\in b}Z_u\mid\mathcal D)\le\chi_b\sum_{u\in b}v_{u,\theta}$. Block independence then bounds the mean variance by $V_\theta$. Chebyshev gives failure at most $\alpha/m$ for each candidate; union bounding proves the claim. If $V_\theta=0$, the centered mean is zero almost surely.
+\end{proof}
+All three conditional statements integrate to unconditional coverage of the same random conditional target $M_{\mathcal D}$. They do not turn it into an unconditional population target. Coupling failure is zero in this model. A future coupling construction would spend failure probability from $\alpha$; it cannot be inserted as a numerical half-width without a separate argument.
+
+\begin{theorem}[Expected-risk lower bound for exact clique replication]
+\label{thm:lower}
+Let $1<p\le2$, $\chi\mid N$, and observe $n=N/\chi$ independent scalar draws, each copied exactly $\chi$ times. Over distributions with $\E|X-\E X|^p\le\nu_p^p$,
+\[
+ \inf_T\sup_P\E_P|T-\E_PX|\ge\frac{\nu_p}{8}
+ \left(\frac\chi N\right)^{(p-1)/p}.
+\]
+\end{theorem}
+Appendix~\ref{app:lower} proves the explicit constant. The scalar mean problem embeds in an unbounded counterfactual-moment class with one exposure, $q=e=1$, $h=1$ and $f=0$. The lower bound concerns this subclass and containing classes; it is not a sharp bound for every sparse graph, a lower bound for a specified $95\%$ interval, or a lower bound for the particular bounded-mean-class F simulator at every sample size.

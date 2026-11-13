@@ -1,0 +1,22 @@
+compatible gate-c-v1/preflight/A/0000
+compatible gate-c-v1/preflight/A/0001
+compatible gate-c-v1/preflight/B/0000
+compatible gate-c-v1/preflight/B/0001
+compatible gate-c-v1/preflight/C/0000
+compatible gate-c-v1/preflight/C/0001
+compatible gate-c-v1/preflight/D/0000
+compatible gate-c-v1/preflight/D/0001
+compatible gate-c-v1/preflight/E/0000
+compatible gate-c-v1/preflight/E/0001
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/data1/shengen/COMET_C_STAT_20261113/experiments/gate_c_confirmatory.py", line 426, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/data1/shengen/COMET_C_STAT_20261113/experiments/gate_c_confirmatory.py", line 422, in main
+    if args.compatibility_only: compatibility(args.output)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data1/shengen/COMET_C_STAT_20261113/experiments/gate_c_confirmatory.py", line 287, in compatibility
+    raise ValueError('BLOCKED: bytewise scientific compatibility failed: '+entry['run_id'])
+ValueError: BLOCKED: bytewise scientific compatibility failed: gate-c-v1/preflight/F/0000

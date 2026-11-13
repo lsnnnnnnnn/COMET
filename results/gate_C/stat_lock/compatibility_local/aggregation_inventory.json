@@ -1,0 +1,16 @@
+{
+  "all_planned_ids_complete": true,
+  "candidate_records": 2268,
+  "completed_logs": 12,
+  "phase": "preflight",
+  "planned_logs": 12,
+  "records_by_cell": {
+    "A": 28,
+    "B": 448,
+    "C": 448,
+    "D": 448,
+    "E": 448,
+    "F": 448
+  },
+  "summary_rows": 84
+}
