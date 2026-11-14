@@ -1,0 +1,239 @@
+\section{Certificates and query-specific evidence costs}
+\label{sec:post-cstat-theory}
+
+The object of inference is a fixed-design moment. The probability model permits
+heterogeneous row means and one connected dependency graph; it does not require
+independent repeated macro-blocks or equal block targets. We condition throughout
+on a legitimate exogenous field $\mathcal D$, augmented only by training and
+discovery information whose random sources are independent of certification.
+A schema can check a declared source construction, but cannot establish the
+absence of unrecorded common causes from a single realized log.
+
+\paragraph{Signed moments and support.}
+For coordinate $\theta$, let $c_\theta$ identify its response channel, and write
+$Y_{u,\theta}$, $\mu_{us,\theta}$ and $\widehat\mu_{us,\theta}$ for the response,
+identified exposure-specific mean and fixed nuisance fit. The finite exposure
+law $e_{us}=\Pr(S_u=s\mid\mathcal D)$ is known exactly. Define
+\begin{align}
+ M_\theta
+ &=a_\theta+\frac{1}{B_\theta}
+     \sum_{u=1}^N\sum_s d_{us,\theta}\mu_{us,\theta},
+ &B_\theta&=N\,\mathrm{normalizer}_\theta>0,
+ \label{eq:post-target}\\
+ D_\theta
+ &=a_\theta+\frac{1}{B_\theta}
+     \sum_{u,s}d_{us,\theta}\widehat\mu_{us,\theta},
+ &R_{u,\theta}
+ &=\frac{d_{uS_u,\theta}}{e_{uS_u}}
+       (Y_{u,\theta}-\widehat\mu_{uS_u,\theta}).
+ \label{eq:post-residual}
+\end{align}
+Here $a_\theta$, $B_\theta$ and the signed coefficients $d_{us,\theta}$ are
+$\mathcal D$-measurable. A level query uses $d=hq$; a paired policy contrast
+uses $d=h(q-q_0)$. A subgroup ratio uses its known positive design mass in
+$\mathrm{normalizer}_\theta$; a zero-mass ratio is undefined. Every nonzero
+coefficient requires $e_{us}>0$. Exact exposure probabilities identify the
+counterfactual mean only together with the stated exposure sufficiency and
+assignment assumptions. A policy interpretation additionally requires that
+$q$ arise from a compatible joint assignment law.
+
+\begin{assumption}[Conditional graph and residual envelopes]
+\label{ass:post-core}
+The desired exposure-specific means satisfy
+$\mathbb E[Y_{u,\theta}\mid S_u=s,\mathcal D]=\mu_{us,\theta}$.
+The entire row score/residual vector has a sufficient conditional dependency
+graph $G$: disjoint vertex sets with no crossing edge are conditionally
+independent given $\mathcal D$. For a declared $1<p\leq2$, known numbers
+$b_{us,\theta}\geq0$ satisfy
+\begin{equation}
+ \mathbb E\!\left[
+ |Y_{u,\theta}-\widehat\mu_{us,\theta}|^p
+ \mid S_u=s,\mathcal D\right]\leq b_{us,\theta}^p.
+ \label{eq:post-channel-envelope}
+\end{equation}
+The query family, all confidence allocations and all tuning choices are fixed
+conditional on $\mathcal D$ before certification outcomes are examined.
+\end{assumption}
+
+A sufficient constructive graph connects every pair of rows sharing any
+independent primitive source used in logging or in any retained response
+channel. Its sufficiency follows from disjoint source collections, not from
+observed correlations or a domain network alone. Let $A_\theta$ be the rows
+whose residual is not identically zero by design. Use the induced graph
+$G[A_\theta]$ and the smallest number $\chi_\theta$ among the available,
+verified proper colorings. This is an available coloring count, rather than
+a claim to compute the chromatic number. All source-induced edges between
+retained rows remain present even when other rows are removed.
+
+Set
+\begin{equation}
+ v_{u,\theta}
+ =\sum_{s:e_{us}>0}|d_{us,\theta}|^p e_{us}^{1-p}b_{us,\theta}^p,
+ \qquad
+ c_p=\frac{(p-1)^{p-1}}{p^p}.
+ \label{eq:post-v}
+\end{equation}
+These bound raw residual moments; a centered-noise moment cannot be substituted
+without accounting for nuisance error. In bounded responses $Y\in[L,U]$, the
+legal residual magnitude is $\max\{|L-\widehat\mu|,|U-\widehat\mu|\}$.
+In particular, midpoint nuisance on $[0,1]$ gives magnitude $1/2$ for every
+eligible comparison method.
+
+\begin{theorem}[Heterogeneous conditional-graph residual certificate]
+\label{thm:post-core}
+Under Assumption~\ref{ass:post-core}, choose positive $\mathcal D$-measurable
+thresholds $\tau_{u,\theta}$ on the active support and let
+$T_\tau(x)=\operatorname{sign}(x)\min\{|x|,\tau\}$. For a coordinate budget
+$\delta_\theta\in(0,1)$, put $t_\theta=\log(2/\delta_\theta)$ and define
+\begin{align}
+ \widehat M_\theta
+ &=D_\theta+\frac{1}{B_\theta}
+           \sum_{u\in A_\theta}T_{\tau_{u,\theta}}(R_{u,\theta}),
+ \label{eq:post-estimator}\\
+ r_\theta
+ &=\frac{1}{B_\theta}\left[
+ c_p\sum_{u\in A_\theta}v_{u,\theta}\tau_{u,\theta}^{1-p}
+ +\sqrt{2\chi_\theta t_\theta
+           \sum_{u\in A_\theta}v_{u,\theta}\tau_{u,\theta}^{2-p}}
+ +\frac{2}{3}\chi_\theta t_\theta
+                   \max_{u\in A_\theta}\tau_{u,\theta}\right].
+ \label{eq:post-radius}
+\end{align}
+Then $\Pr(|\widehat M_\theta-M_\theta|>r_\theta\mid\mathcal D)
+\leq\delta_\theta$. For a finite frozen family $\Theta$ with
+$\sum_{\theta\in\Theta}\delta_\theta\leq\delta$, all coordinate intervals
+cover simultaneously with conditional probability at least $1-\delta$.
+If no random residual remains, its radius is zero and the known direct term
+is retained.
+\end{theorem}
+
+The three terms in~\eqref{eq:post-radius} pay for clipping bias, graph-adjusted
+fluctuation and bounded range, respectively. The target is the original
+unclipped moment. Clipping without the first term targets a different object
+unless a separate argument removes the bias. One threshold per query is the
+special case $\tau_{u,\theta}=\tau_\theta$ used by the initial implementation.
+The proof, including the graph MGF step, appears in
+Appendix~\ref{app:post-proofs}.
+Each family statement concerns one predeclared construction per coordinate,
+including a design-only dispatch when used. It does not automatically give
+joint coverage over all plotted methods and both nominal levels. Such a claim
+would require allocating the total budget across method, level and query.
+
+\begin{corollary}[Locality, design-only tuning and paired scaling]
+\label{cor:post-locality}
+Removing design-inactive rows leaves the estimand and direct term unchanged,
+and permits the induced support graph in Theorem~\ref{thm:post-core}.
+Thresholds and eligible certificate engines may be selected by minimizing a
+proved radius over a predeclared design-only grid without an additional
+outcome-search budget. For a signed contrast scaled by $\eta>0$, scaling its
+thresholds by $\eta$ scales its signal and every radius component by $\eta$;
+$\eta=0$ has zero random uncertainty. Small policy steps therefore do not by
+themselves improve sign-certification power.
+\end{corollary}
+
+\paragraph{Sharp bounded comparisons.}
+For known response bounds, let $[\ell_{u,\theta},u_{u,\theta}]$ be the actual
+possible residual interval, taking extrema over every supported exposure, and
+write $w_{u,\theta}=u_{u,\theta}-\ell_{u,\theta}$. With the same query, nuisance,
+support, graph and coordinate budget, the untruncated estimator
+$\widehat M^{\mathrm{mean}}_\theta=D_\theta+B_\theta^{-1}\sum_u R_{u,\theta}$
+has graph Hoeffding and Bernstein radii
+\begin{align}
+ r_{H,\theta}
+ &=\frac{1}{B_\theta}
+       \sqrt{\frac{\chi_\theta t_\theta}{2}\sum_u w_{u,\theta}^2},
+ \label{eq:post-hoeffding}\\
+ r_{B,\theta}
+ &=\frac{1}{B_\theta}\left[
+       \sqrt{2\chi_\theta t_\theta\sum_u V_{u,\theta}}
+       +\frac{\chi_\theta t_\theta}{3}\max_u w_{u,\theta}\right],
+ \quad
+ V_{u,\theta}=\min\left\{v^{(2)}_{u,\theta},
+                               \frac{w_{u,\theta}^2}{4}\right\},
+ \label{eq:post-bernstein}
+\end{align}
+where $v^{(2)}$ is the legal raw second-moment bound from the known bounded
+response class. The same bounds and envelope information are supplied to all
+matched methods. A generic bias-corrected truncated graph mean with the same
+inputs and tuning is algebraically identical to the corresponding
+configuration of~\eqref{eq:post-estimator}--\eqref{eq:post-radius}; equality is
+a comparison result, not evidence of estimator superiority.
+
+For the historical A design alone, $q=e=(1/2,1/2)$, midpoint nuisance and
+reference $1/4$ give score $Y-1/4$. At $N=8192$, $m=1$, $\chi=1$ and
+$\delta=.05$,
+\begin{equation}
+ r_H=\sqrt{\frac{\log 40}{2\cdot8192}}
+       =0.015005043614373761,
+ \qquad
+ .0375>2r_H.
+ \label{eq:post-A-fixture}
+\end{equation}
+This is a deterministic analytic comparison: on its coverage event the lower
+bound for target $.2375$ exceeds threshold $.2$. It is not new measured power
+and is not included in the old seventeen-test confirmation family.
+
+\begin{proposition}[A scoped subgroup--overlap--dependence obstruction]
+\label{prop:post-lower}
+Let $g=N\pi$ be a positive integer divisible by $\chi$, set $n=g/\chi$, and
+fix $\epsilon\in(0,1]$, $\nu>0$, $1<p\leq2$ and a mean-deviation cap $H>0$.
+There is a supported, exactly known logging experiment on $n$ independent
+$\chi$-row cliques, with exposure probability $\epsilon$ and unweighted
+potential-response residual moment
+$\mathbb E|Y(1)-b|^p\leq\nu^p$, for which every estimator of the normalized
+subgroup mean has worst-case expected absolute error at least
+\begin{equation}
+ \frac12\min\left\{H,
+ \nu\min\left(1,(2n\epsilon)^{-\frac{p-1}{p}}\right)\right\}.
+ \label{eq:post-lower}
+\end{equation}
+The corresponding raw importance-weighted residual moment is at most
+$\epsilon^{1-p}\nu^p$; $\nu$ is the response-residual scale, before
+importance weighting. For the raw subgroup moment the bound is multiplied
+by $\pi$. In its
+unsaturated regime this gives normalized scale
+$\nu(\chi/(N\pi\epsilon))^{(p-1)/p}$, up to the displayed constant.
+It does not establish graph-by-graph sharpness or matching simultaneous
+confidence logarithms. The construction and a non-sharp confidence-width
+consequence are in Appendix~\ref{app:post-lower}.
+\end{proposition}
+
+A symmetric certificate with radius $r$ certifies a true threshold violation
+on its coverage event whenever its true gap satisfies $\gamma>2r$.
+This is a sufficient procedure-specific decision condition. The lower bound
+is a separate necessary expected-risk obstruction on its stated subclass;
+neither statement turns a conservative radius map into a sharp information
+limit for every design.
+
+\begin{corollary}[Independent discovery and certified finite selection]
+\label{cor:post-selection}
+A finite family selected using independent discovery sources may be included
+in $\mathcal D$. The simultaneous family must contain every risk coordinate
+and utility contrast actually used by selection. On its coverage event,
+returning only a candidate whose risk upper bounds meet the task constraints,
+whose exact design service/capacity meet their bounds, and whose utility lower
+contrast meets the declared usefulness requirement is safe and useful in that
+fixed-design sense. In particular,
+$\Pr(\mathrm{return}\ \mathrm{and}\ \mathrm{unsafe})\leq\delta$.
+There is no corresponding automatic $\delta$ guarantee for
+$\Pr(\mathrm{unsafe}\mid\mathrm{return})$ and no theorem here guaranteeing
+a positive return rate.
+\end{corollary}
+
+\begin{corollary}[Affine mixtures on the simultaneous event]
+\label{cor:post-mixtures}
+Let $Q_j$ be compatible base joint policies with fixed auditors and normalizers.
+For nonnegative weights summing to one, $Q_w=\sum_jw_jQ_j$ is a valid joint
+mixture. Simultaneous base intervals propagate to
+$[\sum_jw_jL_j,\sum_jw_jU_j]$ for each affine moment, even for weights selected
+after seeing the certificates. This is linear propagation of certified base
+quantities, not permission to recompute a nonlinear clipped estimator at an
+outcome-selected mixture. Nonlinear metrics or moving denominators require
+separate analysis.
+\end{corollary}
+
+All statements above concern real arithmetic under declared assumptions.
+Implementation uses a separate conservative numerical rule and must preserve
+empty confidence intersections, valid but vacuous intervals, unsupported
+queries and numerical failures as distinct recorded outcomes. No adaptive
+history, arbitrary stopping-time or future-deployment guarantee is asserted.

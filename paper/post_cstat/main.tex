@@ -1,0 +1,113 @@
+\documentclass[10pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,graphicx,microtype}
+\usepackage[colorlinks=true,allcolors=blue!50!black]{hyperref}
+\usepackage{xcolor}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{definition}[theorem]{Definition}
+\title{COMET: Counterfactual Moment Auditing under\\Weak Overlap and Graph Dependence}
+\author{Anonymous research draft}
+\date{Local research revision, 14 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Counterfactual auditing asks which subgroup and policy moments are supported
+by selective, dependent observations, rather than only which point estimates
+look favorable. We study a finite family of signed moments conditional on a
+heterogeneous fixed design, exact supported exposure probabilities, independent
+training information, valid residual moment envelopes and a sufficient global
+conditional dependency graph. Separating the known direct term from a clipped
+weighted residual gives an explicit certificate for the original moment:
+a sharp clipping-bias bound plus graph-adjusted concentration and a range term.
+The analysis permits unequal row means and a single connected graph.
+Query-specific support and paired contrasts determine which overlap and
+dependence costs are relevant. A two-point observation-thinning construction
+separates subgroup mass, exposure scarcity and clique replication in a scoped
+expected-risk lower bound. Finite-policy selection is safe on the simultaneous
+event when all risk and utility coordinates are included; useful return remains
+a distinct empirical requirement. The bounded branch admits strong
+Hoeffding/Bernstein comparisons, and a fully matched generic truncated graph
+mean is algebraically identical to its corresponding COMET configuration.
+In 12,000 heterogeneous-graph logs, all 96 eligible primary diagnostics cover
+the complete query family in 1,000/1,000 trials per fixed comparison. Detection
+is useful in five bounded cells but absent in all six tested heavy-tail cells;
+coverage alone conceals this distinction. A further 1,800 paired-condition
+logs isolate local evidence costs and confirm equality with the fully matched
+generic comparator. Complete-pipeline and remaining power results are still
+being collected in this research revision.
+\end{abstract}
+
+\input{sections/introduction}
+\input{sections/theory}
+\input{sections/methods}
+\input{sections/evidence}
+\input{sections/discussion}
+
+\paragraph{Reproducibility.}
+The new implementation and source graph are separate modules, isolated from
+the frozen historical science. The complete historical C-STAT
+delivery remains anchored at \texttt{ca5bb878}; its configuration, 6,000
+checkpoints and seventeen primary comparisons are unchanged. Separate committed
+protocols bind the new study configurations, seeds, applicability and numerical
+rules. Completed checkpoints are immutable and incomplete identifiers alone
+are resumed. The analytic maps use the 49-point production grid and generate
+no outcomes. The independent Overleaf repository is not modified.
+
+\paragraph{Use and interpretation.}
+An exposure law, source graph or moment envelope is a substantive assumption,
+not a property conferred by passing input validation. A finite-population
+selective-label benchmark would not establish a causal effect of selection on
+income. No statement here guarantees future-distribution or long-term safety.
+
+\paragraph{AI assistance.}
+AI tools assisted derivation, implementation, source review and drafting.
+The recorded proofs and checks are reviewable evidence, not a claim of formal
+machine verification or independent author sign-off.
+
+\begin{thebibliography}{9}
+\bibitem{angelopoulos2025ltt}
+A. N. Angelopoulos, S. Bates, E. J. Cand\`es, M. I. Jordan, and L. Lei.
+Learn then test: Calibrating predictive algorithms to achieve risk control.
+\emph{The Annals of Applied Statistics}, 19(2):1641--1662, 2025.
+\href{https://doi.org/10.1214/24-AOAS1998}{doi:10.1214/24-AOAS1998}.
+\bibitem{thomas2015hcpi}
+P. Thomas, G. Theocharous, and M. Ghavamzadeh.
+High Confidence Policy Improvement.
+In \emph{Proceedings of ICML}, PMLR 37:2380--2388, 2015.
+\href{https://proceedings.mlr.press/v37/thomas15.html}{Publisher record}.
+\bibitem{janson2004}
+S. Janson. Large deviations for sums of partly dependent random variables.
+\emph{Random Structures \& Algorithms}, 24(3):234--248, 2004.
+\href{https://doi.org/10.1002/rsa.20008}{doi:10.1002/rsa.20008}.
+\bibitem{bhatt2022}
+S. Bhatt, G. Fang, P. Li, and G. Samorodnitsky.
+Nearly Optimal Catoni's M-estimator for Infinite Variance.
+\emph{Proceedings of ICML}, PMLR 162:1925--1944, 2022.
+\href{https://proceedings.mlr.press/v162/bhatt22b.html}{PMLR source}.
+\bibitem{ope2021}
+N. Karampatziakis, P. Mineiro, and A. Ramdas.
+Off-Policy Confidence Sequences.
+\emph{Proceedings of ICML}, PMLR 139:5301--5310, 2021.
+\href{https://proceedings.mlr.press/v139/karampatziakis21a.html}{PMLR source}.
+\bibitem{ope2024}
+I. Waudby-Smith, L. Wu, A. Ramdas, N. Karampatziakis, and P. Mineiro.
+Anytime-valid off-policy inference for contextual bandits.
+arXiv:2210.10768v3, 2024 (first posted 2022).
+\href{https://arxiv.org/abs/2210.10768v3}{Versioned preprint}.
+\bibitem{esguard2026}
+M. Kim, H. Byun, and B. Jang.
+Bias-Aware Guardrail Selection Under Network Interference.
+arXiv:2610.36702v1, 2026.
+\href{https://arxiv.org/html/2610.36702v1}{Versioned source}.
+\end{thebibliography}
+\appendix
+\input{sections/proofs}
+\input{sections/historical}
+\end{document}

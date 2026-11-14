@@ -1,0 +1,78 @@
+\section{An executable assumption and comparison contract}
+
+\paragraph{Queries and outcomes.}
+Each query stores a response-channel identifier, signed coefficients, a known
+offset, and a positive fixed-design normalizer. A raw subgroup moment and its
+normalized subgroup mean are distinct estimands. The implementation never
+estimates the denominator from the certification outcomes. Unsupported
+nonzero coefficients are reported as nonidentified; zero subgroup mass does
+not define a ratio. A zero signed contrast has zero random uncertainty.
+
+\paragraph{Source graph.}
+Each row declares all independent primitives used by its logging mechanism
+and retained outcome channels. Rows sharing a primitive are connected. For a
+query, restrict this graph to design-active residual rows while retaining
+every shared-source edge between them. Compare the restriction of an existing
+proper coloring with a deterministic new coloring, verify both, and retain
+the smaller available color count. None of these combinatorial operations
+detects an undeclared hidden shock.
+
+\paragraph{Certificate engine.}
+For each query the engine computes raw residual moment envelopes from signed
+coefficients, exact propensities and legal response-residual moments. It
+selects one clipping threshold per query from a fixed design-only multiplier
+grid. In bounded outcomes, actual residual endpoint ranges also supply
+untruncated graph Hoeffding and Bernstein branches; a design-only choice among
+proved bounds is valid. The production grid is
+$\{2^{j/4}:j=-24,\ldots,24\}$ times the canonical scale
+$(\sum_u v_u/(\chi_\theta t_\theta))^{1/p}$. It is fixed before the outcomes.
+For $p=2$ the multiplier minimizes
+$1/(4c)+\sqrt2+2c/3$ independently of the envelope; the pipeline evaluates
+the same grid minimizer directly, with complete deterministic comparisons
+against the full-grid path. The archived five-point maps are superseded by
+reconciled 49-point analytic maps and are not empirical trials.
+
+Outputs retain raw and known-target-range-intersected endpoints, all three
+radius components, the selected construction, support count, coloring count,
+normalizer, confidence allocation, assumption provenance and data/configuration
+hashes. Empty intersections remain confidence failures. Ordinary floating
+arithmetic uses a declared conservative endpoint padding, rather than a claim
+of formally verified outward rounding.
+
+\paragraph{Matched strong comparisons.}
+The local generic truncated graph mean receives exactly the same signed
+query, residual envelopes, support, nuisance, graph and confidence budget as
+COMET; their matching configurations are equal. Global envelope and global
+coloring variants are component ablations. A separate colorwise truncation
+engine allocates a union budget across colors and combines every color sum
+with its actual weight. Bounded graph methods use the same actual response
+range and the sharper midpoint residual bound $1/2$, rather than an inflated
+baseline residual bound of $1$.
+
+Independent homogeneous anchors provide an eligible domain for the
+finite-moment Catoni theorem of Bhatt et al.~\cite{bhatt2022} and a
+source-verified one-dimensional betting implementation from the authors of
+off-policy confidence sequences~\cite{ope2021}. The latter retains a stronger
+time-uniform guarantee in its eligible submodel and is not described as a
+full reproduction of the authors' two-dimensional optimization algorithm.
+The DR empirical-Bernstein construction of
+Waudby-Smith et al.~\cite{ope2024} additionally accommodates changing
+conditional means under its filtration assumptions. Its independent-row
+implementation targets the heterogeneous fixed-design average without
+intersecting earlier intervals for different targets. It is evaluated on
+eligible independent anchors. None of these constructions is transplanted
+to an arbitrary graph-dependent row ordering by declaration.
+ESGuard~\cite{esguard2026} addresses a different interference/smoothing model;
+its finite-sample bias bound and asymptotic selection guarantee do not supply
+the finite-sample graph-moment certificate used here.
+
+\paragraph{Discovery and selection.}
+Training, discovery and certification use genuinely disjoint primitive pools.
+After discovery, freeze and deduplicate the entire family, including risk
+queries and utility contrasts. Service and capacity are computed exactly from
+the fixed policies and contexts. A candidate is returned only when its risk
+upper bounds meet the task constraints, its utility contrast lower bound meets
+the declared noninferiority condition, and service/capacity are feasible.
+Reject-all fails a positive service floor. An uncertified status-quo fallback
+is not a safe return. Selection receives certificates and known design
+quantities; oracle means and regrets are joined only afterward for evaluation.

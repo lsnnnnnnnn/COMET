@@ -1,0 +1,47 @@
+\section{Preserved historical confirmation}
+\label{app:post-historical}
+
+The preserved C-STAT study contains 6,000 independent complete logs, 1,000
+in each of six fixed-design cells, with 1,134,000 candidate records. Its
+seventeen eligible primary comparisons each covered 1,000 of 1,000 complete
+families. Each fixed comparison has Wilson 95\% interval $[.996173,1]$;
+this is a marginal Monte Carlo interval, not a simultaneous bound across all
+seventeen comparisons and not a proof of validity. Methods share logs.
+The twelve historical preflight logs are excluded.
+
+\begin{table}[ht]
+\centering
+\caption{Preserved E0 results at 95\%, from the completed frozen report.
+Widths are intersected with the known mean-class target range and divided by
+its diameter. Nontriviality and no-decision rates are candidate descriptions,
+not independent-log power. The original MOM has width ratio 1 everywhere.}
+\label{tab:post-E0}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Cell & Exact MOM width & Graph width & Graph nontrivial & Graph no decision\\
+\midrule
+A & .872872 & .098821 & 100\% & 98.8\%\\
+B & .916332 & .268917 & 100\% & 50.99375\%\\
+C & 1 & .531225 & 100\% & 99.98125\%\\
+D & 1 & .865982 & 61.80625\% & 93.79375\%\\
+E & 1 & 1 & 31.24375\% & 100\%\\
+F & 1 & N/A & N/A & N/A\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The graph method detected at least one true violation in 12, 1,000, 3, 0 and
+0 of 1,000 independent logs in A--E respectively. Its 70\% detection fraction
+among true-violating candidates in B is a different endpoint. Both MOM
+methods in F were fully vacuous and always abstained; the bounded graph method
+was inapplicable to F. These results describe the historical independent-block
+model and do not validate the new heterogeneous connected-graph implementation.
+
+The analytic A comparison in Equation~\eqref{eq:post-A-fixture} also shows why
+the historical Chebyshev method's low detection is not an information limit.
+Using the actual bounded residual range gives an eligible Hoeffding radius
+small enough to guarantee detection on its coverage event. No historical
+data were regenerated for this calculation and no new comparison was inserted
+into the original confirmation family.
+

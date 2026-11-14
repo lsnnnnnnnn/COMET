@@ -1,0 +1,15 @@
+{
+  "status": "DETERMINISTIC_DESIGN_FIGURES_NOT_EMPIRICAL_RESULTS",
+  "source_directory": "results/post_cstat/design_v1",
+  "new_outcome_draws": 0,
+  "grid_status": "DETERMINISTIC_RECONCILED_DESIGN_CALCULATION_NOT_EMPIRICAL",
+  "error_bars": "not_applicable_to_deterministic_algebraic_bounds",
+  "files": {
+    "analytic_declining_overlap.png": "4b41e2f304ce1ebf951ec1ac229a8b6afb6c09ca51ec5c152662820258a552c4",
+    "analytic_declining_overlap.svg": "28cb6dec0185efc3275ace3387913b9878427ffd2ea3b11081fb9b8a6adee26e",
+    "analytic_evidence_cost.png": "6e58927b5d449f164373dd4dcbe64f887d21ba19c5ab12cb5586ed00a6a67b23",
+    "analytic_evidence_cost.svg": "13db9b8f309e69d3a04cf41c0ff0a52344861437879fe4daa305ff339f59b945",
+    "analytic_radius_components.png": "1d8ab4f6b7700faa39d50941cb3850c5057c13dbe90bc2c473f3da32c0ff96a7",
+    "analytic_radius_components.svg": "e35be2909b3808d26fa246edc9378781291df7583b3c973154bf1de3b96fedd7"
+  }
+}

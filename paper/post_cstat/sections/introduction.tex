@@ -1,0 +1,52 @@
+\section{Which counterfactual questions have enough evidence?}
+
+A rare exposure can carry a large inverse-probability weight, and shared
+randomness can make many observed rows convey less information than their count
+suggests. These two difficulties interact with the question being asked.
+A policy change supported on a small region should not automatically pay for
+an unrelated rare exposure elsewhere; a subgroup contrast should not require
+two imprecise policy levels when its signed residual cancels outside that
+subgroup. The relevant object is therefore a family of explicit, supported
+counterfactual moments together with their evidence requirements.
+
+We formulate these questions conditional on an exogenous design. Rows can
+have different conditional means and can form one connected dependency graph.
+The graph is sufficient for the entire random score vector, with independence
+between disjoint sets that have no crossing edge. This requirement is stronger
+than a drawing of the application network, pairwise zero covariance, or a graph
+inferred from one realized log. Independent random-source incidence provides
+a constructive sufficient model.
+
+The main construction separates the known direct prediction term from the
+random weighted residual. It clips the residual at a threshold fixed before
+certification outcomes and pays for both the resulting worst-case bias and
+graph-adjusted fluctuations. The resulting interval covers the original
+unclipped signed moment. The statistical ingredients are standard clipping
+and concentration tools; graph-coloring concentration has a substantial prior
+literature~\cite{janson2004}. We formulate and analyze how support, contrasts,
+residual moments and a sufficient graph determine the evidence cost of an
+auditing question. A generic truncated graph mean with fully matched
+information is the same procedure; the contribution therefore concerns this
+formulation and analysis, its limits and its decision consequences.
+
+Independent construction followed by risk-controlled selection has clear
+precedents. Learn then Test combines valid tests with familywise error control
+to protect a returned set~\cite{angelopoulos2025ltt}; high-confidence policy
+improvement separates candidate search from a held-out safety
+test~\cite{thomas2015hcpi}. In the present model, this logic requires valid
+certificates for heterogeneous signed moments under a sufficient conditional
+graph. The analysis connects those certificates to support, residual moments,
+paired comparisons and a scoped evidence-cost obstruction.
+
+Three questions must be kept separate. First, are the assumptions sufficient
+and the implementation consistent with the stated theorem? Second, is the
+resulting interval informative for the given subgroup, overlap and graph?
+Third, does it return a policy that is simultaneously safe and useful?
+The historical confirmation study illustrates why coverage alone cannot answer
+the latter two questions. The experiments evaluate these distinctions under
+heterogeneous connected graphs and independent discovery. The completed
+validity grid already shows that full-family coverage can coexist with zero
+detection in every tested heavy-tail cell, while stronger bounded inference
+can recover useful detection. Query-local ablations and a fully informed
+equal comparator separate gains from relevant information from gains
+attributable to a distinct statistical procedure.

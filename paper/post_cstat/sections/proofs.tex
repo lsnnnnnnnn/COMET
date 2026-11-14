@@ -1,0 +1,425 @@
+\section{Proofs for the heterogeneous conditional-graph model}
+\label{app:post-proofs}
+
+Throughout this appendix probabilities and expectations condition on the
+legitimate field $\mathcal D$ of Section~\ref{sec:post-cstat-theory}. All
+quantities selected from an independent training/discovery pool are fixed in
+this conditional probability space. We suppress the coordinate subscript
+$\theta$ where doing so introduces no ambiguity.
+
+\subsection{Identification and legal raw residual moments}
+
+Finite enumeration over the supported exposure law gives
+\begin{align}
+ \mathbb E R_u
+ &=\sum_{s:e_{us}>0}e_{us}\frac{d_{us}}{e_{us}}
+       \mathbb E[Y_u-\widehat\mu_{us}\mid S_u=s,\mathcal D]
+   =\sum_s d_{us}(\mu_{us}-\widehat\mu_{us}),
+ \label{eq:post-proof-dr}\\
+ M&=D+B^{-1}\sum_u\mathbb E R_u.
+ \nonumber
+\end{align}
+A zero coefficient contributes zero without forming $0/0$. A nonzero
+coefficient at zero exposure is unsupported. The conditional mean identity
+used in~\eqref{eq:post-proof-dr} must describe the desired counterfactual
+mean; a probability array by itself does not establish that identification.
+The nuisance need not equal these means, and the row distributions need not
+coincide.
+
+Similarly,
+\begin{equation}
+ \mathbb E|R_u|^p
+ =\sum_{s:e_{us}>0}|d_{us}|^p e_{us}^{1-p}
+       \mathbb E[|Y_u-\widehat\mu_{us}|^p\mid S_u=s,\mathcal D]
+ \leq v_u.
+ \label{eq:post-proof-raw-moment}
+\end{equation}
+The absolute value includes the sign of a contrast. For bounded responses,
+$|Y_u-\widehat\mu_{us}|\leq\max\{|L_{us}-\widehat\mu_{us}|,
+|U_{us}-\widehat\mu_{us}|\}$. A midpoint fit on $[0,1]$ gives the bound
+$1/2$, which every eligible method retains. For a location plus noise,
+Minkowski gives
+\begin{equation}
+ \|Y_u-\widehat\mu_{us}\|_p
+ \leq|\mu_{us}-\widehat\mu_{us}|+\|\xi_{us}\|_p.
+ \label{eq:post-proof-location}
+\end{equation}
+A known location class and known noise norm therefore supply a legal raw
+residual envelope. For a sum of primitive noises, its norm is at most the sum
+of their coefficient-weighted norms. No empirical tail-scale estimate is
+silently promoted to a known bound.
+
+\subsection{Sharp clipping bias and truncated fluctuations}
+
+\begin{lemma}[Sharp clipping-bias inequality]
+\label{lem:post-bias}
+For $p>1$, $\tau>0$ and every $x\in\mathbb R$,
+\begin{equation}
+ |x-T_\tau(x)|\leq
+ \frac{(p-1)^{p-1}}{p^p}\tau^{1-p}|x|^p.
+ \label{eq:post-proof-bias}
+\end{equation}
+The constant is sharp.
+\end{lemma}
+\begin{proof}
+For $|x|\leq\tau$ the left side is zero. Otherwise put $z=|x|/\tau>1$.
+The ratio in question is $(z-1)/z^p$, whose derivative has the sign of
+$p-(p-1)z$. Its maximum is attained at $z=p/(p-1)$ and equals
+$(p-1)^{p-1}/p^p$. An atom at that value achieves equality. Taking expectations
+in~\eqref{eq:post-proof-bias} gives
+$|\mathbb E T_\tau(R)-\mathbb E R|\leq c_pv\tau^{1-p}$.
+\end{proof}
+
+For $1<p\leq2$, checking separately $|x|\leq\tau$ and $|x|>\tau$ gives
+\begin{equation}
+ T_\tau(x)^2\leq\tau^{2-p}|x|^p,
+ \qquad
+ \operatorname{Var}(T_\tau(R))\leq v\tau^{2-p}.
+ \label{eq:post-proof-second}
+\end{equation}
+Moreover
+$|T_\tau(R)-\mathbb E T_\tau(R)|\leq2\tau$.
+The centering is used only in the proof, not in the estimator. The second
+moment inequality cannot be reused for $p>2$: $x=.1$, $\tau=1$ and $p=3$
+give $.01>.001$. A centered-noise bound is also insufficient for clipping
+bias: a deterministic raw residual $R=2\tau$ has zero centered moment but
+clipping bias $\tau$.
+
+\subsection{Source graphs, support restriction and the MGF}
+
+Suppose the declared primitives are jointly independent conditional on
+$\mathcal D$, and every whole row vector is measurable in its listed
+primitives and $\mathcal D$. Connect every pair of rows whose primitive lists
+intersect. Disjoint vertex sets with no crossing edge use disjoint primitive
+collections; their generated sigma-fields are independent. This proves the
+strong conditional dependency-graph property. Shared outcome noise, logging
+randomness and retained response channels all enter this construction.
+Pairwise covariance alone does not establish the property.
+
+For any design-active subset, disjoint vertex sets with no induced crossing
+edge also have no crossing edge in the original graph. Their independence is
+therefore retained. Removing an inactive vertex never removes a primitive
+shared by two retained vertices. A proper color class has no internal edges,
+so its row variables are jointly independent. For more than two vertices,
+this follows by separating one vertex from the remainder and applying the
+graph property inductively.
+
+For a centered random variable $X$ with $|X|\leq b$ and
+$\mathbb E X^2\leq a$, expansion of the exponential gives, when
+$b|\lambda|<3$,
+\begin{align}
+ \mathbb E e^{\lambda X}
+ &\leq1+\frac{\lambda^2a}{2}
+          \sum_{j=0}^\infty\left(\frac{b|\lambda|}{3}\right)^j,
+ &\log\mathbb E e^{\lambda X}
+ &\leq\frac{\lambda^2a}{2(1-b|\lambda|/3)}.
+ \label{eq:post-proof-bernstein-mgf}
+\end{align}
+Here $|\mathbb E X^k|\leq ab^{k-2}$ and
+$k!\geq2\cdot3^{k-2}$ for $k\geq2$ justify the series bound.
+
+Let $X_u=T_{\tau_u}(R_u)-\mathbb E T_{\tau_u}(R_u)$,
+$A=\sum_uv_u\tau_u^{2-p}$ and $\tau_{\max}=\max_u\tau_u$.
+For a verified proper $\chi$-coloring $C_1,\ldots,C_\chi$, H\"older's
+inequality followed by within-color independence yields
+\begin{align}
+ \mathbb E e^{\lambda\sum_uX_u}
+ &\leq\prod_{j=1}^\chi
+    \left(\mathbb E e^{\chi\lambda\sum_{u\in C_j}X_u}\right)^{1/\chi},
+ \nonumber\\
+ \log\mathbb E e^{\lambda\sum_uX_u}
+ &\leq\frac{\chi\lambda^2A}
+              {2(1-(2/3)\chi\tau_{\max}|\lambda|)}.
+ \label{eq:post-proof-graph-mgf}
+\end{align}
+Different color sizes and different row means do not alter this argument.
+There is no decomposition into independent macro-block observations.
+
+Write $V=\chi A$ and $c=(2/3)\chi\tau_{\max}$. The sub-gamma bound
+$\log\mathbb E e^{\lambda\sum X_u}\leq
+V\lambda^2/(2(1-c|\lambda|))$ implies
+\begin{equation}
+ \Pr\left(\left|\sum_uX_u\right|>
+                \sqrt{2Vt}+ct\right)\leq2e^{-t}.
+ \label{eq:post-proof-tail}
+\end{equation}
+For $V>0$, substitute
+$\lambda=\sqrt{2t/V}/(1+c\sqrt{2t/V})$ into Chernoff's inequality, and
+apply the same calculation to $-\sum X_u$. The deterministic case is direct.
+Combining~\eqref{eq:post-proof-tail} with the summed absolute bias from
+Lemma~\ref{lem:post-bias}, and dividing by the original normalizer $B$, proves
+the coordinate claim in Theorem~\ref{thm:post-core}. A finite union bound over
+$\theta$ proves its family statement. No independence between coordinates,
+methods or confidence levels is used.
+
+\subsection{Tuning, locality, contrasts and equivalence}
+
+Conditional on $\mathcal D$, every eligible design-only threshold or engine
+choice is fixed, so the proof applies to that choice directly. It does not
+require a union bound over candidates in a threshold grid. This reasoning
+would not justify selecting by observed errors, observed intersected widths
+or evaluation-trained fits. For example, independent Rademacher $X_1,X_2$
+become equal conditional on evaluation-derived $\mathcal D=X_1X_2=1$;
+conditioning is not an independence repair.
+
+A zero coefficient produces an identically zero residual; dropping it leaves
+the known direct term and denominator unchanged. In contrast, replacing $B$
+by an active-row count generally changes the estimand. Restricting to the
+induced graph proves the locality claim. With $d$ replaced by $\eta d$,
+$v$ becomes $\eta^pv$ and $\tau$ becomes $\eta\tau$. The bias, square-root
+and range terms each become $\eta$ times their previous value. This proves
+Corollary~\ref{cor:post-locality}. A separate-level subtraction comparison
+must allocate its total confidence budget to both level families; a paired
+contrast uses its signed coefficient directly.
+
+Any generic truncated graph mean with the same deterministic direct term,
+residuals, envelopes, support, coloring, thresholds and confidence allocation
+has exactly the estimator and radius in~\eqref{eq:post-estimator} and
+\eqref{eq:post-radius}. Thus a matched implementation is algebraically equal,
+including any common design-only bounded-branch dispatch. Coarser global graph
+or global maximum-envelope versions are component ablations rather than
+competitors denied available local information.
+
+\subsection{Bounded Hoeffding, Bernstein and colorwise comparisons}
+
+For each supported exposure, the residual lies between the endpoints of
+\begin{equation}
+ \frac{d_{us}}{e_{us}}[L_{us}-\widehat\mu_{us},
+                       U_{us}-\widehat\mu_{us}],
+ \label{eq:post-proof-actual-range}
+\end{equation}
+with endpoint order reversed when $d_{us}<0$. Taking the extrema over all
+supported exposures gives $[\ell_u,u_u]$ and width $w_u=u_u-\ell_u$.
+Zero-coefficient supported exposures contribute the value zero. Observed
+sample extrema are not substituted for these known ranges.
+
+For a variable $Z$ supported on $[a,b]$, write
+$f(\lambda)=\log\mathbb E\exp(\lambda(Z-\mathbb EZ))$. Under exponential
+tilting, $f''(\lambda)$ is the variance of a distribution still supported on
+$[a,b]$. For any such distribution, variance is at most
+$\mathbb E[(Z-(a+b)/2)^2]\leq(b-a)^2/4$. Integrating twice from
+$f(0)=f'(0)=0$ proves Hoeffding's MGF bound
+$f(\lambda)\leq\lambda^2(b-a)^2/8$ for either sign of $\lambda$.
+Applying this rowwise and using the same coloring/H\"older step
+bounds the summed log MGF by $\chi\lambda^2\sum_uw_u^2/8$.
+A two-tail Chernoff argument gives~\eqref{eq:post-hoeffding}.
+The raw second moment is bounded by
+\begin{equation}
+ v_u^{(2)}=\sum_{s:e_{us}>0}\frac{d_{us}^2}{e_{us}}
+            \max\{|L_{us}-\widehat\mu_{us}|,
+                   |U_{us}-\widehat\mu_{us}|\}^2.
+\end{equation}
+Variance is also at most $w_u^2/4$, so its minimum with $v_u^{(2)}$ is valid.
+The centered residual has absolute magnitude at most $w_u$. Substitution into
+\eqref{eq:post-proof-bernstein-mgf}--\eqref{eq:post-proof-tail}, with scale
+$c=\chi\max_uw_u/3$, proves~\eqref{eq:post-bernstein}.
+Both bounded radii use the same actual nuisance-dependent support and
+confidence budget as the main method.
+
+For completeness, a colorwise independent truncation comparator is valid
+with positive budgets $\delta_j$ satisfying $\sum_j\delta_j\leq\delta_\theta$.
+For color $C_j$, let $A_j=\sum_{u\in C_j}v_u\tau_u^{2-p}$,
+$t_j=\log(2/\delta_j)$ and $\tau_{\max,j}=\max_{u\in C_j}\tau_u$.
+By an independent Bernstein argument and a union bound its total radius is
+\begin{equation}
+ \frac1B\sum_j\left[
+     c_p\sum_{u\in C_j}v_u\tau_u^{1-p}
+     +\sqrt{2A_jt_j}+\frac23\tau_{\max,j}t_j\right].
+ \label{eq:post-proof-colorwise}
+\end{equation}
+Every color is retained. Equivalently, color-average estimators are recombined
+with their actual color-size weights divided by $B$. Equal averaging of
+unequal colors or omission of a difficult color changes the target.
+
+In the deterministic A fixture~\eqref{eq:post-A-fixture}, every residual range
+has width one and the graph is empty. Direct substitution in
+\eqref{eq:post-hoeffding} gives its stated radius. On
+$|\widehat M-M|\leq r_H$, the lower endpoint is at least
+$M-2r_H>.2$, proving the analytic detection implication without drawing data.
+
+\subsection{Observation thinning and a scoped lower bound}
+\label{app:post-lower}
+
+We give the explicit experiment behind Proposition~\ref{prop:post-lower}.
+The subgroup has $g=N\pi$ rows arranged into $n=g/\chi$ cliques. In clique $j$,
+draw independent $A_j\sim\operatorname{Bernoulli}(\epsilon)$ and
+$V_j\sim\operatorname{Bernoulli}(t)$, independently between cliques. Copy them
+within the $\chi$ rows. Let
+\begin{equation}
+ t=\min\{1,(2n\epsilon)^{-1}\},\qquad
+ a=\min\{H/t,\nu t^{-1/p}\},\qquad
+ \eta=at=\min\{H,\nu t^{(p-1)/p}\}.
+ \label{eq:post-proof-thinning}
+\end{equation}
+Under sign $\sigma\in\{-1,+1\}$ define
+$Y_j(0)=b$ and $Y_j(1)=b+\sigma aV_j$. Logging is independent of potential
+responses. Observe the exposure and the selected response. The full logging
+law consists of independent Bernoulli clique assignments, and the target joint
+policy assigns action one throughout the subgroup. Outside-subgroup data have
+the same distribution under both signs and carry no sign information.
+
+Known nuisance $b$ has
+$\mathbb E|Y_j(1)-b|^p=a^pt\leq\nu^p$. The normalized subgroup target is
+$\theta_\sigma=b+\sigma\eta$, and its raw IPW residual moment is at most
+$\epsilon^{1-p}\nu^p$. To keep conditional means in $[0,1]$, choose $b=1/2$
+and $H\leq1/2$. The response amplitudes need not be bounded: bounded conditional
+means and finite moments are distinct assumptions. This construction is not a
+bounded-response lower bound.
+
+Let $P_+$ and $P_-$ denote the observable laws. They agree unless at least one
+clique has $A_j=V_j=1$. On that event positive and negative spike values are
+disjoint. Thus
+\begin{equation}
+ \operatorname{TV}(P_+,P_-)
+   =1-(1-\epsilon t)^n
+   \leq n\epsilon t\leq\frac12.
+ \label{eq:post-proof-tv}
+\end{equation}
+For any estimator $T$, integrate the triangle inequality over the common
+part of the two probability measures. Since the parameter distance is
+$2\eta$,
+\begin{equation}
+ \mathbb E_+|T-\theta_+|+\mathbb E_-|T-\theta_-|
+ \geq2\eta(1-\operatorname{TV}(P_+,P_-)).
+\end{equation}
+The maximum risk is at least half this sum, hence at least
+$\eta(1-\operatorname{TV})\geq\eta/2$, proving
+\eqref{eq:post-lower}. Multiplying targets by $\pi$ multiplies the risk bound
+by $\pi$.
+
+When $2n\epsilon\geq1$ and the mean cap does not bind, the normalized
+lower-bound scale is
+\[
+2^{-1-(p-1)/p}\,\nu\left(\frac{\chi}{N\pi\epsilon}\right)^{(p-1)/p}.
+\]
+For the raw
+moment it is the same constant times
+$\nu\pi^{1/p}(\chi/(N\epsilon))^{(p-1)/p}$.
+Equation~\eqref{eq:post-proof-thinning} records mean saturation and small
+effective-sample regimes. The integer requirements $N\pi\in\mathbb N$ and
+$\chi\mid N\pi$ and the explicit observable experiment are part of the claim.
+The sample-size-dependent spike distribution is a minimax construction, not a
+prediction for a fixed Pareto simulation.
+
+There is also a simple confidence-width consequence. If a random interval $I$
+has coverage at least $1-\alpha$ under each sign, change of measure gives
+\begin{equation}
+ P_+(\theta_+\in I,\theta_-\in I)
+ \geq1-2\alpha-\operatorname{TV}(P_+,P_-)
+ \geq\frac12-2\alpha.
+\end{equation}
+Consequently its diameter is at least $2\eta$ with at least the displayed
+probability when positive; for a raw target replace $2\eta$ by $2\pi\eta$.
+This is a non-sharp two-point consequence. It proves neither optimal
+$\log(m/\delta)$ factors nor sharpness for every sparse or connected graph.
+
+\subsection{Decision boundaries and eventwise finite-policy statements}
+
+If a true upper-risk threshold gap is $\gamma=M-a_0>2r$, then on
+$|\widehat M-M|\leq r$ the lower endpoint satisfies
+$\widehat M-r\geq M-2r>a_0$. The analogous negative-gap condition gives a
+safe upper endpoint. Merely assuming $\gamma>r$ is insufficient: the admissible
+estimate $\widehat M=M-r$ has lower endpoint $M-2r$.
+Analytic sample budgets evaluate the complete radius and this sufficient
+boundary. They are not new empirical power observations or necessary
+information bounds. Numerical implementations must account for any declared
+additional endpoint padding in their actual decision boundary.
+
+For Corollary~\ref{cor:post-selection}, condition first on the independent
+discovery pool. Its finite selected family and all subsequent plans are fixed;
+the union event of Theorem~\ref{thm:post-core} includes all coordinates used in
+audit and selection. On that event every certified risk upper bound is an upper
+bound on the true fixed-design risk, and every certified utility lower bound
+is a lower bound on its true contrast. Exact service/capacity are deterministic.
+Thus a returned policy meeting all these checks is safe and useful in their
+declared sense. Any false returned-policy claim is contained in the complement
+of the simultaneous event. Integrating the conditional bound proves
+$\Pr(\mathrm{return}\ \mathrm{and}\ \mathrm{unsafe})\leq\delta$.
+If the return probability is positive, only the general bound
+$\Pr(\mathrm{unsafe}\mid\mathrm{return})\leq
+\delta/\Pr(\mathrm{return})$ follows. Total abstention cannot count as useful
+return; reject-all fails a positive service requirement. No uncertified
+fallback is covered by the argument.
+
+The robust-slack and oracle-feasible comparators must be distinguished.
+Suppose risk intervals are centered with radii $r^R_{jk}$, and utility contrast
+intervals with radii $r^U_j$. On the simultaneous event a candidate $j$ whose
+true risks satisfy $R_{jk}\leq b_k-2r^R_{jk}$ has all risk upper bounds feasible.
+If its true utility contrast is at least the usefulness threshold plus
+$2r^U_j$ and its exact service/capacity are feasible, it enters the certified
+library. Selecting a maximal utility lower endpoint then gives
+\begin{equation}
+ U_{\mathrm{selected}}-U_0
+ \geq L^U_{\mathrm{selected}}\geq L^U_j
+ \geq U_j-U_0-2r^U_j.
+ \label{eq:post-proof-robust-comparator}
+\end{equation}
+This is the eventwise robust-margin comparator. The oracle best feasible
+candidate may have zero constraint slack and fail to enter the certified
+library, so~\eqref{eq:post-proof-robust-comparator} is not a universal regret
+bound against that different comparator. Neither comparator is supplied to
+the certifier or selector as oracle input.
+
+Finally, under simultaneous base-policy intervals, every nonnegative weight
+vector summing to one satisfies
+$\sum_jw_jL_j\leq\sum_jw_jM_j\leq\sum_jw_jU_j$ on the same event. This is a
+deterministic inequality for all weight vectors, including data-selected ones.
+A mixture of compatible joint policies is itself a joint policy, and its fixed-
+auditor affine moments equal the mixture of the base moments. For signed
+affine combinations, reverse the relevant endpoints when multiplying by a
+negative coefficient. No new union over mixture weights is needed.
+This proves Corollary~\ref{cor:post-mixtures}; it does not identify a fresh
+nonlinearly clipped estimate with the mixture of certified base estimates,
+or extend to policy-dependent denominators and nonlinear fairness metrics.
+
+\section{Eligibility of the independent strong-baseline anchors}
+\label{app:post-iid-anchor}
+
+The homogeneous independent anchor has exact logging law
+$e=(3/4,1/4)$, target $q=(1/2,1/2)$, fixed nuisance $1/2$ and weights
+$w_s=q_s/e_s\in\{2/3,2\}$. Its response locations are $(.35,.55)$, so its
+target is $.45$, threshold $.4$ and gap $.05$. These choices precede any
+anchor outcome. Each observed DR score
+\[
+ X=\frac12+w_S(Y-\tfrac12)
+\]
+has that target; the observed outcome $Y$ alone instead averages under the
+logging law. All rows share the same distribution and use independent
+sources, so the i.i.d. requirement of the Catoni anchor is substantive.
+
+Catoni requires a centered moment envelope. In the bounded $p=2$ anchor,
+$Y\in[0,1]$ gives directly
+\[
+ \operatorname{Var}(X)\leq
+ \mathbb E\!\left[\{w_S(Y-\tfrac12)\}^2\right]
+ \leq\frac14\sum_s e_sw_s^2.
+\]
+For the finite-$p$ location-plus-noise anchor, let
+$\delta_s=\mu_s-1/2\in[-1/2,1/2]$ and suppose
+$\|\xi_s\|_p\leq K$. Here
+$K=.1(1.75/(1.75-p))^{1/p}$ and $p=1.5$, with the declared finite-grid
+qualification. Since $w_s\geq1/2$, maximization over the four location
+corners yields
+\[
+ \left|w_s\delta_s-\tfrac12(\delta_0+\delta_1)\right|
+ \leq\tfrac12\{|w_s-\tfrac12|+\tfrac12\}
+ =\tfrac12w_s.
+\]
+Conditional Minkowski therefore gives
+\[
+ \mathbb E|X-\mathbb EX|^p
+ \leq(\tfrac12+K)^p\sum_s e_sw_s^p.
+\]
+This equals the legal raw residual envelope in this particular balanced-target,
+midpoint-fit location model. It is not a general inequality replacing a
+centered moment by a raw moment. The Catoni implementation also checks its
+theorem's sample-size condition and retains its deterministic root-solver
+debit.
+
+For bounded OPE, $\mathbb Ew_S=1$ and $w_S\leq2$ are known from the design,
+even if a particular log observes only the smaller weight. The author-code
+one-dimensional betting instance receives this design maximum. The 2024
+DR/empirical-Bernstein engine receives the same logging law, target and
+nuisance, with its own stated predictable-predictor truncation and mixture
+parameters. These independent anchors do not authorize applying a row-order
+martingale directly to an arbitrary connected source graph.
