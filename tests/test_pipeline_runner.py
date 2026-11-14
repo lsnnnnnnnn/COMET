@@ -5,12 +5,13 @@ import json
 import numpy as np
 import pytest
 
-from comet.checkpoint_store import CheckpointStore, NAMESPACE, REQUIRED_INPUTS, freeze_protocol
+from comet.checkpoint_store import CheckpointStore, NAMESPACE, REQUIRED_INPUTS, canonical_bytes, freeze_protocol
 from comet.queries import SignedQuery
 from comet.residual_truncation import AssumptionContract, make_plan
 from comet.source_graph import SourceGraph
 from experiments.core_graph_dgp import WORD_GRID
-from experiments.pipeline_dgp import generate_pipeline_from_primitives, evaluate_pipeline
+from experiments.pipeline_dgp import (build_pipeline_design, evaluate_pipeline,
+    fit_and_freeze_pipeline, generate_pipeline_from_primitives)
 import experiments.pipeline_runner as runner
 
 
@@ -104,7 +105,7 @@ def test_complete_trial_uses_three_logs_for_all_arms_levels_and_oracle_follows_s
     assert len(payload["trials"]) == len(payload["certificate_records"]) == 16
     assert payload["proper_family"]["actual_family_size"] > 16
     assert payload["proper_family"]["utility_coordinate_count"] == 7
-    assert payload["graph_cache_entries"] < 20
+    assert payload["operational"]["source_graph_cache"]["entries"] < 20
     frames = {(frame["method"],frame["delta"]):frame for frame in payload["certificate_records"]}
     for delta in (.05,.1):
         assert frames[("comet_local",delta)]["certificates"] == frames[("generic_matched",delta)]["certificates"]
@@ -200,3 +201,107 @@ def test_source_change_and_global_trial_cap_refuse_new_draws(tmp_path):
     with pytest.raises(ValueError,match="source changed"):
         runner.run_pipeline(protocol,root,draw_callback=draw,resource_reader=resources)
     assert len(calls) == 3
+
+
+FULL_GRID = tuple(2**(j/4) for j in range(-24,25))
+
+
+def test_p2_kappa_argmin_is_original_49_point_grid_member():
+    selected = runner.factorized_p2_grid_choice(FULL_GRID)
+    assert selected == 2**(-3/4)
+    assert len(FULL_GRID) == 49 and selected in FULL_GRID
+    with pytest.raises(ValueError,match="positive finite"):
+        runner.factorized_p2_grid_choice([0,1])
+
+
+@pytest.mark.parametrize("graph_kind", ["independent","cycle","triangles"])
+@pytest.mark.parametrize("overlap", ["moderate","weak"])
+@pytest.mark.parametrize("nuisance_kind", ["midpoint","heterogeneous"])
+@pytest.mark.parametrize("method", ["truncated_local","truncated_global_graph",
+    "truncated_global_envelope","colorwise_truncation","comet_local","generic_matched"])
+def test_full_grid_and_factorized_plan_scientific_payload_bytes_identical(graph_kind,overlap,nuisance_kind,method):
+    n=24
+    row=np.arange(n)
+    t=(row+.5)/n
+    if graph_kind=="independent":
+        sources=[{("private",i)} for i in row]
+    elif graph_kind=="cycle":
+        sources=[{("edge",i),("edge",(i+1)%n),("private",i)} for i in row]
+    else:
+        sources=[{("triangle",j) for j in range(max(0,i-2),min(i,n-3)+1)}|{("private",i)} for i in row]
+    graph=SourceGraph.from_sources(sources)
+    e1=.2+.6*t if overlap=="moderate" else .005+.045*t
+    exposure=np.column_stack((1-e1,e1))
+    nuisance=np.full((n,2),.5) if nuisance_kind=="midpoint" else np.column_stack((.1+.6*t,.85-.55*t))
+    h=(row%3!=0).astype(float)
+    coefficients=h[:,None]*np.tile([.3,.7] if nuisance_kind=="midpoint" else [-.15,.15],(n,1))
+    query=SignedQuery("deterministic/p2",coefficients,0,normalizer=float(h.mean()))
+    moments=np.maximum(nuisance,1-nuisance)**2
+    contract=AssumptionContract(True,True,True,True,True,True,True,
+        "explicit independent source incidence","actual bounded residual ranges","fixed deterministic fixture")
+    common=dict(p=2,delta=.05,family_size=47,method=method,outcome_bounds=(0,1),mean_bounds=(0,1))
+    reference=make_plan(query,exposure,nuisance,moments,graph,contract,multipliers=FULL_GRID,**common)
+    fast=make_plan(query,exposure,nuisance,moments,graph,contract,
+        multipliers=(runner.factorized_p2_grid_choice(FULL_GRID),),**common)
+    metadata=dict(data_digest="explicit-primitive-fixture",seed_namespace="deterministic-not-science",
+        code_hash="same-frozen-code",config_hash="original-full-49-point-grid")
+    actions=(row%2).astype(np.uint8)
+    outcomes=.15+.7*t
+    assert canonical_bytes(reference.evaluate(actions,outcomes,**metadata)) == canonical_bytes(fast.evaluate(actions,outcomes,**metadata))
+
+
+@pytest.mark.parametrize("method", ["comet_local","truncated_global_envelope"])
+def test_full_grid_reference_certify_remains_available_and_byte_identical(method):
+    design=build_pipeline_design(split_sizes={"training":128,"discovery":128,"certification":128})
+    logs={name:explicit_split(split,0) for name,split in design.splits.items()}
+    frozen=fit_and_freeze_pipeline(design,logs["training"],logs["discovery"])
+    config=dict(truncation_multipliers=FULL_GRID,numerical_guard=1e-10)
+    hashes=dict(code="same-code",config="full49-config")
+    graph=design.splits["certification"].graph
+    reference=runner._certify(frozen,logs["certification"],.05,method,config,hashes,
+        runner.CachedSupportGraph(graph),factorized_grid=False)
+    fast=runner._certify(frozen,logs["certification"],.05,method,config,hashes,
+        runner.CachedSupportGraph(graph),factorized_grid=True)
+    assert canonical_bytes(reference) == canonical_bytes(fast)
+
+
+def test_lru_cache_is_bounded_and_retains_recent_design_masks():
+    graph=SourceGraph.from_sources([{("row",i)} for i in range(8)])
+    cached=runner.CachedSupportGraph(graph,max_entries=2)
+    masks=[np.arange(8)%value==0 for value in (2,3,4)]
+    first=cached.induced(masks[0])
+    cached.induced(masks[1])
+    assert cached.induced(masks[0]) is first
+    cached.induced(masks[2])
+    assert len(cached.cache)==2 and cached.evictions==1
+    assert masks[0].tobytes() in cached.cache and masks[1].tobytes() not in cached.cache
+    assert cached.induced(masks[0]) is first
+    assert cached.hits==2 and cached.misses==3
+
+
+def test_graph_cache_reused_within_cell_and_cleared_on_new_cell(tmp_path,monkeypatch):
+    protocol,root,manifest,source,ids=fixture_protocol(tmp_path)
+    original=runner._execute_trial
+    seen=[]
+    def observed(*args,**kwargs):
+        cache=kwargs["graph_cache"]
+        seen.append(cache)
+        assert cache.graph is args[2].splits["certification"].graph
+        return original(*args,**kwargs)
+    monkeypatch.setattr(runner,"_execute_trial",observed)
+    result=runner.run_pipeline(protocol,root,draw_callback=explicit_split,resource_reader=resources)
+    assert result["new_completed_units"]==2 and seen[0] is seen[1]
+    store=CheckpointStore(root,manifest)
+    first=store.load(ids[0])["result"]["operational"]["source_graph_cache"]
+    second=store.load(ids[1])["result"]["operational"]["source_graph_cache"]
+    assert first["trial_misses"]>0 and second["trial_misses"]==0
+    # A separate deterministic protocol with a second cell proves that its
+    # graph receives a fresh cache rather than inheriting another cell's chi.
+    config=dict(manifest["config"])
+    config["global_results_root"]=str(tmp_path/"other_results")
+    config["planned_run_ids"]=[ids[0],f"{NAMESPACE}/E5/independent-moderate-mixed/0000"]
+    second_protocol=tmp_path/"second_protocol.json"
+    freeze_protocol(second_protocol,config,[source],tmp_path/"inputs")
+    seen.clear()
+    runner.run_pipeline(second_protocol,tmp_path/"other_results/E5",draw_callback=explicit_split,resource_reader=resources)
+    assert len(seen)==2 and seen[0] is not seen[1]

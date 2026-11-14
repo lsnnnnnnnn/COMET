@@ -7,7 +7,7 @@ silently promoted to a certified safe fallback. Execution is synchronous.
 """
 
 import argparse
-from collections import Counter, defaultdict
+from collections import Counter, OrderedDict, defaultdict
 from dataclasses import replace
 import hashlib
 import itertools
@@ -96,6 +96,8 @@ def _validate_config(config):
         primary_comparisons=primary_pipeline_comparisons(),
         artifact_cap_bytes=int(1.5 * GIB), minimum_free_disk_bytes=2 * GIB,
         worker_memory_cap_bytes=4 * GIB,
+        truncation_evaluation="THEORY_NOTE_section5_p2_kappa_argmin_on_original_full_grid",
+        support_graph_cache_max_entries=32,
         family_size_rule="actual deduplicated risk AND utility coordinates after independent discovery",
         fixed_slice_evaluation="own fixed-slice family coverage; primary-discovered family return feasibility",
         global_results_root=str(REPOSITORY / "results/post_cstat"))
@@ -127,11 +129,29 @@ def freeze_pipeline(config_path, input_directory, protocol_path):
     return freeze_protocol(protocol_path, config, sources, input_directory)
 
 
+def factorized_p2_grid_choice(multipliers):
+    """THEORY_NOTE §5: exactly minimize the original finite design-only grid.
+
+    For tau=c*(Vp/(chi*t))**(1/2), the common positive prefactor is
+    sqrt(Vp*chi*t)/N and kappa_2(c)=1/(4c)+sqrt(2)+(2/3)c. Hence the
+    minimizing c is independent of row moments, graph, support and outcomes.
+    The original grid remains frozen/auditable; the core make_plan is unchanged.
+    """
+    factors = tuple(float(value) for value in multipliers)
+    if not factors or any(not math.isfinite(value) or value <= 0 for value in factors):
+        raise ValueError("a positive finite original truncation grid is required")
+    return min(factors, key=lambda value:(0.25/value + math.sqrt(2) + (2/3)*value, value))
+
+
 class CachedSupportGraph:
     """Cache only fixed-design induced graphs; no outcomes enter cache keys."""
-    def __init__(self, graph):
+    def __init__(self, graph, max_entries=32):
+        if type(max_entries) is not int or max_entries < 1:
+            raise ValueError("the source-support cache requires a positive entry limit")
         self.graph = graph
-        self.cache = {}
+        self.cache = OrderedDict()
+        self.max_entries = max_entries
+        self.hits = self.misses = self.evictions = 0
         self.n_rows = graph.n_rows
         self.color_count = graph.color_count
         self.adjacency = graph.adjacency
@@ -143,7 +163,14 @@ class CachedSupportGraph:
         if mask.shape != (self.n_rows,) or mask.dtype.kind != "b":
             raise ValueError("active_mask must contain one boolean per graph row")
         key = mask.tobytes()
-        if key not in self.cache:
+        if key in self.cache:
+            self.hits += 1
+            self.cache.move_to_end(key)
+        else:
+            self.misses += 1
+            if len(self.cache) >= self.max_entries:
+                self.cache.popitem(last=False)
+                self.evictions += 1
             self.cache[key] = self.graph.induced(mask)
         return self.cache[key]
 
@@ -236,17 +263,23 @@ def _point_select(frozen, estimates):
                 policy_id=chosen, safety_claim_certified=False)
 
 
-def _certify(frozen, log, delta, method, config, hashes, graph_cache):
+def _certify(frozen, log, delta, method, config, hashes, graph_cache, *, factorized_grid=True):
+    """The full-grid reference path remains available for deterministic audit."""
     certificates = {}
+    full_grid = config["truncation_multipliers"]
+    selected = hashes["p2_grid_choice"] if "p2_grid_choice" in hashes else factorized_p2_grid_choice(full_grid)
+    multipliers = (selected,) if factorized_grid else full_grid
     channel_inputs = {channel: frozen.certifier_inputs(channel)
                       for channel in {query.channel for query in frozen.family.queries}}
     for inputs in channel_inputs.values():
         inputs["graph"] = graph_cache
     for query in frozen.family.queries:
         inputs = channel_inputs[query.channel]
+        if inputs["p"] != 2.0:
+            raise ValueError("the E5 analytic grid reduction is proved for its p=2 bounded model")
         try:
             plan = make_plan(query, **inputs, delta=delta, family_size=frozen.family.family_size,
-                             multipliers=config["truncation_multipliers"], method=method)
+                             multipliers=multipliers, method=method)
             certificate = plan.evaluate(log.actions, log.outcomes[query.channel],
                 data_digest=log.data_digest, seed_namespace=log.seed_namespace,
                 code_hash=hashes["code"], config_hash=hashes["config"], numerical_guard=config["numerical_guard"])
@@ -310,7 +343,7 @@ def _compact_certificates(certificates):
     return [{key: certificate[key] for key in keys if key in certificate} for certificate in certificates.values()]
 
 
-def _execute_trial(manifest, run_id, design, draw_callback, oracle_callback, hashes):
+def _execute_trial(manifest, run_id, design, draw_callback, oracle_callback, hashes, *, graph_cache=None):
     config = manifest["config"]
     seed = int.from_bytes(hashlib.sha256(f"{config['seed_domain']}\0{config['master_seed']}\0{run_id}".encode()).digest()[:8], "little")
     started, cpu_start = time.monotonic(), time.process_time()
@@ -324,7 +357,10 @@ def _execute_trial(manifest, run_id, design, draw_callback, oracle_callback, has
     point = _point_estimates(frozen, certification)
     in_sample_points = _point_estimates(in_sample, certification)
     point_selection, in_sample_selection = _point_select(frozen, point), _point_select(in_sample, in_sample_points)
-    cache = CachedSupportGraph(design.splits["certification"].graph)
+    cache = graph_cache if graph_cache is not None else CachedSupportGraph(design.splits["certification"].graph)
+    if cache.graph is not design.splits["certification"].graph:
+        raise ValueError("source-support cache belongs to a different fixed-design cell")
+    cache_before = cache.hits, cache.misses, cache.evictions
     evaluated = []
     for delta in config["levels"]:
         evaluated.extend([
@@ -394,8 +430,14 @@ def _execute_trial(manifest, run_id, design, draw_callback, oracle_callback, has
         in_sample_family=_family_description(in_sample), trials=trials, certificate_records=frames,
         generic_matched_equivalence="same algebra/endpoints as COMET; reused only to avoid duplicate compute",
         oracle_order="all arms and both levels selected before any oracle join",
-        graph_cache_entries=len(cache.cache), wall_seconds=time.monotonic()-started,
-        cpu_seconds=time.process_time()-cpu_start)
+        operational=dict(
+            truncation_evaluation="THEORY_NOTE_section5_p2_kappa_argmin_on_original_full_grid",
+            original_grid_size=len(config["truncation_multipliers"]),
+            evaluated_grid_multiplier=factorized_p2_grid_choice(config["truncation_multipliers"]),
+            source_graph_cache=dict(entries=len(cache.cache), max_entries=cache.max_entries,
+                trial_hits=cache.hits-cache_before[0], trial_misses=cache.misses-cache_before[1],
+                trial_evictions=cache.evictions-cache_before[2]),
+            wall_seconds=time.monotonic()-started, cpu_seconds=time.process_time()-cpu_start))
     if failure or run_id in config["raw_debug_run_ids"]:
         result["raw_debug"] = {name: dict(actions=log.actions.tolist(),
             outcomes={channel: values.tolist() for channel, values in log.outcomes.items()}) for name, log in logs.items()}
@@ -465,7 +507,8 @@ def run_pipeline(protocol_path, results_root, *, max_new_units=None, draw_callba
         raise ValueError("E5 checkpoints must reside under the shared post-C-STAT artifact root")
     reader = resource_reader or resource_snapshot
     initial_resource = _check_global_budget(global_root, config, reader, drawing=bool(remaining_before))
-    hashes = dict(code=digest(manifest["sources"]), config=digest(config))
+    hashes = dict(code=digest(manifest["sources"]), config=digest(config),
+                  p2_grid_choice=factorized_p2_grid_choice(config["truncation_multipliers"]))
     stamps = _source_stamps(manifest)
     by_cell = defaultdict(list)
     for run_id in remaining_before:
@@ -480,6 +523,9 @@ def run_pipeline(protocol_path, results_root, *, max_new_units=None, draw_callba
             graph, overlap, world = cell.split("-")
             design = build_pipeline_design(graph, overlap, world,
                 namespace=config["seed_domain"] + "/" + cell, split_sizes=config["split_sizes"])
+            # The graph is fixed within this cell. Each cached active mask is
+            # measurable in design/independent pilots; no evaluation Y is read.
+            shared_graph_cache = CachedSupportGraph(design.splits["certification"].graph, max_entries=32)
             for run_id in ids:
                 if max_new_units is not None and new_units >= max_new_units:
                     status = "CHECKPOINTED_INCOMPLETE"
@@ -495,7 +541,8 @@ def run_pipeline(protocol_path, results_root, *, max_new_units=None, draw_callba
                     return log
                 try:
                     result = _execute_trial(manifest, run_id, design, tracked_draw,
-                                            oracle_callback or evaluate_pipeline, hashes)
+                                            oracle_callback or evaluate_pipeline, hashes,
+                                            graph_cache=shared_graph_cache)
                 except Exception as exc:
                     result = dict(suite="E5", cell=cell, status="UNIT_FAILURE",
                         failure_reason=f"{type(exc).__name__}: {exc}"[:4096],
@@ -514,7 +561,7 @@ def run_pipeline(protocol_path, results_root, *, max_new_units=None, draw_callba
                 if result["status"] == "UNIT_FAILURE":
                     status, stop_reason = "ERROR_CHECKPOINTED", result["failure_reason"]
                     break
-            del design
+            del design, shared_graph_cache
             if status == "ERROR_CHECKPOINTED":
                 break
     except ResourceLimitError as exc:
