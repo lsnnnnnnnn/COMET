@@ -96,3 +96,10 @@ There is no recommendation here to alter frozen cells, increase gaps, drop
 uninformative logs or weaken matched baselines. Any statement changes needed
 for the finding above belong in the manuscript or a versioned addendum, with
 frozen scientific evidence preserved.
+
+## Resolution
+
+Root applied the statement-precision repair in the main proposition: it now
+explicitly bounds E|Y(1)-b|^p by nu^p and states the weighted IPW bound
+epsilon^(1-p)nu^p. The appendix construction and all frozen sources/results
+remain unchanged. This resolves the wording finding without a scientific rerun.

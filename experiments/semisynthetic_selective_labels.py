@@ -96,9 +96,10 @@ This replaces the unrun modular-sum draft for model quality: its neighboring
 masks could be pairwise independent and provide a weak dependence contrast.
 The amendment uses no E6 data or observed results; zero E6 trials have run.
 
-No E6 trial is run by preparation. A separate committed/frozen E6 protocol,
-independent source driver, complete selection/evaluation runner and 1,000
-declared trials are still required. Download failure does not block synthetic
+No E6 trial is run by preparation. The separate source driver, complete
+selection/evaluation runner and analysis are implemented in e6_runner.py and
+e6_analyze.py. Actual archive validation, a committed/frozen data-bound E6
+protocol and 1,000 declared logging trials are still required. Download failure does not block synthetic
 experiments, proofs or manuscript work. No alternate dataset is substituted.
 """
 
@@ -524,7 +525,7 @@ def prepare_archive(archive_path, expected_sha256, output_directory, *, split_si
         module_sha256=_file_sha256(__file__), outputs={"covariates.npz":hashlib.sha256(covariates).hexdigest(),
         "household_splits.json":hashlib.sha256(registry_bytes).hexdigest(),
         "README.md":hashlib.sha256(README_TEXT.encode()).hexdigest()},
-        remaining="freeze actual E6 protocol and implement complete trial driver/evaluation; 1000 trials unrun")
+        remaining="validate actual archive/availability, freeze data-bound E6 protocol and run the implemented complete trial driver; 1000 trials unrun")
     install_once(output / "covariates.npz", covariates)
     install_once(output / "household_splits.json", registry_bytes)
     install_once(output / "README.md", README_TEXT.encode())
