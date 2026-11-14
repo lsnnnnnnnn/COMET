@@ -1,0 +1,23 @@
+[
+  {
+    "suite": "E2",
+    "fingerprint": "02c6e6abcde74b4cc8895b92c60acc147b0008d2f26c2714e20ff3f1b46ee4f3",
+    "units": 1800,
+    "diagnostic_comparisons": 60,
+    "science_commit": "01334b6b4bbd18c7e6156987ee3492038007dc7d"
+  },
+  {
+    "suite": "E3",
+    "fingerprint": "de9d8f3eaf724880caa8e6871f3050214be60eff5e6f72d82478a299bc5e8da2",
+    "units": 3600,
+    "diagnostic_comparisons": 108,
+    "science_commit": "01334b6b4bbd18c7e6156987ee3492038007dc7d"
+  },
+  {
+    "suite": "E4",
+    "fingerprint": "10f304e204939844e4a9ee14572b672002238477b421bc44a47e3fe1d93e6b6a",
+    "units": 7200,
+    "diagnostic_comparisons": 192,
+    "science_commit": "01334b6b4bbd18c7e6156987ee3492038007dc7d"
+  }
+]
