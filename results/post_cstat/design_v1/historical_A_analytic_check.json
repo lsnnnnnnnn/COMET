@@ -1,0 +1,20 @@
+{
+  "label": "DETERMINISTIC_ANALYTIC_HISTORICAL_DESIGN_CHECK",
+  "new_outcome_draws": 0,
+  "legacy_primary_family_modified": false,
+  "N": 8192,
+  "m": 1,
+  "delta": 0.05,
+  "score": "Z=Y-.25",
+  "residual_range": [
+    -0.5,
+    0.5
+  ],
+  "target": 0.2375,
+  "threshold": 0.2,
+  "gamma": 0.0375,
+  "hoeffding_radius": 0.015005043614373761,
+  "twice_radius": 0.030010087228747522,
+  "gamma_strictly_above_twice_radius": true,
+  "inference": "at_least_.95_theoretical_detection_on_coverage_event_not_measured_power"
+}
