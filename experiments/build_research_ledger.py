@@ -76,7 +76,7 @@ def build():
         ["comet/policy_update.py","experiments/pipeline_runner.py"],["theory/global_residual_truncation.md"],["E5"],
         "Controls return AND unsafe under the declared family. Useful return must be observed separately; no automatic conditional unsafe-given-return or future safety guarantee.")
     add("C7","Real-covariate fixed-population selective-label validation","required empirical extension","SOURCE_SELECTOR_GRAPH_PROVED_NOT_EMPIRICALLY_VALIDATED",
-        ["experiments/semisynthetic_selective_labels.py"],["reports/post_cstat/E6_dataset_choice.md"],["E6"],
+        ["experiments/semisynthetic_selective_labels.py","experiments/e6_runner.py","experiments/e6_analyze.py"],["reports/post_cstat/E6_dataset_choice.md"],["E6"],
         "Official ACS CA2018 archive unavailable: DNS,HTTP403,browser timeout; zero E6 draws. No substitute or causal-income claim.",evidence_status="DATA_BLOCKED")
     add("O1","Predictable fixed-horizon extension","optional","DERIVED_NOT_IMPLEMENTED",[],
         ["theory/predictable_fixed_horizon_status.md"],[],
