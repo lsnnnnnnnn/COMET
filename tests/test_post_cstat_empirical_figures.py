@@ -69,7 +69,7 @@ def fixture_inputs(tmp_path):
     for overlap in ("moderate","extreme1e-4"):
         for hub in (1,16,64):
             for auditor in ("auditor0","auditor1"):
-                for method in ("comet_local","truncated_global_graph","truncated_global_envelope","graph_bernstein"):
+                for method in ("comet_local","truncated_global_graph","truncated_global_envelope","truncated_local","graph_bernstein"):
                     locality.append(dict(cell=f"hub{hub}-{overlap}",method=method,delta=.05,
                         query_id="E2/policy0/"+auditor,query_scope="global" if auditor=="auditor0" else "audited_first_half",
                         normalizer=1,known_feasible_diameter=1 if auditor=="auditor0" else .5,
@@ -129,6 +129,9 @@ def test_render_all_panels_and_export_exact_event_counts(tmp_path):
     assert error["hits"]=="0" and error["denominator"]=="100"
     assert float(error["wilson95_hi"])>0
     assert "Matched generic (= COMET)" in (output/"empirical_events.tex").read_text()
+    with (output/"empirical_coordinates.csv").open(newline="") as stream:
+        methods={record["method"] for record in csv.DictReader(stream)}
+    assert {"truncated_local","graph_bernstein"}<=methods
     with pytest.raises(FileExistsError,match="immutable"):
         render_bundle(output,analyses=analyses,formats=("png",),only=("core",))
 
@@ -178,3 +181,28 @@ def test_raw_envelope_reads_only_prespecified_saved_arrays_no_rng(tmp_path,monke
     assert result["new_outcome_draws"]==0 and not result["observations_regenerated"]
     assert not result["oracle_used"] and not result["radii_modified"]
     assert all(record["bounded_residual_range_violation_rows"]==0 for record in result["rows"])
+
+
+def test_locality_curves_separate_pure_truncation_graph_cost_from_bounded_dispatch(monkeypatch,tmp_path):
+    import experiments.post_cstat_empirical_figures as module
+    rows=[]
+    for hub in (1,16,64):
+        for method,radius in (("comet_local",.02),("truncated_local",.03),
+                ("truncated_global_graph",.03*(max(hub,2)/2)**.5),
+                ("truncated_global_envelope",.06*(max(hub,2)/2)**.5),
+                ("graph_bernstein",.04)):
+            rows.append(dict(cell=f"hub{hub}-moderate",method=method,delta=.05,
+                query_id="E2/policy0/auditor1",normalized_radius_median=radius))
+    captured={}
+    def inspect_and_close(fig,*args):
+        captured.update({line.get_label():list(line.get_ydata()) for line in fig.axes[0].lines})
+        module.plt.close(fig)
+    monkeypatch.setattr(module,"_save",inspect_and_close)
+    module._plot_locality(dict(queries=rows),tmp_path,("png",))
+    assert set(captured)=={module.LABELS[method] for method in
+        ("comet_local","truncated_local","truncated_global_graph","truncated_global_envelope")}
+    assert captured[module.LABELS["truncated_local"]]==[.03]*3
+    assert captured[module.LABELS["comet_local"]]==[.02]*3
+    assert captured[module.LABELS["truncated_global_graph"]][0]==.03
+    assert module.LABELS["graph_bernstein"] not in captured
+    assert "bounded-branch benefit, not a graph-localization benefit" in module.CAPTIONS["fig2_query_locality"]

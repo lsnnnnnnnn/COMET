@@ -40,7 +40,7 @@ LABELS={"comet_local":"COMET / matched generic","generic_matched":"Matched gener
     "author_one_dimensional_ope_betting":"OPE betting (author code)",
     "waudby_smith_2024_dr_eb_independent":"DR empirical Bernstein (independent)"}
 COLORS={"comet_local":BLUE,"generic_matched":BLUE,"truncated_global_envelope":ORANGE,
-    "truncated_global_graph":PURPLE,"graph_bernstein":GREEN,"colorwise_truncation":RED,
+    "truncated_global_graph":PURPLE,"truncated_local":GREEN,"graph_bernstein":GREEN,"colorwise_truncation":RED,
     "deduplicated_joint_level_difference":PURPLE,"independent_global":ORANGE}
 STYLE={"font.family":"DejaVu Sans","font.size":8.5,"axes.labelsize":9,"axes.titlesize":9,
     "xtick.labelsize":7.5,"ytick.labelsize":7.5,"legend.fontsize":7,
@@ -244,7 +244,7 @@ def _plot_core(analysis,detail,output,formats):
 def _plot_locality(detail,output,formats):
     rows=_detail(detail["queries"])
     fig,axes=plt.subplots(2,2,figsize=(7.2,5.4),constrained_layout=True)
-    methods=("comet_local","truncated_global_graph","truncated_global_envelope","graph_bernstein")
+    methods=("comet_local","truncated_global_graph","truncated_global_envelope","truncated_local")
     for i,overlap in enumerate(("moderate","extreme1e-4")):
         for j,(auditor,title) in enumerate((("auditor1","Audited first half"),("auditor0","Global query"))):
             ax=axes[i,j]
@@ -562,7 +562,7 @@ def _equivalence_checks(analyses):
 
 CAPTIONS={
     "fig1_core_validity_informativeness":"E1, primary 95% level. Coverage and detection error bars are pointwise Wilson intervals over complete independent logs, not simultaneous bounds. Width medians/IQR are descriptive coordinate quantiles; nontriviality is distinct from a useful certified decision. The final panel uses maxima within each complete trial, and retains uninformative cells. COMET and the fully matched generic method are algebraically identical; their separate rows remain in the tables.",
-    "fig2_query_locality":"E2 mechanism, predeclared constant policy 0. Audited-first-half and global queries are shown separately, across every outside hub/overlap condition. The vertical coordinate is a design-determined normalized radius, not Monte Carlo uncertainty. No average over outside/global auditors is substituted for locality. All four policies and auditors remain in empirical_coordinates.csv.",
+    "fig2_query_locality":"E2 mechanism, predeclared constant policy 0. Audited-first-half and global queries are shown separately, across every outside hub/overlap condition. Three pure residual-truncation layers isolate the costs: global envelope/global graph, local moments/global graph, and local moments/induced-support graph. COMET / matched generic additionally dispatches to sharp bounded certificates; its improvement over pure local truncation at the same coloring is a bounded-branch benefit, not a graph-localization benefit. The vertical coordinate is a design-determined normalized radius, not Monte Carlo uncertainty. No average over outside/global auditors is substituted for locality. All methods, four policies and auditors remain in empirical_coordinates.csv.",
     "fig3_paired_contrasts":"E3, primary 95% level, constant changed-policy anchor and all-row auditor. Direct signed contrasts and subtraction of simultaneously certified, deduplicated unique levels share the same total error budget and logged data. Shown widths are descriptive per-query medians; reducing a policy change also changes its signal and feasible range, and does not by itself establish improved sign-certification power.",
     "fig4_gap_power_boundary":"E4 whole-trial probabilities of certifying the primary query safe or violating its threshold. Shaded gamma<=0 points are null/safe settings, not positive-gap power. Error bars are pointwise Wilson 95% intervals. The 2r line is a design-only sufficient boundary on the coverage event; an off-axis boundary is reported numerically, not clipped into an apparent successful regime. All false-safe/false-violation counts and intervals remain in empirical_events.csv.",
     "fig5_safe_useful_return":"E5 complete independent three-split trials. Four different joint events are reported; zero false-return counts do not mean zero risk. Gray/NA denotes unavailable or unassessable input, never an imputed zero. Point and in-sample arms are heuristic, status quo is an uncertified reference, and abstention cannot count as useful return. Fixed-slice coverage concerns its restricted family; return feasibility is evaluated against the primary independently discovered constraints. Every risk and utility coordinate used for selection is included in the actual family budget. Pointwise Wilson intervals and denominators are in empirical_events.csv.",
