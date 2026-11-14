@@ -88,5 +88,9 @@
     "comet-post-cstat-v1/ANCHORS/scaling-N32768-heavy/0000",
     "comet-post-cstat-v1/ANCHORS/scaling-N131072-bounded/0000",
     "comet-post-cstat-v1/ANCHORS/scaling-N131072-heavy/0000"
+  ],
+  "iid_exact_e": [
+    0.75,
+    0.25
   ]
 }

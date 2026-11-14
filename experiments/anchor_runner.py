@@ -44,6 +44,12 @@ EXTRA_SOURCES = ("comet/independent_anchors.py", "comet/ope_2024.py",
     "comet/audit_pipeline.py", "comet/paired_contrasts.py", "experiments/suite_designs.py",
     "experiments/anchor_runner.py", "experiments/extension_runner.py",
     "experiments/post_cstat_analyze.py")
+IID_DESIGN_AMENDMENT = {
+    "stage":"pre-freeze; zero anchor outcomes observed",
+    "previous_logging_e":[.5,.5], "final_logging_e":[.75,.25],
+    "target_q":[.5,.5], "nuisance":.5,
+    "reason":"nontrivial OPE weights with exact 32-bit integer cutoffs; no outcome-driven tuning",
+    "unchanged":"locations (.35,.55), target .45, threshold .4, true gap .05, 1600-unit budget"}
 
 
 def anchor_cells():
@@ -110,8 +116,9 @@ def _validate_config(config):
         primary_comparisons=primary_anchor_comparisons(),
         method_applicability={cell:{method:anchor_eligible(cell,method) for method in METHODS} for cell in anchor_cells()},
         artifact_cap_bytes=int(1.5*GIB), minimum_free_disk_bytes=2*GIB, worker_memory_cap_bytes=4*GIB,
-        iid_locations=[.35,.55], iid_exact_e=[.5,.5], iid_target_q=[.5,.5],
+        iid_locations=[.35,.55], iid_exact_e=[.75,.25], iid_target_q=[.5,.5],
         iid_fixed_nuisance=.5, iid_known_mean_class=[0.,1.], bounded_residual_bound=.5,
+        iid_design_amendment=IID_DESIGN_AMENDMENT,
         tail_exponent=1.75, tail_scale=.1, p_heavy=1.5,
         scaling_auditor_fractions=[1.,.5,.1,.02], scaling_interpretation="descriptive fixed-DGP, not a minimax proof")
     for key,value in fixed.items():
@@ -158,13 +165,14 @@ def build_anchor_plans(config,cell_id):
     core=build_core_design(n,"independent" if iid else "cycle","moderate",outcome,
                            namespace=config["seed_domain"]+"/"+cell_id)
     if iid:
-        cutoffs,e1=dyadic_probabilities(np.full(n,.5))
+        cutoffs,e1=dyadic_probabilities(np.full(n,.25))
         q=np.full((n,2),.5)
-        moment=.5**2 if outcome=="bounded" else (.5+.1*7**(1/1.5))**1.5
+        raw_moment=.5**2 if outcome=="bounded" else (.5+.1*7**(1/1.5))**1.5
+        moment=raw_moment*float(np.sum(.5**core.p*np.array([.75,.25])**(1-core.p)))
         query=SignedQuery("anchor/all",q,0,provenance="fixed homogeneous IID anchor")
         core=replace(core,logging_cutoffs=cutoffs,exposure=_readonly(np.column_stack((1-e1,e1))),
             queries=(query,),subgroup_masses={query.query_id:1.},
-            residual_moments=_readonly(np.full((n,2),moment)))
+            residual_moments=_readonly(np.full((n,2),raw_moment)))
     else:
         queries=[];masses={}
         for policy in range(4):
@@ -231,11 +239,16 @@ def _seed(config,run_id):
 
 
 def _baseline_record(method,cell,log,delta,config):
+    weights=cell.core.queries[0].coefficients/cell.core.exposure
+    observed_weights=weights[np.arange(cell.n),log.actions]
     if method==CATONI:
-        record=catoni_iid(log.outcomes,p=cell.core.p,central_moment_bound=cell.centered_moment_bound,
+        # This balanced-q/midpoint-fit anchor has a proved centered envelope
+        # for the full DR score; observed Y has the logging-law target instead.
+        score=.5+observed_weights*(log.outcomes-.5)
+        record=catoni_iid(score,p=cell.core.p,central_moment_bound=cell.centered_moment_bound,
             delta=delta,tau=config["catoni_tau"],h=config["catoni_h"],iid_declared=True)
     elif method==OPE21:
-        record=ope_betting_iid(np.ones(cell.n),log.outcomes,wmax=1,delta=delta,iid_declared=True)
+        record=ope_betting_iid(observed_weights,log.outcomes,wmax=float(weights.max()),delta=delta,iid_declared=True)
     else:
         record=ope_eb_independent(log.actions,log.outcomes,exposure=cell.core.exposure,
             target_policy=cell.core.queries[0].coefficients,nuisance=cell.core.nuisance,
@@ -324,10 +337,14 @@ def _metadata(root,manifest,cell,plans):
     data.update(suite="ANCHORS",iid=cell.iid,centered_moment_bound=cell.centered_moment_bound,
         raw_residual_moment=float(cell.core.residual_moments.max()),
         iid_centered_envelope_proof=(
-            "bounded Y in [0,1]: Var(Y) <= E[(Y-.5)^2] <= .25"
-            if cell.iid and cell.core.outcome=="bounded" else
-            "mu_action minus equally-weighted mean bounded by .5; add known noise Lp via Minkowski"
-            if cell.iid else None),
+            "Special q=(.5,.5), fit=.5, mu_s in [0,1] only: let delta_s=mu_s-.5, "
+            "w_s=.5/e_s>=.5 and R=w_A(Y-.5). ER=.5(delta_0+delta_1). "
+            "max over delta corners |w_s delta_s-ER|=.5(|w_s-.5|+.5)=.5w_s. "
+            "Conditional Minkowski adds w_s K; hence E|R-ER|^p <= "
+            "(.5+K)^p sum_s e_s w_s^p = raw residual envelope v. "
+            "For bounded p=2, Var(R)<=E[R^2]<=v also suffices. "
+            "This is not a general raw-to-centered moment inequality." if cell.iid else None),
+        iid_design_amendment=IID_DESIGN_AMENDMENT if cell.iid else None,
         method_applicability={m:anchor_eligible(cell.cell_id,m) for m in METHODS},
         supplementary_budget="8 cells x 200; shared methods/levels; combined 1600 allowance",
         baseline_tuning={k:manifest["config"][k] for k in ("catoni_tau","catoni_h","ope2024_k","ope2024_rho")})

@@ -67,16 +67,18 @@ def test_genuine_iid_scalar_fixture_and_same_legal_information(outcome):
     config,_=config_fixture("iid-"+outcome)
     cell,plans=runner.build_anchor_plans(config,"iid-"+outcome)
     assert cell.iid and len(cell.core.queries)==1 and cell.core.graph.color_count==1
-    assert np.all(cell.core.exposure==.5) and np.all(cell.core.queries[0].coefficients==.5)
+    assert np.all(cell.core.exposure==[.75,.25]) and np.all(cell.core.queries[0].coefficients==.5)
+    assert np.all(cell.core.logging_cutoffs==WORD_GRID//4)
     assert np.all(cell.core.nuisance==.5)
     log=explicit_draw(cell,0)
     assert np.mean(log.outcomes)==pytest.approx(.45)
     assert runner.anchor_truths(cell)=={"anchor/all":.45}
     bound=.25 if outcome=="bounded" else (.5+.1*7**(1/1.5))**1.5
-    assert cell.centered_moment_bound==pytest.approx(bound)
+    moment=bound*np.sum(.5**cell.core.p*np.array([.75,.25])**(1-cell.core.p))
+    assert cell.centered_moment_bound==pytest.approx(moment)
     assert np.all(cell.core.residual_moments==bound)
     if outcome=="bounded":
-        expected=math.sqrt(math.log(40)/(2*cell.n))
+        expected=2*math.sqrt(math.log(40)/(2*cell.n))
         assert plans[.05,"graph_hoeffding"][0].radius==pytest.approx(expected)
         assert np.allclose(log.outcomes,np.where(log.actions==1,.55,.35)+np.where(log.actions==1,.1,-.1))
 
@@ -98,10 +100,12 @@ def test_anchor_adapter_preserves_each_source_engine_endpoints_and_budget():
     config,_=config_fixture()
     cell,_=runner.build_anchor_plans(config,"iid-bounded")
     log=explicit_draw(cell,0)
+    weights=.5/cell.core.exposure[np.arange(cell.n),log.actions]
+    score=.5+weights*(log.outcomes-.5)
     source_records={
-        runner.CATONI:runner.catoni_iid(log.outcomes,p=2.,central_moment_bound=.25,
+        runner.CATONI:runner.catoni_iid(score,p=2.,central_moment_bound=cell.centered_moment_bound,
             delta=.05,tau=.5,h=.9,iid_declared=True),
-        runner.OPE21:runner.ope_betting_iid(np.ones(cell.n),log.outcomes,wmax=1.,
+        runner.OPE21:runner.ope_betting_iid(weights,log.outcomes,wmax=2.,
             delta=.05,iid_declared=True),
         runner.OPE24:runner.ope_eb_independent(log.actions,log.outcomes,
             exposure=cell.core.exposure,target_policy=cell.core.queries[0].coefficients,
@@ -116,6 +120,34 @@ def test_anchor_adapter_preserves_each_source_engine_endpoints_and_budget():
         assert adapted["raw_lo"]==source.get("raw_lo",source["lo"])-guard
         assert adapted["raw_hi"]==source.get("raw_hi",source["hi"])+guard
         json.dumps(adapted,allow_nan=False)
+
+
+def test_special_balanced_target_centered_envelope_by_all_location_corners():
+    # Exact corner maximization, not a generic raw-to-centered inequality.
+    e=np.array([.75,.25]);w=.5/e
+    for d0 in (-.5,.5):
+        for d1 in (-.5,.5):
+            d=np.array([d0,d1]);mean=.5*d.sum()
+            for action in range(2):
+                assert abs(w[action]*d[action]-mean)<=.5*w[action]
+            for p in (1.5,2.):
+                k=.1 if p==2 else .1*7**(1/1.5)
+                v=(.5+k)**p*np.sum(e*w**p)
+                assert np.sum(e*(np.abs(w*d-mean)+w*k)**p)<=v+1e-15
+    assert runner.IID_DESIGN_AMENDMENT["stage"]=="pre-freeze; zero anchor outcomes observed"
+
+
+def test_ope_weight_limit_uses_design_even_if_high_weight_action_unobserved(monkeypatch):
+    config,_=config_fixture();cell,_=runner.build_anchor_plans(config,"iid-bounded")
+    words=np.full(cell.n,WORD_GRID-1,dtype=np.uint64)
+    log=runner.anchor_from_primitives(cell,words,{key:1. for key in cell.core.outcome_source_ids})
+    received={}
+    def capture(weights,rewards,**kwargs):
+        received.update(kwargs,weights=weights)
+        return dict(status="NOT_APPLICABLE",empty=False)
+    monkeypatch.setattr(runner,"ope_betting_iid",capture)
+    runner._baseline_record(runner.OPE21,cell,log,.05,config)
+    assert np.all(received["weights"]==2/3) and received["wmax"]==2
 
 
 def test_actual_runner_orders_oracle_after_every_engine_and_preserves_resume(tmp_path,monkeypatch):
