@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "baseline_commit": "ca5bb878cf9635fac4381d03281df0bc8a900daa",
+  "repository_files_included": 610,
+  "repository_files_omitted": 6091,
+  "archive_entries": 614,
+  "zip_bytes": 15586537,
+  "zip_sha256": "28371181dbd0dbbc7c0ef80d8bf5ec47f7df4f0f0d81f7c5d9a7992ab5f43beb",
+  "new_outcomes": 0
+}
