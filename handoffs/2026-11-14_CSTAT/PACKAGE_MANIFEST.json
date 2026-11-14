@@ -4287,8 +4287,8 @@
   "handoff_files": [
     {
       "archive_path": "README_HANDOFF.md",
-      "bytes": 12950,
-      "sha256": "14b759511682086438616e9d722116d99819d228bd9bd822e845a2a996bd973d"
+      "bytes": 13458,
+      "sha256": "70d94835fa008b6666b7f1f57e8efd404b1e418fe6a604743b10b239afb5c703"
     },
     {
       "archive_path": "NEXT_CHAT_PROMPT.md",
@@ -4296,9 +4296,14 @@
       "sha256": "af3ec669ddf7bb9a5fb578bafb8097890f1e17ab673a29d26b2b904b2d2a723c"
     },
     {
+      "archive_path": "NETWORK_STATUS.md",
+      "bytes": 1571,
+      "sha256": "dc83b9f065c467bc7e828b716f2a563700fafd1b3d9731f455861a0b119614a9"
+    },
+    {
       "archive_path": "build_package.py",
-      "bytes": 4419,
-      "sha256": "60121d2e9bbc30588dbe626fa96aed5740b27d7021364ee45b64ab570675ebba"
+      "bytes": 4440,
+      "sha256": "483062ab29c9dcc33b1e1f024cc461e7b7af9d3824c68a46e9cf549fadd87b88"
     }
   ],
   "omitted_files": [

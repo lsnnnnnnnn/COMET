@@ -47,7 +47,7 @@ def main():
                          "git_blob_sha1": oid})
         payloads.append((archive_name, data))
     handoff = []
-    for name in ("README_HANDOFF.md", "NEXT_CHAT_PROMPT.md", "build_package.py"):
+    for name in ("README_HANDOFF.md", "NEXT_CHAT_PROMPT.md", "NETWORK_STATUS.md", "build_package.py"):
         data = (HERE / name).read_bytes()
         handoff.append({"archive_path": name, "bytes": len(data),
                         "sha256": sha256(data)})
