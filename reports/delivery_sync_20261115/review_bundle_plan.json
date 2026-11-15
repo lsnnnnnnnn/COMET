@@ -1,0 +1,3354 @@
+{
+  "schema": "COMET-review-bundle-plan-v1",
+  "status": "READY_AND_PACKAGED_WITHOUT_NEW_HASHES",
+  "created_utc": "2026-11-15T11:27:56.330730+00:00",
+  "repository_root": "/Users/shengenli/Documents/ChatGPT/COMET",
+  "proposed_archive_name": "COMET_REVIEW_20261115.zip",
+  "archive_root": "COMET_REVIEW_20261115",
+  "scope": "Reviewable final evidence package; not a substitute for preserved full local raw/checkpoints or an instruction to run experiments",
+  "performed": {
+    "read_FINAL_HANDOFF_in_full": true,
+    "read_research_verdict_in_full": true,
+    "read_existing_bundle_builder_in_full": true,
+    "new_experiments": 0,
+    "hashes_computed": false,
+    "archive_generated": false,
+    "historical_source_modified": false
+  },
+  "existing_builder_review": {
+    "path": "handoffs/2026-11-14_CSTAT/build_package.py",
+    "decision": "Do not invoke or modify it: it packages a pinned historical ca5bb878 tree and computes hashes. Reuse only the simple standard-library ZipFile design, with this explicit final allowlist."
+  },
+  "size_snapshot": {
+    "included_existing_files": 427,
+    "uncompressed_existing_bytes": 62230331,
+    "uncompressed_existing_MiB": 59.347,
+    "zip_bytes": null,
+    "target_zip_bytes_strictly_less_than": 100000000,
+    "final_reports_and_sync_receipts_reserve_bytes": 8388608,
+    "estimated_uncompressed_plus_reserve_bytes": 70618939,
+    "below_100MB_before_compression_with_reserve": true,
+    "note": "Sizes are stat snapshots only; no compressed size or hash was computed. Refresh sizes after all reports are final; final ZIP must independently pass its actual size limit.",
+    "selected_source_files": 430,
+    "selected_source_bytes": 62233281
+  },
+  "required_pending_files": [
+    {
+      "source_path": "reports/delivery_sync_20261115/FINAL_RESEARCH_CONCLUSIONS.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/FINAL_RESEARCH_CONCLUSIONS.md",
+      "size_bytes": 16110,
+      "status": "PRESENT_BEFORE_PACKAGING"
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/CLAIM_PROOF_RESULT_MATRIX.csv",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/CLAIM_PROOF_RESULT_MATRIX.csv",
+      "size_bytes": 7559,
+      "status": "PRESENT_BEFORE_PACKAGING"
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/CLAIM_PROOF_RESULT_MATRIX.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/CLAIM_PROOF_RESULT_MATRIX.md",
+      "size_bytes": 7962,
+      "status": "PRESENT_BEFORE_PACKAGING"
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/STRONG_BASELINE_MATRIX.csv",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/STRONG_BASELINE_MATRIX.csv",
+      "size_bytes": 5008,
+      "status": "PRESENT_BEFORE_PACKAGING"
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/STRONG_BASELINE_MATRIX.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/STRONG_BASELINE_MATRIX.md",
+      "size_bytes": 5326,
+      "status": "PRESENT_BEFORE_PACKAGING"
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/E6_recovery_audit.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/E6_recovery_audit.md",
+      "size_bytes": 7105,
+      "status": "PRESENT_BEFORE_PACKAGING"
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/E6_recovery_audit.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/E6_recovery_audit.json",
+      "size_bytes": 12521,
+      "status": "PRESENT_BEFORE_PACKAGING"
+    }
+  ],
+  "required_pending_roles": [
+    {
+      "role": "current repository GitHub synchronization record",
+      "expected_location": "reports/delivery_sync_20261115/",
+      "file_name": "root assigns actual receipt names after git commit/push verification",
+      "size_bytes": null,
+      "required_evidence": "local commit, actual verified remote commit, command result/exit status and distinction from release-asset upload; do not claim success from intent"
+    },
+    {
+      "role": "this final plan/size allowlist",
+      "source_path": "reports/delivery_sync_20261115/review_bundle_plan.json",
+      "size_bytes": null,
+      "note": "Add to final allowlist after it exists; avoid trying to self-embed a cryptographic digest or exact self-size in this planning pass."
+    }
+  ],
+  "must_retain_facts": [
+    "30,300 completed new units; E6 0/1,000 at original handoff, not E1-E6 all complete; any newly recovered archive candidate is separate from actual E6 trials",
+    "All finite-moment E1 cells and finite-moment scaling still have zero violation detection; N=131072 did not repair this",
+    "Secondary 90% IID-bounded scalar betting covers199/200, with the preserved COMPLETE_WITH_CONFIDENCE_FAILURE and runner failed_units=1; no rerun or deletion",
+    "COMET and fully matched generic are algebraically/empirically equivalent; IID DR-EB and Catoni can be narrower",
+    "E5 global comparator is a pure truncation ablation; differences cannot be assigned to graph localization alone",
+    "Full family size includes risk and utility, all methods/levels share logs, E2 condition logs are paired rather than independent vectors",
+    "Return AND safe AND useful, baseline returns, posthoc strict gain, no certified conditional-unsafe-given-return delta claim, and honest refusal NA all stay visible",
+    "All E6 download failures, error-body-is-not-archive facts, missing blueprint waiver and exact remaining-ID/recovery rules stay visible"
+  ],
+  "current_entrypoints": {
+    "handoff": "FINAL_HANDOFF.md",
+    "verdict": "reports/research_verdict.md",
+    "new_conclusions": "reports/delivery_sync_20261115/FINAL_RESEARCH_CONCLUSIONS.md",
+    "main_proofs": [
+      "theory/global_residual_truncation.md",
+      "theory/query_specific_cost_lower_bound.md"
+    ],
+    "ledger": [
+      "reports/post_cstat/claim_ledger.json",
+      "reports/post_cstat/claim_ledger.csv"
+    ],
+    "API": "docs/post_cstat_api.md",
+    "paper": "paper/post_cstat/COMET_post_cstat_20261115.pdf",
+    "E6_data_contract": [
+      "experiments/semisynthetic_selective_labels.py",
+      "experiments/e6_runner.py",
+      "configs/post_cstat/E6_template.json",
+      "reports/post_cstat/E6_dataset_choice.md",
+      "FINAL_HANDOFF.md"
+    ],
+    "scoped_optional_theory": "theory/predictable_fixed_horizon_status.md is DERIVED_NOT_IMPLEMENTED; historical theory/context files do not replace current main proofs"
+  },
+  "latex_dependency_check": {
+    "checked_by": "text-only input/include/includegraphics closure against selected source/resources; no compilation or hash",
+    "dependency_count": 19,
+    "missing_from_allowlist": [],
+    "embedded_bibliography": true,
+    "active_E5_figures": "empirical_E5_v3 only; prior v1/v2 remain local"
+  },
+  "category_totals": {
+    "actual_figure_resources": {
+      "files": 44,
+      "size_bytes": 4404681
+    },
+    "actual_planning_inputs": {
+      "files": 6,
+      "size_bytes": 89076
+    },
+    "analytic_design_exports": {
+      "files": 4,
+      "size_bytes": 166075
+    },
+    "api_and_usage": {
+      "files": 2,
+      "size_bytes": 11215
+    },
+    "completed_evidence_and_receipts": {
+      "files": 161,
+      "size_bytes": 11975398
+    },
+    "configs": {
+      "files": 10,
+      "size_bytes": 51261
+    },
+    "current_delivery_reports": {
+      "files": 12,
+      "size_bytes": 70867
+    },
+    "detailed_csv_and_receipts": {
+      "files": 12,
+      "size_bytes": 34789725
+    },
+    "deterministic_and_regression_source": {
+      "files": 44,
+      "size_bytes": 368966
+    },
+    "entrypoints": {
+      "files": 4,
+      "size_bytes": 16144
+    },
+    "historical_report": {
+      "files": 2,
+      "size_bytes": 217405
+    },
+    "immutable_protocols": {
+      "files": 9,
+      "size_bytes": 1792587
+    },
+    "latex_source": {
+      "files": 15,
+      "size_bytes": 89971
+    },
+    "proof_and_conditions": {
+      "files": 13,
+      "size_bytes": 135112
+    },
+    "reviewable_source": {
+      "files": 63,
+      "size_bytes": 854558
+    },
+    "reviewed_paper": {
+      "files": 1,
+      "size_bytes": 902039
+    },
+    "verdict_and_references": {
+      "files": 4,
+      "size_bytes": 33118
+    },
+    "whole_trial_summaries": {
+      "files": 21,
+      "size_bytes": 6262133
+    }
+  },
+  "files": [
+    {
+      "source_path": "FINAL_HANDOFF.md",
+      "archive_path": "COMET_REVIEW_20261115/FINAL_HANDOFF.md",
+      "size_bytes": 13843,
+      "category": "entrypoints",
+      "reason": "Handoff, reviewer entry, and declared local dependencies"
+    },
+    {
+      "source_path": "README.md",
+      "archive_path": "COMET_REVIEW_20261115/README.md",
+      "category": "current_delivery",
+      "reason": "current portable reviewer entry, conclusions, sync or E6 audit evidence",
+      "size_bytes": 2462
+    },
+    {
+      "source_path": "REVIEW_START_HERE.md",
+      "archive_path": "COMET_REVIEW_20261115/REVIEW_START_HERE.md",
+      "category": "current_delivery",
+      "reason": "current portable reviewer entry, conclusions, sync or E6 audit evidence",
+      "size_bytes": 3085
+    },
+    {
+      "source_path": "comet/__init__.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/__init__.py",
+      "size_bytes": 96,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/audit_pipeline.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/audit_pipeline.py",
+      "size_bytes": 4957,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/bounded_variance.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/bounded_variance.py",
+      "size_bytes": 7992,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/certification.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/certification.py",
+      "size_bytes": 11757,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/checkpoint_store.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/checkpoint_store.py",
+      "size_bytes": 6813,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/conflict_graph.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/conflict_graph.py",
+      "size_bytes": 1138,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/dr_scores.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/dr_scores.py",
+      "size_bytes": 2200,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/exposure.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/exposure.py",
+      "size_bytes": 1742,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/gate_c_contract.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/gate_c_contract.py",
+      "size_bytes": 8144,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/gate_c_methods.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/gate_c_methods.py",
+      "size_bytes": 14101,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/gate_c_seeds.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/gate_c_seeds.py",
+      "size_bytes": 1569,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/gate_c_simulation.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/gate_c_simulation.py",
+      "size_bytes": 4025,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/gate_c_statistics.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/gate_c_statistics.py",
+      "size_bytes": 10514,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/gate_c_truth.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/gate_c_truth.py",
+      "size_bytes": 1174,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/independent_anchors.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/independent_anchors.py",
+      "size_bytes": 11002,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/informativeness.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/informativeness.py",
+      "size_bytes": 2144,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/metrics.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/metrics.py",
+      "size_bytes": 3277,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/ope_2024.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/ope_2024.py",
+      "size_bytes": 9615,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/paired_contrasts.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/paired_contrasts.py",
+      "size_bytes": 17032,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/policy_update.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/policy_update.py",
+      "size_bytes": 11031,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/post_cstat_statistics.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/post_cstat_statistics.py",
+      "size_bytes": 8022,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/queries.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/queries.py",
+      "size_bytes": 4092,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/residual_truncation.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/residual_truncation.py",
+      "size_bytes": 17629,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/robust_mean.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/robust_mean.py",
+      "size_bytes": 6507,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/schema.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/schema.py",
+      "size_bytes": 3484,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/smoke.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/smoke.py",
+      "size_bytes": 7438,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/source_graph.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/source_graph.py",
+      "size_bytes": 5805,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/synthetic.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/synthetic.py",
+      "size_bytes": 1873,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "comet/truth.py",
+      "archive_path": "COMET_REVIEW_20261115/comet/truth.py",
+      "size_bytes": 925,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "configs/post_cstat/ANCHORS_server_v2.json",
+      "archive_path": "COMET_REVIEW_20261115/configs/post_cstat/ANCHORS_server_v2.json",
+      "size_bytes": 3190,
+      "category": "configs",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "configs/post_cstat/ANCHORS_v1.json",
+      "archive_path": "COMET_REVIEW_20261115/configs/post_cstat/ANCHORS_v1.json",
+      "size_bytes": 2612,
+      "category": "configs",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "configs/post_cstat/E1_v1.json",
+      "archive_path": "COMET_REVIEW_20261115/configs/post_cstat/E1_v1.json",
+      "size_bytes": 3031,
+      "category": "configs",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "configs/post_cstat/E2_v1.json",
+      "archive_path": "COMET_REVIEW_20261115/configs/post_cstat/E2_v1.json",
+      "size_bytes": 2762,
+      "category": "configs",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "configs/post_cstat/E3_v1.json",
+      "archive_path": "COMET_REVIEW_20261115/configs/post_cstat/E3_v1.json",
+      "size_bytes": 3175,
+      "category": "configs",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "configs/post_cstat/E4_v1.json",
+      "archive_path": "COMET_REVIEW_20261115/configs/post_cstat/E4_v1.json",
+      "size_bytes": 3823,
+      "category": "configs",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "configs/post_cstat/E5_v1.json",
+      "archive_path": "COMET_REVIEW_20261115/configs/post_cstat/E5_v1.json",
+      "size_bytes": 2356,
+      "category": "configs",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "configs/post_cstat/E6_template.json",
+      "archive_path": "COMET_REVIEW_20261115/configs/post_cstat/E6_template.json",
+      "size_bytes": 2411,
+      "category": "configs",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "configs/post_cstat/negative_controls_server_v2.json",
+      "archive_path": "COMET_REVIEW_20261115/configs/post_cstat/negative_controls_server_v2.json",
+      "size_bytes": 14268,
+      "category": "configs",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "configs/post_cstat/negative_controls_v1.json",
+      "archive_path": "COMET_REVIEW_20261115/configs/post_cstat/negative_controls_v1.json",
+      "size_bytes": 13633,
+      "category": "configs",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "deliveries/20261115_sync/README.md",
+      "archive_path": "COMET_REVIEW_20261115/deliveries/20261115_sync/README.md",
+      "category": "current_delivery",
+      "reason": "current portable reviewer entry, conclusions, sync or E6 audit evidence",
+      "size_bytes": 621
+    },
+    {
+      "source_path": "docs/historical_README_gate_AB.md",
+      "archive_path": "COMET_REVIEW_20261115/docs/historical_README_gate_AB.md",
+      "size_bytes": 3816,
+      "category": "api_and_usage",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "docs/post_cstat_api.md",
+      "archive_path": "COMET_REVIEW_20261115/docs/post_cstat_api.md",
+      "size_bytes": 7399,
+      "category": "api_and_usage",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/__init__.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/__init__.py",
+      "size_bytes": 54,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/anchor_runner.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/anchor_runner.py",
+      "size_bytes": 37509,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/audit_gate_c_scientific_lock.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/audit_gate_c_scientific_lock.py",
+      "size_bytes": 5018,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/build_research_ledger.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/build_research_ledger.py",
+      "size_bytes": 10059,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/core_graph_dgp.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/core_graph_dgp.py",
+      "size_bytes": 12834,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/detailed_diagnostics.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/detailed_diagnostics.py",
+      "size_bytes": 41053,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/e6_analyze.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/e6_analyze.py",
+      "size_bytes": 17653,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/e6_runner.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/e6_runner.py",
+      "size_bytes": 32835,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/extension_analyze.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/extension_analyze.py",
+      "size_bytes": 16866,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/extension_runner.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/extension_runner.py",
+      "size_bytes": 37512,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/forensic_c0.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/forensic_c0.py",
+      "size_bytes": 24063,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/gate_c0_pilot.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/gate_c0_pilot.py",
+      "size_bytes": 18335,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/gate_c_confirmatory.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/gate_c_confirmatory.py",
+      "size_bytes": 27890,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/gate_c_design_audit.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/gate_c_design_audit.py",
+      "size_bytes": 4575,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/gate_c_preflight.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/gate_c_preflight.py",
+      "size_bytes": 15594,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/gate_d_design_only.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/gate_d_design_only.py",
+      "size_bytes": 3654,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/negative_controls.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/negative_controls.py",
+      "size_bytes": 43108,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/nonvacuity_budget.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/nonvacuity_budget.py",
+      "size_bytes": 9195,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/pipeline_dgp.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/pipeline_dgp.py",
+      "size_bytes": 34853,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/pipeline_diagnostics.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/pipeline_diagnostics.py",
+      "size_bytes": 34488,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/pipeline_fast.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/pipeline_fast.py",
+      "size_bytes": 8432,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/pipeline_runner.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/pipeline_runner.py",
+      "size_bytes": 50229,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/pipeline_shard.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/pipeline_shard.py",
+      "size_bytes": 6638,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/post_cstat_analyze.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/post_cstat_analyze.py",
+      "size_bytes": 13721,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/post_cstat_design.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/post_cstat_design.py",
+      "size_bytes": 6304,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/post_cstat_empirical_figures.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/post_cstat_empirical_figures.py",
+      "size_bytes": 47551,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/post_cstat_fast.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/post_cstat_fast.py",
+      "size_bytes": 5553,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/post_cstat_figures.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/post_cstat_figures.py",
+      "size_bytes": 4785,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/post_cstat_inventory.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/post_cstat_inventory.py",
+      "size_bytes": 7591,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/post_cstat_runner.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/post_cstat_runner.py",
+      "size_bytes": 27755,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/reconcile_gate_c_baseline.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/reconcile_gate_c_baseline.py",
+      "size_bytes": 17891,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/relocated_sources.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/relocated_sources.py",
+      "size_bytes": 6830,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/semisynthetic_selective_labels.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/semisynthetic_selective_labels.py",
+      "size_bytes": 29738,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "experiments/suite_designs.py",
+      "archive_path": "COMET_REVIEW_20261115/experiments/suite_designs.py",
+      "size_bytes": 8294,
+      "category": "reviewable_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "paper/post_cstat/COMET_post_cstat_20261115.pdf",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/COMET_post_cstat_20261115.pdf",
+      "size_bytes": 902039,
+      "category": "reviewed_paper",
+      "reason": "Reviewed 24-page local PDF"
+    },
+    {
+      "source_path": "paper/post_cstat/README.md",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/README.md",
+      "size_bytes": 2497,
+      "category": "latex_source",
+      "reason": "Build instructions and final evidence caveats"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/design_v1/analytic_declining_overlap.png",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/design_v1/analytic_declining_overlap.png",
+      "size_bytes": 163902,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/design_v1/analytic_declining_overlap.svg",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/design_v1/analytic_declining_overlap.svg",
+      "size_bytes": 23078,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/design_v1/analytic_evidence_cost.png",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/design_v1/analytic_evidence_cost.png",
+      "size_bytes": 148105,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/design_v1/analytic_evidence_cost.svg",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/design_v1/analytic_evidence_cost.svg",
+      "size_bytes": 25960,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/design_v1/analytic_radius_components.png",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/design_v1/analytic_radius_components.png",
+      "size_bytes": 70389,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/design_v1/analytic_radius_components.svg",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/design_v1/analytic_radius_components.svg",
+      "size_bytes": 11989,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/design_v1/manifest.json",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/design_v1/manifest.json",
+      "size_bytes": 940,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/anchor_widths.csv",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E1_E4_v1/anchor_widths.csv",
+      "size_bytes": 103,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/captions.md",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E1_E4_v1/captions.md",
+      "size_bytes": 2209,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/fig1_core_validity_informativeness.pdf",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E1_E4_v1/fig1_core_validity_informativeness.pdf",
+      "size_bytes": 42951,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/fig1_core_validity_informativeness.png",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E1_E4_v1/fig1_core_validity_informativeness.png",
+      "size_bytes": 453270,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/fig2_query_locality.pdf",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E1_E4_v1/fig2_query_locality.pdf",
+      "size_bytes": 27962,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/fig2_query_locality.png",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E1_E4_v1/fig2_query_locality.png",
+      "size_bytes": 304715,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/fig3_paired_contrasts.pdf",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E1_E4_v1/fig3_paired_contrasts.pdf",
+      "size_bytes": 25522,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/fig3_paired_contrasts.png",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E1_E4_v1/fig3_paired_contrasts.png",
+      "size_bytes": 285359,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/fig4_gap_power_boundary.pdf",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E1_E4_v1/fig4_gap_power_boundary.pdf",
+      "size_bytes": 26220,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/fig4_gap_power_boundary.png",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E1_E4_v1/fig4_gap_power_boundary.png",
+      "size_bytes": 240228,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/manifest.json",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E1_E4_v1/manifest.json",
+      "size_bytes": 34051,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/paired_comparisons.csv",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E1_E4_v1/paired_comparisons.csv",
+      "size_bytes": 62099,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/pipeline_values.csv",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E1_E4_v1/pipeline_values.csv",
+      "size_bytes": 61,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/prespecified_envelope_diagnostics.csv",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E1_E4_v1/prespecified_envelope_diagnostics.csv",
+      "size_bytes": 34285,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/prespecified_envelope_diagnostics.json",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E1_E4_v1/prespecified_envelope_diagnostics.json",
+      "size_bytes": 72285,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E5_v3/anchor_widths.csv",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E5_v3/anchor_widths.csv",
+      "size_bytes": 111,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E5_v3/captions.md",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E5_v3/captions.md",
+      "size_bytes": 758,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E5_v3/empirical_coordinates.csv",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E5_v3/empirical_coordinates.csv",
+      "size_bytes": 81,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E5_v3/empirical_events.csv",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E5_v3/empirical_events.csv",
+      "size_bytes": 419779,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E5_v3/empirical_events.tex",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E5_v3/empirical_events.tex",
+      "size_bytes": 225845,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E5_v3/empirical_widths.csv",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E5_v3/empirical_widths.csv",
+      "size_bytes": 44,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E5_v3/fig5_safe_useful_return.pdf",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E5_v3/fig5_safe_useful_return.pdf",
+      "size_bytes": 38345,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E5_v3/fig5_safe_useful_return.png",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E5_v3/fig5_safe_useful_return.png",
+      "size_bytes": 323755,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E5_v3/manifest.json",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E5_v3/manifest.json",
+      "size_bytes": 7748,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E5_v3/paired_comparisons.csv",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E5_v3/paired_comparisons.csv",
+      "size_bytes": 29292,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E5_v3/pipeline_values.csv",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/empirical_E5_v3/pipeline_values.csv",
+      "size_bytes": 206269,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/supplementary_server_v2_v1/anchor_widths.csv",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/supplementary_server_v2_v1/anchor_widths.csv",
+      "size_bytes": 28403,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/supplementary_server_v2_v1/appendix_anchors_controls.pdf",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/supplementary_server_v2_v1/appendix_anchors_controls.pdf",
+      "size_bytes": 29107,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/supplementary_server_v2_v1/appendix_anchors_controls.png",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/supplementary_server_v2_v1/appendix_anchors_controls.png",
+      "size_bytes": 345306,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/supplementary_server_v2_v1/captions.md",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/supplementary_server_v2_v1/captions.md",
+      "size_bytes": 393,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/supplementary_server_v2_v1/empirical_coordinates.csv",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/supplementary_server_v2_v1/empirical_coordinates.csv",
+      "size_bytes": 81,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/supplementary_server_v2_v1/empirical_events.csv",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/supplementary_server_v2_v1/empirical_events.csv",
+      "size_bytes": 456375,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/supplementary_server_v2_v1/empirical_events.tex",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/supplementary_server_v2_v1/empirical_events.tex",
+      "size_bytes": 206299,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/supplementary_server_v2_v1/empirical_widths.csv",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/supplementary_server_v2_v1/empirical_widths.csv",
+      "size_bytes": 44,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/supplementary_server_v2_v1/manifest.json",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/supplementary_server_v2_v1/manifest.json",
+      "size_bytes": 3899,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/supplementary_server_v2_v1/paired_comparisons.csv",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/supplementary_server_v2_v1/paired_comparisons.csv",
+      "size_bytes": 27003,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/supplementary_server_v2_v1/pipeline_values.csv",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/figures/supplementary_server_v2_v1/pipeline_values.csv",
+      "size_bytes": 61,
+      "category": "actual_figure_resources",
+      "reason": "Only final active figure bundles; all actual LaTeX dependencies included"
+    },
+    {
+      "source_path": "paper/post_cstat/main.tex",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/main.tex",
+      "size_bytes": 6048,
+      "category": "latex_source",
+      "reason": "Complete article entry with embedded bibliography"
+    },
+    {
+      "source_path": "paper/post_cstat/sections/analytic_maps.tex",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/sections/analytic_maps.tex",
+      "size_bytes": 1402,
+      "category": "latex_source",
+      "reason": "All article section/table source and numeric table provenance"
+    },
+    {
+      "source_path": "paper/post_cstat/sections/discussion.tex",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/sections/discussion.tex",
+      "size_bytes": 4225,
+      "category": "latex_source",
+      "reason": "All article section/table source and numeric table provenance"
+    },
+    {
+      "source_path": "paper/post_cstat/sections/evidence.tex",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/sections/evidence.tex",
+      "size_bytes": 17177,
+      "category": "latex_source",
+      "reason": "All article section/table source and numeric table provenance"
+    },
+    {
+      "source_path": "paper/post_cstat/sections/historical.tex",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/sections/historical.tex",
+      "size_bytes": 1817,
+      "category": "latex_source",
+      "reason": "All article section/table source and numeric table provenance"
+    },
+    {
+      "source_path": "paper/post_cstat/sections/introduction.tex",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/sections/introduction.tex",
+      "size_bytes": 3429,
+      "category": "latex_source",
+      "reason": "All article section/table source and numeric table provenance"
+    },
+    {
+      "source_path": "paper/post_cstat/sections/methods.tex",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/sections/methods.tex",
+      "size_bytes": 4832,
+      "category": "latex_source",
+      "reason": "All article section/table source and numeric table provenance"
+    },
+    {
+      "source_path": "paper/post_cstat/sections/proofs.tex",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/sections/proofs.tex",
+      "size_bytes": 23690,
+      "category": "latex_source",
+      "reason": "All article section/table source and numeric table provenance"
+    },
+    {
+      "source_path": "paper/post_cstat/sections/supplementary.tex",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/sections/supplementary.tex",
+      "size_bytes": 5706,
+      "category": "latex_source",
+      "reason": "All article section/table source and numeric table provenance"
+    },
+    {
+      "source_path": "paper/post_cstat/sections/theory.tex",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/sections/theory.tex",
+      "size_bytes": 12434,
+      "category": "latex_source",
+      "reason": "All article section/table source and numeric table provenance"
+    },
+    {
+      "source_path": "paper/post_cstat/tables/E5_decisions.json",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/tables/E5_decisions.json",
+      "size_bytes": 2216,
+      "category": "latex_source",
+      "reason": "All article section/table source and numeric table provenance"
+    },
+    {
+      "source_path": "paper/post_cstat/tables/E5_decisions.tex",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/tables/E5_decisions.tex",
+      "size_bytes": 1209,
+      "category": "latex_source",
+      "reason": "All article section/table source and numeric table provenance"
+    },
+    {
+      "source_path": "paper/post_cstat/tables/frozen_protocols.json",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/tables/frozen_protocols.json",
+      "size_bytes": 2302,
+      "category": "latex_source",
+      "reason": "All article section/table source and numeric table provenance"
+    },
+    {
+      "source_path": "paper/post_cstat/tables/frozen_protocols.tex",
+      "archive_path": "COMET_REVIEW_20261115/paper/post_cstat/tables/frozen_protocols.tex",
+      "size_bytes": 987,
+      "category": "latex_source",
+      "reason": "All article section/table source and numeric table provenance"
+    },
+    {
+      "source_path": "paper/rewrite_proposals/cstat/review_proposal.pdf",
+      "archive_path": "COMET_REVIEW_20261115/paper/rewrite_proposals/cstat/review_proposal.pdf",
+      "size_bytes": 212088,
+      "category": "historical_report",
+      "reason": "Preserved nine-page historical C-STAT proposal, not the final scope"
+    },
+    {
+      "source_path": "pyproject.toml",
+      "archive_path": "COMET_REVIEW_20261115/pyproject.toml",
+      "size_bytes": 465,
+      "category": "entrypoints",
+      "reason": "Handoff, reviewer entry, and declared local dependencies"
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/CLAIM_PROOF_RESULT_MATRIX.csv",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/CLAIM_PROOF_RESULT_MATRIX.csv",
+      "category": "current_delivery",
+      "reason": "current portable reviewer entry, conclusions, sync or E6 audit evidence",
+      "size_bytes": 7559
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/CLAIM_PROOF_RESULT_MATRIX.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/CLAIM_PROOF_RESULT_MATRIX.md",
+      "category": "current_delivery",
+      "reason": "current portable reviewer entry, conclusions, sync or E6 audit evidence",
+      "size_bytes": 7962
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/E6_mirror_probe/headers.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/E6_mirror_probe/headers.txt",
+      "category": "current_delivery",
+      "reason": "current portable reviewer entry, conclusions, sync or E6 audit evidence",
+      "size_bytes": 0
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/E6_mirror_probe/stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/E6_mirror_probe/stderr.txt",
+      "category": "current_delivery",
+      "reason": "current portable reviewer entry, conclusions, sync or E6 audit evidence",
+      "size_bytes": 1120
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/E6_mirror_probe/stdout.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/E6_mirror_probe/stdout.txt",
+      "category": "current_delivery",
+      "reason": "current portable reviewer entry, conclusions, sync or E6 audit evidence",
+      "size_bytes": 51
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/E6_recovery_audit.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/E6_recovery_audit.json",
+      "category": "current_delivery",
+      "reason": "current portable reviewer entry, conclusions, sync or E6 audit evidence",
+      "size_bytes": 12521
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/E6_recovery_audit.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/E6_recovery_audit.md",
+      "category": "current_delivery",
+      "reason": "current portable reviewer entry, conclusions, sync or E6 audit evidence",
+      "size_bytes": 7105
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/FINAL_RESEARCH_CONCLUSIONS.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/FINAL_RESEARCH_CONCLUSIONS.md",
+      "category": "current_delivery",
+      "reason": "current portable reviewer entry, conclusions, sync or E6 audit evidence",
+      "size_bytes": 16110
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/STRONG_BASELINE_MATRIX.csv",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/STRONG_BASELINE_MATRIX.csv",
+      "category": "current_delivery",
+      "reason": "current portable reviewer entry, conclusions, sync or E6 audit evidence",
+      "size_bytes": 5008
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/STRONG_BASELINE_MATRIX.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/STRONG_BASELINE_MATRIX.md",
+      "category": "current_delivery",
+      "reason": "current portable reviewer entry, conclusions, sync or E6 audit evidence",
+      "size_bytes": 5326
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/SYNC_VERIFICATION.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/SYNC_VERIFICATION.md",
+      "category": "current_delivery",
+      "reason": "current portable reviewer entry, conclusions, sync or E6 audit evidence",
+      "size_bytes": 1584
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/initial_remote_readback.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/initial_remote_readback.json",
+      "category": "current_delivery",
+      "reason": "current portable reviewer entry, conclusions, sync or E6 audit evidence",
+      "size_bytes": 1254
+    },
+    {
+      "source_path": "reports/delivery_sync_20261115/startup_state.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/delivery_sync_20261115/startup_state.json",
+      "category": "current_delivery",
+      "reason": "current portable reviewer entry, conclusions, sync or E6 audit evidence",
+      "size_bytes": 3218
+    },
+    {
+      "source_path": "reports/gate_C_stat_delivery.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/gate_C_stat_delivery.md",
+      "size_bytes": 4490,
+      "category": "verdict_and_references",
+      "reason": "Evidence scope, strong comparisons, primary sources, historical delivery"
+    },
+    {
+      "source_path": "reports/gate_C_stat_server_compatibility.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/gate_C_stat_server_compatibility.md",
+      "size_bytes": 5317,
+      "category": "historical_report",
+      "reason": "Preserved historical platform failure contract; not a new experiment or relaxed E0 comparison"
+    },
+    {
+      "source_path": "reports/novelty_and_baseline_matrix.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/novelty_and_baseline_matrix.md",
+      "size_bytes": 13171,
+      "category": "verdict_and_references",
+      "reason": "Evidence scope, strong comparisons, primary sources, historical delivery"
+    },
+    {
+      "source_path": "reports/post_cstat/ACTIVE_STATE.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/ACTIVE_STATE.json",
+      "size_bytes": 1054,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/ANCHORS_server_v2_relocation.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/ANCHORS_server_v2_relocation.json",
+      "size_bytes": 5842,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E0_final_anchor_diff.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E0_final_anchor_diff.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E0_final_preservation.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E0_final_preservation.json",
+      "size_bytes": 681,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E1_analysis_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E1_analysis_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E1_analysis_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E1_analysis_stdout.json",
+      "size_bytes": 256,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E1_before_operational_optimization.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E1_before_operational_optimization.json",
+      "size_bytes": 242,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E1_completed_findings.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E1_completed_findings.json",
+      "size_bytes": 3897,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E1_detailed_v2_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E1_detailed_v2_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E1_detailed_v2_stdout.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E1_detailed_v2_stdout.txt",
+      "size_bytes": 237,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E1_fast_invocation_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E1_fast_invocation_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E1_fast_invocation_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E1_fast_invocation_stdout.json",
+      "size_bytes": 859,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E1_freeze_command.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E1_freeze_command.json",
+      "size_bytes": 738867,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E1_invocation_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E1_invocation_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E1_invocation_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E1_invocation_stdout.json",
+      "size_bytes": 692550,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E1_operational_interrupt.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E1_operational_interrupt.json",
+      "size_bytes": 22487,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E2_E4_freeze.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E2_E4_freeze.json",
+      "size_bytes": 704,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E2_analysis_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E2_analysis_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E2_analysis_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E2_analysis_stdout.json",
+      "size_bytes": 95,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E2_completed_findings.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E2_completed_findings.json",
+      "size_bytes": 434,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E2_detailed_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E2_detailed_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E2_detailed_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E2_detailed_stdout.json",
+      "size_bytes": 235,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E2_invocation_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E2_invocation_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E2_invocation_stdout.jsonl",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E2_invocation_stdout.jsonl",
+      "size_bytes": 6149,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E3_analysis_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E3_analysis_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E3_analysis_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E3_analysis_stdout.json",
+      "size_bytes": 95,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E3_completed_findings.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E3_completed_findings.json",
+      "size_bytes": 28455,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E3_detailed_v2_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E3_detailed_v2_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E3_detailed_v2_stdout.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E3_detailed_v2_stdout.txt",
+      "size_bytes": 235,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E3_invocation_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E3_invocation_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E3_invocation_stdout.jsonl",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E3_invocation_stdout.jsonl",
+      "size_bytes": 11958,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E4_analysis_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E4_analysis_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E4_analysis_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E4_analysis_stdout.json",
+      "size_bytes": 95,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E4_completed_findings.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E4_completed_findings.json",
+      "size_bytes": 547798,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E4_completed_findings.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E4_completed_findings.md",
+      "size_bytes": 7692,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E4_completed_findings_detailed_supplement_v1.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E4_completed_findings_detailed_supplement_v1.json",
+      "size_bytes": 46706,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E4_completed_findings_detailed_supplement_v1.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E4_completed_findings_detailed_supplement_v1.md",
+      "size_bytes": 4908,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E4_detailed_v2_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E4_detailed_v2_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E4_detailed_v2_stdout.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E4_detailed_v2_stdout.txt",
+      "size_bytes": 235,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E4_invocation_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E4_invocation_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E4_invocation_stdout.jsonl",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E4_invocation_stdout.jsonl",
+      "size_bytes": 22396,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_before_operational_optimization.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_before_operational_optimization.json",
+      "size_bytes": 29312,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_before_shards_snapshot.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_before_shards_snapshot.json",
+      "size_bytes": 444055,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_completed_findings.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_completed_findings.json",
+      "size_bytes": 1631357,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_completed_findings.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_completed_findings.md",
+      "size_bytes": 31062,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_diagnostics_v1/diagnostics.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_diagnostics_v1/diagnostics.json",
+      "size_bytes": 205230,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_diagnostics_v1/endpoint_rates.csv",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_diagnostics_v1/endpoint_rates.csv",
+      "size_bytes": 119771,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_diagnostics_v1/manifest.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_diagnostics_v1/manifest.json",
+      "size_bytes": 563,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_fast_invocation_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_fast_invocation_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_fast_invocation_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_fast_invocation_stdout.json",
+      "size_bytes": 56666,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_figures_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_figures_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_figures_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_figures_stdout.json",
+      "size_bytes": 2123,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_figures_v2_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_figures_v2_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_figures_v2_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_figures_v2_stdout.json",
+      "size_bytes": 2123,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_figures_v3_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_figures_v3_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_figures_v3_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_figures_v3_stdout.json",
+      "size_bytes": 2123,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_final_analysis_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_final_analysis_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_final_analysis_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_final_analysis_stdout.json",
+      "size_bytes": 126,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_final_diagnostics_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_final_diagnostics_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_final_diagnostics_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_final_diagnostics_stdout.json",
+      "size_bytes": 163,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_freeze_command.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_freeze_command.json",
+      "size_bytes": 244282,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_invocation_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_invocation_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_invocation_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_invocation_stdout.json",
+      "size_bytes": 216135,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_operational_interrupt.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_operational_interrupt.json",
+      "size_bytes": 1142,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_shard0_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_shard0_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_shard0_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_shard0_stdout.json",
+      "size_bytes": 1343,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_shard1_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_shard1_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E5_shard1_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E5_shard1_stdout.json",
+      "size_bytes": 1336,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E6_dataset_choice.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E6_dataset_choice.md",
+      "size_bytes": 3481,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E6_documentation_tests.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E6_documentation_tests.txt",
+      "size_bytes": 99,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E6_same_source_retry_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E6_same_source_retry_stderr.txt",
+      "size_bytes": 603,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E6_same_source_retry_stdout.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E6_same_source_retry_stdout.txt",
+      "size_bytes": 124,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E6_server_download_20261115T042857Z/curl_metadata.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E6_server_download_20261115T042857Z/curl_metadata.json",
+      "size_bytes": 10678,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E6_server_download_20261115T042857Z/headers.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E6_server_download_20261115T042857Z/headers.txt",
+      "size_bytes": 677,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E6_server_download_20261115T042857Z/receipt.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E6_server_download_20261115T042857Z/receipt.json",
+      "size_bytes": 1547,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E6_server_download_20261115T042857Z/response_body.download",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E6_server_download_20261115T042857Z/response_body.download",
+      "size_bytes": 4861,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/E6_server_download_20261115T042857Z/stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/E6_server_download_20261115T042857Z/stderr.txt",
+      "size_bytes": 524,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/anchor_prefreeze_tests.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/anchor_prefreeze_tests.txt",
+      "size_bytes": 99,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/anchors_freeze_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/anchors_freeze_stdout.json",
+      "size_bytes": 116598,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/claim_ledger.csv",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/claim_ledger.csv",
+      "size_bytes": 5629,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/claim_ledger.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/claim_ledger.json",
+      "size_bytes": 35714,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/command_log.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/command_log.md",
+      "size_bytes": 9798,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/compare_server_fixture.py",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/compare_server_fixture.py",
+      "size_bytes": 2900,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/completed_evidence_edit_plan.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/completed_evidence_edit_plan.md",
+      "size_bytes": 17162,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/empirical_E1_E4_figures_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/empirical_E1_E4_figures_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/empirical_E1_E4_figures_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/empirical_E1_E4_figures_stdout.json",
+      "size_bytes": 3747,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/empirical_width_label_tests.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/empirical_width_label_tests.txt",
+      "size_bytes": 98,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/final_numeric_review.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/final_numeric_review.md",
+      "size_bytes": 1148,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/final_pdf_qa.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/final_pdf_qa.json",
+      "size_bytes": 3093,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/final_pdf_render_comparison.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/final_pdf_render_comparison.json",
+      "size_bytes": 291,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/final_process_state.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/final_process_state.json",
+      "size_bytes": 690,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/final_resource_budget.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/final_resource_budget.json",
+      "size_bytes": 1967,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/finish_e5_once.py",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/finish_e5_once.py",
+      "size_bytes": 2155,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/finish_e5_state.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/finish_e5_state.json",
+      "size_bytes": 176,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/finish_e5_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/finish_e5_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/finish_e5_stdout.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/finish_e5_stdout.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/independent_review.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/independent_review.md",
+      "size_bytes": 6031,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/local_appendix_math_review.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/local_appendix_math_review.md",
+      "size_bytes": 3969,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/local_details_v2_state.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/local_details_v2_state.json",
+      "size_bytes": 194,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/local_details_v2_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/local_details_v2_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/local_details_v2_stdout.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/local_details_v2_stdout.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/negative_controls_prefreeze_design.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/negative_controls_prefreeze_design.md",
+      "size_bytes": 3623,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/negative_server_v2_relocation.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/negative_server_v2_relocation.json",
+      "size_bytes": 5135,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/neighboring_selection_sources.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/neighboring_selection_sources.md",
+      "size_bytes": 4111,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/new_deterministic_suite.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/new_deterministic_suite.txt",
+      "size_bytes": 421,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/pdf_qa/contact-1.png",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/pdf_qa/contact-1.png",
+      "size_bytes": 1471002,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/pdf_qa/contact-2.png",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/pdf_qa/contact-2.png",
+      "size_bytes": 1271715,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/pdf_qa/contact-3.png",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/pdf_qa/contact-3.png",
+      "size_bytes": 1367593,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/pdf_qa/contact-4.png",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/pdf_qa/contact-4.png",
+      "size_bytes": 979096,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/pdf_qa/final_latex.log",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/pdf_qa/final_latex.log",
+      "size_bytes": 31583,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/pipeline_percent_layout_tests.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/pipeline_percent_layout_tests.txt",
+      "size_bytes": 98,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/pipeline_rate_precision_tests.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/pipeline_rate_precision_tests.txt",
+      "size_bytes": 98,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/relocation_tests.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/relocation_tests.txt",
+      "size_bytes": 98,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/remaining_run_ids.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/remaining_run_ids.json",
+      "size_bytes": 69982,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/resource_observations.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/resource_observations.json",
+      "size_bytes": 1690,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/run_local_details_once.py",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/run_local_details_once.py",
+      "size_bytes": 1320,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/run_remaining_serial_queue.py",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/run_remaining_serial_queue.py",
+      "size_bytes": 4871,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/serial_queue_state.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/serial_queue_state.json",
+      "size_bytes": 292,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/serial_queue_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/serial_queue_stderr.txt",
+      "size_bytes": 192,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/serial_queue_stdout.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/serial_queue_stdout.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/serial_queue_v2_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/serial_queue_v2_stderr.txt",
+      "size_bytes": 192,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/serial_queue_v2_stdout.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/serial_queue_v2_stdout.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/serial_queue_waiter_v1_state.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/serial_queue_waiter_v1_state.json",
+      "size_bytes": 215,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_admission.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_admission.json",
+      "size_bytes": 636,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/anchor_server_freeze.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/anchor_server_freeze.json",
+      "size_bytes": 117201,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/negative_server_freeze.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/negative_server_freeze.json",
+      "size_bytes": 18969,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_ANCHORS_analysis_1794717643533157496_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/server_ANCHORS_analysis_1794717643533157496_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_ANCHORS_analysis_1794717643533157496_stdout.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/server_ANCHORS_analysis_1794717643533157496_stdout.txt",
+      "size_bytes": 133,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_ANCHORS_run_1794716768652357363_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/server_ANCHORS_run_1794716768652357363_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_ANCHORS_run_1794716768652357363_stdout.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/server_ANCHORS_run_1794716768652357363_stdout.txt",
+      "size_bytes": 7816,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_admission.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/server_admission.json",
+      "size_bytes": 636,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_fixture.py",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/server_fixture.py",
+      "size_bytes": 2205,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_fixture_comparison_v2.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/server_fixture_comparison_v2.json",
+      "size_bytes": 3730,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_fixture_linux_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/server_fixture_linux_stderr.txt",
+      "size_bytes": 1208,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_fixture_linux_v2_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/server_fixture_linux_v2_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_fixture_linux_v3_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/server_fixture_linux_v3_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_negative_controls_analysis_1794717680179769684_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/server_negative_controls_analysis_1794717680179769684_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_negative_controls_analysis_1794717680179769684_stdout.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/server_negative_controls_analysis_1794717680179769684_stdout.txt",
+      "size_bytes": 98,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_negative_controls_run_1794717656402586045_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/server_negative_controls_run_1794717656402586045_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_negative_controls_run_1794717656402586045_stdout.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/server_negative_controls_run_1794717656402586045_stdout.txt",
+      "size_bytes": 1608,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_queue.py",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/server_queue.py",
+      "size_bytes": 2909,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_queue_state.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/server_queue_state.json",
+      "size_bytes": 958,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_transfer_inventory.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/server_transfer_inventory.json",
+      "size_bytes": 338173,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/tmux_supervisor_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/tmux_supervisor_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/tmux_supervisor_stdout.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_completed_mirror/tmux_supervisor_stdout.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_environment_amendment.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_environment_amendment.md",
+      "size_bytes": 3330,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_fixture.py",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_fixture.py",
+      "size_bytes": 2205,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_fixture_comparison.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_fixture_comparison.json",
+      "size_bytes": 2589,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_fixture_comparison_v2.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_fixture_comparison_v2.json",
+      "size_bytes": 3730,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_fixture_local_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_fixture_local_stderr.txt",
+      "size_bytes": 1208,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_fixture_local_v2_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_fixture_local_v2_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_fixture_local_v3_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_fixture_local_v3_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_plan.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_plan.md",
+      "size_bytes": 6995,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_queue.py",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_queue.py",
+      "size_bytes": 2909,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/server_return_verification.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/server_return_verification.json",
+      "size_bytes": 520,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/startup_and_preservation.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/startup_and_preservation.json",
+      "size_bytes": 1953,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/supplementary_completed_findings.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/supplementary_completed_findings.json",
+      "size_bytes": 857203,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/supplementary_completed_findings.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/supplementary_completed_findings.md",
+      "size_bytes": 10544,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/supplementary_figures_stderr.txt",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/supplementary_figures_stderr.txt",
+      "size_bytes": 0,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/supplementary_figures_stdout.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/supplementary_figures_stdout.json",
+      "size_bytes": 2400,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat/theory_note_reconciliation.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat/theory_note_reconciliation.md",
+      "size_bytes": 2078,
+      "category": "completed_evidence_and_receipts",
+      "reason": "Complete findings, unfavorable/secondary results, failure/interrupt receipts, QA, E6 recovery evidence and final process/resource state"
+    },
+    {
+      "source_path": "reports/post_cstat_reference_sources.json",
+      "archive_path": "COMET_REVIEW_20261115/reports/post_cstat_reference_sources.json",
+      "size_bytes": 8741,
+      "category": "verdict_and_references",
+      "reason": "Evidence scope, strong comparisons, primary sources, historical delivery"
+    },
+    {
+      "source_path": "reports/research_verdict.md",
+      "archive_path": "COMET_REVIEW_20261115/reports/research_verdict.md",
+      "size_bytes": 7237,
+      "category": "verdict_and_references",
+      "reason": "Evidence scope, strong comparisons, primary sources, historical delivery"
+    },
+    {
+      "source_path": "requirements-post-cstat.txt",
+      "archive_path": "COMET_REVIEW_20261115/requirements-post-cstat.txt",
+      "size_bytes": 146,
+      "category": "entrypoints",
+      "reason": "Handoff, reviewer entry, and declared local dependencies"
+    },
+    {
+      "source_path": "results/post_cstat/ANCHORS_protocol.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/ANCHORS_protocol.json",
+      "size_bytes": 100586,
+      "category": "immutable_protocols",
+      "reason": "Original frozen protocols, including superseded pre-outcome local and actually executed server variants"
+    },
+    {
+      "source_path": "results/post_cstat/ANCHORS_server_v2_analysis_v1/manifest.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/ANCHORS_server_v2_analysis_v1/manifest.json",
+      "size_bytes": 3765,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/ANCHORS_server_v2_analysis_v1/summary.csv",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/ANCHORS_server_v2_analysis_v1/summary.csv",
+      "size_bytes": 72160,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/ANCHORS_server_v2_analysis_v1/summary.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/ANCHORS_server_v2_analysis_v1/summary.json",
+      "size_bytes": 531107,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/ANCHORS_server_v2_protocol.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/ANCHORS_server_v2_protocol.json",
+      "size_bytes": 101122,
+      "category": "immutable_protocols",
+      "reason": "Original frozen protocols, including superseded pre-outcome local and actually executed server variants"
+    },
+    {
+      "source_path": "results/post_cstat/E1_analysis_v1/manifest.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E1_analysis_v1/manifest.json",
+      "size_bytes": 3333,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/E1_analysis_v1/summary.csv",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E1_analysis_v1/summary.csv",
+      "size_bytes": 82212,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/E1_analysis_v1/summary.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E1_analysis_v1/summary.json",
+      "size_bytes": 1030203,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/E1_detailed_v1/group_summary.csv",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E1_detailed_v1/group_summary.csv",
+      "size_bytes": 542901,
+      "category": "detailed_csv_and_receipts",
+      "reason": "Complete coordinate/group CSVs preserve unfavorable and primary-query distinctions without duplicate giant JSON"
+    },
+    {
+      "source_path": "results/post_cstat/E1_detailed_v1/manifest.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E1_detailed_v1/manifest.json",
+      "size_bytes": 4211,
+      "category": "detailed_csv_and_receipts",
+      "reason": "Complete coordinate/group CSVs preserve unfavorable and primary-query distinctions without duplicate giant JSON"
+    },
+    {
+      "source_path": "results/post_cstat/E1_detailed_v1/query_summary.csv",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E1_detailed_v1/query_summary.csv",
+      "size_bytes": 6913778,
+      "category": "detailed_csv_and_receipts",
+      "reason": "Complete coordinate/group CSVs preserve unfavorable and primary-query distinctions without duplicate giant JSON"
+    },
+    {
+      "source_path": "results/post_cstat/E1_protocol.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E1_protocol.json",
+      "size_bytes": 650653,
+      "category": "immutable_protocols",
+      "reason": "Original frozen protocols, including superseded pre-outcome local and actually executed server variants"
+    },
+    {
+      "source_path": "results/post_cstat/E2_analysis_v1/manifest.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E2_analysis_v1/manifest.json",
+      "size_bytes": 4332,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/E2_analysis_v1/summary.csv",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E2_analysis_v1/summary.csv",
+      "size_bytes": 67026,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/E2_analysis_v1/summary.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E2_analysis_v1/summary.json",
+      "size_bytes": 477067,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/E2_detailed_v1/group_summary.csv",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E2_detailed_v1/group_summary.csv",
+      "size_bytes": 318499,
+      "category": "detailed_csv_and_receipts",
+      "reason": "Complete coordinate/group CSVs preserve unfavorable and primary-query distinctions without duplicate giant JSON"
+    },
+    {
+      "source_path": "results/post_cstat/E2_detailed_v1/manifest.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E2_detailed_v1/manifest.json",
+      "size_bytes": 4444,
+      "category": "detailed_csv_and_receipts",
+      "reason": "Complete coordinate/group CSVs preserve unfavorable and primary-query distinctions without duplicate giant JSON"
+    },
+    {
+      "source_path": "results/post_cstat/E2_detailed_v1/query_summary.csv",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E2_detailed_v1/query_summary.csv",
+      "size_bytes": 4031003,
+      "category": "detailed_csv_and_receipts",
+      "reason": "Complete coordinate/group CSVs preserve unfavorable and primary-query distinctions without duplicate giant JSON"
+    },
+    {
+      "source_path": "results/post_cstat/E2_protocol.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E2_protocol.json",
+      "size_bytes": 92111,
+      "category": "immutable_protocols",
+      "reason": "Original frozen protocols, including superseded pre-outcome local and actually executed server variants"
+    },
+    {
+      "source_path": "results/post_cstat/E3_analysis_v1/manifest.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E3_analysis_v1/manifest.json",
+      "size_bytes": 4333,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/E3_analysis_v1/summary.csv",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E3_analysis_v1/summary.csv",
+      "size_bytes": 137315,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/E3_analysis_v1/summary.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E3_analysis_v1/summary.json",
+      "size_bytes": 938125,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/E3_detailed_v1/group_summary.csv",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E3_detailed_v1/group_summary.csv",
+      "size_bytes": 610259,
+      "category": "detailed_csv_and_receipts",
+      "reason": "Complete coordinate/group CSVs preserve unfavorable and primary-query distinctions without duplicate giant JSON"
+    },
+    {
+      "source_path": "results/post_cstat/E3_detailed_v1/manifest.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E3_detailed_v1/manifest.json",
+      "size_bytes": 5107,
+      "category": "detailed_csv_and_receipts",
+      "reason": "Complete coordinate/group CSVs preserve unfavorable and primary-query distinctions without duplicate giant JSON"
+    },
+    {
+      "source_path": "results/post_cstat/E3_detailed_v1/query_summary.csv",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E3_detailed_v1/query_summary.csv",
+      "size_bytes": 7925054,
+      "category": "detailed_csv_and_receipts",
+      "reason": "Complete coordinate/group CSVs preserve unfavorable and primary-query distinctions without duplicate giant JSON"
+    },
+    {
+      "source_path": "results/post_cstat/E3_protocol.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E3_protocol.json",
+      "size_bytes": 210701,
+      "category": "immutable_protocols",
+      "reason": "Original frozen protocols, including superseded pre-outcome local and actually executed server variants"
+    },
+    {
+      "source_path": "results/post_cstat/E4_analysis_v1/manifest.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E4_analysis_v1/manifest.json",
+      "size_bytes": 4333,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/E4_analysis_v1/summary.csv",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E4_analysis_v1/summary.csv",
+      "size_bytes": 249693,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/E4_analysis_v1/summary.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E4_analysis_v1/summary.json",
+      "size_bytes": 1682204,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/E4_detailed_v1/group_summary.csv",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E4_detailed_v1/group_summary.csv",
+      "size_bytes": 1031422,
+      "category": "detailed_csv_and_receipts",
+      "reason": "Complete coordinate/group CSVs preserve unfavorable and primary-query distinctions without duplicate giant JSON"
+    },
+    {
+      "source_path": "results/post_cstat/E4_detailed_v1/manifest.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E4_detailed_v1/manifest.json",
+      "size_bytes": 6163,
+      "category": "detailed_csv_and_receipts",
+      "reason": "Complete coordinate/group CSVs preserve unfavorable and primary-query distinctions without duplicate giant JSON"
+    },
+    {
+      "source_path": "results/post_cstat/E4_detailed_v1/query_summary.csv",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E4_detailed_v1/query_summary.csv",
+      "size_bytes": 13396884,
+      "category": "detailed_csv_and_receipts",
+      "reason": "Complete coordinate/group CSVs preserve unfavorable and primary-query distinctions without duplicate giant JSON"
+    },
+    {
+      "source_path": "results/post_cstat/E4_protocol.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E4_protocol.json",
+      "size_bytes": 391397,
+      "category": "immutable_protocols",
+      "reason": "Original frozen protocols, including superseded pre-outcome local and actually executed server variants"
+    },
+    {
+      "source_path": "results/post_cstat/E5_analysis_v1/manifest.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E5_analysis_v1/manifest.json",
+      "size_bytes": 709,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/E5_analysis_v1/summary.csv",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E5_analysis_v1/summary.csv",
+      "size_bytes": 89957,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/E5_analysis_v1/summary.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E5_analysis_v1/summary.json",
+      "size_bytes": 842909,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/E5_protocol.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/E5_protocol.json",
+      "size_bytes": 213994,
+      "category": "immutable_protocols",
+      "reason": "Original frozen protocols, including superseded pre-outcome local and actually executed server variants"
+    },
+    {
+      "source_path": "results/post_cstat/design_v1/declining_overlap_costs.csv",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/design_v1/declining_overlap_costs.csv",
+      "size_bytes": 82415,
+      "category": "analytic_design_exports",
+      "reason": "Actual analytic maps/budget inputs, no new outcomes"
+    },
+    {
+      "source_path": "results/post_cstat/design_v1/fixed_overlap_costs.csv",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/design_v1/fixed_overlap_costs.csv",
+      "size_bytes": 81385,
+      "category": "analytic_design_exports",
+      "reason": "Actual analytic maps/budget inputs, no new outcomes"
+    },
+    {
+      "source_path": "results/post_cstat/design_v1/historical_A_analytic_check.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/design_v1/historical_A_analytic_check.json",
+      "size_bytes": 518,
+      "category": "analytic_design_exports",
+      "reason": "Actual analytic maps/budget inputs, no new outcomes"
+    },
+    {
+      "source_path": "results/post_cstat/design_v1/manifest.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/design_v1/manifest.json",
+      "size_bytes": 1757,
+      "category": "analytic_design_exports",
+      "reason": "Actual analytic maps/budget inputs, no new outcomes"
+    },
+    {
+      "source_path": "results/post_cstat/negative_controls_protocol.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/negative_controls_protocol.json",
+      "size_bytes": 15715,
+      "category": "immutable_protocols",
+      "reason": "Original frozen protocols, including superseded pre-outcome local and actually executed server variants"
+    },
+    {
+      "source_path": "results/post_cstat/negative_controls_server_v2_analysis_v1/manifest.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/negative_controls_server_v2_analysis_v1/manifest.json",
+      "size_bytes": 563,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/negative_controls_server_v2_analysis_v1/summary.csv",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/negative_controls_server_v2_analysis_v1/summary.csv",
+      "size_bytes": 3230,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/negative_controls_server_v2_analysis_v1/summary.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/negative_controls_server_v2_analysis_v1/summary.json",
+      "size_bytes": 37557,
+      "category": "whole_trial_summaries",
+      "reason": "All applicable methods, both levels, full trial denominators, unknown/NA/failure status and pointwise uncertainty"
+    },
+    {
+      "source_path": "results/post_cstat/negative_controls_server_v2_protocol.json",
+      "archive_path": "COMET_REVIEW_20261115/results/post_cstat/negative_controls_server_v2_protocol.json",
+      "size_bytes": 16308,
+      "category": "immutable_protocols",
+      "reason": "Original frozen protocols, including superseded pre-outcome local and actually executed server variants"
+    },
+    {
+      "source_path": "task_materials/post_cstat/CLAIM_EVIDENCE.csv",
+      "archive_path": "COMET_REVIEW_20261115/task_materials/post_cstat/CLAIM_EVIDENCE.csv",
+      "size_bytes": 2760,
+      "category": "actual_planning_inputs",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "task_materials/post_cstat/CODEX_MASTER_GOAL.md",
+      "archive_path": "COMET_REVIEW_20261115/task_materials/post_cstat/CODEX_MASTER_GOAL.md",
+      "size_bytes": 42557,
+      "category": "actual_planning_inputs",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "task_materials/post_cstat/INPUT_RESOLUTION.md",
+      "archive_path": "COMET_REVIEW_20261115/task_materials/post_cstat/INPUT_RESOLUTION.md",
+      "size_bytes": 1827,
+      "category": "actual_planning_inputs",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "task_materials/post_cstat/POST_CSTAT_OVERRIDE.md",
+      "archive_path": "COMET_REVIEW_20261115/task_materials/post_cstat/POST_CSTAT_OVERRIDE.md",
+      "size_bytes": 13741,
+      "category": "actual_planning_inputs",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "task_materials/post_cstat/SCOPE_CN.md",
+      "archive_path": "COMET_REVIEW_20261115/task_materials/post_cstat/SCOPE_CN.md",
+      "size_bytes": 14072,
+      "category": "actual_planning_inputs",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "task_materials/post_cstat/THEORY_NOTE.md",
+      "archive_path": "COMET_REVIEW_20261115/task_materials/post_cstat/THEORY_NOTE.md",
+      "size_bytes": 14119,
+      "category": "actual_planning_inputs",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_anchor_runner.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_anchor_runner.py",
+      "size_bytes": 11632,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_audit_policy_pipeline.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_audit_policy_pipeline.py",
+      "size_bytes": 8994,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_bounded_variance.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_bounded_variance.py",
+      "size_bytes": 10123,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_c0_integration.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_c0_integration.py",
+      "size_bytes": 4705,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_c0_pilot.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_c0_pilot.py",
+      "size_bytes": 1710,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_checkpoint_store.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_checkpoint_store.py",
+      "size_bytes": 4081,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_core.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_core.py",
+      "size_bytes": 13484,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_core_graph_dgp.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_core_graph_dgp.py",
+      "size_bytes": 5734,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_detailed_diagnostics.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_detailed_diagnostics.py",
+      "size_bytes": 15428,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_e6_analyze.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_e6_analyze.py",
+      "size_bytes": 13590,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_e6_runner.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_e6_runner.py",
+      "size_bytes": 13494,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_exact_binomial_mom.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_exact_binomial_mom.py",
+      "size_bytes": 7783,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_extension_analyze.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_extension_analyze.py",
+      "size_bytes": 7858,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_extension_runner.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_extension_runner.py",
+      "size_bytes": 11917,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_gate_c_confirmatory.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_gate_c_confirmatory.py",
+      "size_bytes": 10110,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_gate_c_independent_validation.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_gate_c_independent_validation.py",
+      "size_bytes": 3218,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_gate_c_methods.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_gate_c_methods.py",
+      "size_bytes": 10775,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_gate_c_model.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_gate_c_model.py",
+      "size_bytes": 11523,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_gate_c_preflight.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_gate_c_preflight.py",
+      "size_bytes": 4549,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_gate_c_statistics.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_gate_c_statistics.py",
+      "size_bytes": 7603,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_independent_anchors.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_independent_anchors.py",
+      "size_bytes": 5911,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_isolation_and_smoke.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_isolation_and_smoke.py",
+      "size_bytes": 3478,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_mathematical_audit.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_mathematical_audit.py",
+      "size_bytes": 5608,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_negative_controls.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_negative_controls.py",
+      "size_bytes": 19093,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_nonvacuity_budget.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_nonvacuity_budget.py",
+      "size_bytes": 2863,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_ope_2024.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_ope_2024.py",
+      "size_bytes": 4241,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_paired_contrasts.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_paired_contrasts.py",
+      "size_bytes": 11504,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_pipeline_dgp.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_pipeline_dgp.py",
+      "size_bytes": 8696,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_pipeline_diagnostics.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_pipeline_diagnostics.py",
+      "size_bytes": 13528,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_pipeline_fast.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_pipeline_fast.py",
+      "size_bytes": 6107,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_pipeline_integration.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_pipeline_integration.py",
+      "size_bytes": 1095,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_pipeline_runner.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_pipeline_runner.py",
+      "size_bytes": 17078,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_pipeline_shard.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_pipeline_shard.py",
+      "size_bytes": 5960,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_post_cstat_analyze.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_post_cstat_analyze.py",
+      "size_bytes": 7196,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_post_cstat_empirical_figures.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_post_cstat_empirical_figures.py",
+      "size_bytes": 13143,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_post_cstat_fast.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_post_cstat_fast.py",
+      "size_bytes": 6375,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_post_cstat_runner.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_post_cstat_runner.py",
+      "size_bytes": 9483,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_post_cstat_statistics.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_post_cstat_statistics.py",
+      "size_bytes": 3974,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_relocated_sources.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_relocated_sources.py",
+      "size_bytes": 6661,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_residual_proof_audit.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_residual_proof_audit.py",
+      "size_bytes": 5898,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_residual_truncation.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_residual_truncation.py",
+      "size_bytes": 9291,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_semisynthetic_selective_labels.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_semisynthetic_selective_labels.py",
+      "size_bytes": 15169,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_source_graph_queries.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_source_graph_queries.py",
+      "size_bytes": 5612,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "tests/test_suite_designs.py",
+      "archive_path": "COMET_REVIEW_20261115/tests/test_suite_designs.py",
+      "size_bytes": 2691,
+      "category": "deterministic_and_regression_source",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "theory/assumptions_matrix.md",
+      "archive_path": "COMET_REVIEW_20261115/theory/assumptions_matrix.md",
+      "size_bytes": 10858,
+      "category": "proof_and_conditions",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "theory/bounded_graph_variance.md",
+      "archive_path": "COMET_REVIEW_20261115/theory/bounded_graph_variance.md",
+      "size_bytes": 10383,
+      "category": "proof_and_conditions",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "theory/estimand_contract.md",
+      "archive_path": "COMET_REVIEW_20261115/theory/estimand_contract.md",
+      "size_bytes": 11948,
+      "category": "proof_and_conditions",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "theory/exact_binomial_mom.md",
+      "archive_path": "COMET_REVIEW_20261115/theory/exact_binomial_mom.md",
+      "size_bytes": 9276,
+      "category": "proof_and_conditions",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "theory/gate_c_heavy_tail_contract.md",
+      "archive_path": "COMET_REVIEW_20261115/theory/gate_c_heavy_tail_contract.md",
+      "size_bytes": 13192,
+      "category": "proof_and_conditions",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "theory/global_residual_truncation.md",
+      "archive_path": "COMET_REVIEW_20261115/theory/global_residual_truncation.md",
+      "size_bytes": 17021,
+      "category": "proof_and_conditions",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "theory/lower_bound.md",
+      "archive_path": "COMET_REVIEW_20261115/theory/lower_bound.md",
+      "size_bytes": 3918,
+      "category": "proof_and_conditions",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "theory/novelty_options.md",
+      "archive_path": "COMET_REVIEW_20261115/theory/novelty_options.md",
+      "size_bytes": 8659,
+      "category": "proof_and_conditions",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "theory/predictable_fixed_horizon_status.md",
+      "archive_path": "COMET_REVIEW_20261115/theory/predictable_fixed_horizon_status.md",
+      "size_bytes": 10348,
+      "category": "proof_and_conditions",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "theory/proof_gap_report.md",
+      "archive_path": "COMET_REVIEW_20261115/theory/proof_gap_report.md",
+      "size_bytes": 19010,
+      "category": "proof_and_conditions",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "theory/query_specific_cost_lower_bound.md",
+      "archive_path": "COMET_REVIEW_20261115/theory/query_specific_cost_lower_bound.md",
+      "size_bytes": 7279,
+      "category": "proof_and_conditions",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "theory/theorem_to_code_contract.md",
+      "archive_path": "COMET_REVIEW_20261115/theory/theorem_to_code_contract.md",
+      "size_bytes": 11195,
+      "category": "proof_and_conditions",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    },
+    {
+      "source_path": "theory/verified_references.bib",
+      "archive_path": "COMET_REVIEW_20261115/theory/verified_references.bib",
+      "size_bytes": 2025,
+      "category": "proof_and_conditions",
+      "reason": "Small source/contract/context files; no code execution is implied"
+    }
+  ],
+  "specific_omissions_with_sizes": [
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/empirical_coordinates.csv",
+      "size_bytes": 32252379,
+      "reason": "Large duplicate figure export; actual figure PDF/PNG, captions/manifest, paired comparison exports, full analysis summaries and detailed query/group CSVs included; retained locally"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/empirical_events.csv",
+      "size_bytes": 2740716,
+      "reason": "Large duplicate figure export; actual figure PDF/PNG, captions/manifest, paired comparison exports, full analysis summaries and detailed query/group CSVs included; retained locally"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/empirical_events.tex",
+      "size_bytes": 1403921,
+      "reason": "Large duplicate figure export; actual figure PDF/PNG, captions/manifest, paired comparison exports, full analysis summaries and detailed query/group CSVs included; retained locally"
+    },
+    {
+      "source_path": "paper/post_cstat/figures/empirical_E1_E4_v1/empirical_widths.csv",
+      "size_bytes": 2485441,
+      "reason": "Large duplicate figure export; actual figure PDF/PNG, captions/manifest, paired comparison exports, full analysis summaries and detailed query/group CSVs included; retained locally"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_fixture_linux.json",
+      "size_bytes": 0,
+      "reason": "Expanded deterministic primitive/observation fixture; comparisons, mismatch/failure receipts and provenance remain included; original retained locally"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_fixture_linux_v2.json",
+      "size_bytes": 1285257,
+      "reason": "Expanded deterministic primitive/observation fixture; comparisons, mismatch/failure receipts and provenance remain included; original retained locally"
+    },
+    {
+      "source_path": "reports/post_cstat/server_completed_mirror/server_fixture_linux_v3.json",
+      "size_bytes": 1373991,
+      "reason": "Expanded deterministic primitive/observation fixture; comparisons, mismatch/failure receipts and provenance remain included; original retained locally"
+    },
+    {
+      "source_path": "reports/post_cstat/server_fixture_linux_v2.json",
+      "size_bytes": 1285257,
+      "reason": "Expanded deterministic primitive/observation fixture; comparisons, mismatch/failure receipts and provenance remain included; original retained locally"
+    },
+    {
+      "source_path": "reports/post_cstat/server_fixture_linux_v3.json",
+      "size_bytes": 1373991,
+      "reason": "Expanded deterministic primitive/observation fixture; comparisons, mismatch/failure receipts and provenance remain included; original retained locally"
+    },
+    {
+      "source_path": "reports/post_cstat/server_fixture_local.json",
+      "size_bytes": 0,
+      "reason": "Expanded deterministic primitive/observation fixture; comparisons, mismatch/failure receipts and provenance remain included; original retained locally"
+    },
+    {
+      "source_path": "reports/post_cstat/server_fixture_local_v2.json",
+      "size_bytes": 1285258,
+      "reason": "Expanded deterministic primitive/observation fixture; comparisons, mismatch/failure receipts and provenance remain included; original retained locally"
+    },
+    {
+      "source_path": "reports/post_cstat/server_fixture_local_v3.json",
+      "size_bytes": 1373992,
+      "reason": "Expanded deterministic primitive/observation fixture; comparisons, mismatch/failure receipts and provenance remain included; original retained locally"
+    },
+    {
+      "source_path": "results/post_cstat/E1_detailed_v1/summary.json",
+      "size_bytes": 21503192,
+      "reason": "Duplicate detailed JSON; complete query_summary.csv/group_summary.csv and original manifest are included; original retained locally"
+    },
+    {
+      "source_path": "results/post_cstat/E2_detailed_v1/summary.json",
+      "size_bytes": 12776268,
+      "reason": "Duplicate detailed JSON; complete query_summary.csv/group_summary.csv and original manifest are included; original retained locally"
+    },
+    {
+      "source_path": "results/post_cstat/E3_detailed_v1/summary.json",
+      "size_bytes": 23832195,
+      "reason": "Duplicate detailed JSON; complete query_summary.csv/group_summary.csv and original manifest are included; original retained locally"
+    },
+    {
+      "source_path": "results/post_cstat/E4_detailed_v1/summary.json",
+      "size_bytes": 41582141,
+      "reason": "Duplicate detailed JSON; complete query_summary.csv/group_summary.csv and original manifest are included; original retained locally"
+    }
+  ],
+  "omission_rules": [
+    {
+      "paths": [
+        "results/**/checkpoints/**",
+        "results/**/raw_shards/**",
+        "results/**/aggregation_spool/**"
+      ],
+      "reason": "Large immutable experimental logs/raw-debug data remain local; package includes summary/detailed CSVs, receipts and recovery state, not a full experimental replay"
+    },
+    {
+      "paths": [
+        "paper/post_cstat/build/**",
+        "paper/post_cstat/figures/empirical_E5_v1/**",
+        "paper/post_cstat/figures/empirical_E5_v2/**"
+      ],
+      "reason": "Build intermediates and historical duplicate layout bundles; final24-page PDF, full LaTeX and final active resources are included"
+    },
+    {
+      "paths": [
+        ".git/**",
+        ".venv/**",
+        "**/__pycache__/**",
+        ".pytest_cache/**",
+        "data/acs_ca2018/**"
+      ],
+      "reason": "No repository objects, environments, caches or external archive/label vault. Small new E6 download receipts outside reports must be promoted by explicit path after recovery audit."
+    }
+  ],
+  "possible_gaps_to_resolve_before_zip": [
+    "Seven new conclusion/matrix/E6 audit reports are present and included; conclusions owner confirmed final. Await E6 owner final confirmation and root final report/sync inventory.",
+    "All current GitHub sync receipts must be written after real verification and added; existing FINAL_HANDOFF states no push as of its historical snapshot",
+    "If E6 audit writes new small receipts outside reports, add those exact non-dataset receipt files; do not silently omit an unsuccessful recovery attempt",
+    "If new reports revise a numerical claim, root must resolve paper/verdict/report consistency before freezing bundle; this plan performs no rewrite",
+    "A figure manifest may enumerate derived CSVs intentionally omitted from the reading bundle; omission list explains retained local originals, and included LaTeX still builds from supplied actual figure files",
+    "Absolute-path protocol verification after relocation requires experiments/relocated_sources; copying a compact bundle alone does not produce missing raw logs",
+    "The final GitHub asset-upload receipt is necessarily external to the ZIP it attests; do not create a self-referential claim that it was already in that same uploaded archive"
+  ],
+  "minimal_stdlib_packaging_steps": [
+    "Root confirms all pending reports, sync receipts and any added E6 small failure receipts are final; refresh allowlist/file sizes, then include this plan itself",
+    "Resolve every explicit source path under repository root; refuse symlinks, traversal, duplicates, missing required files, checkpoints/raw additions, or unlisted directory-wide expansion",
+    "Open a fresh output with zipfile.ZipFile(path,mode=\"x\",compression=zipfile.ZIP_DEFLATED,compresslevel=6); add the sorted explicit files via archive.write(source,arcname=archive_path); preserve repository-relative paths below COMET_REVIEW_20261115/",
+    "After close, use ZipFile.namelist() to compare the exact allowlist and ZipFile.testzip() for ZIP CRC integrity; record stat().st_size and require <100000000 bytes; no new scientific work is part of packaging",
+    "Root performs final GitHub upload and records the actual external upload receipt; this agent has not packaged, hashed or uploaded anything"
+  ],
+  "minimal_stdlib_pseudocode": "with zipfile.ZipFile(fresh_zip, \"x\", compression=zipfile.ZIP_DEFLATED, compresslevel=6) as z:\n    for item in final_allowlist_sorted:\n        z.write(repo / item[\"source_path\"], item[\"archive_path\"])\nwith zipfile.ZipFile(fresh_zip) as z:\n    assert z.testzip() is None\n    assert sorted(z.namelist()) == sorted(item[\"archive_path\"] for item in final_allowlist_sorted)\nassert fresh_zip.stat().st_size < 100_000_000\n# No hash is computed or ZIP created in the current planning task.",
+  "new_E6_recovery_evidence": "E6_recovery_audit remains DATA_BLOCKED_NOT_FROZEN; public raw-CSV candidate was not fetched or accepted. All3 E6_mirror_probe small timeout-evidence files are included; no archive or labels are packaged.",
+  "actual_archive_path": "deliveries/20261115_sync/review_bundle.zip",
+  "current_sync_record": "reports/delivery_sync_20261115/SYNC_VERIFICATION.md",
+  "file_hash_recomputation": false,
+  "packaging_scope": "Existing evidence plus current E6 audit/conclusions. Original checkpoints, huge duplicated JSON and archive itself excluded.",
+  "plan_self_included": true,
+  "plan_self_size": "actual central-directory size; omitted from source-size list to avoid self-reference"
+}

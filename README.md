@@ -1,5 +1,7 @@
 # COMET: Counterfactual Moment Auditing
 
+当前对外审阅交付见 [REVIEW_START_HERE.md](REVIEW_START_HERE.md)；[下载审阅包](deliveries/20261115_sync/review_bundle.zip)。新分支完成同步，不改变历史或独立Overleaf分支。
+
 The current research line certifies heterogeneous fixed-design signed moments
 under exact supported exposure laws, legal raw residual moments and a sufficient
 global conditional dependency graph. Independent repeated macro-blocks are a

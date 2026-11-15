@@ -1,0 +1,263 @@
+{
+  "schema": "COMET-E6-delivery-recovery-audit-v1",
+  "audit_date_local": "2026-11-15",
+  "timezone": "Asia/Shanghai",
+  "status": "DATA_BLOCKED_NOT_FROZEN",
+  "recovery_candidate_status": "PUBLIC_RAW_CSV_MIRROR_FOUND_BUT_NOT_FETCHED_OR_ACCEPTED",
+  "scope": "delivery-only source/contract/cache audit; no new research, protocol freeze, preparation, or experiment",
+  "selected_dataset": {
+    "state": "CA",
+    "state_fips": "06",
+    "year": 2018,
+    "survey": "1-Year",
+    "record_type": "person",
+    "official_archive_name": "csv_pca.zip",
+    "required_csv_member": "psam_p06.csv",
+    "official_url": "https://www2.census.gov/programs-surveys/acs/data/pums/2018/1-Year/csv_pca.zip",
+    "official_directory_display_size": "64M",
+    "official_directory_last_modified": "2019-10-31 15:11",
+    "official_zip_exact_bytes_received": false
+  },
+  "contract": {
+    "required_columns": [
+      "SERIALNO",
+      "SPORDER",
+      "ST",
+      "PINCP",
+      "PWGTP",
+      "AGEP",
+      "COW",
+      "SCHL",
+      "MAR",
+      "OCCP",
+      "POBP",
+      "RELP",
+      "WKHP",
+      "SEX",
+      "RAC1P"
+    ],
+    "person_key": [
+      "SERIALNO",
+      "SPORDER"
+    ],
+    "state_check": "ST=6 on every row before eligibility",
+    "year_check": "source receipt; optional YEAR must equal2018; filename alone does not authenticate year",
+    "eligibility": "AGEP>16 AND PINCP>100 AND WKHP>0 AND PWGTP>=1",
+    "label": "PINCP>50000",
+    "features": [
+      "AGEP",
+      "COW",
+      "SCHL",
+      "MAR",
+      "OCCP",
+      "POBP",
+      "RELP",
+      "WKHP",
+      "SEX",
+      "RAC1P"
+    ],
+    "missing_feature_rule": "empty numeric covariates become -1 after eligibility",
+    "design_features": [
+      "AGEP",
+      "SCHL",
+      "WKHP",
+      "SEX"
+    ],
+    "design_scaling": "min/max over all eligible fixed covariates to [-1,1], no labels",
+    "ordering": "sort unique (SERIALNO, integerSPORDER)",
+    "weight_use": "eligibility only; unweighted finite-population estimand",
+    "income_adjustment": "raw PINCP threshold; no ADJINC multiplication in existing loader",
+    "split_sizes": {
+      "training": 4096,
+      "discovery": 8192,
+      "certification": 16384
+    },
+    "split_rule": "whole-household deterministic order; singleton remainder reserve; no duplicates; exact packing or AVAILABILITY_BLOCKED",
+    "prepared_outputs": [
+      "covariates.npz",
+      "household_splits.json",
+      "README.md",
+      "manifest.json"
+    ],
+    "prepared_exports_labels": false,
+    "frozen_protocol_exists": false,
+    "valid_archive_exists": false,
+    "prepared_population_exists": false
+  },
+  "recovery_gates": [
+    "archive<=512MiB and real selected person member; existing loader requires one supplied source-bound file verification",
+    "full schema, ST/year provenance, unique person identities, eligibility/label and declared preprocessing",
+    "actual eligible population and exact household-protected disjoint4096/8192/16384 split availability",
+    "prepared nonfixture receipt and exact covariates/registry match",
+    "separate explicit data-bound E6 protocol before any seeds or simulated labels; not performed in delivery-only scope",
+    "production run refuses fixture/vault overrides and checks real execution environment; remaining1000 IDs are proposed while not frozen"
+  ],
+  "channel_checks": [
+    {
+      "channel": "official web directory and2018 documentation",
+      "outcome": "metadata readable; official bulk archive remains inaccessible from project execution environment",
+      "source": "https://www2.census.gov/programs-surveys/acs/data/pums/2018/1-Year/"
+    },
+    {
+      "channel": "existing local official archive attempts",
+      "outcome": "DNS failure then HTTP403; retry HTTP403/exit56/download0; logs retained",
+      "evidence": [
+        "reports/post_cstat/E6_same_source_retry_stdout.txt",
+        "reports/post_cstat/E6_same_source_retry_stderr.txt"
+      ]
+    },
+    {
+      "channel": "existing server official GET",
+      "checked_utc": "2026-11-15T04:28:57.458929+00:00",
+      "http_code": 403,
+      "curl_exit_code": 22,
+      "received_bytes": 4861,
+      "body_type": "errorHTML, notZIP",
+      "elapsed_seconds": 1.4294493719935417,
+      "evidence": "reports/post_cstat/E6_server_download_20261115T042857Z/receipt.json",
+      "request_method": "GET",
+      "requested_url": "https://www2.census.gov/programs-surveys/acs/data/pums/2018/1-Year/csv_pca.zip",
+      "effective_url": "https://www2.census.gov/programs-surveys/acs/data/pums/2018/1-Year/csv_pca.zip",
+      "num_redirects": 0,
+      "redirect_url": null,
+      "curl_max_time_seconds": 60,
+      "curl_connect_timeout_seconds": 15,
+      "headers_path": "reports/post_cstat/E6_server_download_20261115T042857Z/headers.txt",
+      "curl_metadata_path": "reports/post_cstat/E6_server_download_20261115T042857Z/curl_metadata.json",
+      "stderr_path": "reports/post_cstat/E6_server_download_20261115T042857Z/stderr.txt"
+    },
+    {
+      "channel": "current server normal official HEAD",
+      "checked_utc": "2026-11-15T11:25:01.622654+00:00",
+      "http_code": 403,
+      "read_bytes": 0,
+      "elapsed_seconds": 1.4017497524619102,
+      "proxy_or_useragent_changed": false,
+      "request_method": "HEAD",
+      "requested_url": "https://www2.census.gov/programs-surveys/acs/data/pums/2018/1-Year/csv_pca.zip",
+      "configured_timeout_seconds": 25,
+      "client_exception": "HTTPError 403",
+      "effective_url": null,
+      "redirect_chain": null,
+      "header_record_status": "not captured by metadata-only urllib probe; no additional request made"
+    },
+    {
+      "channel": "current server official record-count metadata",
+      "url": "https://www2.census.gov/programs-surveys/acs/tech_docs/pums/estimates/pums_record_count_18.csv",
+      "checked_utc": "2026-11-15T11:25:53.112833+00:00",
+      "http_code": 403,
+      "read_bytes": 0,
+      "official_CA_raw_count": null,
+      "request_method": "GET",
+      "client_exception": "HTTPError 403",
+      "effective_url": null,
+      "redirect_chain": null,
+      "header_record_status": "not captured by metadata-only urllib probe"
+    },
+    {
+      "channel": "public researcher rawCSV mirror",
+      "url": "https://huggingface.co/datasets/davidboetius/ACSIncome-2018-1-Year/blob/main/psam_p06.csv",
+      "revision": "2c42fc79349462e98c7c8290a5f5e679a0ccd201",
+      "advertised_bytes": 267297811,
+      "archive_packaging": "uncompressedCSV, notofficialZIP",
+      "provenance_claim": "uploader says original Census data underlying defaultfolktables; used forMiniACSIncome",
+      "source_authentication": "not independently established; no officialZIP comparison",
+      "server_prefix_probe": "normalpublicURL timedout; read0bytes; elapsed50.088s",
+      "local_prefix_probe": {
+        "curl_exit_code": 28,
+        "http_code": "000",
+        "download_bytes": 0,
+        "elapsed_seconds": 10.00676,
+        "configured_connect_timeout_seconds": 10,
+        "configured_max_time_seconds": 30,
+        "configured_range": "bytes0-65535",
+        "evidence_directory": "reports/delivery_sync_20261115/E6_mirror_probe",
+        "request_method": "GET",
+        "requested_url": "https://huggingface.co/datasets/davidboetius/ACSIncome-2018-1-Year/resolve/main/psam_p06.csv",
+        "effective_url": null,
+        "redirect_chain": [],
+        "effective_url_status": "no connection/HTTP response; no observed effective response URL",
+        "headers_path": "reports/delivery_sync_20261115/E6_mirror_probe/headers.txt",
+        "stderr_path": "reports/delivery_sync_20261115/E6_mirror_probe/stderr.txt",
+        "stdout_path": "reports/delivery_sync_20261115/E6_mirror_probe/stdout.txt"
+      },
+      "candidate_rows_and_columns_verified": false,
+      "accepted_as_E6_input": false,
+      "server_probe_detail": {
+        "request_method": "GET",
+        "requested_url": "https://huggingface.co/datasets/davidboetius/ACSIncome-2018-1-Year/resolve/main/psam_p06.csv",
+        "request_range": "bytes=0-65535",
+        "configured_socket_timeout_seconds": 25,
+        "client_exception": "URLError: timed out",
+        "elapsed_seconds": 50.088420078,
+        "read_bytes": 0,
+        "effective_url": null,
+        "redirect_chain": null,
+        "header_record_status": "no HTTP response obtained; redirect/effective URL not observed"
+      }
+    },
+    {
+      "channel": "Census-linked AWS registry distribution",
+      "url": "https://registry.opendata.aws/census-dataworld-pums/",
+      "outcome": "Data.world transformedRDF/Turtle distribution; no evidence of exact2018CApersonZIP or lossless row/column equality; notsubstituted"
+    }
+  ],
+  "cache_checks": {
+    "local_roots": [
+      "/Users/shengenli/Downloads",
+      "/Users/shengenli/Documents/ChatGPT/COMET/data",
+      "/Users/shengenli/.cache/huggingface",
+      "/Users/shengenli/.cache/folktables"
+    ],
+    "server_roots": [
+      "/data1/shengen/COMET_POST_CSTAT_20261115/data",
+      "/data1/shengen/COMET_C_STAT_20261113/data",
+      "/data1/shengen/.cache/huggingface",
+      "/data1/shengen/.cache/folktables"
+    ],
+    "matching_valid_ZIP_or_personCSV_found": false,
+    "coverage": "targeted filename/cache inventory, not an assertion that every user directory was exhaustively scanned"
+  },
+  "equivalence_evidence_needed": [
+    "originalZIP: normal official acquisition or documented trustworthy original-download cache, precise vintage and provenance",
+    "rawCSV mirror: immutable revision and acquisition/source chain, unfiltered full original person table, required IDs/columns, CA2018 one-year version and official raw-record count",
+    "field/row canonical equivalence to an accepted official member or an auditable original-download receipt; equal size/name/count alone is insufficient",
+    "explicit source-trust/packaging amendment if accepting same rawCSV instead of originalZIP; do not label a customZIP or mirror pointer checksum as officialZIP identity",
+    "retain declared filtering, missing-value handling, key sorting and household splits exactly; do not substitute preprocessedMiniACSIncome/RDF/other vintages",
+    "only after a valid copy exists, root may perform the one file verification required by the existing contract; no whole-repository or old-result hashing"
+  ],
+  "primary_sources": {
+    "official_access": "https://www.census.gov/programs-surveys/acs/microdata/access/2018.html",
+    "official_1year_directory": "https://www2.census.gov/programs-surveys/acs/data/pums/2018/1-Year/",
+    "official_readme": "https://www2.census.gov/programs-surveys/acs/tech_docs/pums/ACS2018_PUMS_README.pdf",
+    "official_dictionary": "https://www2.census.gov/programs-surveys/acs/tech_docs/pums/data_dict/PUMS_Data_Dictionary_2018.txt",
+    "official_counts": "https://www2.census.gov/programs-surveys/acs/tech_docs/pums/estimates/pums_record_count_18.csv",
+    "official_open_data": "https://www.census.gov/topics/research/research-transparency-public-access/open-data.html",
+    "folktables_task_source": "https://raw.githubusercontent.com/socialfoundations/folktables/main/folktables/acs.py",
+    "folktables_download_source": "https://raw.githubusercontent.com/socialfoundations/folktables/main/folktables/load_acs.py",
+    "mirror_card": "https://huggingface.co/datasets/davidboetius/ACSIncome-2018-1-Year/raw/main/README.md",
+    "mirror_pinned_revision": "https://huggingface.co/datasets/davidboetius/ACSIncome-2018-1-Year/commit/2c42fc79349462e98c7c8290a5f5e679a0ccd201"
+  },
+  "actions": {
+    "new_file_hashes_computed": 0,
+    "legacy_E0_draws": 0,
+    "new_scientific_draws": 0,
+    "preparation_executed": false,
+    "freeze_executed": false,
+    "protocols_modified": false,
+    "access_control_bypass_attempted": false,
+    "proxy_or_UA_rotated": false,
+    "full_data_copy_obtained": false,
+    "e6_seeds_consumed": 0
+  },
+  "new_small_evidence_files": [
+    "reports/delivery_sync_20261115/E6_mirror_probe/headers.txt",
+    "reports/delivery_sync_20261115/E6_mirror_probe/stdout.txt",
+    "reports/delivery_sync_20261115/E6_mirror_probe/stderr.txt"
+  ],
+  "independent_recovery_blockers": [
+    "Mirror transport inaccessible in normal bounded probes; no valid CSV/ZIP bytes received.",
+    "Original official ZIP identity and source/row-column equivalence remain unproved even if mirror transport later succeeds."
+  ],
+  "gate_restriction": "Changing a filename or canonical source_url does not establish provenance/equivalence or satisfy the existing recovery gate."
+}

@@ -1,0 +1,60 @@
+{
+  "branch": [
+    "codex/query-specific-graph-auditing"
+  ],
+  "revision": [
+    "c9b38d8 Deliver full COMET graph-auditing manuscript, completed synthetic evidence and exact E6 handoff"
+  ],
+  "remotes": [
+    "origin\thttps://github.com/lsnnnnnnnn/COMET.git (fetch)",
+    "origin\thttps://github.com/lsnnnnnnnn/COMET.git (push)",
+    "overleaf\thttps://github.com/lsnnnnnnnn/COMET_overleaf.git (fetch)",
+    "overleaf\thttps://github.com/lsnnnnnnnn/COMET_overleaf.git (push)"
+  ],
+  "worktree_status": [
+    "?? paper/post_cstat/figures/analytic_declining_overlap.png",
+    "?? paper/post_cstat/figures/analytic_declining_overlap.svg",
+    "?? paper/post_cstat/figures/analytic_evidence_cost.png",
+    "?? paper/post_cstat/figures/analytic_evidence_cost.svg",
+    "?? paper/post_cstat/figures/analytic_radius_components.png",
+    "?? paper/post_cstat/figures/analytic_radius_components.svg",
+    "?? paper/post_cstat/figures/empirical_E1_E4_v1/anchor_widths.csv",
+    "?? paper/post_cstat/figures/empirical_E1_E4_v1/empirical_coordinates.csv",
+    "?? paper/post_cstat/figures/empirical_E1_E4_v1/empirical_events.csv",
+    "?? paper/post_cstat/figures/empirical_E1_E4_v1/empirical_events.tex",
+    "?? paper/post_cstat/figures/empirical_E1_E4_v1/empirical_widths.csv",
+    "?? paper/post_cstat/figures/empirical_E1_E4_v1/paired_comparisons.csv",
+    "?? paper/post_cstat/figures/empirical_E1_E4_v1/pipeline_values.csv",
+    "?? paper/post_cstat/figures/empirical_E1_E4_v1/prespecified_envelope_diagnostics.csv",
+    "?? paper/post_cstat/figures/empirical_E1_E4_v1/prespecified_envelope_diagnostics.json",
+    "?? paper/post_cstat/figures/empirical_E5_v1/",
+    "?? paper/post_cstat/figures/empirical_E5_v2/",
+    "?? paper/post_cstat/figures/manifest.json",
+    "?? paper/post_cstat/figures/supplementary_server_v2_v1/anchor_widths.csv",
+    "?? paper/post_cstat/figures/supplementary_server_v2_v1/empirical_coordinates.csv",
+    "?? paper/post_cstat/figures/supplementary_server_v2_v1/empirical_events.csv",
+    "?? paper/post_cstat/figures/supplementary_server_v2_v1/empirical_events.tex",
+    "?? paper/post_cstat/figures/supplementary_server_v2_v1/empirical_widths.csv",
+    "?? paper/post_cstat/figures/supplementary_server_v2_v1/paired_comparisons.csv",
+    "?? paper/post_cstat/figures/supplementary_server_v2_v1/pipeline_values.csv",
+    "?? results/post_cstat/ANCHORS/",
+    "?? results/post_cstat/E1/",
+    "?? results/post_cstat/E1_detailed_v1/",
+    "?? results/post_cstat/E2/",
+    "?? results/post_cstat/E2_detailed_v1/",
+    "?? results/post_cstat/E3/",
+    "?? results/post_cstat/E3_detailed_v1/",
+    "?? results/post_cstat/E4/",
+    "?? results/post_cstat/E4_detailed_v1/",
+    "?? results/post_cstat/E5/",
+    "?? results/post_cstat/design_v0/",
+    "?? results/post_cstat/negative_controls/"
+  ],
+  "timestamp_local": "2026-11-15T19:21:53.788839+08:00",
+  "target_repository": "https://github.com/lsnnnnnnnn/COMET",
+  "target_new_branch": "codex/post-cstat-delivery-20261115",
+  "hash_policy": "user supersedes full-SHA requirements; no data/hash recomputation; ordinary Git ref identity only",
+  "historical_remote": "overleaf left untouched",
+  "new_outcomes_drawn": 0,
+  "E0_new_draws": 0
+}

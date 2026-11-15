@@ -1,5 +1,7 @@
 # COMET post-C-STAT 最终交接（2026-11-15）
 
+> **本轮同步说明（2026-11-15）**：已有研究交付已普通推送至 [codex/post-cstat-delivery-20261115](https://github.com/lsnnnnnnnn/COMET/tree/codex/post-cstat-delivery-20261115)，并从 GitHub 回读交接、verdict 和主证明，正文与本地一致。本文件主体保留上一轮本地交付的历史状态；其中“未push”等叙述指上一轮。当前审阅入口见 [REVIEW_START_HERE.md](REVIEW_START_HERE.md)，E6 最新核查仍为 BLOCKED，未新增抽样。
+
 当前本地工作区：`/Users/shengenli/Documents/ChatGPT/COMET`。分支：`codex/query-specific-graph-auditing`。本轮从实际HEAD `254a482d4f82c79ba8ed9c0e57c886611a681ade` 继续，保留其在指定科学起点 `ca5bb878cf9635fac4381d03281df0bc8a900daa` 之后的交接更新；没有reset、清理历史结果、push或同步Overleaf。
 
 **已交付主证明、API、确定性核对、解析预算、E1–E5、强基线/scaling、负控、统计、实际图表、ledger和完整本地论文。唯一未执行的研究路径为E6：官方ACS数据在两端均403，1,000个单位尚未冻结/抽样。不能声称E1–E6全部完成。所有本轮实验和监督进程均已结束，没有仍在后台运行的实验。**
@@ -49,7 +51,7 @@ E5每完整trial使用training4,096/discovery8,192/certification32,768行，共4
 - E5的32个预声明coverage比较各500/500，实际每trial family都是47。COMET=matched generic在四个moderate cells各安全有用返回500/500；weak cycle mixed/null为340/238，weak independent mixed/null为411/497（均以500为分母）。所有COMET unsafe/infeasible返回观察计数为0，零计数Wilson95上界每格.00762434；不等于真实风险为0，也不提供同delta的条件unsafe-given-return保证。
 - E5非baseline且安全且strict utility gain：moderate各500，weak cycle mixed/null为340/231，weak independent mixed/null为411/232。null中的7/265个baseline返回另列。strict gain是posthoc描述诊断。status quo虽oracle-feasible但全baseline、strict gain0、无证书；总弃权的有用返回为0。完整结果见 `E5_completed_findings.md/.json`。
 - E5 global是pure truncation ablation；与COMET的差异同时包括localization和bounded dispatch，不能单归因图。最强fully matched baseline得到同样信息与dispatch，代数及结果均相同。没有独立新估计器优越性主张。
-- IID强比较中bounded DR-EB比COMET窄（.01055/.01748）；finite-moment Catoni也更窄（.15246/.17416），两者均未检测违规。所有68主anchor比较200/200覆盖。**保留一条secondary90% scalar-betting失覆盖，199/200**；runner failed_units=1计入该置信失败，analysis execution failure=0，checkpoint1599COMPLETE+1COMPLETE_WITH_CONFIDENCE_FAILURE。不得删掉或改称全部零失败。
+- IID强比较中bounded DR-EB比COMET窄（.01055/.01748）；finite-moment Catoni也更窄（.15246/.17416）。bounded IID中DR-EB与COMET均检测200/200；finite-moment IID中Catoni与COMET均检测0/200。所有68主anchor比较200/200覆盖。**保留一条secondary90% scalar-betting失覆盖，199/200**；runner failed_units=1计入该置信失败，analysis execution failure=0，checkpoint1599COMPLETE+1COMPLETE_WITH_CONFIDENCE_FAILURE。不得删掉或改称全部零失败。
 - finite-moment scaling即使N=131,072仍0/200检测。负控invalid arms均HEURISTIC、覆盖0/25；wrong-e/leak/missing-bias各false-safe25/25，hidden shock false-violation13/25。honest refusal的coverage/error为NA，不是0风险。
 
 各完整分析为 `results/post_cstat/E{1,2,3,4,5}_analysis_v1/`；E1–E4独立明细位于对应 `_detailed_v1/`，均零mismatch。E5独立重建12,000 families/64,000 frames，`RECONSTRUCTED_RECORDS_MATCH`，无重采样或原oracle调用。补充分析为 `ANCHORS_server_v2_analysis_v1/` 和 `negative_controls_server_v2_analysis_v1/`。完整数字复核在 `reports/post_cstat/final_numeric_review.md`。

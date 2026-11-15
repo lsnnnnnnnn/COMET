@@ -1,5 +1,7 @@
 # COMET post-C-STAT research verdict
 
+> 交付同步更新：已有研究提交已同步到 [新研究分支](https://github.com/lsnnnnnnnn/COMET/tree/codex/post-cstat-delivery-20261115)。本轮只做交付和E6恢复核查，已有研究数据不变。可分发结论、强基线比较及主张证据矩阵见 [最终研究结论](delivery_sync_20261115/FINAL_RESEARCH_CONCLUSIONS.md)；E6仍未取得合格数据，见 [恢复核查](delivery_sync_20261115/E6_recovery_audit.md)。
+
 本轮已完成 E1–E5 的28,600个主研究单位，以及1,600个强基线/scaling单位和100个负对照单位，共30,300个完成单位。E6的1,000个单位仍为 `DATA_BLOCKED_NOT_FROZEN`，没有消耗其日志种子。所有完成的失败、空泛区间和次级未覆盖日志均保留。不能把本交付描述为“E1–E6全部完成”。
 
 ## 正确性与主张范围
@@ -28,7 +30,7 @@ E5同时报告全部返回事件、效用、服务、风险违规、发现AND认
 
 ## 同信息强比较与研究贡献
 
-Fully matched generic与COMET代数相同，并在所有完成单元得到相同结果。没有独立的新估计器优势。IID bounded DR empirical Bernstein区间更窄（.01055对COMET的.01748）；IID finite-moment Catoni也更窄（.15246对.17416），但两者均未检测违规。
+Fully matched generic与COMET代数相同，并在所有完成单元得到相同结果。没有独立的新估计器优势。IID bounded DR empirical Bernstein区间更窄（.01055对COMET的.01748）；IID finite-moment Catoni也更窄（.15246对.17416），其中finite-moment IID的Catoni和COMET均检测0/200；bounded IID的DR-EB和COMET均检测200/200。
 
 E5的global reference是pure `truncated_global_envelope` ablation。COMET相对它的差异同时包括localization和bounded dispatch，不能单独归因于图处理，也不能把该global arm称为最强bounded competitor。E2才通过同engine的分层比较隔离graph成本。
 

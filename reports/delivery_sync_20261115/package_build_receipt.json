@@ -1,0 +1,23 @@
+{
+  "status": "REVIEW_PACKAGE_READY",
+  "created_local": "2026-11-15T19:40:36.062894+08:00",
+  "archive": "deliveries/20261115_sync/review_bundle.zip",
+  "compressed_bytes": 15644802,
+  "members": 432,
+  "required_entries_read_successfully": [
+    "REVIEW_START_HERE.md",
+    "FINAL_HANDOFF.md",
+    "reports/research_verdict.md",
+    "theory/global_residual_truncation.md",
+    "reports/delivery_sync_20261115/FINAL_RESEARCH_CONCLUSIONS.md",
+    "reports/delivery_sync_20261115/CLAIM_PROOF_RESULT_MATRIX.md",
+    "reports/delivery_sync_20261115/E6_recovery_audit.json",
+    "paper/post_cstat/COMET_post_cstat_20261115.pdf",
+    "paper/post_cstat/main.tex"
+  ],
+  "validation": "ZIP members and required contents compared directly; complete LaTeX input/image closure checked; no manual hash or SHA256",
+  "new_outcomes_drawn": 0,
+  "E6_status": "DATA_BLOCKED_NOT_FROZEN",
+  "remote_download": "https://github.com/lsnnnnnnnn/COMET/raw/refs/heads/codex/post-cstat-delivery-20261115/deliveries/20261115_sync/review_bundle.zip",
+  "self_reference": "upload/download proof will be recorded separately after publication, not claimed inside this ZIP"
+}
