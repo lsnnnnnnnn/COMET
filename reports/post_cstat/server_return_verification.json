@@ -1,0 +1,13 @@
+{
+  "status": "ALL_SERVER_BYTES_VERIFIED",
+  "files": 1718,
+  "total_server_result_bytes": 25676424,
+  "mismatches": [],
+  "verified_utc": "2026-11-15T04:43:49.815541+00:00",
+  "remote_inventory_sha256": "c1dc05a66276b291630590a337cba57416906178233a91803a183ca9ecb421a6",
+  "source_protocols_preserved": true,
+  "sync_rule": "add-only ignore-existing then verify every compressed file byte hash; no deletion/overwrite",
+  "server_tmux_final_state": "COMPLETE",
+  "server_pane_dead": true,
+  "server_pane_exit_code": 0
+}

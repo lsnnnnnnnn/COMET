@@ -72,7 +72,7 @@ def snapshot():
     preservation={str(path):sha(ROOT/path)==value for path,value in
         dict(startup["context_file_sha256"],**old["science_sources"]).items()}
     cache_preservation={}
-    for name in ("E1_operational_interrupt.json","E5_before_operational_optimization.json"):
+    for name in ("E1_operational_interrupt.json","E5_before_operational_optimization.json","E5_before_shards_snapshot.json"):
         path=ROOT/"reports/post_cstat"/name
         if path.exists():
             saved=json.loads(path.read_text()).get("completed_checkpoint_hashes",{})
@@ -83,7 +83,7 @@ def snapshot():
         E0_new_draws=0,E0_historical_logs=6000,E0_historical_records=1134000,
         completed_new_program_units=completed,completed_primary_units=primary,remaining_program_units=remaining,
         total_new_unit_cap=32000,planned_primary_units=29600,planned_supplementary_units=1700,
-        possible_operational_partial_attempts_at_most=2,
+        possible_operational_partial_attempts_at_most=3,
         count_scope="budget units; E2 comprises300 independent paired vectors across six condition logs; E5 comprises complete three-split trials",
         suites=suites,all_current_frozen_source_hashes_match=all(sha(p)==h for p,h in sources.items()),
         frozen_source_conflicts=source_conflicts,historical_source_and_context_checks=preservation,

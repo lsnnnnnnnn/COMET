@@ -1,0 +1,111 @@
+{
+  "schema": "post-cstat-empirical-figures-v1",
+  "status": "ACTUAL_SUPPLIED_SUMMARIES_ONLY",
+  "data_scope": "ACTUAL_SUPPLIED_ANALYSIS_ARTIFACTS",
+  "availability": {
+    "E1": {
+      "name": "E1",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E1_detailed": {
+      "name": "E1_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "E2": {
+      "name": "E2",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E2_detailed": {
+      "name": "E2_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "E3": {
+      "name": "E3",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E3_detailed": {
+      "name": "E3_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "E4": {
+      "name": "E4",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E4_detailed": {
+      "name": "E4_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "E5": {
+      "name": "E5",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E5_detailed": {
+      "name": "E5_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "E6": {
+      "name": "E6",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E6_detailed": {
+      "name": "E6_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "ANCHORS": {
+      "name": "ANCHORS",
+      "status": "COMPLETE",
+      "path": "results/post_cstat/ANCHORS_server_v2_analysis_v1/summary.json",
+      "sha256": "9f76354e6575d4013086db8516184eb02133237c779521c9997ca3a4f6b4f92a",
+      "phase": "supplementary_confirmatory_anchors",
+      "completed_units": 1600,
+      "remaining_units": 0
+    },
+    "NEGATIVE_CONTROLS": {
+      "name": "NEGATIVE_CONTROLS",
+      "status": "COMPLETE",
+      "path": "results/post_cstat/negative_controls_server_v2_analysis_v1/summary.json",
+      "sha256": "0e38231f526dd654527db6a5ab13772bf2bab5dbb0fd45c3eab7ad3a5a834e39",
+      "phase": "supplementary_negative_controls",
+      "completed_units": 100,
+      "remaining_units": 0
+    }
+  },
+  "figures": [
+    "appendix_anchors_controls"
+  ],
+  "formats": [
+    "pdf",
+    "png"
+  ],
+  "new_outcome_draws": 0,
+  "legacy_new_outcome_draws": 0,
+  "raw_checkpoints_replayed": false,
+  "equivalence_checks": [],
+  "candidate_uncertainty": "coordinate quantiles are descriptive; no candidate pooling for binomial uncertainty",
+  "errorbars": "pointwise whole-trial Wilson intervals supplied by analysis; not simultaneous bands",
+  "code_sha256": "7a73bde123e38af6ff59f5fac810e070abc47aea7bfab9d6645f6bce98707362",
+  "outputs": {
+    "anchor_widths.csv": "c0d3fb2a579c6bfd228e626313e593e11bc9aaad324686834f1612860a50c813",
+    "appendix_anchors_controls.pdf": "a3ec76b485e4514e5f08d4e880689e35f072a552b66d28354cc3224d95fa42e5",
+    "appendix_anchors_controls.png": "f08b4f46684d5aae5f98dbb02555e9c6147737ae67788008fd4f274eed4063ec",
+    "captions.md": "d959132b82bce212cff95fd53710802bdb03249e699433083ee2219ea7817e7f",
+    "empirical_coordinates.csv": "0586e2bbe0046276ba9dd53f9165c2b97064b3ed898e087a4badd64b4f1e519f",
+    "empirical_events.csv": "f8a2163feeaa8d8a0d89fd6be9f1f213e070b5bdc09a4062da970149a773e371",
+    "empirical_events.tex": "22f685091709146b4377246214d3e40d3b39a91e347ae78c3e63e2bcea461241",
+    "empirical_widths.csv": "f79bdcdc43161672afa1dfe2fd6d67b4dcf0c7d74c351ae772e3a6ede126aa04",
+    "paired_comparisons.csv": "d5726ec27cf29896461cb3868290b3bb8852ca2c77819bfccab08725deab6c48",
+    "pipeline_values.csv": "f5c2ce465209225201efd0ea7b4239009c5c3fa7395676649e495a5b005a5d9f"
+  }
+}

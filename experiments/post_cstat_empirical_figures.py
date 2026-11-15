@@ -404,7 +404,7 @@ def _plot_appendix(anchors,controls,output,formats):
                 widths.append(_number(record.get("mean_per_trial_coordinate_width")))
             axes[2].plot(range(len(methods)),[np.nan if value is None else value for value in widths],"o-",color=color,label=cell)
         axes[2].set_xticks(range(len(methods)),["COMET\n= generic","Bernstein","Catoni","OPE\nbetting","DR EB"],rotation=35,ha="right")
-        axes[2].set(ylabel="Mean raw CI width",title="IID anchors: widths and coverage together")
+        axes[2].set(ylabel="Mean intersected CI width",title="IID anchors: widths and coverage together")
         axes[2].legend(frameon=False,fontsize=7)
     else:_unavailable(axes[0],"Strong-anchor analysis unavailable")
     if not selected:_unavailable(axes[2],"Strong-anchor width data unavailable")
@@ -429,7 +429,7 @@ def _plot_appendix(anchors,controls,output,formats):
                 yy=[_number(row.get("mean_per_trial_coordinate_width")) for row in chosen]
                 axes[3].plot(xx,[np.nan if value is None else value for value in yy],"o"+line,color=color,
                     label=outcome+", "+("local" if method=="comet_local" else "global"))
-        axes[3].set(xscale="log",xlabel="Retained rows N",ylabel="Mean raw coordinate CI width",title="Fixed-DGP scaling (descriptive)")
+        axes[3].set(xscale="log",xlabel="Retained rows N",ylabel="Mean intersected coordinate CI width",title="Fixed-DGP scaling (descriptive)")
         axes[3].legend(frameon=False,fontsize=7)
     else:_unavailable(axes[3],"Scaling-anchor analysis unavailable")
     _finish_axes(grid)
@@ -611,14 +611,14 @@ def render_bundle(output_directory,*,analyses=None,detailed=None,anchors=None,co
     widths=[dict(row,suite=suite) for suite,record in detail.items() for row in record["groups"]]
     values=_pipeline_value_records(data)
     anchor_widths=[dict(suite="ANCHORS",cell=row["cell"],method=row["method"],delta=row["delta"],
-        independent_trials=row["independent_trials"],mean_raw_coordinate_width=row.get("mean_per_trial_coordinate_width"),
+        independent_trials=row["independent_trials"],mean_intersected_coordinate_width=row.get("mean_per_trial_coordinate_width"),
         width_trials=row.get("width_trials"),coverage_applicable=row.get("family_coverage") is not None,
         interpretation="fixed-DGP descriptive width; no invented mean-width CI") for row in (anchor_data or {}).get("summaries",[])]
     (output/"empirical_events.csv").write_bytes(_csv_bytes(events,("suite","cell","method","delta","endpoint","hits","denominator","rate","wilson95_lo","wilson95_hi")))
     (output/"empirical_coordinates.csv").write_bytes(_csv_bytes(coordinates,("suite","cell","method","delta","query_id","query_scope","normalizer","known_feasible_diameter")))
     (output/"empirical_widths.csv").write_bytes(_csv_bytes(widths,("suite","cell","method","delta","independent_trials")))
     (output/"pipeline_values.csv").write_bytes(_csv_bytes(values,("suite","cell","method","delta","metric","mean","value_count","value_scope")))
-    (output/"anchor_widths.csv").write_bytes(_csv_bytes(anchor_widths,("suite","cell","method","delta","independent_trials","mean_raw_coordinate_width","width_trials","coverage_applicable")))
+    (output/"anchor_widths.csv").write_bytes(_csv_bytes(anchor_widths,("suite","cell","method","delta","independent_trials","mean_intersected_coordinate_width","width_trials","coverage_applicable")))
     (output/"paired_comparisons.csv").write_bytes(_csv_bytes(_paired_records(data,anchor_data),("suite","cell","delta","left","right","mean_difference","bootstrap_pointwise95")))
     (output/"empirical_events.tex").write_bytes(_latex_events(events))
     captions="\n\n".join("### "+name+"\n\n"+CAPTIONS[name] for name in figure_names)
