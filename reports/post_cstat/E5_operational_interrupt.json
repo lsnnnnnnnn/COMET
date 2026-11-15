@@ -1,0 +1,27 @@
+{
+  "suite": "E5",
+  "status": "INTERRUPTED",
+  "stop_reason": "synchronous invocation ended; no unattended continuation",
+  "new_completed_units": 197,
+  "failed_units": 0,
+  "legacy_new_outcome_draws": 0,
+  "background_work_running": false,
+  "workers": 1,
+  "fingerprint": "f077fb800ffba466bafc42ad51ee4f98e4da41c399bc164937ed3b4ab658814b",
+  "first_resource_snapshot": {
+    "free_disk_bytes": 84377600000,
+    "available_ram_bytes": 3096346624,
+    "worker_rss_bytes": 47366144,
+    "memory_scope": "one synchronous worker RSS; no concurrent-peak sum inferred",
+    "global_artifact_bytes": 258100952,
+    "global_unique_completed_units": 15052
+  },
+  "final_global_usage": {
+    "artifact_bytes": 299886444,
+    "unique_completed_units": 16397
+  },
+  "wall_seconds": 1326.7299916660413,
+  "cpu_seconds": 1285.4081370000001,
+  "execution_mode": "one synchronous CPU worker; no GPU/paid resources",
+  "resume_command": ".venv/bin/python -m experiments.pipeline_runner --run --protocol /Users/shengenli/Documents/ChatGPT/COMET/results/post_cstat/E5_protocol.json --results /Users/shengenli/Documents/ChatGPT/COMET/results/post_cstat/E5"
+}

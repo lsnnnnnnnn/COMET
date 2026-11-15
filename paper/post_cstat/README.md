@@ -4,8 +4,8 @@ This manuscript uses heterogeneous fixed-design moments and a sufficient global
 conditional dependency graph. The historical independent-block proposal stays
 in `paper/rewrite_proposals/cstat/`; the independent Overleaf source is separate.
 
-The current source is a research revision while the live fixed-count suites
-finish. `reports/post_cstat/ACTIVE_STATE.json` records actual tool sessions;
+The current source is the completed local synthetic research revision:
+E1–E5 plus supplementary suites, with the E6 external-data path blocked. `reports/post_cstat/ACTIVE_STATE.json` records the final execution state;
 `reports/post_cstat/remaining_run_ids.json` records a dated inventory. The final
 research verdict and handoff must be read together with the final PDF. A valid
 certificate, a useful decision and a distinct estimator contribution are
@@ -18,7 +18,8 @@ Build locally from this directory:
 /Library/TeX/texbin/pdflatex -interaction=nonstopmode -halt-on-error -output-directory=build main.tex
 ```
 
-The output is `build/main.pdf`. The bibliography is embedded in `main.tex`;
+The build output is `build/main.pdf`; the reviewed delivery copy is
+`COMET_post_cstat_20261115.pdf` (24 pages). The bibliography is embedded in `main.tex`;
 no network, remote Overleaf operation, or bibliography service is required.
 
 Analytic figures use `results/post_cstat/design_v1` and the recovered theory

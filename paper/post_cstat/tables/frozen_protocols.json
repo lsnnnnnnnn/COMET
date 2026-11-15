@@ -1,0 +1,58 @@
+[
+  {
+    "suite": "E1",
+    "config": "E1_v1.json",
+    "protocol": "results/post_cstat/E1_protocol.json",
+    "fingerprint": "cff0f251d4bbf77916328f45ea4fbbccb6d1ac3362239c64bcd46ccba76ed38a",
+    "protocol_sha256": "b005287b61c2b828d0105c54f9db06c8f4c0ccd8e5d5dc8edc3997765413d2d9",
+    "planned_units": 12000
+  },
+  {
+    "suite": "E2",
+    "config": "E2_v1.json",
+    "protocol": "results/post_cstat/E2_protocol.json",
+    "fingerprint": "02c6e6abcde74b4cc8895b92c60acc147b0008d2f26c2714e20ff3f1b46ee4f3",
+    "protocol_sha256": "bfdd85cb3e9e167f77c1afb273071340806645b6817a6b179d8ee78cd9c8d505",
+    "planned_units": 1800
+  },
+  {
+    "suite": "E3",
+    "config": "E3_v1.json",
+    "protocol": "results/post_cstat/E3_protocol.json",
+    "fingerprint": "de9d8f3eaf724880caa8e6871f3050214be60eff5e6f72d82478a299bc5e8da2",
+    "protocol_sha256": "3435f7687a95a41c87d76ec8a461610a3ab655d68ba3edcb762c5c1f29d70bbd",
+    "planned_units": 3600
+  },
+  {
+    "suite": "E4",
+    "config": "E4_v1.json",
+    "protocol": "results/post_cstat/E4_protocol.json",
+    "fingerprint": "10f304e204939844e4a9ee14572b672002238477b421bc44a47e3fe1d93e6b6a",
+    "protocol_sha256": "8e68a5b1cf3cfc637513163172be580d0107a39a73dfb4ae0029e02ae1e8f022",
+    "planned_units": 7200
+  },
+  {
+    "suite": "E5",
+    "config": "E5_v1.json",
+    "protocol": "results/post_cstat/E5_protocol.json",
+    "fingerprint": "f077fb800ffba466bafc42ad51ee4f98e4da41c399bc164937ed3b4ab658814b",
+    "protocol_sha256": "8df4d588944c76a58c999332a6d42b186d8d595f5c68dd2508e92853a74a1096",
+    "planned_units": 4000
+  },
+  {
+    "suite": "ANCHORS",
+    "config": "ANCHORS_server_v2.json",
+    "protocol": "results/post_cstat/ANCHORS_server_v2_protocol.json",
+    "fingerprint": "8ffce7eb4a070fc223d411d6794ecd8ff5a257775063f3125ff5a9e6585a145c",
+    "protocol_sha256": "f30c3483aa5f472384e0fbe982965390623ad5c0f47f73fcbf912439ce767173",
+    "planned_units": 1600
+  },
+  {
+    "suite": "negative_controls",
+    "config": "negative_controls_server_v2.json",
+    "protocol": "results/post_cstat/negative_controls_server_v2_protocol.json",
+    "fingerprint": "d21665e9848df7a621c326acaeda53f1a8408f3eedf83ed6b998ae38e1c6c20c",
+    "protocol_sha256": "304edef0aef2cec7a0a55f29a7e667c79fb295c05935e5b18b82ad34e42d46c8",
+    "planned_units": 100
+  }
+]

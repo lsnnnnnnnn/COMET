@@ -1,0 +1,72 @@
+{
+  "inputs": {
+    "results/post_cstat/E5_analysis_v1/summary.json": "4afa6eccc2816d512eb844a504222b0319bbf35a6efc27bc6a4750ba5b46b77e",
+    "reports/post_cstat/E5_diagnostics_v1/diagnostics.json": "88fffca2325350fbcb2cfbfd0bb1e97b1e81b76dfebb752d80c3f060e6419074"
+  },
+  "rows": [
+    {
+      "cell": "cycle-moderate-mixed",
+      "comet_safe_useful": 500,
+      "nonbaseline_safe_strict_gain": 500,
+      "global_safe_useful": 351,
+      "mean_returned_utility_gain": 0.05447129886298561,
+      "denominator": 500
+    },
+    {
+      "cell": "cycle-moderate-null",
+      "comet_safe_useful": 500,
+      "nonbaseline_safe_strict_gain": 500,
+      "global_safe_useful": 454,
+      "mean_returned_utility_gain": 0.05947232209038902,
+      "denominator": 500
+    },
+    {
+      "cell": "cycle-weak-mixed",
+      "comet_safe_useful": 340,
+      "nonbaseline_safe_strict_gain": 340,
+      "global_safe_useful": 0,
+      "mean_returned_utility_gain": 0.048423259512977046,
+      "denominator": 500
+    },
+    {
+      "cell": "cycle-weak-null",
+      "comet_safe_useful": 238,
+      "nonbaseline_safe_strict_gain": 231,
+      "global_safe_useful": 0,
+      "mean_returned_utility_gain": 0.05339732557913179,
+      "denominator": 500
+    },
+    {
+      "cell": "independent-moderate-mixed",
+      "comet_safe_useful": 500,
+      "nonbaseline_safe_strict_gain": 500,
+      "global_safe_useful": 340,
+      "mean_returned_utility_gain": 0.05449250621365821,
+      "denominator": 500
+    },
+    {
+      "cell": "independent-moderate-null",
+      "comet_safe_useful": 500,
+      "nonbaseline_safe_strict_gain": 500,
+      "global_safe_useful": 411,
+      "mean_returned_utility_gain": 0.05945745299748458,
+      "denominator": 500
+    },
+    {
+      "cell": "independent-weak-mixed",
+      "comet_safe_useful": 411,
+      "nonbaseline_safe_strict_gain": 411,
+      "global_safe_useful": 44,
+      "mean_returned_utility_gain": 0.04980549768460159,
+      "denominator": 500
+    },
+    {
+      "cell": "independent-weak-null",
+      "comet_safe_useful": 497,
+      "nonbaseline_safe_strict_gain": 232,
+      "global_safe_useful": 17,
+      "mean_returned_utility_gain": 0.025992578304231833,
+      "denominator": 500
+    }
+  ]
+}

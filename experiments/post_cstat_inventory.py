@@ -32,8 +32,9 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def snapshot():
+def snapshot(execution_state_path=None):
     suites={}; source_conflicts=[]; sources={}; completed=primary=remaining=0
+    execution_state=json.loads(Path(execution_state_path).read_text()) if execution_state_path else None
     for name in SUITES:
         path=ROOT/f"results/post_cstat/{name}_protocol.json"
         server_path=ROOT/f"results/post_cstat/{name}_server_v2_protocol.json"
@@ -92,13 +93,16 @@ def snapshot():
         persistent_result_bytes=artifacts,persistent_result_cap_bytes=int(1.5*2**30),
         free_disk_bytes=shutil.disk_usage(ROOT).free,
         scheduler_rule="at most two scientific CPU workers; do not run all resume commands concurrently",
-        background_work_running="consult live local sessions AND server tmux receipt; final handoff must report actual process state")
+        background_work_running=(execution_state["scientific_processes_running"]>0 if execution_state else "UNKNOWN_NOT_PROBED"),
+        execution_state_receipt=str(execution_state_path) if execution_state_path else None,
+        execution_state_asof_utc=execution_state.get("inspected_utc") if execution_state else None)
 
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output",type=Path,default=ROOT/"reports/post_cstat/remaining_run_ids.json")
-    args=parser.parse_args();data=snapshot();args.output.parent.mkdir(parents=True,exist_ok=True)
+    parser.add_argument("--execution-state",type=Path,help="explicit point-in-time process receipt; no live inference from an older receipt")
+    args=parser.parse_args();data=snapshot(args.execution_state);args.output.parent.mkdir(parents=True,exist_ok=True)
     args.output.write_text(json.dumps(data,indent=2)+"\n")
     print(json.dumps({k:data[k] for k in ("completed_new_program_units","remaining_program_units",
         "all_current_frozen_source_hashes_match","all_historical_source_and_context_checks_pass","persistent_result_bytes")}))

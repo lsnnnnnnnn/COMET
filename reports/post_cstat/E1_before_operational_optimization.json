@@ -1,0 +1,6 @@
+{
+  "completed_checkpoint_files": 135,
+  "last_completed": "results/post_cstat/E1/checkpoints/E1/cycle-moderate-bounded/0134.json.gz",
+  "reason": "metadata_digest_recomputation_profile;scientific_source_unchanged",
+  "legacy_new_draws": 0
+}

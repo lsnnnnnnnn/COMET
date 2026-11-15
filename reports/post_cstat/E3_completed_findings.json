@@ -1,0 +1,1270 @@
+{
+  "status": "COMPLETE",
+  "completed": 3600,
+  "primary_comparisons": 108,
+  "all_primary_family_coverage_300_of300": true,
+  "any_false_claim_hits_total_across_comparisons": 0,
+  "direct_vs_joint_levels": [
+    {
+      "cell": "support002-moderate-bounded",
+      "method": "comet_local",
+      "mean_coordinate_width": 0.0007489582291481609,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support002-moderate-bounded",
+      "method": "deduplicated_joint_level_difference",
+      "mean_coordinate_width": 0.003104986189298664,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support002-moderate-bounded",
+      "method": "generic_matched",
+      "mean_coordinate_width": 0.0007489582291481609,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support002-moderate-heavy",
+      "method": "comet_local",
+      "mean_coordinate_width": 0.002670180000931909,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support002-moderate-heavy",
+      "method": "deduplicated_joint_level_difference",
+      "mean_coordinate_width": 0.003104986189298664,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support002-moderate-heavy",
+      "method": "generic_matched",
+      "mean_coordinate_width": 0.002670180000931909,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support002-weak-bounded",
+      "method": "comet_local",
+      "mean_coordinate_width": 0.0026797873043912348,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support002-weak-bounded",
+      "method": "deduplicated_joint_level_difference",
+      "mean_coordinate_width": 0.003104986189298664,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support002-weak-bounded",
+      "method": "generic_matched",
+      "mean_coordinate_width": 0.0026797873043912348,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support002-weak-heavy",
+      "method": "comet_local",
+      "mean_coordinate_width": 0.003104986189298664,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support002-weak-heavy",
+      "method": "deduplicated_joint_level_difference",
+      "mean_coordinate_width": 0.003104986189298664,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support002-weak-heavy",
+      "method": "generic_matched",
+      "mean_coordinate_width": 0.003104986189298664,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support010-moderate-bounded",
+      "method": "comet_local",
+      "mean_coordinate_width": 0.0015486184671813295,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support010-moderate-bounded",
+      "method": "deduplicated_joint_level_difference",
+      "mean_coordinate_width": 0.015501138219770283,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support010-moderate-bounded",
+      "method": "generic_matched",
+      "mean_coordinate_width": 0.0015486184671813295,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support010-moderate-heavy",
+      "method": "comet_local",
+      "mean_coordinate_width": 0.008284096600818474,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support010-moderate-heavy",
+      "method": "deduplicated_joint_level_difference",
+      "mean_coordinate_width": 0.015501138219770283,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support010-moderate-heavy",
+      "method": "generic_matched",
+      "mean_coordinate_width": 0.008284096600818474,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support010-weak-bounded",
+      "method": "comet_local",
+      "mean_coordinate_width": 0.005786209989953796,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support010-weak-bounded",
+      "method": "deduplicated_joint_level_difference",
+      "mean_coordinate_width": 0.015501138219770283,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support010-weak-bounded",
+      "method": "generic_matched",
+      "mean_coordinate_width": 0.005786209989953796,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support010-weak-heavy",
+      "method": "comet_local",
+      "mean_coordinate_width": 0.013748484037242763,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support010-weak-heavy",
+      "method": "deduplicated_joint_level_difference",
+      "mean_coordinate_width": 0.015501138219770283,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support010-weak-heavy",
+      "method": "generic_matched",
+      "mean_coordinate_width": 0.013748484037242763,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support100-moderate-bounded",
+      "method": "comet_local",
+      "mean_coordinate_width": 0.00667238357713489,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 300,
+        "rate": 1.0,
+        "realized_frequency_bounds": [
+          1.0,
+          1.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.9873570287754538,
+          0.9999999999999998
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 300,
+        "rate": 1.0,
+        "realized_frequency_bounds": [
+          1.0,
+          1.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.9873570287754538,
+          0.9999999999999998
+        ]
+      }
+    },
+    {
+      "cell": "support100-moderate-bounded",
+      "method": "deduplicated_joint_level_difference",
+      "mean_coordinate_width": 0.04504569060566899,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support100-moderate-bounded",
+      "method": "generic_matched",
+      "mean_coordinate_width": 0.00667238357713489,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 300,
+        "rate": 1.0,
+        "realized_frequency_bounds": [
+          1.0,
+          1.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.9873570287754538,
+          0.9999999999999998
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 300,
+        "rate": 1.0,
+        "realized_frequency_bounds": [
+          1.0,
+          1.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.9873570287754538,
+          0.9999999999999998
+        ]
+      }
+    },
+    {
+      "cell": "support100-moderate-heavy",
+      "method": "comet_local",
+      "mean_coordinate_width": 0.04841143971256534,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support100-moderate-heavy",
+      "method": "deduplicated_joint_level_difference",
+      "mean_coordinate_width": 0.15487785272068716,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support100-moderate-heavy",
+      "method": "generic_matched",
+      "mean_coordinate_width": 0.04841143971256534,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support100-weak-bounded",
+      "method": "comet_local",
+      "mean_coordinate_width": 0.02213779983895831,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support100-weak-bounded",
+      "method": "deduplicated_joint_level_difference",
+      "mean_coordinate_width": 0.13011565364190697,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support100-weak-bounded",
+      "method": "generic_matched",
+      "mean_coordinate_width": 0.02213779983895831,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support100-weak-heavy",
+      "method": "comet_local",
+      "mean_coordinate_width": 0.08707895095277701,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support100-weak-heavy",
+      "method": "deduplicated_joint_level_difference",
+      "mean_coordinate_width": 0.15487785272068716,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    },
+    {
+      "cell": "support100-weak-heavy",
+      "method": "generic_matched",
+      "mean_coordinate_width": 0.08707895095277701,
+      "improvement": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      },
+      "noninferiority": {
+        "applicable": true,
+        "denominator": 300,
+        "hits": 0,
+        "rate": 0.0,
+        "realized_frequency_bounds": [
+          0.0,
+          0.0
+        ],
+        "unknown_trials": 0,
+        "wilson95": [
+          0.0,
+          0.012642971224546027
+        ]
+      }
+    }
+  ],
+  "limitations": "all methods share logs; per-cell complete-log denominators; narrower raw CI alone does not establish greater sign power; matched generic is equal"
+}

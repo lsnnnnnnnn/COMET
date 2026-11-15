@@ -1,0 +1,214 @@
+{
+  "schema": "comet-post-cstat-primary-reference-audit-v1",
+  "read_date_local": "2026-11-14",
+  "timezone": "Asia/Shanghai",
+  "phase": "design_and_source_review",
+  "new_outcome_draws": 0,
+  "legacy_outcome_draws": 0,
+  "private_content_transmitted": false,
+  "missing_planning_inputs": [
+    "EXPERIMENT_BLUEPRINT.json"
+  ],
+  "sources": [
+    {
+      "id": "janson2004large",
+      "title": "Large deviations for sums of partly dependent random variables",
+      "authors": [
+        "Svante Janson"
+      ],
+      "year": 2004,
+      "doi": "10.1002/rsa.20008",
+      "status": "PRIMARY_TEXT_AND_METADATA_VERIFIED",
+      "metadata_url": "https://onlinelibrary.wiley.com/doi/10.1002/rsa.20008",
+      "text_url": "https://api.newton.ac.uk/website/v0/events/preprints/NI02024",
+      "inspected_locations": [
+        "Section 2 definitions",
+        "Theorem 2.1",
+        "Section 3 cover arguments"
+      ],
+      "heterogeneous_means_eligible": true,
+      "evidence_scope": "bounded-summand independent-set cover concentration",
+      "implementation_status": "GRAPH_HOEFFDING_AND_BERNSTEIN_PATHS_PRESENT_IN_comet.residual_truncation; SEE_MAIN_VALIDATION"
+    },
+    {
+      "id": "bhatt2022catoni",
+      "title": "Nearly Optimal Catoni's M-estimator for Infinite Variance",
+      "authors": [
+        "Sujay Bhatt",
+        "Guanhua Fang",
+        "Ping Li",
+        "Gennady Samorodnitsky"
+      ],
+      "year": 2022,
+      "venue": "ICML / PMLR 162:1925-1944",
+      "status": "PRIMARY_TEXT_AND_METADATA_VERIFIED",
+      "metadata_url": "https://proceedings.mlr.press/v162/bhatt22b.html",
+      "text_url": "https://proceedings.mlr.press/v162/bhatt22b/bhatt22b.pdf",
+      "inspected_locations": [
+        "Section 3",
+        "Lemma 3.1",
+        "Theorem 3.2",
+        "equations 3-5",
+        "paper page 4"
+      ],
+      "heterogeneous_means_eligible": false,
+      "anchor_required": "truly iid/common distribution, known centered p-moment, theorem sample-size condition",
+      "implementation_status": "IMPLEMENTED_THEOREM_3_2_IN_comet.independent_anchors.catoni_iid"
+    },
+    {
+      "id": "karampatziakis2021sequences",
+      "title": "Off-Policy Confidence Sequences",
+      "authors": [
+        "Nikos Karampatziakis",
+        "Paul Mineiro",
+        "Aaditya Ramdas"
+      ],
+      "year": 2021,
+      "venue": "ICML / PMLR 139:5301-5310",
+      "status": "PRIMARY_TEXT_AND_AUTHOR_CODE_VERIFIED",
+      "metadata_url": "https://proceedings.mlr.press/v139/karampatziakis21a.html",
+      "text_url": "https://proceedings.mlr.press/v139/karampatziakis21a/karampatziakis21a.pdf",
+      "code_url": "https://github.com/n17s/mope",
+      "code_text_url": "https://raw.githubusercontent.com/n17s/mope/main/opebet.py",
+      "license_url": "https://raw.githubusercontent.com/n17s/mope/main/LICENSE",
+      "license": "MIT; retain notice if copying code",
+      "inspected_locations": [
+        "Theorems 1-3",
+        "Algorithms 1-2",
+        "Section 4.4",
+        "author opebet.py"
+      ],
+      "arbitrary_graph_row_order_eligible": false,
+      "anchor_required": "matched bounded independent/common conditional-moment OPE submodel",
+      "time_uniform_guarantee": true,
+      "implementation_status": "AUTHOR_ONE_DIMENSIONAL_BETTING_PATH_ADAPTED_WITH_MIT_NOTICE; FULL_2D_MOPE_NOT_CLAIMED",
+      "adaptation_notes": [
+        "stable quadratic roots",
+        "declared numerical root padding",
+        "no cross-clamping or fabricated nonempty intersection"
+      ]
+    },
+    {
+      "id": "kim2026esguard",
+      "title": "Bias-Aware Guardrail Selection Under Network Interference",
+      "authors": [
+        "Minkyoung Kim",
+        "Hyunjung Byun",
+        "Beakcheol Jang"
+      ],
+      "year": 2026,
+      "arxiv_id": "2610.36702",
+      "version": "v1",
+      "version_date": "2026-10-27",
+      "status": "ACTUAL_PRIMARY_FULL_TEXT_VERIFIED",
+      "text_url": "https://arxiv.org/html/2610.36702v1",
+      "metadata_url": "https://arxiv.org/abs/2610.36702",
+      "inspected_locations": [
+        "Sections 4.2-4.4",
+        "equations 4-8",
+        "Theorem 1 A1-A4",
+        "Section 6.2"
+      ],
+      "bias_guarantee": "finite sample conditional on correct exposure mapping and valid derivative bounds",
+      "selection_guarantee": "asymptotic unconditional unsafe-selection probability at most alpha plus o(1), additional regularity",
+      "new_graph_finite_moment_directly_eligible": false,
+      "implementation_status": "RELATED_METHOD_ASSUMPTION_MAP_NOT_A_FABRICATED_BASELINE_RESULT"
+    },
+    {
+      "id": "waudby_smith2024anytime",
+      "title": "Anytime-valid off-policy inference for contextual bandits",
+      "authors": [
+        "Ian Waudby-Smith",
+        "Lili Wu",
+        "Aaditya Ramdas",
+        "Nikos Karampatziakis",
+        "Paul Mineiro"
+      ],
+      "initial_preprint_year": 2022,
+      "verified_version_year": 2024,
+      "arxiv_id": "2210.10768",
+      "version": "v3",
+      "version_date": "2024-08-15",
+      "status": "ACTUAL_PRIMARY_METHOD_SECTIONS_AND_PROOF_INSPECTED",
+      "metadata_url": "https://arxiv.org/abs/2210.10768",
+      "text_url": "https://arxiv.org/html/2210.10768",
+      "inspected_locations": [
+        "Algorithm 1 and equation 1 filtration",
+        "Theorem 1",
+        "Theorem 2",
+        "equations 10-11 and 24-28",
+        "Section 3.1 equations 31-33",
+        "Appendix A.3 and Remark 5"
+      ],
+      "publisher_metadata_status": "direct ACM DOI endpoint returned 403; verified citation uses arXiv version, no invented journal metadata",
+      "publisher_doi_endpoint_attempted": "https://dl.acm.org/doi/10.1145/3643693",
+      "independent_heterogeneous_means_eligible": true,
+      "arbitrary_source_graph_directly_eligible": false,
+      "implementation_status": "IMPLEMENTED_THEOREM_2_DR_EB_IN_comet.ope_2024.ope_eb_independent",
+      "implementation_scope": "independent-row fixed-design average; fixed or independent nuisance; bounded reward; exact supported logging; design-only k/rho",
+      "time_uniform_under_declared_submodel": true,
+      "past_interval_intersection_for_changing_target": false,
+      "numerics": "stable positive-deviation log-gamma mixture; deterministic root solve and declared debit; ordinary float, no machine rounding proof",
+      "test_command": ".venv/bin/python -m pytest -q tests/test_ope_2024.py",
+      "deterministic_tests_passed": 10,
+      "monte_carlo_draws": 0
+    }
+  ],
+  "matched_truncation": {
+    "status": "ALGEBRAIC_IDENTITY_WHEN_ALL_INPUTS_AND_RULES_MATCH",
+    "required_inputs": [
+      "signed coefficients",
+      "exact propensity",
+      "nuisance",
+      "raw residual moment envelope",
+      "active support",
+      "verified coloring",
+      "threshold",
+      "failure budget"
+    ],
+    "not_a_superiority_comparison": true
+  },
+  "e6_data_metadata": {
+    "candidate": "ACS California 2018 1-Year person PUMS / ACSIncome",
+    "directory_url": "https://www2.census.gov/programs-surveys/acs/data/pums/2018/1-Year/",
+    "archive_url": "https://www2.census.gov/programs-surveys/acs/data/pums/2018/1-Year/csv_pca.zip",
+    "directory_size_display": "64M",
+    "exact_archive_bytes": null,
+    "download_performed_by_this_audit": false,
+    "usable_rows_verified": false,
+    "task_source_url": "https://raw.githubusercontent.com/socialfoundations/folktables/main/folktables/acs.py",
+    "datasheet_url": "https://raw.githubusercontent.com/socialfoundations/folktables/main/datasheet.md",
+    "terms_url": "https://www.census.gov/data/developers/about/terms-of-service.html",
+    "open_data_url": "https://www.census.gov/topics/research/research-transparency-public-access/open-data.html",
+    "estimand": "fixed finite-population policy-weighted selection outcome; not causal effect of selection on income"
+  },
+  "implementation_checks": {
+    "command": ".venv/bin/python -m pytest -q tests/test_independent_anchors.py",
+    "final_passed": 13,
+    "scientific_draws": 0,
+    "runs": [
+      {
+        "exit_code": 1,
+        "passed": 10,
+        "failed": 1,
+        "failure": "stable quadratic used wrong root; constant-response informativeness test failed",
+        "resolution": "upper root of concave quadratic, checked against author arithmetic"
+      },
+      {
+        "exit_code": 0,
+        "passed": 11
+      },
+      {
+        "exit_code": 0,
+        "passed": 13
+      }
+    ]
+  },
+  "outcome_draw_counts_scope": "this source audit and its deterministic implementation checks only",
+  "subsequently_read_planning_inputs": [
+    "SCOPE_CN.md",
+    "THEORY_NOTE.md",
+    "CLAIM_EVIDENCE.csv"
+  ],
+  "missing_input_authorization": "User authorized continuation without unavailable planning inputs; unseen blueprint contents are not asserted."
+}

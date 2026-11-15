@@ -1,0 +1,3 @@
+### fig5_safe_useful_return
+
+E5 complete independent three-split trials. Cell annotations and colorbars show percentages, retaining 0.2% increments at n=500. Four different joint events are reported; zero false-return counts do not mean zero risk. Gray/NA denotes unavailable or unassessable input, never an imputed zero. Point and in-sample arms are heuristic, status quo is an uncertified reference, and abstention cannot count as useful return. Fixed-slice coverage concerns its restricted family; return feasibility is evaluated against the primary independently discovered constraints. Every risk and utility coordinate used for selection is included in the actual family budget. Pointwise Wilson intervals and denominators are in empirical_events.csv.

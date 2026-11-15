@@ -18,35 +18,31 @@
 \maketitle
 
 \begin{abstract}
-Counterfactual auditing asks which subgroup and policy moments are supported
-by selective, dependent observations, rather than only which point estimates
-look favorable. We study a finite family of signed moments conditional on a
-heterogeneous fixed design, exact supported exposure probabilities, independent
-training information, valid residual moment envelopes and a sufficient global
-conditional dependency graph. Separating the known direct term from a clipped
-weighted residual gives an explicit certificate for the original moment:
-a sharp clipping-bias bound plus graph-adjusted concentration and a range term.
-The analysis permits unequal row means and a single connected graph.
-Query-specific support and paired contrasts determine which overlap and
-dependence costs are relevant. A two-point observation-thinning construction
-separates subgroup mass, exposure scarcity and clique replication in a scoped
-expected-risk lower bound. Finite-policy selection is safe on the simultaneous
-event when all risk and utility coordinates are included; useful return remains
-a distinct empirical requirement. The bounded branch admits strong
-Hoeffding/Bernstein comparisons, and a fully matched generic truncated graph
-mean is algebraically identical to its corresponding COMET configuration.
-In 12,000 heterogeneous-graph logs, all 96 eligible primary diagnostics cover
-the complete query family in 1,000/1,000 trials per fixed comparison. Violation detection reaches
-1,000/1,000 logs in five bounded cells, 2/1,000 in the sixth, and zero in all
-six tested heavy-tail cells;
-coverage alone conceals this distinction. A further 1,800 paired-condition
-logs isolate local evidence costs and confirm equality with the fully matched
-generic comparator. In 3,600 contrast trials, direct contrasts certify a
-risk reduction in every full-support, moderate-overlap bounded trial, while
-joint-level subtraction certifies none; other tested contrast cells give no
-positive detections. A 7,200-trial gap study isolates the primary query's
-limited power under weak overlap and heavy tails. Complete-pipeline results
-are still being collected in this research revision.
+Counterfactual moment auditing asks which subgroup and policy conclusions have
+enough evidence under selective, dependent feedback. We study finite families
+of signed moments under a heterogeneous fixed design, exact supported exposure
+laws, valid residual moment envelopes, independent training information and a
+sufficient global conditional dependency graph. Separating the known direct
+term from a clipped weighted residual yields an explicit certificate for the
+original moment: sharp clipping bias, graph-adjusted concentration and a range
+term. Unequal row means and one connected graph are allowed. Query-specific
+support and paired contrasts identify the relevant overlap and dependence
+costs, while a scoped two-point subclass gives an evidence obstruction.
+
+Completed synthetic studies distinguish coverage from decision value. Across
+12,000 heterogeneous-graph logs, all 96 eligible primary comparisons cover the
+complete query family in 1,000/1,000 trials per fixed comparison, yet all six
+finite-moment cells have zero violation detections. Local questions avoid
+irrelevant outside hubs and extreme weights; direct contrasts can certify a
+risk reduction when subtraction of jointly certified levels cannot. In 4,000
+independent discovery-to-selection trials, nonbaseline safe returns with
+positive utility gain occur in 500/500 trials per moderate-overlap cell and
+231--411/500 per weak-overlap cell, with no observed unsafe COMET return.
+Baseline noninferiority is reported separately. The fully matched generic
+construction is algebraically and empirically identical; eligible IID
+DR empirical-Bernstein and Catoni comparisons can be narrower. The contribution
+is a query-specific certification and evidence-cost analysis with explicit
+decision consequences.
 \end{abstract}
 
 \input{sections/introduction}
@@ -62,7 +58,10 @@ delivery remains anchored at \texttt{ca5bb878}; its configuration, 6,000
 checkpoints and seventeen primary comparisons are unchanged. Separate committed
 protocols bind the new study configurations, seeds, applicability and numerical
 rules. Completed checkpoints are immutable and incomplete identifiers alone
-are resumed. The analytic maps use the 49-point production grid and generate
+are resumed. The completed program contains 28,600 primary units and 1,700
+supplementary units; the reserved 1,000-unit E6 extension is data-blocked.
+Read-only diagnostics independently reconstruct all E1--E4 interval records
+and E5 selection endpoints without regenerating outcomes. The analytic maps use the 49-point production grid and generate
 no outcomes. The independent Overleaf repository is not modified.
 
 \paragraph{Use and interpretation.}
@@ -114,6 +113,8 @@ arXiv:2610.36702v1, 2026.
 \end{thebibliography}
 \appendix
 \input{sections/proofs}
+\input{sections/analytic_maps}
 \input{sections/supplementary}
+\clearpage
 \input{sections/historical}
 \end{document}

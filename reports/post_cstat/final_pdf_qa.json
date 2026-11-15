@@ -1,0 +1,55 @@
+{
+  "status": "COMPILE_AND_VISUAL_QA_PASS",
+  "timestamp_utc": "2026-11-15T05:36:24.168399+00:00",
+  "pdf_path": "paper/post_cstat/COMET_post_cstat_20261115.pdf",
+  "pdf_sha256": "59fed09dccecba4c25920a44784c706d8c53d438ae0fcb77cf98bca17c892943",
+  "pdf_bytes": 902039,
+  "pages": 24,
+  "pdflatex_passes": 2,
+  "overfull_boxes": 0,
+  "undefined_references": 0,
+  "all_final_pages_rendered": true,
+  "all_pages_visually_reviewed": true,
+  "review_scope": "layout, labels, clipping and completeness; not a formal proof checker",
+  "final_changed_pages_reinspected": [
+    22,
+    24
+  ],
+  "individually_inspected_pipeline_and_supplement_pages": [
+    12,
+    23
+  ],
+  "rendered_page_sha256": {
+    "page-01.png": "9dbbc32a9f0face51738543e03fe34ee406db8a57c5dd74f03391869e37e96db",
+    "page-02.png": "4956a1c611b5faec7919b1f9704233dbe63c7d916f7e3eef6dbd901efca858a4",
+    "page-03.png": "28fc86a1e6010c374f3880bc9cb337f2ddb7743e1c5675a7c08ca23bc3583af3",
+    "page-04.png": "92151df82aae945ceef67d4019d9f5fcb94f4b4441f81817bd2f60446b0e2d87",
+    "page-05.png": "858ceafb7da491b8f13363c125bc46343c4d4ae1644b6f6e702ef896b0e7e817",
+    "page-06.png": "1c52a2e38610cf82ec96945c8c0dc11d62572421583925880196e19a1e03f02b",
+    "page-07.png": "f054b9cfc3e103049f75437f27e2d88c91b8bff241d0b94374e35a03e72360c7",
+    "page-08.png": "5682c04092cc604dd1a0b152dbc94d0101660f6c3d44be8931120957fb0623b9",
+    "page-09.png": "966c0a81820d77851ec74dcc91239f98c89426c0f58c4a42a4da76edcd1d67e6",
+    "page-10.png": "e119b9e58d1bf19d2172367d47afc8b12450049a50d00ba31b91e63221a91756",
+    "page-11.png": "fc71576440db5aa939569cf6505ed569214089637dc29455e0d24d267a4ffce4",
+    "page-12.png": "a03178367144ad76957d0fa0fa8f130ff0985e8b7da302a27a67b5e7f58a0630",
+    "page-13.png": "4c7c1a6bcc42247cda5bec6feab1490dad0482307fc337c0c381bba3b3334143",
+    "page-14.png": "812f2f1182892229a56da3c301a58c6a867ad60cdc2afa47f97ac47b6a163975",
+    "page-15.png": "ec2863df0bf4a64f48f36fea8281938511a965aa94d5be1203573ae93bb73f03",
+    "page-16.png": "bd36e9babd06149ef1d78ef1f8317f2dba2759d3e222dd496d15b434dd38f26f",
+    "page-17.png": "9d6f02de5c356e5a5b2e58284edad38baa247f83ec7778937453d1ac7049ae69",
+    "page-18.png": "bdd70d966d5e412a1e8d2102fba464db5eedbb0e4858d0ffc32bf256fec6eceb",
+    "page-19.png": "bbf254be8e9e277adcff56ba3296e712a71904a96e3f214d2639064334216b3b",
+    "page-20.png": "447c916a1f51f65b1e64c09c7071147ce4f4ec253331f7a7a24966a4f0f272d5",
+    "page-21.png": "67c13c998a149814dd44954ebabafeaea027fbd47b7301a6e853224d2338cd2c",
+    "page-22.png": "da44995c62448203be38b402e8b1f707b81f8a511782491cb689e704c68380d0",
+    "page-23.png": "457bf33c81b78b0dc373af8b4ae3429ea21f2c88ee9f2eff6aa9d3580f040b1e",
+    "page-24.png": "3df151a6850d3f00dbfd788f53e0125228eefd5e5268e2454e12c8168297b252"
+  },
+  "contact_sheets": [
+    "reports/post_cstat/pdf_qa/contact-1.png",
+    "reports/post_cstat/pdf_qa/contact-2.png",
+    "reports/post_cstat/pdf_qa/contact-3.png",
+    "reports/post_cstat/pdf_qa/contact-4.png"
+  ],
+  "main_source_sha256": "dd526cf9793ed50162c62aa538a6fcdeda2d2f4a515e0f75015c1b84d3c9505f"
+}

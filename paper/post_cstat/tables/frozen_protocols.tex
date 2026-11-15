@@ -1,0 +1,18 @@
+\begin{table}[tbp]
+\centering\small
+\begin{tabular}{llrr}
+\toprule
+Study & Committed config & Units & Protocol prefix\\
+\midrule
+E1 & \texttt{E1\_v1.json} & 12000 & \texttt{cff0f251d4}\\
+E2 & \texttt{E2\_v1.json} & 1800 & \texttt{02c6e6abcd}\\
+E3 & \texttt{E3\_v1.json} & 3600 & \texttt{de9d8f3eaf}\\
+E4 & \texttt{E4\_v1.json} & 7200 & \texttt{10f304e204}\\
+E5 & \texttt{E5\_v1.json} & 4000 & \texttt{f077fb800f}\\
+ANCHORS & \texttt{ANCHORS\_server\_v2.json} & 1600 & \texttt{8ffce7eb4a}\\
+negative\_controls & \texttt{negative\_controls\_server\_v2.json} & 100 & \texttt{d21665e984}\\
+\bottomrule
+\end{tabular}
+\caption{Frozen scientific configurations under \texttt{configs/post\_cstat/}. Full protocol fingerprints, source and input hashes are retained in the corresponding immutable manifests and exported ledger. E6 has no frozen protocol or outcomes. Counts are budget units; E2 consists of 300 paired primitive vectors across six conditions.}
+\label{tab:post-configs}
+\end{table}

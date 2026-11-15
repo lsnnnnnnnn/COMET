@@ -24,6 +24,12 @@ Coverage, raw/intersected widths, nontriviality and decisions are reported
 together. The independent-block historical study is preserved separately
 in Appendix~\ref{app:post-historical}; none of its 6,000 logs was regenerated.
 
+\input{tables/frozen_protocols}
+
+All empirical statements below refer to these exact frozen configurations.
+The figures and their hashed CSV exports retain each method, level and cell;
+mean coordinate widths and per-query medians are labeled separately.
+
 \subsection{Heterogeneous graphs: validity does not imply detection}
 
 E1 crosses independent rows, a connected cycle of shared sources and a
@@ -40,7 +46,8 @@ The 32-bit midpoint sampler has a finite maximum and its moment envelope is
 dominated by the ideal continuous-source bound; these computer samples are
 not literally infinite-variance random variables.
 
-All 96 eligible primary comparisons have complete-family coverage in
+Figure~\ref{fig:post-core} summarizes E1. All 96 eligible primary comparisons
+have complete-family coverage in
 1,000/1,000 logs, with no observed false claim. The marginal Wilson 95\%
 coverage interval for each fixed comparison is $[.996173,1]$.
 The detection results show why this alone is insufficient. COMET detects at
@@ -63,7 +70,7 @@ COMET construction.
 
 \subsection{Local questions and irrelevant global difficulties}
 
-E2 keeps the audited first-half mechanism fixed while changing an outside
+E2 (Figure~\ref{fig:post-locality}) keeps the audited first-half mechanism fixed while changing an outside
 shared-source hub size in $\{1,16,64\}$ and its exposure regime. Both local
 and global queries remain in the frozen family. Global maximum-envelope and
 global-coloring constructions are component ablations; local competitors
@@ -100,28 +107,9 @@ declining-propensity configurations over sample size, subgroup mass,
 exposure probability, moment order and verified coloring counts. The full
 49-point production grid evaluates bias, concentration and range. These are
 algebraic sufficient bounds with zero outcome draws, rather than empirical
-coverage or necessary sample-size estimates.
+coverage or necessary sample-size estimates (Appendix~\ref{app:post-maps}).
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\linewidth]{figures/design_v1/analytic_evidence_cost.png}
-\caption{Deterministic normalized certificate radii at subgroup mass near .1,
-available coloring count 2, family size 16 and total failure budget .05.
-The bounded panel permits a design-only choice among truncation, Hoeffding
-and Bernstein. The finite-moment panel uses the declared Pareto-source
-residual envelope. No Monte Carlo error bars apply.}
-\label{fig:post-cost}
-\end{figure}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\linewidth]{figures/design_v1/analytic_declining_overlap.png}
-\caption{Declining exposure can offset growing row count. The design-only
-schedule is $\epsilon_N=.2(N/8192)^{-\beta}$, with the other quantities as in
-Figure~\ref{fig:post-cost}. These are procedure-specific sufficient radii,
-not a sharp necessary cost or an empirical result for arbitrary weak overlap.}
-\label{fig:post-declining}
-\end{figure}
 
 \subsection{Contrasts, power boundaries and the complete pipeline}
 
@@ -132,7 +120,8 @@ constructions spend the same total $\delta$. Changed-support fractions are
 controls at step sizes .1,.25,.5 and 1 confirm that shrinking a signed update
 scales signal and radius together. This control is not four new data sets.
 
-All 108 primary E3 diagnostics cover 300/300 complete families, with no observed
+For E3 (Figure~\ref{fig:post-contrasts} and the full mean-width table in
+\path{E3_analysis_v1/summary.csv}), all 108 primary diagnostics cover 300/300 complete families, with no observed
 false claim. In the full-support, moderate-overlap bounded cell, a direct
 contrast certifies at least one true risk reduction in 300/300 logs;
 the deduplicated joint-level difference certifies none. Mean per-trial
@@ -152,8 +141,9 @@ only in the same full-support bounded cell.
 \label{fig:post-contrasts}
 \end{figure}
 
-E4 fixes a normalized subgroup of mass near .1, risk threshold .4 and true
-gaps $\{-.10,-.03,0,.03,.10,.20\}$ in each of four environments. All 24
+E4 (Figure~\ref{fig:post-power}) uses four environments, a normalized subgroup
+of mass near .1 and risk threshold .4. Its six true gaps are $-.10$, $-.03$,
+$0$, $.03$, $.10$ and $.20$. All 24
 cells remain included. Detection, false-safe and false-violation decisions
 must be interpreted alongside the known design-only $2r$ sufficient boundary;
 the procedure never receives the true gap. All 192 eligible primary
@@ -174,19 +164,20 @@ queries are truly violating; that event is not the primary-query power curve.
 \label{fig:post-power}
 \end{figure}
 
-E5 learns nuisance functions on 4,096 training rows and discovers at most four
+E5 (Figure~\ref{fig:post-pipeline} and Table~\ref{tab:post-E5}) learns nuisance functions on 4,096 training rows and discovers at most four
 rules of depth at most four and minimum design mass .02 on 8,192 independent
 discovery rows. At most eight policies are frozen before 32,768 certification
 rows. The risk threshold is .32, utility noninferiority margin .01, service
 floor .2 and capacity ceiling .6. The full deduplicated risk-plus-utility family
 contains at most 47 coordinates for eight policies and five auditors, and
 uses its actual distinct count instead of the 16-query validity budget. Comparisons
-include point constraints, diagnostic in-sample auditing, independent global
-and local certificates, matched generic certificates, fixed slices, abstention
+include point constraints, diagnostic in-sample auditing, certificates with independent discovery and global
+or query-local budgets, matched generic certificates, fixed slices, abstention
 and uncertified status quo. The same independent-pilot candidate library is
 used by proper certificate engines. Evaluation of fixed-slice and in-sample
 returns uses the primary discovered constraints as well as their own-family
-diagnostics.
+diagnostics. Fixed-slice certificates cover their restricted family; they
+do not inherit the return guarantee for the independently discovered family.
 
 The required pipeline endpoints are return, return and unsafe, return and
 infeasible, and return and safe and useful, together with discovery and
@@ -194,8 +185,65 @@ certification of a true violation. Utility, utility gain, service, risk
 violation and oracle-feasible/robust-slack comparators are evaluation-only.
 Conditional unsafe-given-return is separately descriptive. Abstaining in
 every trial and rejecting all service cannot count as useful success.
-E5 outcomes are withheld from performance conclusions until its fixed count
-and full analysis are complete.
+All 4,000 E5 trials and their independent endpoint reconstruction are complete.
+The actual family size is 47 in every trial. All 32 predeclared primary-level coverage
+comparisons cover their declared family in 500/500 trials, with no observed
+false claim; fixed-slice coverage concerns its own family. The marginal Wilson 95\% coverage interval
+for each fixed comparison is $[.992376,1]$; an observed zero-error count has
+upper endpoint .007624. None of these intervals is simultaneous across methods
+or cells.
+
+COMET and matched generic return safe and useful policies in 500/500 trials
+in each moderate-overlap cell. Their weak-overlap counts are 340/500 and
+238/500 under the cycle, and 411/500 and 497/500 under independent rows, for
+mixed and null worlds respectively. Every COMET return satisfies the primary
+risk, utility-NI and service/capacity constraints in the evaluator. Table~\ref{tab:post-E5}
+separates nonbaseline positive-gain returns: the weak independent null count
+of 497 includes 265 baseline returns, while the weak cycle null count of 238
+includes seven. The strict-gain breakdown is a posthoc descriptive diagnostic,
+not an additional preregistered primary hypothesis.
+
+The global pure-truncation ablation returns safe and useful policies less
+often, as shown in the table. Its difference from COMET combines localization
+with bounded dispatch; it does not isolate the graph effect. The fully matched
+generic comparator includes the same dispatch and reproduces COMET exactly.
+Fixed-slice certificates retain 500/500 coverage of their own coordinates but
+return policies unsafe for the discovered primary family in 500/500 moderate
+mixed trials, 82/500 weak cycle mixed trials and 459/500 weak independent mixed
+trials. Covering different questions is not protection for the primary questions.
+The always-abstaining reference has zero useful returns. The uncertified
+status-quo reference is oracle-feasible in every trial but remains a baseline
+with zero utility gain; its column does not describe a certified policy.
+
+Discovery and certification of a true violation also remain distinct from
+safe return. COMET discovers and certifies a true violation in 500/500 trials
+in each moderate-overlap mixed world, and in 0/500 in each weak-overlap mixed
+world. Null worlds have no detected true violation. Thus weak-overlap returns
+can be safe and useful without demonstrating successful certification of a
+planted violation; the endpoints cannot substitute for one another.
+
+Returned COMET policies have descriptive mean utility gains from .02599 to
+.05947 across the eight cells, including zero gains on baseline returns.
+Mean service over all 500 trials, counting zero on abstention, ranges from
+.2128 to .45. Returned nonbaseline candidates serve approximately .45 of the
+known design; baseline service is .35. The full value table preserves both
+the counts of available values and the distinction between means among
+returns and means over all trials.
+
+\input{tables/E5_decisions}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{figures/empirical_E5_v3/fig5_safe_useful_return.pdf}
+\caption{E5 primary-level joint events across 500 complete independent trials per
+cell. Cells and colorbars show percentages, retaining 0.2\% increments;
+exact counts and pointwise Wilson 95\% intervals are exported. Point and in-sample
+arms are heuristic, fixed slices protect a restricted family, and status quo is
+uncertified. Full-primary-family return guarantees apply to global, COMET and
+matched generic. Baseline and nonbaseline positive-gain returns are separated
+in Table~\ref{tab:post-E5}; total abstention is not useful return.}
+\label{fig:post-pipeline}
+\end{figure}
 
 Supplementary theorem-compatible anchors and assumption controls are reported
 in Appendix~\ref{app:post-supplementary}. On the bounded IID anchor, independent

@@ -355,7 +355,7 @@ def _plot_pipeline(analysis,output,formats,name="fig5_safe_useful_return"):
     cells=sorted({row["cell"] for row in rows})
     lookup={(row["cell"],row["method"]):row for row in rows}
     for ax,event,title in zip(axes.ravel(),("returned","return_unsafe","return_and_infeasible","return_safe_useful"),
-            ("Return","Return AND unsafe (risk)","Return AND infeasible (all constraints)","Return AND safe AND useful")):
+            ("Return","Return AND unsafe (risk)","Return AND infeasible","Return AND safe AND useful")):
         if not cells:
             _unavailable(ax,"Pipeline analysis unavailable")
             continue
@@ -371,12 +371,17 @@ def _plot_pipeline(analysis,output,formats,name="fig5_safe_useful_return"):
         for i in range(len(cells)):
             for j in range(len(PIPELINE_ARMS)):
                 value=values[i,j]
-                ax.text(j,i,"NA" if not math.isfinite(value) else f"{value:.2f}",ha="center",va="center",
-                        fontsize=6.5,color="white" if math.isfinite(value) and value<.45 else "black")
+                ax.text(j,i,"NA" if not math.isfinite(value) else f"{100*value:.1f}".rstrip("0").rstrip("."),ha="center",va="center",
+                        fontsize=7,color="white" if math.isfinite(value) and value<.45 else "black")
         ax.set_xticks(range(len(PIPELINE_ARMS)),PIPELINE_SHORT,rotation=65,ha="right")
         ax.set_yticks(range(len(cells)),[cell.replace("independent","ind").replace("moderate","mod") for cell in cells])
         ax.set_title(title)
-        fig.colorbar(image,ax=ax,fraction=.025,pad=.02,ticks=[0,.5,1])
+        bar=fig.colorbar(image,ax=ax,fraction=.025,pad=.02,ticks=[0,.5,1])
+        bar.ax.set_yticklabels(["0%","50%","100%"])
+        ax.set_xticks(np.arange(-.5,len(PIPELINE_ARMS),1),minor=True)
+        ax.set_yticks(np.arange(-.5,len(cells),1),minor=True)
+        ax.grid(which="minor",color="white",linewidth=.3,alpha=.45)
+        ax.tick_params(which="minor",bottom=False,left=False)
     _finish_axes(axes)
     _save(fig,output,name,formats)
 
@@ -565,7 +570,7 @@ CAPTIONS={
     "fig2_query_locality":"E2 mechanism, predeclared constant policy 0. Audited-first-half and global queries are shown separately, across every outside hub/overlap condition. Three pure residual-truncation layers isolate the costs: global envelope/global graph, local moments/global graph, and local moments/induced-support graph. COMET / matched generic additionally dispatches to sharp bounded certificates; its improvement over pure local truncation at the same coloring is a bounded-branch benefit, not a graph-localization benefit. The vertical coordinate is a design-determined normalized radius, not Monte Carlo uncertainty. No average over outside/global auditors is substituted for locality. All methods, four policies and auditors remain in empirical_coordinates.csv.",
     "fig3_paired_contrasts":"E3, primary 95% level, constant changed-policy anchor and all-row auditor. Direct signed contrasts and subtraction of simultaneously certified, deduplicated unique levels share the same total error budget and logged data. Shown widths are descriptive per-query medians; reducing a policy change also changes its signal and feasible range, and does not by itself establish improved sign-certification power.",
     "fig4_gap_power_boundary":"E4 whole-trial probabilities of certifying the primary query safe or violating its threshold. Shaded gamma<=0 points are null/safe settings, not positive-gap power. Error bars are pointwise Wilson 95% intervals. The 2r line is a design-only sufficient boundary on the coverage event; an off-axis boundary is reported numerically, not clipped into an apparent successful regime. All false-safe/false-violation counts and intervals remain in empirical_events.csv.",
-    "fig5_safe_useful_return":"E5 complete independent three-split trials. Four different joint events are reported; zero false-return counts do not mean zero risk. Gray/NA denotes unavailable or unassessable input, never an imputed zero. Point and in-sample arms are heuristic, status quo is an uncertified reference, and abstention cannot count as useful return. Fixed-slice coverage concerns its restricted family; return feasibility is evaluated against the primary independently discovered constraints. Every risk and utility coordinate used for selection is included in the actual family budget. Pointwise Wilson intervals and denominators are in empirical_events.csv.",
+    "fig5_safe_useful_return":"E5 complete independent three-split trials. Cell annotations and colorbars show percentages, retaining 0.2% increments at n=500. Four different joint events are reported; zero false-return counts do not mean zero risk. Gray/NA denotes unavailable or unassessable input, never an imputed zero. Point and in-sample arms are heuristic, status quo is an uncertified reference, and abstention cannot count as useful return. Fixed-slice coverage concerns its restricted family; return feasibility is evaluated against the primary independently discovered constraints. Every risk and utility coordinate used for selection is included in the actual family budget. Pointwise Wilson intervals and denominators are in empirical_events.csv.",
     "appendix_anchors_controls":"Supplementary theorem-compatible strong baselines and prespecified invalid-assumption diagnostics. Ineligible IID/OPE anchors are not fabricated. Intentionally invalid controls are heuristic, and an honest refusal is not evidence of zero certification error. Wilson intervals use whole independent units. Fixed-DGP scaling is descriptive, not a minimax theorem.",
     "appendix_real_covariates":"Real-covariate pipeline results, if actually supplied. The finite-population selective-label task is not randomized evidence about a social intervention. Missing data are explicitly unavailable rather than replaced by synthetic numbers."}
 

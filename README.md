@@ -6,7 +6,7 @@ global conditional dependency graph. Independent repeated macro-blocks are a
 historical baseline. The fully informed generic graph comparator is
 algebraically equal to the corresponding COMET configuration.
 
-Start with the [local manuscript](paper/post_cstat/README.md),
+Start with the [final handoff](FINAL_HANDOFF.md), [local manuscript](paper/post_cstat/README.md),
 [API and fixed-array examples](docs/post_cstat_api.md),
 [main proof](theory/global_residual_truncation.md),
 [scoped cost lower bound](theory/query_specific_cost_lower_bound.md), and
@@ -14,10 +14,10 @@ Start with the [local manuscript](paper/post_cstat/README.md),
 The [research verdict](reports/research_verdict.md) distinguishes correctness,
 informativeness, useful decisions and distinctiveness.
 
-E1–E4 are complete and independently checked. E5 and supplementary experiments
-are still running; consult [actual execution state](reports/post_cstat/ACTIVE_STATE.json)
+E1–E5 and the supplementary suites are complete and independently checked.
+E6 remains data-blocked. Consult [actual execution state](reports/post_cstat/ACTIVE_STATE.json)
 and the [dated ID inventory](reports/post_cstat/remaining_run_ids.json).
-Supplementary studies run in the existing server's named tmux session under
+Supplementary studies completed in the existing server's named tmux session under
 explicit pre-outcome server-v2 environment amendments; already-started main
 studies retain the original production host. No E6 outcome has been sampled:
 the selected official ACS archive is data-blocked on both hosts.

@@ -1,0 +1,111 @@
+{
+  "status": "ACTUAL_SUPPLIED_SUMMARIES_ONLY",
+  "figures": [
+    "fig1_core_validity_informativeness",
+    "fig2_query_locality",
+    "fig3_paired_contrasts",
+    "fig4_gap_power_boundary"
+  ],
+  "new_outcome_draws": 0,
+  "legacy_new_outcome_draws": 0,
+  "availability": {
+    "E1": {
+      "name": "E1",
+      "status": "COMPLETE",
+      "path": "results/post_cstat/E1_analysis_v1/summary.json",
+      "sha256": "3f23be62e71980dbbb1436c34b51106241d9bcbef822eb3754b3c935fe9142a7",
+      "phase": "confirmatory",
+      "completed_units": 12000,
+      "remaining_units": 0
+    },
+    "E1_detailed": {
+      "name": "E1_detailed",
+      "status": "AVAILABLE",
+      "sources": {
+        "results/post_cstat/E1_detailed_v1/group_summary.csv": "5e31eec99b3b48824f1d7c368e780a7bb2a0b4eb4723ebb2edb52543d9000889",
+        "results/post_cstat/E1_detailed_v1/query_summary.csv": "39c02353c431be86bec658600d8580fc84832c7e884bc23b85451ee9110684eb"
+      }
+    },
+    "E2": {
+      "name": "E2",
+      "status": "COMPLETE",
+      "path": "results/post_cstat/E2_analysis_v1/summary.json",
+      "sha256": "3e03041302956432e2544fd470ce355c0307c67c317c3d02e6b17b7f698893e2",
+      "phase": "confirmatory",
+      "completed_units": 1800,
+      "remaining_units": 0
+    },
+    "E2_detailed": {
+      "name": "E2_detailed",
+      "status": "AVAILABLE",
+      "sources": {
+        "results/post_cstat/E2_detailed_v1/group_summary.csv": "e9ea2a5f8b36c9085060b24ad44f8f484e0dfac63055ccf638d664c6efd7824e",
+        "results/post_cstat/E2_detailed_v1/query_summary.csv": "eb103c36112be94c1ccd30e7a543addd34eabc8a16f0d204e2847f4e7cea3f0e"
+      }
+    },
+    "E3": {
+      "name": "E3",
+      "status": "COMPLETE",
+      "path": "results/post_cstat/E3_analysis_v1/summary.json",
+      "sha256": "8f46750a90e50e85ebeeac7180f4c5a4107479907a711a7fa6432cf8ec4bc29b",
+      "phase": "confirmatory",
+      "completed_units": 3600,
+      "remaining_units": 0
+    },
+    "E3_detailed": {
+      "name": "E3_detailed",
+      "status": "AVAILABLE",
+      "sources": {
+        "results/post_cstat/E3_detailed_v1/group_summary.csv": "aa1166d19d3cc16fd559a08756ceece2d27278960884ea38934a19cf65bf1323",
+        "results/post_cstat/E3_detailed_v1/query_summary.csv": "f92bfdfe747809ed1474b030ec8264c06c66304f701e206d07b1ce55c1884a0a"
+      }
+    },
+    "E4": {
+      "name": "E4",
+      "status": "COMPLETE",
+      "path": "results/post_cstat/E4_analysis_v1/summary.json",
+      "sha256": "70df695d73f615eef27048fac8441530375de5827bcaa21c389bee3097e308f4",
+      "phase": "confirmatory",
+      "completed_units": 7200,
+      "remaining_units": 0
+    },
+    "E4_detailed": {
+      "name": "E4_detailed",
+      "status": "AVAILABLE",
+      "sources": {
+        "results/post_cstat/E4_detailed_v1/group_summary.csv": "94938ce75d47503db69265679e59a56f0268215678dbf69c9f8cdbc5c357f2cb",
+        "results/post_cstat/E4_detailed_v1/query_summary.csv": "26e60ec35764b5b0580b795420011cbbc47ed2fe6dd49be978b1fa7f0b24d4ad"
+      }
+    },
+    "E5": {
+      "name": "E5",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E5_detailed": {
+      "name": "E5_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "E6": {
+      "name": "E6",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E6_detailed": {
+      "name": "E6_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "ANCHORS": {
+      "name": "ANCHORS",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "NEGATIVE_CONTROLS": {
+      "name": "NEGATIVE_CONTROLS",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    }
+  }
+}

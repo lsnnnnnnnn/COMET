@@ -1,0 +1,17 @@
+{
+  "timestamp_utc": "2026-11-15T04:23:27.608136+00:00",
+  "status": "ADMITTED_PRE_FIRST_OUTCOME",
+  "source_snapshot_of_local_git": "abdeab0",
+  "server_snapshot_git": "f5ba837fadd83ba7264645e023164ec5dd297584",
+  "scientific_source_sha_match": true,
+  "portable_fixture_comparison": "reports/post_cstat/server_fixture_comparison_v2.json",
+  "source_root": "/data1/shengen/COMET_POST_CSTAT_20261115/",
+  "zero_outcome_suites": [
+    "ANCHORS",
+    "negative_controls"
+  ],
+  "E1_E5_production_unchanged": true,
+  "maximum_server_scientific_workers": 1,
+  "maximum_global_scientific_workers": 2,
+  "scientific_ID_seed_equality": true
+}

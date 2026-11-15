@@ -1,0 +1,7 @@
+{
+  "status": "COMPLETE",
+  "completed_units": 1600,
+  "remaining_units": 0,
+  "failed_units": 0,
+  "primary_comparison_count": 68
+}

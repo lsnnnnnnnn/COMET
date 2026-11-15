@@ -1,0 +1,59 @@
+{"suite": "E2", "cell": "hub1-extreme1e-4", "new_completed_units": 50, "global_checkpoint_units": 2800, "global_artifact_bytes": 46543937}
+{"suite": "E2", "cell": "hub1-extreme1e-4", "new_completed_units": 100, "global_checkpoint_units": 2913, "global_artifact_bytes": 48725821}
+{"suite": "E2", "cell": "hub1-extreme1e-4", "new_completed_units": 150, "global_checkpoint_units": 3027, "global_artifact_bytes": 50923685}
+{"suite": "E2", "cell": "hub1-extreme1e-4", "new_completed_units": 200, "global_checkpoint_units": 3141, "global_artifact_bytes": 53115748}
+{"suite": "E2", "cell": "hub1-extreme1e-4", "new_completed_units": 250, "global_checkpoint_units": 3250, "global_artifact_bytes": 55233417}
+{"suite": "E2", "cell": "hub1-extreme1e-4", "new_completed_units": 300, "global_checkpoint_units": 3300, "global_artifact_bytes": 56314162}
+{"suite": "E2", "cell": "hub1-moderate", "new_completed_units": 350, "global_checkpoint_units": 3819, "global_artifact_bytes": 63230717}
+{"suite": "E2", "cell": "hub1-moderate", "new_completed_units": 400, "global_checkpoint_units": 3975, "global_artifact_bytes": 65656944}
+{"suite": "E2", "cell": "hub1-moderate", "new_completed_units": 450, "global_checkpoint_units": 4132, "global_artifact_bytes": 68091274}
+{"suite": "E2", "cell": "hub1-moderate", "new_completed_units": 500, "global_checkpoint_units": 4291, "global_artifact_bytes": 70549268}
+{"suite": "E2", "cell": "hub1-moderate", "new_completed_units": 550, "global_checkpoint_units": 4450, "global_artifact_bytes": 73011120}
+{"suite": "E2", "cell": "hub1-moderate", "new_completed_units": 600, "global_checkpoint_units": 4600, "global_artifact_bytes": 75367914}
+{"suite": "E2", "cell": "hub16-extreme1e-4", "new_completed_units": 650, "global_checkpoint_units": 4869, "global_artifact_bytes": 80657105}
+{"suite": "E2", "cell": "hub16-extreme1e-4", "new_completed_units": 700, "global_checkpoint_units": 4991, "global_artifact_bytes": 83103455}
+{"suite": "E2", "cell": "hub16-extreme1e-4", "new_completed_units": 750, "global_checkpoint_units": 5113, "global_artifact_bytes": 85539454}
+{"suite": "E2", "cell": "hub16-extreme1e-4", "new_completed_units": 800, "global_checkpoint_units": 5236, "global_artifact_bytes": 87990215}
+{"suite": "E2", "cell": "hub16-extreme1e-4", "new_completed_units": 850, "global_checkpoint_units": 5360, "global_artifact_bytes": 90472124}
+{"suite": "E2", "cell": "hub16-extreme1e-4", "new_completed_units": 900, "global_checkpoint_units": 5484, "global_artifact_bytes": 92947688}
+{"suite": "E2", "cell": "hub16-moderate", "new_completed_units": 950, "global_checkpoint_units": 5898, "global_artifact_bytes": 100306299}
+{"suite": "E2", "cell": "hub16-moderate", "new_completed_units": 1000, "global_checkpoint_units": 6000, "global_artifact_bytes": 102571355}
+{"suite": "E2", "cell": "hub16-moderate", "new_completed_units": 1050, "global_checkpoint_units": 6108, "global_artifact_bytes": 104851266}
+{"suite": "E2", "cell": "hub16-moderate", "new_completed_units": 1100, "global_checkpoint_units": 6279, "global_artifact_bytes": 107381953}
+{"suite": "E2", "cell": "hub16-moderate", "new_completed_units": 1150, "global_checkpoint_units": 6452, "global_artifact_bytes": 109929283}
+{"suite": "E2", "cell": "hub16-moderate", "new_completed_units": 1200, "global_checkpoint_units": 6626, "global_artifact_bytes": 112485531}
+{"suite": "E2", "cell": "hub64-extreme1e-4", "new_completed_units": 1250, "global_checkpoint_units": 7250, "global_artifact_bytes": 119171385}
+{"suite": "E2", "cell": "hub64-extreme1e-4", "new_completed_units": 1300, "global_checkpoint_units": 7300, "global_artifact_bytes": 120523847}
+{"suite": "E2", "cell": "hub64-extreme1e-4", "new_completed_units": 1350, "global_checkpoint_units": 7379, "global_artifact_bytes": 122317020}
+{"suite": "E2", "cell": "hub64-extreme1e-4", "new_completed_units": 1400, "global_checkpoint_units": 7511, "global_artifact_bytes": 124902941}
+{"suite": "E2", "cell": "hub64-extreme1e-4", "new_completed_units": 1450, "global_checkpoint_units": 7644, "global_artifact_bytes": 127517540}
+{"suite": "E2", "cell": "hub64-extreme1e-4", "new_completed_units": 1500, "global_checkpoint_units": 7777, "global_artifact_bytes": 130126168}
+{"suite": "E2", "cell": "hub64-moderate", "new_completed_units": 1550, "global_checkpoint_units": 8202, "global_artifact_bytes": 137576559}
+{"suite": "E2", "cell": "hub64-moderate", "new_completed_units": 1600, "global_checkpoint_units": 8338, "global_artifact_bytes": 140344374}
+{"suite": "E2", "cell": "hub64-moderate", "new_completed_units": 1650, "global_checkpoint_units": 8475, "global_artifact_bytes": 143126479}
+{"suite": "E2", "cell": "hub64-moderate", "new_completed_units": 1700, "global_checkpoint_units": 8612, "global_artifact_bytes": 145909522}
+{"suite": "E2", "cell": "hub64-moderate", "new_completed_units": 1750, "global_checkpoint_units": 8749, "global_artifact_bytes": 148692701}
+{"suite": "E2", "cell": "hub64-moderate", "new_completed_units": 1800, "global_checkpoint_units": 8840, "global_artifact_bytes": 150533538}
+{
+  "status": "COMPLETE",
+  "suite": "E2",
+  "fingerprint": "02c6e6abcde74b4cc8895b92c60acc147b0008d2f26c2714e20ff3f1b46ee4f3",
+  "new_completed_units": 1800,
+  "failed_units": 0,
+  "remaining_ids": [],
+  "legacy_new_outcome_draws": 0,
+  "global_new_checkpoint_units": 8947,
+  "global_artifact_bytes": 151474403,
+  "first_resource_snapshot": {
+    "free_disk_bytes": 85606400000,
+    "available_ram_bytes": 2941485056,
+    "worker_rss_bytes": 46120960,
+    "memory_scope": "one synchronous worker RSS; no concurrent-peak sum inferred"
+  },
+  "stop_reason": null,
+  "wall_seconds": 1867.1646935419412,
+  "cpu_seconds": 1798.510877,
+  "background_work_running": false,
+  "execution_mode": "one synchronous CPU worker; other active suites require coordinator's <=2-worker total",
+  "resume_command": ".venv/bin/python -m experiments.extension_runner --suite E2 --run --protocol /Users/shengenli/Documents/ChatGPT/COMET/results/post_cstat/E2_protocol.json --results /Users/shengenli/Documents/ChatGPT/COMET/results/post_cstat/E2 --global-results /Users/shengenli/Documents/ChatGPT/COMET/results/post_cstat"
+}

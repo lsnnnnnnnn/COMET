@@ -1,0 +1,11 @@
+{
+  "status": "COMPLETE",
+  "phase": "confirmatory",
+  "completed_units": 12000,
+  "remaining_units": 0,
+  "failed_units": 0,
+  "unassessable_units": 0,
+  "primary_comparison_count": 96,
+  "analysis_new_outcome_draws": 0,
+  "legacy_new_outcome_draws": 0
+}

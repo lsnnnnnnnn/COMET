@@ -1,0 +1,4 @@
+
+http_code=403
+size_download=0
+url_effective=https://www2.census.gov/programs-surveys/acs/data/pums/2018/1-Year/csv_pca.zip

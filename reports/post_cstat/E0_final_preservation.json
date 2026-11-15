@@ -1,0 +1,14 @@
+{
+  "timestamp_utc": "2026-11-15T05:02:14.501147+00:00",
+  "anchor": "ca5bb878cf9635fac4381d03281df0bc8a900daa",
+  "git_diff_for_old_confirmatory_configs_and_nine_page_proposal": "empty byte diff",
+  "gzip_files_in_old_confirmatory_tree": 6000,
+  "old_index_sha256": "f19f38044ef6c93951129db1e664e213c9d806bb6e571a952822e3792aae7b22",
+  "E0_new_draws": 0,
+  "reported_preserved_logs": 6000,
+  "reported_preserved_candidate_records": 1134000,
+  "historical_payload_checks_rerun": false,
+  "scope": "read-only byte diff and file inventory; not a historical experiment/preflight/test rerun",
+  "old_checkpoint_byte_hashes_checked": 6000,
+  "old_checkpoint_byte_hash_mismatches": []
+}

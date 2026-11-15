@@ -1,0 +1,87 @@
+{"suite": "ANCHORS", "cell": "iid-bounded", "new_completed_units": 25, "global_new_units": 25}
+{"suite": "ANCHORS", "cell": "iid-bounded", "new_completed_units": 50, "global_new_units": 50}
+{"suite": "ANCHORS", "cell": "iid-bounded", "new_completed_units": 75, "global_new_units": 75}
+{"suite": "ANCHORS", "cell": "iid-bounded", "new_completed_units": 100, "global_new_units": 100}
+{"suite": "ANCHORS", "cell": "iid-bounded", "new_completed_units": 125, "global_new_units": 125}
+{"suite": "ANCHORS", "cell": "iid-bounded", "new_completed_units": 150, "global_new_units": 150}
+{"suite": "ANCHORS", "cell": "iid-bounded", "new_completed_units": 175, "global_new_units": 175}
+{"suite": "ANCHORS", "cell": "iid-bounded", "new_completed_units": 200, "global_new_units": 200}
+{"suite": "ANCHORS", "cell": "iid-heavy", "new_completed_units": 225, "global_new_units": 225}
+{"suite": "ANCHORS", "cell": "iid-heavy", "new_completed_units": 250, "global_new_units": 250}
+{"suite": "ANCHORS", "cell": "iid-heavy", "new_completed_units": 275, "global_new_units": 275}
+{"suite": "ANCHORS", "cell": "iid-heavy", "new_completed_units": 300, "global_new_units": 300}
+{"suite": "ANCHORS", "cell": "iid-heavy", "new_completed_units": 325, "global_new_units": 325}
+{"suite": "ANCHORS", "cell": "iid-heavy", "new_completed_units": 350, "global_new_units": 350}
+{"suite": "ANCHORS", "cell": "iid-heavy", "new_completed_units": 375, "global_new_units": 375}
+{"suite": "ANCHORS", "cell": "iid-heavy", "new_completed_units": 400, "global_new_units": 400}
+{"suite": "ANCHORS", "cell": "scaling-N131072-bounded", "new_completed_units": 425, "global_new_units": 425}
+{"suite": "ANCHORS", "cell": "scaling-N131072-bounded", "new_completed_units": 450, "global_new_units": 450}
+{"suite": "ANCHORS", "cell": "scaling-N131072-bounded", "new_completed_units": 475, "global_new_units": 475}
+{"suite": "ANCHORS", "cell": "scaling-N131072-bounded", "new_completed_units": 500, "global_new_units": 500}
+{"suite": "ANCHORS", "cell": "scaling-N131072-bounded", "new_completed_units": 525, "global_new_units": 525}
+{"suite": "ANCHORS", "cell": "scaling-N131072-bounded", "new_completed_units": 550, "global_new_units": 550}
+{"suite": "ANCHORS", "cell": "scaling-N131072-bounded", "new_completed_units": 575, "global_new_units": 575}
+{"suite": "ANCHORS", "cell": "scaling-N131072-bounded", "new_completed_units": 600, "global_new_units": 600}
+{"suite": "ANCHORS", "cell": "scaling-N131072-heavy", "new_completed_units": 625, "global_new_units": 625}
+{"suite": "ANCHORS", "cell": "scaling-N131072-heavy", "new_completed_units": 650, "global_new_units": 650}
+{"suite": "ANCHORS", "cell": "scaling-N131072-heavy", "new_completed_units": 675, "global_new_units": 675}
+{"suite": "ANCHORS", "cell": "scaling-N131072-heavy", "new_completed_units": 700, "global_new_units": 700}
+{"suite": "ANCHORS", "cell": "scaling-N131072-heavy", "new_completed_units": 725, "global_new_units": 725}
+{"suite": "ANCHORS", "cell": "scaling-N131072-heavy", "new_completed_units": 750, "global_new_units": 750}
+{"suite": "ANCHORS", "cell": "scaling-N131072-heavy", "new_completed_units": 775, "global_new_units": 775}
+{"suite": "ANCHORS", "cell": "scaling-N131072-heavy", "new_completed_units": 800, "global_new_units": 800}
+{"suite": "ANCHORS", "cell": "scaling-N32768-bounded", "new_completed_units": 825, "global_new_units": 825}
+{"suite": "ANCHORS", "cell": "scaling-N32768-bounded", "new_completed_units": 850, "global_new_units": 850}
+{"suite": "ANCHORS", "cell": "scaling-N32768-bounded", "new_completed_units": 875, "global_new_units": 875}
+{"suite": "ANCHORS", "cell": "scaling-N32768-bounded", "new_completed_units": 900, "global_new_units": 900}
+{"suite": "ANCHORS", "cell": "scaling-N32768-bounded", "new_completed_units": 925, "global_new_units": 925}
+{"suite": "ANCHORS", "cell": "scaling-N32768-bounded", "new_completed_units": 950, "global_new_units": 950}
+{"suite": "ANCHORS", "cell": "scaling-N32768-bounded", "new_completed_units": 975, "global_new_units": 975}
+{"suite": "ANCHORS", "cell": "scaling-N32768-bounded", "new_completed_units": 1000, "global_new_units": 1000}
+{"suite": "ANCHORS", "cell": "scaling-N32768-heavy", "new_completed_units": 1025, "global_new_units": 1025}
+{"suite": "ANCHORS", "cell": "scaling-N32768-heavy", "new_completed_units": 1050, "global_new_units": 1050}
+{"suite": "ANCHORS", "cell": "scaling-N32768-heavy", "new_completed_units": 1075, "global_new_units": 1075}
+{"suite": "ANCHORS", "cell": "scaling-N32768-heavy", "new_completed_units": 1100, "global_new_units": 1100}
+{"suite": "ANCHORS", "cell": "scaling-N32768-heavy", "new_completed_units": 1125, "global_new_units": 1125}
+{"suite": "ANCHORS", "cell": "scaling-N32768-heavy", "new_completed_units": 1150, "global_new_units": 1150}
+{"suite": "ANCHORS", "cell": "scaling-N32768-heavy", "new_completed_units": 1175, "global_new_units": 1175}
+{"suite": "ANCHORS", "cell": "scaling-N32768-heavy", "new_completed_units": 1200, "global_new_units": 1200}
+{"suite": "ANCHORS", "cell": "scaling-N8192-bounded", "new_completed_units": 1225, "global_new_units": 1225}
+{"suite": "ANCHORS", "cell": "scaling-N8192-bounded", "new_completed_units": 1250, "global_new_units": 1250}
+{"suite": "ANCHORS", "cell": "scaling-N8192-bounded", "new_completed_units": 1275, "global_new_units": 1275}
+{"suite": "ANCHORS", "cell": "scaling-N8192-bounded", "new_completed_units": 1300, "global_new_units": 1300}
+{"suite": "ANCHORS", "cell": "scaling-N8192-bounded", "new_completed_units": 1325, "global_new_units": 1325}
+{"suite": "ANCHORS", "cell": "scaling-N8192-bounded", "new_completed_units": 1350, "global_new_units": 1350}
+{"suite": "ANCHORS", "cell": "scaling-N8192-bounded", "new_completed_units": 1375, "global_new_units": 1375}
+{"suite": "ANCHORS", "cell": "scaling-N8192-bounded", "new_completed_units": 1400, "global_new_units": 1400}
+{"suite": "ANCHORS", "cell": "scaling-N8192-heavy", "new_completed_units": 1425, "global_new_units": 1425}
+{"suite": "ANCHORS", "cell": "scaling-N8192-heavy", "new_completed_units": 1450, "global_new_units": 1450}
+{"suite": "ANCHORS", "cell": "scaling-N8192-heavy", "new_completed_units": 1475, "global_new_units": 1475}
+{"suite": "ANCHORS", "cell": "scaling-N8192-heavy", "new_completed_units": 1500, "global_new_units": 1500}
+{"suite": "ANCHORS", "cell": "scaling-N8192-heavy", "new_completed_units": 1525, "global_new_units": 1525}
+{"suite": "ANCHORS", "cell": "scaling-N8192-heavy", "new_completed_units": 1550, "global_new_units": 1550}
+{"suite": "ANCHORS", "cell": "scaling-N8192-heavy", "new_completed_units": 1575, "global_new_units": 1575}
+{"suite": "ANCHORS", "cell": "scaling-N8192-heavy", "new_completed_units": 1600, "global_new_units": 1600}
+{
+  "suite": "ANCHORS",
+  "status": "COMPLETE",
+  "fingerprint": "8ffce7eb4a070fc223d411d6794ecd8ff5a257775063f3125ff5a9e6585a145c",
+  "new_completed_units": 1600,
+  "failed_units": 1,
+  "remaining_ids": [],
+  "legacy_new_outcome_draws": 0,
+  "background_work_running": false,
+  "global_new_checkpoint_units": 1600,
+  "global_artifact_bytes": 23728126,
+  "first_resource_snapshot": {
+    "free_disk_bytes": 7262781169664,
+    "available_ram_bytes": 494190694400,
+    "worker_rss_bytes": 64212992,
+    "memory_scope": "one synchronous worker RSS; no concurrent-peak sum inferred"
+  },
+  "wall_seconds": 873.9014828279614,
+  "cpu_seconds": 868.04154175,
+  "stop_reason": null,
+  "execution_mode": "one worker; coordinator controls <=2 total workers and combined RAM",
+  "resume_command": ".venv/bin/python -m experiments.anchor_runner --run --protocol /data1/shengen/COMET_POST_CSTAT_20261115/results/post_cstat/ANCHORS_server_v2_protocol.json --results /data1/shengen/COMET_POST_CSTAT_20261115/results/post_cstat/ANCHORS --global-results /data1/shengen/COMET_POST_CSTAT_20261115/results/post_cstat"
+}

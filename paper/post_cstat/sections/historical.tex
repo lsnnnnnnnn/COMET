@@ -1,13 +1,11 @@
 \section{Preserved historical confirmation}
 \label{app:post-historical}
 
-The preserved C-STAT study contains 6,000 independent complete logs, 1,000
-in each of six fixed-design cells, with 1,134,000 candidate records. Its
-seventeen eligible primary comparisons each covered 1,000 of 1,000 complete
-families. Each fixed comparison has Wilson 95\% interval $[.996173,1]$;
-this is a marginal Monte Carlo interval, not a simultaneous bound across all
-seventeen comparisons and not a proof of validity. Methods share logs.
-The twelve historical preflight logs are excluded.
+The preserved C-STAT study has 6,000 independent logs (1,000 per cell) and
+1,134,000 candidate records. All seventeen eligible primary comparisons cover
+1,000/1,000 complete families, with pointwise Wilson 95\% interval
+$[.996173,1]$. Methods share logs: these intervals are neither simultaneous
+across comparisons nor proofs of validity.
 
 \begin{table}[ht]
 \centering
@@ -38,10 +36,6 @@ methods in F were fully vacuous and always abstained; the bounded graph method
 was inapplicable to F. These results describe the historical independent-block
 model and do not validate the new heterogeneous connected-graph implementation.
 
-The analytic A comparison in Equation~\eqref{eq:post-A-fixture} also shows why
-the historical Chebyshev method's low detection is not an information limit.
-Using the actual bounded residual range gives an eligible Hoeffding radius
-small enough to guarantee detection on its coverage event. No historical
-data were regenerated for this calculation and no new comparison was inserted
-into the original confirmation family.
-
+Equation~\eqref{eq:post-A-fixture} supplies a separate deterministic Hoeffding
+comparison. It regenerates no historical data and changes none of the original
+seventeen confirmatory comparisons.

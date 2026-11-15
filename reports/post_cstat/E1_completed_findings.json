@@ -1,0 +1,190 @@
+{
+  "status": "COMPLETE",
+  "completed": 12000,
+  "primary_comparisons": 96,
+  "all_primary_family_coverage_1000_of1000": true,
+  "any_false_claim_hits_total_across_comparisons": 0,
+  "comet_detection": {
+    "cycle-moderate-bounded": {
+      "applicable": true,
+      "denominator": 1000,
+      "hits": 1000,
+      "rate": 1.0,
+      "realized_frequency_bounds": [
+        1.0,
+        1.0
+      ],
+      "unknown_trials": 0,
+      "wilson95": [
+        0.996173241514445,
+        1.0
+      ]
+    },
+    "cycle-moderate-heavy": {
+      "applicable": true,
+      "denominator": 1000,
+      "hits": 0,
+      "rate": 0.0,
+      "realized_frequency_bounds": [
+        0.0,
+        0.0
+      ],
+      "unknown_trials": 0,
+      "wilson95": [
+        0.0,
+        0.0038267584855551213
+      ]
+    },
+    "cycle-weak-bounded": {
+      "applicable": true,
+      "denominator": 1000,
+      "hits": 1000,
+      "rate": 1.0,
+      "realized_frequency_bounds": [
+        1.0,
+        1.0
+      ],
+      "unknown_trials": 0,
+      "wilson95": [
+        0.996173241514445,
+        1.0
+      ]
+    },
+    "cycle-weak-heavy": {
+      "applicable": true,
+      "denominator": 1000,
+      "hits": 0,
+      "rate": 0.0,
+      "realized_frequency_bounds": [
+        0.0,
+        0.0
+      ],
+      "unknown_trials": 0,
+      "wilson95": [
+        0.0,
+        0.0038267584855551213
+      ]
+    },
+    "independent-moderate-bounded": {
+      "applicable": true,
+      "denominator": 1000,
+      "hits": 1000,
+      "rate": 1.0,
+      "realized_frequency_bounds": [
+        1.0,
+        1.0
+      ],
+      "unknown_trials": 0,
+      "wilson95": [
+        0.996173241514445,
+        1.0
+      ]
+    },
+    "independent-moderate-heavy": {
+      "applicable": true,
+      "denominator": 1000,
+      "hits": 0,
+      "rate": 0.0,
+      "realized_frequency_bounds": [
+        0.0,
+        0.0
+      ],
+      "unknown_trials": 0,
+      "wilson95": [
+        0.0,
+        0.0038267584855551213
+      ]
+    },
+    "independent-weak-bounded": {
+      "applicable": true,
+      "denominator": 1000,
+      "hits": 1000,
+      "rate": 1.0,
+      "realized_frequency_bounds": [
+        1.0,
+        1.0
+      ],
+      "unknown_trials": 0,
+      "wilson95": [
+        0.996173241514445,
+        1.0
+      ]
+    },
+    "independent-weak-heavy": {
+      "applicable": true,
+      "denominator": 1000,
+      "hits": 0,
+      "rate": 0.0,
+      "realized_frequency_bounds": [
+        0.0,
+        0.0
+      ],
+      "unknown_trials": 0,
+      "wilson95": [
+        0.0,
+        0.0038267584855551213
+      ]
+    },
+    "triangles-moderate-bounded": {
+      "applicable": true,
+      "denominator": 1000,
+      "hits": 1000,
+      "rate": 1.0,
+      "realized_frequency_bounds": [
+        1.0,
+        1.0
+      ],
+      "unknown_trials": 0,
+      "wilson95": [
+        0.996173241514445,
+        1.0
+      ]
+    },
+    "triangles-moderate-heavy": {
+      "applicable": true,
+      "denominator": 1000,
+      "hits": 0,
+      "rate": 0.0,
+      "realized_frequency_bounds": [
+        0.0,
+        0.0
+      ],
+      "unknown_trials": 0,
+      "wilson95": [
+        0.0,
+        0.0038267584855551213
+      ]
+    },
+    "triangles-weak-bounded": {
+      "applicable": true,
+      "denominator": 1000,
+      "hits": 2,
+      "rate": 0.002,
+      "realized_frequency_bounds": [
+        0.002,
+        0.002
+      ],
+      "unknown_trials": 0,
+      "wilson95": [
+        0.0005486435881207276,
+        0.007262807863492173
+      ]
+    },
+    "triangles-weak-heavy": {
+      "applicable": true,
+      "denominator": 1000,
+      "hits": 0,
+      "rate": 0.0,
+      "realized_frequency_bounds": [
+        0.0,
+        0.0
+      ],
+      "unknown_trials": 0,
+      "wilson95": [
+        0.0,
+        0.0038267584855551213
+      ]
+    }
+  },
+  "uncertainty": "pointwiseperfixedcellmethod;methods_sharelogs;do_notpoolcomparisonsasindependent"
+}

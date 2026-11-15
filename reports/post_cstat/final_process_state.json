@@ -1,0 +1,23 @@
+{
+  "schema": "COMET-final-process-state-v1",
+  "inspected_utc": "2026-11-15T05:38:12.208681+00:00",
+  "scientific_processes_running": 0,
+  "read_only_task_processes_running": 0,
+  "local_checked_pids_absent": [
+    6037,
+    6038,
+    6756,
+    9715,
+    75850,
+    80190,
+    82911
+  ],
+  "local_ps_result": "header only; no listed process",
+  "server": "shengen@10.200.13.23",
+  "server_tmux_session": "comet-post-cstat-20261115",
+  "server_tmux_pane_dead": true,
+  "server_tmux_exit_code": 0,
+  "server_project_scientific_processes_found": 0,
+  "server_queue_status": "COMPLETE",
+  "scope": "point-in-time actual inspections; no daemon/scheduler/automatic continuation was installed"
+}

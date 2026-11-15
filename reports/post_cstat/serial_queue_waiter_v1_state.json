@@ -1,0 +1,7 @@
+{
+  "status": "WAITING_FOR_E4_RECEIPT",
+  "supervisor_pid": 82699,
+  "started_utc": "2026-11-14T10:01:40.995830+00:00",
+  "completed_stages": [],
+  "scope": "serial child only; E5 separate; no unattended service"
+}

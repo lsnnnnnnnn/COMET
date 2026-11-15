@@ -1,0 +1,10 @@
+{
+  "status": "COMPLETE",
+  "completed": 1800,
+  "primary_comparisons": 60,
+  "all_primary_family_coverage_300_of300": true,
+  "any_false_claim_hits_total_across_comparisons": 0,
+  "all_matched_width_differences_zero": true,
+  "uncertainty": "pointwiseperfixedcellmethod;E2variantsarepaired;do_notpoolcomparisonsasindependent",
+  "scientific_inference": "nonrejection_not_a_theorem_proof;matched_equality_not_estimator_superiority"
+}

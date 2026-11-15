@@ -1,0 +1,88 @@
+{
+  "status": "ACTUAL_SUPPLIED_SUMMARIES_ONLY",
+  "figures": [
+    "appendix_anchors_controls"
+  ],
+  "new_outcome_draws": 0,
+  "legacy_new_outcome_draws": 0,
+  "availability": {
+    "E1": {
+      "name": "E1",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E1_detailed": {
+      "name": "E1_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "E2": {
+      "name": "E2",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E2_detailed": {
+      "name": "E2_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "E3": {
+      "name": "E3",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E3_detailed": {
+      "name": "E3_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "E4": {
+      "name": "E4",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E4_detailed": {
+      "name": "E4_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "E5": {
+      "name": "E5",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E5_detailed": {
+      "name": "E5_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "E6": {
+      "name": "E6",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E6_detailed": {
+      "name": "E6_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "ANCHORS": {
+      "name": "ANCHORS",
+      "status": "COMPLETE",
+      "path": "results/post_cstat/ANCHORS_server_v2_analysis_v1/summary.json",
+      "sha256": "9f76354e6575d4013086db8516184eb02133237c779521c9997ca3a4f6b4f92a",
+      "phase": "supplementary_confirmatory_anchors",
+      "completed_units": 1600,
+      "remaining_units": 0
+    },
+    "NEGATIVE_CONTROLS": {
+      "name": "NEGATIVE_CONTROLS",
+      "status": "COMPLETE",
+      "path": "results/post_cstat/negative_controls_server_v2_analysis_v1/summary.json",
+      "sha256": "0e38231f526dd654527db6a5ab13772bf2bab5dbb0fd45c3eab7ad3a5a834e39",
+      "phase": "supplementary_negative_controls",
+      "completed_units": 100,
+      "remaining_units": 0
+    }
+  }
+}

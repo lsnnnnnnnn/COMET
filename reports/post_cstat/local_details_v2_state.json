@@ -1,0 +1,12 @@
+{
+  "status": "COMPLETE",
+  "stages": [
+    "E1",
+    "E3",
+    "E4"
+  ],
+  "pid": 2262,
+  "new_outcome_draws": 0,
+  "active_stage": "E4",
+  "finished_utc": "2026-11-15T04:25:39.022549+00:00"
+}

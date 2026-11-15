@@ -1,0 +1,28 @@
+{
+  "status": "COMPLETE",
+  "supervisor_pid": 836223,
+  "stages": [
+    "ANCHORS_run",
+    "ANCHORS_analysis",
+    "negative_controls_run",
+    "negative_controls_analysis"
+  ],
+  "started_utc": "2026-11-15T04:26:08.651607+00:00",
+  "maximum_scientific_children": 1,
+  "local_primary_worker": "E5 original host; coordinator enforces two globally",
+  "E0_new_draws": 0,
+  "active_stage": "negative_controls_analysis",
+  "command": [
+    "experiments.negative_controls",
+    "--analyze",
+    "--protocol",
+    "/data1/shengen/COMET_POST_CSTAT_20261115/results/post_cstat/negative_controls_server_v2_protocol.json",
+    "--results",
+    "/data1/shengen/COMET_POST_CSTAT_20261115/results/post_cstat/negative_controls",
+    "--output",
+    "/data1/shengen/COMET_POST_CSTAT_20261115/results/post_cstat/negative_controls_server_v2_analysis_v1"
+  ],
+  "stage_token": "1794717680179769684",
+  "child_pid": null,
+  "finished_utc": "2026-11-15T04:41:22.472071+00:00"
+}

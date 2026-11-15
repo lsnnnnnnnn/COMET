@@ -1,0 +1,53 @@
+{
+  "schema": "COMET-resource-observations-v1",
+  "scope": "sampled concurrent RSS, not exact process peaks",
+  "observations": [
+    {
+      "timestamp_utc": "2026-11-14T09:37:35.451802+00:00",
+      "scientific_workers": [
+        {
+          "pid": 65734,
+          "cpu_percent": 95.0,
+          "rss_bytes": 349519872,
+          "elapsed": "01:03:30",
+          "command": ".venv/bin/python -m experiments.extension_runner --suite E3 --run"
+        },
+        {
+          "pid": 75850,
+          "cpu_percent": 94.3,
+          "rss_bytes": 418660352,
+          "elapsed": "15:34",
+          "command": ".venv/bin/python -m experiments.pipeline_fast --run-E5 --protocol results/post_cstat/E5_protocol.json --results results/post_cstat/E5"
+        }
+      ],
+      "combined_sampled_rss_bytes": 768180224,
+      "free_disk_bytes": 84554883072
+    },
+    {
+      "timestamp_utc": "2026-11-15T04:35:18.003832+00:00",
+      "scope": "two-host scientific worker samples; maxima not continuously instrumented",
+      "scientific_workers": [
+        {
+          "host": "original local macOS",
+          "pid": 75850,
+          "rss_bytes": 351551488,
+          "cpu_time": "171:05.05",
+          "elapsed_wall": "19:12:19",
+          "method": "ps"
+        },
+        {
+          "host": "server amax",
+          "pid": 836224,
+          "rss_bytes": 597340160,
+          "cpu_time": "00:08:07",
+          "elapsed_wall": "08:10",
+          "method": "ps"
+        }
+      ],
+      "combined_sampled_rss_bytes": 948891648,
+      "earlier_server_N131072_bounded_sample_rss_bytes": 1911873536,
+      "free_local_disk_bytes": 82739200000,
+      "maximum_global_scientific_workers": 2
+    }
+  ]
+}

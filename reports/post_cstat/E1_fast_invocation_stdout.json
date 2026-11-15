@@ -1,0 +1,22 @@
+{
+  "status": "COMPLETE",
+  "scope": "E1 only",
+  "new_completed_units": 11856,
+  "failed_units": 0,
+  "remaining_ids": [],
+  "legacy_new_outcome_draws": 0,
+  "fingerprint": "cff0f251d4bbf77916328f45ea4fbbccb6d1ac3362239c64bcd46ccba76ed38a",
+  "stop_reason": null,
+  "wall_seconds": 4802.659775375039,
+  "cpu_seconds": 4559.276487,
+  "first_resource_snapshot": {
+    "free_disk_bytes": 86016000000,
+    "available_ram_bytes": 2983215104,
+    "worker_rss_bytes": 51085312,
+    "memory_scope": "one synchronous worker RSS; no concurrent-peak sum inferred"
+  },
+  "artifact_bytes": 167316339,
+  "background_work_running": false,
+  "execution_mode": "one synchronous CPU worker; no GPU/paid compute",
+  "resume_command": ".venv/bin/python -m experiments.post_cstat_runner --run-E1 --protocol results/post_cstat/E1_protocol.json --results results/post_cstat/E1"
+}

@@ -1,0 +1,19 @@
+\begin{table}[tbp]
+\centering\small
+\begin{tabular}{lllrrrr}
+\toprule
+Graph & Overlap & World & COMET SU & Nonbase gain & Global SU & Mean $\Delta U$\\
+\midrule
+Cycle & Mod. & mixed & 500 & 500 & 351 & 0.05447\\
+Cycle & Mod. & null & 500 & 500 & 454 & 0.05947\\
+Cycle & Weak & mixed & 340 & 340 & 0 & 0.04842\\
+Cycle & Weak & null & 238 & 231 & 0 & 0.05340\\
+Ind. & Mod. & mixed & 500 & 500 & 340 & 0.05449\\
+Ind. & Mod. & null & 500 & 500 & 411 & 0.05946\\
+Ind. & Weak & mixed & 411 & 411 & 44 & 0.04981\\
+Ind. & Weak & null & 497 & 232 & 17 & 0.02599\\
+\bottomrule
+\end{tabular}
+\caption{E5 primary-level counts per 500 independent complete trials. SU denotes return and safety and usefulness under all primary constraints; COMET return counts equal SU here, with zero unsafe or infeasible returns in every cell. Matched generic is identical. Nonbase gain is the posthoc oracle-evaluated joint event of a nonbaseline return, safety and strictly positive utility gain. The last column is a descriptive mean among returns, including zero baseline gains; its denominator is the COMET SU count. Global is a pure-truncation ablation, not a separate fully matched bounded method.}
+\label{tab:post-E5}
+\end{table}

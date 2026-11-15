@@ -1,0 +1,8 @@
+{
+  "status": "STOPPED_BEFORE_CHILD_FOR_SERVER_TMUX_AMENDMENT",
+  "supervisor_pid": 82911,
+  "started_utc": "2026-11-14T10:03:05.703929+00:00",
+  "completed_stages": [],
+  "scope": "serial child only; E5 separate; no unattended service",
+  "stopped_utc": "2026-11-15T04:15:43.125190+00:00"
+}

@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/data1/shengen/COMET_POST_CSTAT_20261115/reports/post_cstat/server_fixture.py", line 24, in <module>
+    result=a._execute({'config':cfg},'comet-post-cstat-v1/ANCHORS/'+cell_id+'/0000',cell,plans,explicit,a.anchor_truths,{'code':'fixture-only','config':'fixture-only'})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data1/shengen/COMET_POST_CSTAT_20261115/experiments/anchor_runner.py", line 276, in _execute
+    log=draw(cell,seed);evaluated=[]
+        ^^^^^^^^^^^^^^^
+  File "/data1/shengen/COMET_POST_CSTAT_20261115/reports/post_cstat/server_fixture.py", line 17, in explicit
+    return a.anchor_from_primitives(cell,words,primitives,seed_namespace='explicit-portability-fixture-only')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data1/shengen/COMET_POST_CSTAT_20261115/experiments/anchor_runner.py", line 208, in anchor_from_primitives
+    raise ValueError("invalid bounded/Pareto primitive fixture")
+ValueError: invalid bounded/Pareto primitive fixture

@@ -1,0 +1,27 @@
+{"control": "evaluation_nuisance_leak", "new_completed_units": 25, "global_checkpoint_units": 1625, "scientific_role": "supplementary"}
+{"control": "hidden_shared_shock", "new_completed_units": 50, "global_checkpoint_units": 1650, "scientific_role": "supplementary"}
+{"control": "missing_clipping_bias", "new_completed_units": 75, "global_checkpoint_units": 1675, "scientific_role": "supplementary"}
+{"control": "wrong_propensity", "new_completed_units": 100, "global_checkpoint_units": 1700, "scientific_role": "supplementary"}
+{
+  "status": "COMPLETE",
+  "scope": "supplementary_negative_controls",
+  "new_completed_units": 100,
+  "failed_units": 0,
+  "remaining_ids": [],
+  "primary_units": 0,
+  "legacy_new_outcome_draws": 0,
+  "global_new_checkpoint_units": 1700,
+  "global_artifact_bytes": 25634087,
+  "first_resource_snapshot": {
+    "free_disk_bytes": 7262493343744,
+    "available_ram_bytes": 494064300032,
+    "worker_rss_bytes": 38608896,
+    "memory_scope": "one synchronous worker RSS; no concurrent-peak sum inferred"
+  },
+  "stop_reason": null,
+  "fingerprint": "d21665e9848df7a621c326acaeda53f1a8408f3eedf83ed6b998ae38e1c6c20c",
+  "wall_seconds": 23.507707960903645,
+  "cpu_seconds": 23.126138513,
+  "background_work_running": false,
+  "resume_command": ".venv/bin/python -m experiments.negative_controls --run --protocol /data1/shengen/COMET_POST_CSTAT_20261115/results/post_cstat/negative_controls_server_v2_protocol.json --results /data1/shengen/COMET_POST_CSTAT_20261115/results/post_cstat/negative_controls --global-results /data1/shengen/COMET_POST_CSTAT_20261115/results/post_cstat"
+}

@@ -1,0 +1,835 @@
+{
+  "schema": "COMET-proof-code-experiment-ledger-v2",
+  "new_outcome_draws": 0,
+  "authority": "Available supplied documents plus explicit user missing-blueprint waiver",
+  "claim_evidence_input_sha256": "8dc1cdfeb0a386edef36a7ad77e456b6751167aa30ffd4ba4272bc2493e2554b",
+  "claims": [
+    {
+      "claim_id": "H0",
+      "claim": "Preserved independent-block C-STAT baseline",
+      "claim_level": "established historical baseline",
+      "mathematical_status": "ESTABLISHED_WITHIN_OLD_MODEL",
+      "implementation_status": "NOT_IMPLEMENTED_OR_NOT_REQUIRED",
+      "evidence_status": "PRESERVED_COMPLETED_HISTORICAL_EVIDENCE",
+      "proof": [
+        "reports/gate_C_stat_delivery.md"
+      ],
+      "code": [],
+      "experiments": {},
+      "source_sha256": {
+        "reports/gate_C_stat_delivery.md": "306ebaeb2affdf6729a30fa0a7e1b121248feff8035b1208e18b1106539f9fa8"
+      },
+      "limits": "6000 logs and1134000 records preserved; no new E0 draws or additions to old17."
+    },
+    {
+      "claim_id": "C1",
+      "claim": "Heterogeneous global conditional-graph residual certificate",
+      "claim_level": "required core",
+      "mathematical_status": "PROVED_UNDER_DECLARED_ASSUMPTIONS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_status": "COMPLETED_ANALYSES_AVAILABLE",
+      "proof": [
+        "theory/global_residual_truncation.md",
+        "reports/post_cstat/theory_note_reconciliation.md"
+      ],
+      "code": [
+        "comet/residual_truncation.py",
+        "comet/queries.py",
+        "comet/source_graph.py"
+      ],
+      "experiments": {
+        "E1": {
+          "suite": "E1",
+          "protocol": "results/post_cstat/E1_protocol.json",
+          "protocol_status": "FROZEN",
+          "completed_analysis": {
+            "path": "results/post_cstat/E1_analysis_v1/summary.json",
+            "sha256": "3f23be62e71980dbbb1436c34b51106241d9bcbef822eb3754b3c935fe9142a7",
+            "status": "COMPLETE",
+            "completed_units": 12000,
+            "primary_comparisons": 96,
+            "failed_units": 0,
+            "mismatch_count": null
+          },
+          "detailed_analysis": {
+            "path": "results/post_cstat/E1_detailed_v1/summary.json",
+            "sha256": "ea7931893bedbc97d21b580d7d69d1796cde899e48e78f90f0c374224bcbfedc",
+            "status": "COMPLETE_CHECKS_PASS",
+            "completed_units": 12000,
+            "primary_comparisons": null,
+            "failed_units": null,
+            "mismatch_count": 0
+          },
+          "protocol_fingerprint": "cff0f251d4bbf77916328f45ea4fbbccb6d1ac3362239c64bcd46ccba76ed38a",
+          "planned_units": 12000
+        }
+      },
+      "source_sha256": {
+        "comet/residual_truncation.py": "e7a401ae255fe474109c06e3190817f7f3ba4316b457ea824514b64eb2cd6856",
+        "comet/queries.py": "6e6b995a82d9eb361da1a2ef9fb39a72a5b3114d340dfcace8c1884f0ff34d27",
+        "comet/source_graph.py": "f675a4a1f9101e9d765c09e87ff5769a0db065d2bd83cc693fa7bf73e47866d7",
+        "theory/global_residual_truncation.md": "a8dbbeaefd59b7f4220684e53f00eb5129a87ee979a8144b6449c52fdf24f16b",
+        "reports/post_cstat/theory_note_reconciliation.md": "28d9f0d36b7c8aba23d5bd0cf9e09515b95d29e2baec00027b7947a1da84104b"
+      },
+      "limits": "Exact supported e, legal raw residual moments, legitimate conditioning, sufficient whole-score graph,1<p<=2; real arithmetic. Coverage does not establish informativeness."
+    },
+    {
+      "claim_id": "C2",
+      "claim": "Query-specific support, moment and available-coloring costs",
+      "claim_level": "required core",
+      "mathematical_status": "PROVED",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_status": "COMPLETED_ANALYSES_AVAILABLE",
+      "proof": [
+        "theory/global_residual_truncation.md"
+      ],
+      "code": [
+        "comet/residual_truncation.py",
+        "comet/source_graph.py",
+        "experiments/suite_designs.py"
+      ],
+      "experiments": {
+        "E2": {
+          "suite": "E2",
+          "protocol": "results/post_cstat/E2_protocol.json",
+          "protocol_status": "FROZEN",
+          "completed_analysis": {
+            "path": "results/post_cstat/E2_analysis_v1/summary.json",
+            "sha256": "3e03041302956432e2544fd470ce355c0307c67c317c3d02e6b17b7f698893e2",
+            "status": "COMPLETE",
+            "completed_units": 1800,
+            "primary_comparisons": 60,
+            "failed_units": 0,
+            "mismatch_count": null
+          },
+          "detailed_analysis": {
+            "path": "results/post_cstat/E2_detailed_v1/summary.json",
+            "sha256": "a16bc98db1c99ad11770fa74b9d109febe8405aa5a5ced09b9f4e8108926a4a9",
+            "status": "COMPLETE_CHECKS_PASS",
+            "completed_units": 1800,
+            "primary_comparisons": null,
+            "failed_units": null,
+            "mismatch_count": 0
+          },
+          "protocol_fingerprint": "02c6e6abcde74b4cc8895b92c60acc147b0008d2f26c2714e20ff3f1b46ee4f3",
+          "planned_units": 1800
+        }
+      },
+      "source_sha256": {
+        "comet/residual_truncation.py": "e7a401ae255fe474109c06e3190817f7f3ba4316b457ea824514b64eb2cd6856",
+        "comet/source_graph.py": "f675a4a1f9101e9d765c09e87ff5769a0db065d2bd83cc693fa7bf73e47866d7",
+        "experiments/suite_designs.py": "832156cdb693ea7f9fe967f3e4cd9907ef8fd934be9a9eaca4a032ca62cf9259",
+        "theory/global_residual_truncation.md": "a8dbbeaefd59b7f4220684e53f00eb5129a87ee979a8144b6449c52fdf24f16b"
+      },
+      "limits": "Source sufficiency is an assumption/construction, not inferred from one log. Matched generic methods receive identical local information."
+    },
+    {
+      "claim_id": "C3",
+      "claim": "Direct signed paired contrasts and step-size control",
+      "claim_level": "required core",
+      "mathematical_status": "PROVED",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_status": "COMPLETED_ANALYSES_AVAILABLE",
+      "proof": [
+        "theory/global_residual_truncation.md"
+      ],
+      "code": [
+        "comet/paired_contrasts.py",
+        "experiments/suite_designs.py"
+      ],
+      "experiments": {
+        "E3": {
+          "suite": "E3",
+          "protocol": "results/post_cstat/E3_protocol.json",
+          "protocol_status": "FROZEN",
+          "completed_analysis": {
+            "path": "results/post_cstat/E3_analysis_v1/summary.json",
+            "sha256": "8f46750a90e50e85ebeeac7180f4c5a4107479907a711a7fa6432cf8ec4bc29b",
+            "status": "COMPLETE",
+            "completed_units": 3600,
+            "primary_comparisons": 108,
+            "failed_units": 0,
+            "mismatch_count": null
+          },
+          "detailed_analysis": {
+            "path": "results/post_cstat/E3_detailed_v1/summary.json",
+            "sha256": "b77559d38fe6e78789e10a25684cb5b042e9bde0c461682b54b6e832525712f7",
+            "status": "COMPLETE_CHECKS_PASS",
+            "completed_units": 3600,
+            "primary_comparisons": null,
+            "failed_units": null,
+            "mismatch_count": 0
+          },
+          "protocol_fingerprint": "de9d8f3eaf724880caa8e6871f3050214be60eff5e6f72d82478a299bc5e8da2",
+          "planned_units": 3600
+        }
+      },
+      "source_sha256": {
+        "comet/paired_contrasts.py": "7a19955d5d08a48c6c63f19bc75d4471c0973cbcde65dd18fad138b77e09caf7",
+        "experiments/suite_designs.py": "832156cdb693ea7f9fe967f3e4cd9907ef8fd934be9a9eaca4a032ca62cf9259",
+        "theory/global_residual_truncation.md": "a8dbbeaefd59b7f4220684e53f00eb5129a87ee979a8144b6449c52fdf24f16b"
+      },
+      "limits": "16 direct contrasts versus20 deduplicated joint levels under same totaldelta; eta scales signal and radius together, not automatic sign-power gain."
+    },
+    {
+      "claim_id": "C4",
+      "claim": "Subgroup/exposure/clique obstruction and2r sufficient power boundary",
+      "claim_level": "required scoped core",
+      "mathematical_status": "PROVED_SCOPED_SUBCLASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_status": "COMPLETED_ANALYSES_AVAILABLE",
+      "proof": [
+        "theory/query_specific_cost_lower_bound.md"
+      ],
+      "code": [
+        "experiments/post_cstat_design.py"
+      ],
+      "experiments": {
+        "E4": {
+          "suite": "E4",
+          "protocol": "results/post_cstat/E4_protocol.json",
+          "protocol_status": "FROZEN",
+          "completed_analysis": {
+            "path": "results/post_cstat/E4_analysis_v1/summary.json",
+            "sha256": "70df695d73f615eef27048fac8441530375de5827bcaa21c389bee3097e308f4",
+            "status": "COMPLETE",
+            "completed_units": 7200,
+            "primary_comparisons": 192,
+            "failed_units": 0,
+            "mismatch_count": null
+          },
+          "detailed_analysis": {
+            "path": "results/post_cstat/E4_detailed_v1/summary.json",
+            "sha256": "4046da84b907000085f784f45eae0fe441576153654502c81f1468e7e58454bd",
+            "status": "COMPLETE_CHECKS_PASS",
+            "completed_units": 7200,
+            "primary_comparisons": null,
+            "failed_units": null,
+            "mismatch_count": 0
+          },
+          "protocol_fingerprint": "10f304e204939844e4a9ee14572b672002238477b421bc44a47e3fe1d93e6b6a",
+          "planned_units": 7200
+        }
+      },
+      "source_sha256": {
+        "experiments/post_cstat_design.py": "6c62d23c223f74c9f9d6f78ed0dbc0eb1e1989a3ebf335f885c78accba1d3f37",
+        "theory/query_specific_cost_lower_bound.md": "774d730dfa566a29ca11bba93dbeca0d67030739139f3175dcc83a93a806f35d"
+      },
+      "limits": "Expected absolute-risk lower bound with saturation/integer restrictions; no graph-by-graph or confidence-log sharpness. Maps are deterministic sufficient bounds, not empirical trials."
+    },
+    {
+      "claim_id": "C5",
+      "claim": "Independently discovered finite-family certification",
+      "claim_level": "required core",
+      "mathematical_status": "PROVED",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_status": "COMPLETED_ANALYSES_AVAILABLE",
+      "proof": [
+        "theory/global_residual_truncation.md"
+      ],
+      "code": [
+        "comet/audit_pipeline.py",
+        "experiments/pipeline_dgp.py",
+        "experiments/pipeline_runner.py"
+      ],
+      "experiments": {
+        "E5": {
+          "suite": "E5",
+          "protocol": "results/post_cstat/E5_protocol.json",
+          "protocol_status": "FROZEN",
+          "completed_analysis": {
+            "path": "results/post_cstat/E5_analysis_v1/summary.json",
+            "sha256": "4afa6eccc2816d512eb844a504222b0319bbf35a6efc27bc6a4750ba5b46b77e",
+            "status": "COMPLETE",
+            "completed_units": 4000,
+            "primary_comparisons": 32,
+            "failed_units": 0,
+            "mismatch_count": null
+          },
+          "detailed_analysis": null,
+          "protocol_fingerprint": "f077fb800ffba466bafc42ad51ee4f98e4da41c399bc164937ed3b4ab658814b",
+          "planned_units": 4000
+        }
+      },
+      "source_sha256": {
+        "comet/audit_pipeline.py": "dc51f7e1d75e285911994d89038d6eaff4479000c39d791b91f9c1456b0ee6a4",
+        "experiments/pipeline_dgp.py": "601ef13001966e4312f5ee21da9b7935ece7616f209f5428f169d4a01458a724",
+        "experiments/pipeline_runner.py": "282cdbdb14b49311a231ff9c274e5cb290b18d7861eae8d9b4ac7a7157fe81de",
+        "theory/global_residual_truncation.md": "a8dbbeaefd59b7f4220684e53f00eb5129a87ee979a8144b6449c52fdf24f16b"
+      },
+      "limits": "Disjoint primitive pools; actual full risk+utility family; finite returned family, not infinite-class fairness. E6 external replication remains separate."
+    },
+    {
+      "claim_id": "C6",
+      "claim": "Constrained return with risk, utility and service requirements",
+      "claim_level": "required application",
+      "mathematical_status": "PROVED_EVENTWISE_GUARANTEE",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_status": "COMPLETED_ANALYSES_AVAILABLE",
+      "proof": [
+        "theory/global_residual_truncation.md"
+      ],
+      "code": [
+        "comet/policy_update.py",
+        "experiments/pipeline_runner.py"
+      ],
+      "experiments": {
+        "E5": {
+          "suite": "E5",
+          "protocol": "results/post_cstat/E5_protocol.json",
+          "protocol_status": "FROZEN",
+          "completed_analysis": {
+            "path": "results/post_cstat/E5_analysis_v1/summary.json",
+            "sha256": "4afa6eccc2816d512eb844a504222b0319bbf35a6efc27bc6a4750ba5b46b77e",
+            "status": "COMPLETE",
+            "completed_units": 4000,
+            "primary_comparisons": 32,
+            "failed_units": 0,
+            "mismatch_count": null
+          },
+          "detailed_analysis": null,
+          "protocol_fingerprint": "f077fb800ffba466bafc42ad51ee4f98e4da41c399bc164937ed3b4ab658814b",
+          "planned_units": 4000
+        }
+      },
+      "source_sha256": {
+        "comet/policy_update.py": "81fd5ad4bdbdcd79ea23775bbf67a32dd5f85a8a9c769370909a84d4ec9dcd8b",
+        "experiments/pipeline_runner.py": "282cdbdb14b49311a231ff9c274e5cb290b18d7861eae8d9b4ac7a7157fe81de",
+        "theory/global_residual_truncation.md": "a8dbbeaefd59b7f4220684e53f00eb5129a87ee979a8144b6449c52fdf24f16b"
+      },
+      "limits": "Controls return AND unsafe under the declared family. Useful return must be observed separately; no automatic conditional unsafe-given-return or future safety guarantee."
+    },
+    {
+      "claim_id": "C7",
+      "claim": "Real-covariate fixed-population selective-label validation",
+      "claim_level": "required empirical extension",
+      "mathematical_status": "SOURCE_SELECTOR_GRAPH_PROVED_NOT_EMPIRICALLY_VALIDATED",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_status": "DATA_BLOCKED",
+      "proof": [
+        "reports/post_cstat/E6_dataset_choice.md"
+      ],
+      "code": [
+        "experiments/semisynthetic_selective_labels.py",
+        "experiments/e6_runner.py",
+        "experiments/e6_analyze.py"
+      ],
+      "experiments": {
+        "E6": {
+          "suite": "E6",
+          "protocol": "results/post_cstat/E6_protocol.json",
+          "protocol_status": "NOT_FROZEN",
+          "completed_analysis": null,
+          "detailed_analysis": null
+        }
+      },
+      "source_sha256": {
+        "experiments/semisynthetic_selective_labels.py": "cab70f89e01340fac605b3b26244c55a885898b5e11a2b74f5cc5307176bf45a",
+        "experiments/e6_runner.py": "99baafe0725d73e399669506f8fe39f474818e3e41a71aace57338d51816f2e9",
+        "experiments/e6_analyze.py": "01503526e9b2ceac51a6f35078415aa928617e0486fb3fe8adce3c441fe1d698",
+        "reports/post_cstat/E6_dataset_choice.md": "3b5f28d791483fe549d65ef21dcb39246c9cc6acc170a74aa2a17609b5beae8b"
+      },
+      "limits": "Official ACS CA2018 archive unavailable: DNS,HTTP403,browser timeout; zero E6 draws. No substitute or causal-income claim."
+    },
+    {
+      "claim_id": "O1",
+      "claim": "Predictable fixed-horizon extension",
+      "claim_level": "optional",
+      "mathematical_status": "DERIVED_NOT_IMPLEMENTED",
+      "implementation_status": "NOT_IMPLEMENTED_OR_NOT_REQUIRED",
+      "evidence_status": "DETERMINISTIC_OR_THEORETICAL",
+      "proof": [
+        "theory/predictable_fixed_horizon_status.md"
+      ],
+      "code": [],
+      "experiments": {},
+      "source_sha256": {
+        "theory/predictable_fixed_horizon_status.md": "e6eccaafc5848bdcff1c30a93ee87adbdbc45803c0ec808834f7fd539428f527"
+      },
+      "limits": "Nonblocking optional memo; no implementation/experiment, optional stopping, realized random-budget substitution or future-distribution claim."
+    },
+    {
+      "claim_id": "O2",
+      "claim": "Interference/slate empirical application",
+      "claim_level": "optional",
+      "mathematical_status": "NOT_CLAIMED",
+      "implementation_status": "NOT_IMPLEMENTED_OR_NOT_REQUIRED",
+      "evidence_status": "NOT_PROMOTED",
+      "proof": [],
+      "code": [],
+      "experiments": {},
+      "source_sha256": {},
+      "limits": "Conditional policy-compatibility discussion only; shared noise is not interference. No experimental spillover claim."
+    },
+    {
+      "claim_id": "B1",
+      "claim": "Strong bounded graph Hoeffding/Bernstein branches",
+      "claim_level": "comparison",
+      "mathematical_status": "PROVED",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_status": "COMPLETED_ANALYSES_AVAILABLE",
+      "proof": [
+        "theory/global_residual_truncation.md"
+      ],
+      "code": [
+        "comet/residual_truncation.py"
+      ],
+      "experiments": {
+        "E1": {
+          "suite": "E1",
+          "protocol": "results/post_cstat/E1_protocol.json",
+          "protocol_status": "FROZEN",
+          "completed_analysis": {
+            "path": "results/post_cstat/E1_analysis_v1/summary.json",
+            "sha256": "3f23be62e71980dbbb1436c34b51106241d9bcbef822eb3754b3c935fe9142a7",
+            "status": "COMPLETE",
+            "completed_units": 12000,
+            "primary_comparisons": 96,
+            "failed_units": 0,
+            "mismatch_count": null
+          },
+          "detailed_analysis": {
+            "path": "results/post_cstat/E1_detailed_v1/summary.json",
+            "sha256": "ea7931893bedbc97d21b580d7d69d1796cde899e48e78f90f0c374224bcbfedc",
+            "status": "COMPLETE_CHECKS_PASS",
+            "completed_units": 12000,
+            "primary_comparisons": null,
+            "failed_units": null,
+            "mismatch_count": 0
+          },
+          "protocol_fingerprint": "cff0f251d4bbf77916328f45ea4fbbccb6d1ac3362239c64bcd46ccba76ed38a",
+          "planned_units": 12000
+        },
+        "E4": {
+          "suite": "E4",
+          "protocol": "results/post_cstat/E4_protocol.json",
+          "protocol_status": "FROZEN",
+          "completed_analysis": {
+            "path": "results/post_cstat/E4_analysis_v1/summary.json",
+            "sha256": "70df695d73f615eef27048fac8441530375de5827bcaa21c389bee3097e308f4",
+            "status": "COMPLETE",
+            "completed_units": 7200,
+            "primary_comparisons": 192,
+            "failed_units": 0,
+            "mismatch_count": null
+          },
+          "detailed_analysis": {
+            "path": "results/post_cstat/E4_detailed_v1/summary.json",
+            "sha256": "4046da84b907000085f784f45eae0fe441576153654502c81f1468e7e58454bd",
+            "status": "COMPLETE_CHECKS_PASS",
+            "completed_units": 7200,
+            "primary_comparisons": null,
+            "failed_units": null,
+            "mismatch_count": 0
+          },
+          "protocol_fingerprint": "10f304e204939844e4a9ee14572b672002238477b421bc44a47e3fe1d93e6b6a",
+          "planned_units": 7200
+        }
+      },
+      "source_sha256": {
+        "comet/residual_truncation.py": "e7a401ae255fe474109c06e3190817f7f3ba4316b457ea824514b64eb2cd6856",
+        "theory/global_residual_truncation.md": "a8dbbeaefd59b7f4220684e53f00eb5129a87ee979a8144b6449c52fdf24f16b"
+      },
+      "limits": "Same actual residual ranges, support, graph, nuisance and budget. Eligible bounded outcomes only."
+    },
+    {
+      "claim_id": "B2",
+      "claim": "Fully matched generic truncation equals COMET configuration",
+      "claim_level": "comparison",
+      "mathematical_status": "ALGEBRAIC_IDENTITY",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_status": "COMPLETED_ANALYSES_AVAILABLE",
+      "proof": [
+        "theory/global_residual_truncation.md"
+      ],
+      "code": [
+        "comet/residual_truncation.py"
+      ],
+      "experiments": {
+        "E1": {
+          "suite": "E1",
+          "protocol": "results/post_cstat/E1_protocol.json",
+          "protocol_status": "FROZEN",
+          "completed_analysis": {
+            "path": "results/post_cstat/E1_analysis_v1/summary.json",
+            "sha256": "3f23be62e71980dbbb1436c34b51106241d9bcbef822eb3754b3c935fe9142a7",
+            "status": "COMPLETE",
+            "completed_units": 12000,
+            "primary_comparisons": 96,
+            "failed_units": 0,
+            "mismatch_count": null
+          },
+          "detailed_analysis": {
+            "path": "results/post_cstat/E1_detailed_v1/summary.json",
+            "sha256": "ea7931893bedbc97d21b580d7d69d1796cde899e48e78f90f0c374224bcbfedc",
+            "status": "COMPLETE_CHECKS_PASS",
+            "completed_units": 12000,
+            "primary_comparisons": null,
+            "failed_units": null,
+            "mismatch_count": 0
+          },
+          "protocol_fingerprint": "cff0f251d4bbf77916328f45ea4fbbccb6d1ac3362239c64bcd46ccba76ed38a",
+          "planned_units": 12000
+        },
+        "E2": {
+          "suite": "E2",
+          "protocol": "results/post_cstat/E2_protocol.json",
+          "protocol_status": "FROZEN",
+          "completed_analysis": {
+            "path": "results/post_cstat/E2_analysis_v1/summary.json",
+            "sha256": "3e03041302956432e2544fd470ce355c0307c67c317c3d02e6b17b7f698893e2",
+            "status": "COMPLETE",
+            "completed_units": 1800,
+            "primary_comparisons": 60,
+            "failed_units": 0,
+            "mismatch_count": null
+          },
+          "detailed_analysis": {
+            "path": "results/post_cstat/E2_detailed_v1/summary.json",
+            "sha256": "a16bc98db1c99ad11770fa74b9d109febe8405aa5a5ced09b9f4e8108926a4a9",
+            "status": "COMPLETE_CHECKS_PASS",
+            "completed_units": 1800,
+            "primary_comparisons": null,
+            "failed_units": null,
+            "mismatch_count": 0
+          },
+          "protocol_fingerprint": "02c6e6abcde74b4cc8895b92c60acc147b0008d2f26c2714e20ff3f1b46ee4f3",
+          "planned_units": 1800
+        },
+        "E3": {
+          "suite": "E3",
+          "protocol": "results/post_cstat/E3_protocol.json",
+          "protocol_status": "FROZEN",
+          "completed_analysis": {
+            "path": "results/post_cstat/E3_analysis_v1/summary.json",
+            "sha256": "8f46750a90e50e85ebeeac7180f4c5a4107479907a711a7fa6432cf8ec4bc29b",
+            "status": "COMPLETE",
+            "completed_units": 3600,
+            "primary_comparisons": 108,
+            "failed_units": 0,
+            "mismatch_count": null
+          },
+          "detailed_analysis": {
+            "path": "results/post_cstat/E3_detailed_v1/summary.json",
+            "sha256": "b77559d38fe6e78789e10a25684cb5b042e9bde0c461682b54b6e832525712f7",
+            "status": "COMPLETE_CHECKS_PASS",
+            "completed_units": 3600,
+            "primary_comparisons": null,
+            "failed_units": null,
+            "mismatch_count": 0
+          },
+          "protocol_fingerprint": "de9d8f3eaf724880caa8e6871f3050214be60eff5e6f72d82478a299bc5e8da2",
+          "planned_units": 3600
+        },
+        "E4": {
+          "suite": "E4",
+          "protocol": "results/post_cstat/E4_protocol.json",
+          "protocol_status": "FROZEN",
+          "completed_analysis": {
+            "path": "results/post_cstat/E4_analysis_v1/summary.json",
+            "sha256": "70df695d73f615eef27048fac8441530375de5827bcaa21c389bee3097e308f4",
+            "status": "COMPLETE",
+            "completed_units": 7200,
+            "primary_comparisons": 192,
+            "failed_units": 0,
+            "mismatch_count": null
+          },
+          "detailed_analysis": {
+            "path": "results/post_cstat/E4_detailed_v1/summary.json",
+            "sha256": "4046da84b907000085f784f45eae0fe441576153654502c81f1468e7e58454bd",
+            "status": "COMPLETE_CHECKS_PASS",
+            "completed_units": 7200,
+            "primary_comparisons": null,
+            "failed_units": null,
+            "mismatch_count": 0
+          },
+          "protocol_fingerprint": "10f304e204939844e4a9ee14572b672002238477b421bc44a47e3fe1d93e6b6a",
+          "planned_units": 7200
+        },
+        "E5": {
+          "suite": "E5",
+          "protocol": "results/post_cstat/E5_protocol.json",
+          "protocol_status": "FROZEN",
+          "completed_analysis": {
+            "path": "results/post_cstat/E5_analysis_v1/summary.json",
+            "sha256": "4afa6eccc2816d512eb844a504222b0319bbf35a6efc27bc6a4750ba5b46b77e",
+            "status": "COMPLETE",
+            "completed_units": 4000,
+            "primary_comparisons": 32,
+            "failed_units": 0,
+            "mismatch_count": null
+          },
+          "detailed_analysis": null,
+          "protocol_fingerprint": "f077fb800ffba466bafc42ad51ee4f98e4da41c399bc164937ed3b4ab658814b",
+          "planned_units": 4000
+        }
+      },
+      "source_sha256": {
+        "comet/residual_truncation.py": "e7a401ae255fe474109c06e3190817f7f3ba4316b457ea824514b64eb2cd6856",
+        "theory/global_residual_truncation.md": "a8dbbeaefd59b7f4220684e53f00eb5129a87ee979a8144b6449c52fdf24f16b"
+      },
+      "limits": "Identical procedures are not independent algorithms or evidence of COMET estimator superiority."
+    },
+    {
+      "claim_id": "B3",
+      "claim": "Finite-moment Catoni and strong OPE eligible anchors",
+      "claim_level": "comparison",
+      "mathematical_status": "PRIMARY_SOURCES_CHECKED_ELIGIBILITY_EXPLICIT",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_status": "COMPLETED_ANALYSES_AVAILABLE",
+      "proof": [
+        "reports/novelty_and_baseline_matrix.md"
+      ],
+      "code": [
+        "comet/independent_anchors.py",
+        "comet/ope_2024.py",
+        "experiments/anchor_runner.py"
+      ],
+      "experiments": {
+        "ANCHORS": {
+          "suite": "ANCHORS",
+          "protocol": "results/post_cstat/ANCHORS_server_v2_protocol.json",
+          "protocol_status": "FROZEN",
+          "completed_analysis": {
+            "path": "results/post_cstat/ANCHORS_server_v2_analysis_v1/summary.json",
+            "sha256": "9f76354e6575d4013086db8516184eb02133237c779521c9997ca3a4f6b4f92a",
+            "status": "COMPLETE",
+            "completed_units": 1600,
+            "primary_comparisons": 68,
+            "failed_units": 0,
+            "mismatch_count": null
+          },
+          "detailed_analysis": null,
+          "protocol_fingerprint": "8ffce7eb4a070fc223d411d6794ecd8ff5a257775063f3125ff5a9e6585a145c",
+          "planned_units": 1600
+        }
+      },
+      "source_sha256": {
+        "comet/independent_anchors.py": "6c174e9c3095ec6d497c270174462f3298e190eebde20043ce8720ea56191282",
+        "comet/ope_2024.py": "0b7fc90a248d9eb59d1c06f7ef6f37480644fa34e20b0c082de37779513eda56",
+        "experiments/anchor_runner.py": "6fe6fae1160349e5f98bb456704a9b64a9568255907d10a88fdff4e1bfff6000",
+        "reports/novelty_and_baseline_matrix.md": "ba62d609363846d67d45debb66bc0d7ea4905fddf80ff0c333c985a5b17e0b40"
+      },
+      "limits": "Catoni iid/common mean/known centeredmoment/sample gate;2021scalar author betting notfull2DMOPE;2024DR/EB permits independent heterogeneous averages, not arbitrary graph dependence."
+    },
+    {
+      "claim_id": "A",
+      "claim": "Historical A Hoeffding radius and2r analytic guarantee",
+      "claim_level": "analytic motivation",
+      "mathematical_status": "DETERMINISTIC_PROOF",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_status": "DETERMINISTIC_OR_THEORETICAL",
+      "proof": [
+        "theory/global_residual_truncation.md"
+      ],
+      "code": [
+        "experiments/post_cstat_design.py"
+      ],
+      "experiments": {},
+      "source_sha256": {
+        "experiments/post_cstat_design.py": "6c62d23c223f74c9f9d6f78ed0dbc0eb1e1989a3ebf335f885c78accba1d3f37",
+        "theory/global_residual_truncation.md": "a8dbbeaefd59b7f4220684e53f00eb5129a87ee979a8144b6449c52fdf24f16b"
+      },
+      "limits": "r=.015005043614373761,gamma=.0375>2r; no new empirical power and no insertion into old17."
+    },
+    {
+      "claim_id": "N",
+      "claim": "Incorrect-assumption and omitted-bias negative controls",
+      "claim_level": "diagnostic",
+      "mathematical_status": "VALID_REFERENCES_ONLY",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_status": "COMPLETED_ANALYSES_AVAILABLE",
+      "proof": [
+        "reports/post_cstat/negative_controls_prefreeze_design.md"
+      ],
+      "code": [
+        "experiments/negative_controls.py"
+      ],
+      "experiments": {
+        "negative_controls": {
+          "suite": "negative_controls",
+          "protocol": "results/post_cstat/negative_controls_server_v2_protocol.json",
+          "protocol_status": "FROZEN",
+          "completed_analysis": {
+            "path": "results/post_cstat/negative_controls_server_v2_analysis_v1/summary.json",
+            "sha256": "0e38231f526dd654527db6a5ab13772bf2bab5dbb0fd45c3eab7ad3a5a834e39",
+            "status": "COMPLETE",
+            "completed_units": 100,
+            "primary_comparisons": 0,
+            "failed_units": 0,
+            "mismatch_count": null
+          },
+          "detailed_analysis": null,
+          "protocol_fingerprint": "d21665e9848df7a621c326acaeda53f1a8408f3eedf83ed6b998ae38e1c6c20c",
+          "planned_units": 100
+        }
+      },
+      "source_sha256": {
+        "experiments/negative_controls.py": "605b5a74f0b5b41dfc8ff9c14fff1877a6a89ebe80bdc10b9f9041e0f54b3343",
+        "reports/post_cstat/negative_controls_prefreeze_design.md": "08c50a71e5a6f47cb685b21927cdeb4e8e895a51ba8b6873a920895b3e75611d"
+      },
+      "limits": "Intentionally invalid outputs remain HEURISTIC; unobservable hidden dependence/wrong e/nuisance leakage cannot be detected automatically from schema."
+    }
+  ],
+  "suites": {
+    "E1": {
+      "suite": "E1",
+      "protocol": "results/post_cstat/E1_protocol.json",
+      "protocol_status": "FROZEN",
+      "completed_analysis": {
+        "path": "results/post_cstat/E1_analysis_v1/summary.json",
+        "sha256": "3f23be62e71980dbbb1436c34b51106241d9bcbef822eb3754b3c935fe9142a7",
+        "status": "COMPLETE",
+        "completed_units": 12000,
+        "primary_comparisons": 96,
+        "failed_units": 0,
+        "mismatch_count": null
+      },
+      "detailed_analysis": {
+        "path": "results/post_cstat/E1_detailed_v1/summary.json",
+        "sha256": "ea7931893bedbc97d21b580d7d69d1796cde899e48e78f90f0c374224bcbfedc",
+        "status": "COMPLETE_CHECKS_PASS",
+        "completed_units": 12000,
+        "primary_comparisons": null,
+        "failed_units": null,
+        "mismatch_count": 0
+      },
+      "protocol_fingerprint": "cff0f251d4bbf77916328f45ea4fbbccb6d1ac3362239c64bcd46ccba76ed38a",
+      "planned_units": 12000
+    },
+    "E2": {
+      "suite": "E2",
+      "protocol": "results/post_cstat/E2_protocol.json",
+      "protocol_status": "FROZEN",
+      "completed_analysis": {
+        "path": "results/post_cstat/E2_analysis_v1/summary.json",
+        "sha256": "3e03041302956432e2544fd470ce355c0307c67c317c3d02e6b17b7f698893e2",
+        "status": "COMPLETE",
+        "completed_units": 1800,
+        "primary_comparisons": 60,
+        "failed_units": 0,
+        "mismatch_count": null
+      },
+      "detailed_analysis": {
+        "path": "results/post_cstat/E2_detailed_v1/summary.json",
+        "sha256": "a16bc98db1c99ad11770fa74b9d109febe8405aa5a5ced09b9f4e8108926a4a9",
+        "status": "COMPLETE_CHECKS_PASS",
+        "completed_units": 1800,
+        "primary_comparisons": null,
+        "failed_units": null,
+        "mismatch_count": 0
+      },
+      "protocol_fingerprint": "02c6e6abcde74b4cc8895b92c60acc147b0008d2f26c2714e20ff3f1b46ee4f3",
+      "planned_units": 1800
+    },
+    "E3": {
+      "suite": "E3",
+      "protocol": "results/post_cstat/E3_protocol.json",
+      "protocol_status": "FROZEN",
+      "completed_analysis": {
+        "path": "results/post_cstat/E3_analysis_v1/summary.json",
+        "sha256": "8f46750a90e50e85ebeeac7180f4c5a4107479907a711a7fa6432cf8ec4bc29b",
+        "status": "COMPLETE",
+        "completed_units": 3600,
+        "primary_comparisons": 108,
+        "failed_units": 0,
+        "mismatch_count": null
+      },
+      "detailed_analysis": {
+        "path": "results/post_cstat/E3_detailed_v1/summary.json",
+        "sha256": "b77559d38fe6e78789e10a25684cb5b042e9bde0c461682b54b6e832525712f7",
+        "status": "COMPLETE_CHECKS_PASS",
+        "completed_units": 3600,
+        "primary_comparisons": null,
+        "failed_units": null,
+        "mismatch_count": 0
+      },
+      "protocol_fingerprint": "de9d8f3eaf724880caa8e6871f3050214be60eff5e6f72d82478a299bc5e8da2",
+      "planned_units": 3600
+    },
+    "E4": {
+      "suite": "E4",
+      "protocol": "results/post_cstat/E4_protocol.json",
+      "protocol_status": "FROZEN",
+      "completed_analysis": {
+        "path": "results/post_cstat/E4_analysis_v1/summary.json",
+        "sha256": "70df695d73f615eef27048fac8441530375de5827bcaa21c389bee3097e308f4",
+        "status": "COMPLETE",
+        "completed_units": 7200,
+        "primary_comparisons": 192,
+        "failed_units": 0,
+        "mismatch_count": null
+      },
+      "detailed_analysis": {
+        "path": "results/post_cstat/E4_detailed_v1/summary.json",
+        "sha256": "4046da84b907000085f784f45eae0fe441576153654502c81f1468e7e58454bd",
+        "status": "COMPLETE_CHECKS_PASS",
+        "completed_units": 7200,
+        "primary_comparisons": null,
+        "failed_units": null,
+        "mismatch_count": 0
+      },
+      "protocol_fingerprint": "10f304e204939844e4a9ee14572b672002238477b421bc44a47e3fe1d93e6b6a",
+      "planned_units": 7200
+    },
+    "E5": {
+      "suite": "E5",
+      "protocol": "results/post_cstat/E5_protocol.json",
+      "protocol_status": "FROZEN",
+      "completed_analysis": {
+        "path": "results/post_cstat/E5_analysis_v1/summary.json",
+        "sha256": "4afa6eccc2816d512eb844a504222b0319bbf35a6efc27bc6a4750ba5b46b77e",
+        "status": "COMPLETE",
+        "completed_units": 4000,
+        "primary_comparisons": 32,
+        "failed_units": 0,
+        "mismatch_count": null
+      },
+      "detailed_analysis": null,
+      "protocol_fingerprint": "f077fb800ffba466bafc42ad51ee4f98e4da41c399bc164937ed3b4ab658814b",
+      "planned_units": 4000
+    },
+    "E6": {
+      "suite": "E6",
+      "protocol": "results/post_cstat/E6_protocol.json",
+      "protocol_status": "NOT_FROZEN",
+      "completed_analysis": null,
+      "detailed_analysis": null
+    },
+    "ANCHORS": {
+      "suite": "ANCHORS",
+      "protocol": "results/post_cstat/ANCHORS_server_v2_protocol.json",
+      "protocol_status": "FROZEN",
+      "completed_analysis": {
+        "path": "results/post_cstat/ANCHORS_server_v2_analysis_v1/summary.json",
+        "sha256": "9f76354e6575d4013086db8516184eb02133237c779521c9997ca3a4f6b4f92a",
+        "status": "COMPLETE",
+        "completed_units": 1600,
+        "primary_comparisons": 68,
+        "failed_units": 0,
+        "mismatch_count": null
+      },
+      "detailed_analysis": null,
+      "protocol_fingerprint": "8ffce7eb4a070fc223d411d6794ecd8ff5a257775063f3125ff5a9e6585a145c",
+      "planned_units": 1600
+    },
+    "negative_controls": {
+      "suite": "negative_controls",
+      "protocol": "results/post_cstat/negative_controls_server_v2_protocol.json",
+      "protocol_status": "FROZEN",
+      "completed_analysis": {
+        "path": "results/post_cstat/negative_controls_server_v2_analysis_v1/summary.json",
+        "sha256": "0e38231f526dd654527db6a5ab13772bf2bab5dbb0fd45c3eab7ad3a5a834e39",
+        "status": "COMPLETE",
+        "completed_units": 100,
+        "primary_comparisons": 0,
+        "failed_units": 0,
+        "mismatch_count": null
+      },
+      "detailed_analysis": null,
+      "protocol_fingerprint": "d21665e9848df7a621c326acaeda53f1a8408f3eedf83ed6b998ae38e1c6c20c",
+      "planned_units": 100
+    }
+  },
+  "interpretation": "Analysis availability is not an endorsement of practical usefulness or novelty; see research_verdict.md."
+}

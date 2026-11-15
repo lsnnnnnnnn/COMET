@@ -1,0 +1,22 @@
+{
+  "schema": "COMET-active-state-v4-final-delivery",
+  "updated_utc": "2026-11-15T05:40:36.196802+00:00",
+  "status": "ALL_UNBLOCKED_WORK_COMPLETE_E6_DATA_BLOCKED",
+  "branch": "codex/query-specific-graph-auditing",
+  "E0_new_draws": 0,
+  "completed_primary_units": 28600,
+  "completed_supplementary_units": 1700,
+  "completed_new_units": 30300,
+  "possible_partial_attempts_at_most": 3,
+  "scientific_processes_running": 0,
+  "server_tmux": "comet-post-cstat-20261115: dead pane1 exit0",
+  "local_E5": "4000COMPLETE, final independent reconstruction0mismatch; no remaining IDs",
+  "E6": "0/1000, DATA_BLOCKED_NOT_FROZEN, reserved IDs and commands in FINAL_HANDOFF.md",
+  "main_handoff": "FINAL_HANDOFF.md",
+  "paper_pdf": "paper/post_cstat/COMET_post_cstat_20261115.pdf",
+  "paper_pages": 24,
+  "final_process_receipt": "reports/post_cstat/final_process_state.json",
+  "resource_receipt": "reports/post_cstat/final_resource_budget.json",
+  "remaining_id_inventory": "reports/post_cstat/remaining_run_ids.json",
+  "Overleaf_modified_or_synced": false
+}

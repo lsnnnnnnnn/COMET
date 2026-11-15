@@ -1,0 +1,33 @@
+{
+  "suite": "E5",
+  "status": "SHARD_COMPLETE",
+  "stop_reason": null,
+  "new_completed_units": 483,
+  "failed_units": 0,
+  "remaining_ids": [],
+  "legacy_new_outcome_draws": 0,
+  "background_work_running": false,
+  "workers": 1,
+  "fingerprint": "f077fb800ffba466bafc42ad51ee4f98e4da41c399bc164937ed3b4ab658814b",
+  "first_resource_snapshot": {
+    "free_disk_bytes": 82329600000,
+    "available_ram_bytes": 2698772480,
+    "worker_rss_bytes": 56000512,
+    "memory_scope": "one synchronous worker RSS; no concurrent-peak sum inferred",
+    "global_artifact_bytes": 732510302,
+    "global_unique_completed_units": 29333
+  },
+  "final_global_usage": {
+    "artifact_bytes": 763497901,
+    "unique_completed_units": 30300
+  },
+  "wall_seconds": 1496.2717687500408,
+  "cpu_seconds": 1483.8639799999999,
+  "execution_mode": "one synchronous CPU worker; no GPU/paid resources",
+  "resume_command": ".venv/bin/python -m experiments.pipeline_runner --run --protocol results/post_cstat/E5_protocol.json --results /Users/shengenli/Documents/ChatGPT/COMET/results/post_cstat/E5",
+  "original_runner_status": "COMPLETE",
+  "completion_scope": "SHARD_ONLY",
+  "shard_index": 0,
+  "shards": 2,
+  "global_inventory_file": "/Users/shengenli/Documents/ChatGPT/COMET/results/post_cstat/E5/operational_invocations/1794717807032579000.global-inventory.json"
+}

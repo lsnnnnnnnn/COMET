@@ -1,0 +1,10 @@
+{
+  "status": "COMPLETE_CHECKS_PASS",
+  "suite": "E3",
+  "completed_checkpoint_files": 3600,
+  "verified_checkpoint_units": 3600,
+  "missing_units": 0,
+  "mismatch_count": 0,
+  "new_outcome_draws": 0,
+  "legacy_new_outcome_draws": 0
+}

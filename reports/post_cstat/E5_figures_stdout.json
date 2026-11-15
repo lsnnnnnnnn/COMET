@@ -1,0 +1,84 @@
+{
+  "status": "ACTUAL_SUPPLIED_SUMMARIES_ONLY",
+  "figures": [
+    "fig5_safe_useful_return"
+  ],
+  "new_outcome_draws": 0,
+  "legacy_new_outcome_draws": 0,
+  "availability": {
+    "E1": {
+      "name": "E1",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E1_detailed": {
+      "name": "E1_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "E2": {
+      "name": "E2",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E2_detailed": {
+      "name": "E2_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "E3": {
+      "name": "E3",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E3_detailed": {
+      "name": "E3_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "E4": {
+      "name": "E4",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E4_detailed": {
+      "name": "E4_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "E5": {
+      "name": "E5",
+      "status": "COMPLETE",
+      "path": "results/post_cstat/E5_analysis_v1/summary.json",
+      "sha256": "4afa6eccc2816d512eb844a504222b0319bbf35a6efc27bc6a4750ba5b46b77e",
+      "phase": "confirmatory",
+      "completed_units": 4000,
+      "remaining_units": 0
+    },
+    "E5_detailed": {
+      "name": "E5_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "E6": {
+      "name": "E6",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E6_detailed": {
+      "name": "E6_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "ANCHORS": {
+      "name": "ANCHORS",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "NEGATIVE_CONTROLS": {
+      "name": "NEGATIVE_CONTROLS",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    }
+  }
+}
