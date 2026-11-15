@@ -1,0 +1,39 @@
+{
+  "status": "PUBLISHED_DELIVERY_CONTENT_MATCHES_LOCAL",
+  "verified_local": "2026-11-15T19:46:40.989288+08:00",
+  "branch": "codex/post-cstat-delivery-20261115",
+  "repository": "lsnnnnnnnn/COMET",
+  "revision_short": "b3aff0dc",
+  "method": "GitHub connector read with explicit branch; UTF8 body direct comparison, no file hashes",
+  "files": [
+    {
+      "path": "FINAL_HANDOFF.md",
+      "content_equal": true,
+      "remote_url": "https://github.com/lsnnnnnnnn/COMET/blob/codex/post-cstat-delivery-20261115/FINAL_HANDOFF.md",
+      "utf8_bytes": 13843
+    },
+    {
+      "path": "reports/research_verdict.md",
+      "content_equal": true,
+      "remote_url": "https://github.com/lsnnnnnnnn/COMET/blob/codex/post-cstat-delivery-20261115/reports/research_verdict.md",
+      "utf8_bytes": 7237
+    },
+    {
+      "path": "theory/global_residual_truncation.md",
+      "content_equal": true,
+      "remote_url": "https://github.com/lsnnnnnnnn/COMET/blob/codex/post-cstat-delivery-20261115/theory/global_residual_truncation.md",
+      "utf8_bytes": 17021
+    },
+    {
+      "path": "reports/delivery_sync_20261115/FINAL_RESEARCH_CONCLUSIONS.md",
+      "content_equal": true,
+      "remote_url": "https://github.com/lsnnnnnnnn/COMET/blob/codex/post-cstat-delivery-20261115/reports/delivery_sync_20261115/FINAL_RESEARCH_CONCLUSIONS.md",
+      "utf8_bytes": 16110
+    }
+  ],
+  "Overleaf_modified": false,
+  "force_push": false,
+  "new_scientific_draws": 0,
+  "E6_completed": 0,
+  "E6_remaining_reserved_ids": 1000
+}

@@ -1,0 +1,33 @@
+{
+  "status": "PUBLISHED_PUBLIC_FILE_CONFIRMED_FULL_REDOWNLOAD_TIMED_OUT",
+  "inspected_local": "2026-11-15T19:53:38.320466+08:00",
+  "repository_public": true,
+  "branch": "codex/post-cstat-delivery-20261115",
+  "archive_html_url": "https://github.com/lsnnnnnnnn/COMET/blob/codex/post-cstat-delivery-20261115/deliveries/20261115_sync/review_bundle.zip",
+  "archive_download_url": "https://github.com/lsnnnnnnnn/COMET/raw/refs/heads/codex/post-cstat-delivery-20261115/deliveries/20261115_sync/review_bundle.zip",
+  "published_bytes": 15644802,
+  "local_archive_members": 432,
+  "github_directory_metadata_size": 15644802,
+  "raw_download": {
+    "http_code": 0,
+    "size_download": 0,
+    "num_redirects": 0,
+    "time_total": 15.011784,
+    "errormsg": "SSL connection timeout",
+    "exitcode": 28
+  },
+  "official_contents_api_raw_download": {
+    "http_code": 200,
+    "size_download": 2170072,
+    "num_redirects": 0,
+    "time_total": 60.004507,
+    "errormsg": "Operation timed out after 60004 milliseconds with 2170072 out of 15644802 bytes received",
+    "exitcode": 28
+  },
+  "received_prefix_bytes": 2170072,
+  "received_prefix_matches_local_bytes": true,
+  "full_remote_redownload_verified": false,
+  "public_git_without_credentials": "shallow filtered clone succeeded; lazy ZIP-blob retrieval timed out; see transport receipt",
+  "manual_file_hashes_calculated": 0,
+  "scope": "Actual GitHub file metadata, successful HTTP200 partial transfer and matching received prefix establish publication/readability; do not relabel as a full remote ZIP integrity check."
+}

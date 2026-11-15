@@ -1,0 +1,42 @@
+[
+  {
+    "command": [
+      "git",
+      "-c",
+      "credential.helper=",
+      "clone",
+      "--depth",
+      "1",
+      "--filter=blob:none",
+      "--no-checkout",
+      "--single-branch",
+      "--branch",
+      "codex/post-cstat-delivery-20261115",
+      "https://github.com/lsnnnnnnnn/COMET.git",
+      "/private/tmp/comet_public_delivery_probe"
+    ],
+    "started_local": "2026-11-15T19:49:04.529186+08:00",
+    "status": "FINISHED",
+    "exit_code": 0,
+    "output": "reports/delivery_sync_20261115/public_git_clone_stdout.txt",
+    "stderr": "reports/delivery_sync_20261115/public_git_clone_stderr.txt",
+    "credential_helper_disabled": true
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "/private/tmp/comet_public_delivery_probe",
+      "-c",
+      "credential.helper=",
+      "show",
+      "HEAD:deliveries/20261115_sync/review_bundle.zip"
+    ],
+    "started_local": "2026-11-15T19:49:12.758745+08:00",
+    "status": "TIMEOUT",
+    "exit_code": null,
+    "output": "/private/tmp/comet_review_bundle_from_public_git.zip",
+    "stderr": "reports/delivery_sync_20261115/public_git_package_stderr.txt",
+    "credential_helper_disabled": true
+  }
+]

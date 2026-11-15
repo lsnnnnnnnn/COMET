@@ -1,0 +1,4 @@
+{
+  "stopped_pids": [],
+  "scope": "only Git processes whose cwd is our temporary public-download probe; not experiment processes"
+}

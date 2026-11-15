@@ -11,3 +11,11 @@
 公开审阅包地址：https://github.com/lsnnnnnnnn/COMET/raw/refs/heads/codex/post-cstat-delivery-20261115/deliveries/20261115_sync/review_bundle.zip
 
 本轮所有新旧确认性outcome抽样为0。E6仍BLOCKED，不存在替代实验或后台科学作业。Git内部revision识别用于确认推送；按用户最后指令，不做全库/数据文件hash复验。
+
+## 发布后的实际确认
+
+审阅包和结论报告已普通推送（交付快照b3aff0d）。GitHub连接器再次从新分支读回交接、verdict、主证明和最终研究结论，四份正文直接比较一致，见 `final_remote_readback.json`。包的公开GitHub目录项为15,644,802 bytes，与本地包大小相符。
+
+当前执行环境的普通raw HTTP路径SSL连接超时；官方Contents API raw下载返回HTTP200，实际收到2,170,072 bytes且逐字节等于本地ZIP前缀，但60秒内未下载完毕。公开无凭据Git shallow clone成功，随后取ZIP blob超时。因而**没有声称完整二进制回下载核验通过**。本地ZIP的432项清单、关键成员内容和LaTeX依赖已检查；公开文件地址与HTTP证据见 `package_access_verification.json`。没有使用额外代理、伪装请求、访问控制绕行或文件SHA256复验。
+
+上述最终网络验证记录附在仓库中，不可能被包含在它们正在证明的同一个ZIP内部；ZIP内的较早同步记录已明确这一时序。所有科学实验仍未重跑，E6为BLOCKED。
