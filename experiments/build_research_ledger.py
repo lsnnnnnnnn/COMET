@@ -18,6 +18,10 @@ def sha(path):
 def suite_record(name):
     protocol = ROOT / f"results/post_cstat/{name}_protocol.json"
     analysis = ROOT / f"results/post_cstat/{name}_analysis_v1/summary.json"
+    server_protocol = ROOT / f"results/post_cstat/{name}_server_v2_protocol.json"
+    if name in ("ANCHORS","negative_controls") and server_protocol.exists():
+        protocol=server_protocol
+        analysis=ROOT/f"results/post_cstat/{name}_server_v2_analysis_v1/summary.json"
     detailed = ROOT / f"results/post_cstat/{name}_detailed_v1/summary.json"
     result = dict(suite=name, protocol=str(protocol.relative_to(ROOT)),
                   protocol_status="FROZEN" if protocol.exists() else "NOT_FROZEN",
