@@ -1,0 +1,899 @@
+{
+  "schema": "post-cstat-empirical-figures-v1",
+  "status": "ACTUAL_SUPPLIED_SUMMARIES_ONLY",
+  "data_scope": "ACTUAL_SUPPLIED_ANALYSIS_ARTIFACTS",
+  "availability": {
+    "E1": {
+      "name": "E1",
+      "status": "COMPLETE",
+      "path": "results/post_cstat/E1_analysis_v1/summary.json",
+      "sha256": "3f23be62e71980dbbb1436c34b51106241d9bcbef822eb3754b3c935fe9142a7",
+      "phase": "confirmatory",
+      "completed_units": 12000,
+      "remaining_units": 0
+    },
+    "E1_detailed": {
+      "name": "E1_detailed",
+      "status": "AVAILABLE",
+      "sources": {
+        "results/post_cstat/E1_detailed_v1/group_summary.csv": "5e31eec99b3b48824f1d7c368e780a7bb2a0b4eb4723ebb2edb52543d9000889",
+        "results/post_cstat/E1_detailed_v1/query_summary.csv": "39c02353c431be86bec658600d8580fc84832c7e884bc23b85451ee9110684eb"
+      }
+    },
+    "E2": {
+      "name": "E2",
+      "status": "COMPLETE",
+      "path": "results/post_cstat/E2_analysis_v1/summary.json",
+      "sha256": "3e03041302956432e2544fd470ce355c0307c67c317c3d02e6b17b7f698893e2",
+      "phase": "confirmatory",
+      "completed_units": 1800,
+      "remaining_units": 0
+    },
+    "E2_detailed": {
+      "name": "E2_detailed",
+      "status": "AVAILABLE",
+      "sources": {
+        "results/post_cstat/E2_detailed_v1/group_summary.csv": "e9ea2a5f8b36c9085060b24ad44f8f484e0dfac63055ccf638d664c6efd7824e",
+        "results/post_cstat/E2_detailed_v1/query_summary.csv": "eb103c36112be94c1ccd30e7a543addd34eabc8a16f0d204e2847f4e7cea3f0e"
+      }
+    },
+    "E3": {
+      "name": "E3",
+      "status": "COMPLETE",
+      "path": "results/post_cstat/E3_analysis_v1/summary.json",
+      "sha256": "8f46750a90e50e85ebeeac7180f4c5a4107479907a711a7fa6432cf8ec4bc29b",
+      "phase": "confirmatory",
+      "completed_units": 3600,
+      "remaining_units": 0
+    },
+    "E3_detailed": {
+      "name": "E3_detailed",
+      "status": "AVAILABLE",
+      "sources": {
+        "results/post_cstat/E3_detailed_v1/group_summary.csv": "aa1166d19d3cc16fd559a08756ceece2d27278960884ea38934a19cf65bf1323",
+        "results/post_cstat/E3_detailed_v1/query_summary.csv": "f92bfdfe747809ed1474b030ec8264c06c66304f701e206d07b1ce55c1884a0a"
+      }
+    },
+    "E4": {
+      "name": "E4",
+      "status": "COMPLETE",
+      "path": "results/post_cstat/E4_analysis_v1/summary.json",
+      "sha256": "70df695d73f615eef27048fac8441530375de5827bcaa21c389bee3097e308f4",
+      "phase": "confirmatory",
+      "completed_units": 7200,
+      "remaining_units": 0
+    },
+    "E4_detailed": {
+      "name": "E4_detailed",
+      "status": "AVAILABLE",
+      "sources": {
+        "results/post_cstat/E4_detailed_v1/group_summary.csv": "94938ce75d47503db69265679e59a56f0268215678dbf69c9f8cdbc5c357f2cb",
+        "results/post_cstat/E4_detailed_v1/query_summary.csv": "26e60ec35764b5b0580b795420011cbbc47ed2fe6dd49be978b1fa7f0b24d4ad"
+      }
+    },
+    "E5": {
+      "name": "E5",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E5_detailed": {
+      "name": "E5_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "E6": {
+      "name": "E6",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "E6_detailed": {
+      "name": "E6_detailed",
+      "status": "UNAVAILABLE",
+      "reason": "no detailed diagnostics supplied"
+    },
+    "ANCHORS": {
+      "name": "ANCHORS",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    },
+    "NEGATIVE_CONTROLS": {
+      "name": "NEGATIVE_CONTROLS",
+      "status": "UNAVAILABLE",
+      "reason": "no analysis supplied"
+    }
+  },
+  "figures": [
+    "fig1_core_validity_informativeness",
+    "fig2_query_locality",
+    "fig3_paired_contrasts",
+    "fig4_gap_power_boundary"
+  ],
+  "formats": [
+    "pdf",
+    "png"
+  ],
+  "new_outcome_draws": 0,
+  "legacy_new_outcome_draws": 0,
+  "raw_checkpoints_replayed": false,
+  "equivalence_checks": [
+    {
+      "suite": "E1",
+      "cell": "cycle-moderate-bounded",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "cycle-moderate-bounded",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "cycle-moderate-heavy",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "cycle-moderate-heavy",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "cycle-weak-bounded",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "cycle-weak-bounded",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "cycle-weak-heavy",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "cycle-weak-heavy",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "independent-moderate-bounded",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "independent-moderate-bounded",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "independent-moderate-heavy",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "independent-moderate-heavy",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "independent-weak-bounded",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "independent-weak-bounded",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "independent-weak-heavy",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "independent-weak-heavy",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "triangles-moderate-bounded",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "triangles-moderate-bounded",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "triangles-moderate-heavy",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "triangles-moderate-heavy",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "triangles-weak-bounded",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "triangles-weak-bounded",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "triangles-weak-heavy",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E1",
+      "cell": "triangles-weak-heavy",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E2",
+      "cell": "hub1-extreme1e-4",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E2",
+      "cell": "hub1-extreme1e-4",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E2",
+      "cell": "hub1-moderate",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E2",
+      "cell": "hub1-moderate",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E2",
+      "cell": "hub16-extreme1e-4",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E2",
+      "cell": "hub16-extreme1e-4",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E2",
+      "cell": "hub16-moderate",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E2",
+      "cell": "hub16-moderate",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E2",
+      "cell": "hub64-extreme1e-4",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E2",
+      "cell": "hub64-extreme1e-4",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E2",
+      "cell": "hub64-moderate",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E2",
+      "cell": "hub64-moderate",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support002-moderate-bounded",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support002-moderate-bounded",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support002-moderate-heavy",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support002-moderate-heavy",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support002-weak-bounded",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support002-weak-bounded",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support002-weak-heavy",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support002-weak-heavy",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support010-moderate-bounded",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support010-moderate-bounded",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support010-moderate-heavy",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support010-moderate-heavy",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support010-weak-bounded",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support010-weak-bounded",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support010-weak-heavy",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support010-weak-heavy",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support100-moderate-bounded",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support100-moderate-bounded",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support100-moderate-heavy",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support100-moderate-heavy",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support100-weak-bounded",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support100-weak-bounded",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support100-weak-heavy",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E3",
+      "cell": "support100-weak-heavy",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-bounded-gapm003",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-bounded-gapm003",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-bounded-gapm010",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-bounded-gapm010",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-bounded-gapp003",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-bounded-gapp003",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-bounded-gapp010",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-bounded-gapp010",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-bounded-gapp020",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-bounded-gapp020",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-bounded-gapzero",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-bounded-gapzero",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-heavy-gapm003",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-heavy-gapm003",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-heavy-gapm010",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-heavy-gapm010",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-heavy-gapp003",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-heavy-gapp003",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-heavy-gapp010",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-heavy-gapp010",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-heavy-gapp020",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-heavy-gapp020",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-heavy-gapzero",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "moderate-heavy-gapzero",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-bounded-gapm003",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-bounded-gapm003",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-bounded-gapm010",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-bounded-gapm010",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-bounded-gapp003",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-bounded-gapp003",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-bounded-gapp010",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-bounded-gapp010",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-bounded-gapp020",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-bounded-gapp020",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-bounded-gapzero",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-bounded-gapzero",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-heavy-gapm003",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-heavy-gapm003",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-heavy-gapm010",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-heavy-gapm010",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-heavy-gapp003",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-heavy-gapp003",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-heavy-gapp010",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-heavy-gapp010",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-heavy-gapp020",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-heavy-gapp020",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-heavy-gapzero",
+      "delta": 0.05,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    },
+    {
+      "suite": "E4",
+      "cell": "weak-heavy-gapzero",
+      "delta": 0.1,
+      "status": "IDENTICAL_REPORTED_SUMMARIES",
+      "interpretation": "algebraically equivalent matched configurations; not an independent superiority comparison"
+    }
+  ],
+  "candidate_uncertainty": "coordinate quantiles are descriptive; no candidate pooling for binomial uncertainty",
+  "errorbars": "pointwise whole-trial Wilson intervals supplied by analysis; not simultaneous bands",
+  "code_sha256": "5ee00c14ee777cfa6c3a2bb9fef399c566cea6e4e680bb99ca5b26db90859b93",
+  "outputs": {
+    "anchor_widths.csv": "0f7684ce01b4c036dddd1fc4ddec1c4ad41c9705a92dbd7457bd1231fdecaa22",
+    "captions.md": "c92bddc363a69b8babebaae18793a16f74c01666cb3e143af38fe702c80fe568",
+    "empirical_coordinates.csv": "0c85a87c0c6dc51048906eb611a5d0d06e2da7d258600b775c3713d5a4b80c1d",
+    "empirical_events.csv": "70e1d243224d123b2732ade481f5bcb3d2ccfdd511aec3bb28143f9b50c5bc56",
+    "empirical_events.tex": "7961d010f44a78bdff94040268a88da2cf238d4eb1a14e537b41f5c32c1f3487",
+    "empirical_widths.csv": "77a9f900131d4dc4a0996ad6bf90bdb791c7b4f9c9f324482ba18bd5af2c631e",
+    "fig1_core_validity_informativeness.pdf": "dfc7f34bfc480d10e3403d65b8c7b80804536b3a19b759f4acdf658b7bc30c55",
+    "fig1_core_validity_informativeness.png": "d393dbff0787911f5599e486377d527e67aa7beeab7e638e56f517b543086bc8",
+    "fig2_query_locality.pdf": "1eea92a15bc120bfd7478e1aa1ac4e23463dc656ed4e97fe353440eca78067a3",
+    "fig2_query_locality.png": "86299573783a30cbd6ba79ed0c4062fe406c213aea4bb22ace7ac1560ebd2503",
+    "fig3_paired_contrasts.pdf": "da6504498b4f39795e846b2de46444872d28679c2e58ad011b12d7b01ff90941",
+    "fig3_paired_contrasts.png": "798c554a8a67aa8cf0e15228d9b61ed670c68b72ae99cbea0cb42862c74ee47f",
+    "fig4_gap_power_boundary.pdf": "c09a67e6a3c3f430ba6e483f22e47223e4bcfefbab45feb6fb2b90c04f1e06eb",
+    "fig4_gap_power_boundary.png": "81ab78ad7502a9155b3e75655430aabc9ded099d264c78fb97e6ef32b65e6c1d",
+    "paired_comparisons.csv": "a22894998d72cb9b9c28e949d9caa5bd10ee3a8054316211cb8354c7ef359e83",
+    "pipeline_values.csv": "f5c2ce465209225201efd0ea7b4239009c5c3fa7395676649e495a5b005a5d9f",
+    "prespecified_envelope_diagnostics.csv": "ca0de919a011ffb25bccbeb61bdb2973cb850c07037033fdbe89025319fcb71a",
+    "prespecified_envelope_diagnostics.json": "be1cd4a70b32680ca4c7aa8a5f31c57e3b4cfc8770757894db65f21d99974af8"
+  }
+}

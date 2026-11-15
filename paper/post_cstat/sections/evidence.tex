@@ -3,7 +3,9 @@
 
 \subsection{Frozen study and statistical unit}
 
-E1--E4 use $N=32768$ certification rows and a finite family of 16 queries.
+E1--E4 audit 16 target coordinates on $N=32768$ certification rows.
+The E3 level-subtraction comparator certifies 20 unique underlying levels
+to derive its 16 contrast intervals.
 The primary simultaneous level is 95\%;90\% is secondary on the same logs.
 Methods share each complete log. A coverage or error observation is one
 complete independent trial, never one coordinate. The six E2 outside-region
@@ -52,6 +54,13 @@ defeating the historical loose bound would not establish a new information
 limit. The fully matched generic construction equals the corresponding
 COMET construction.
 
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{figures/empirical_E1_E4_v1/fig1_core_validity_informativeness.pdf}
+\caption{E1: complete-family coverage, interval resolution and detection on the same logs. Coverage and violation-detection bars are pointwise Wilson 95\% intervals over independent whole trials. Width quantiles are descriptive across saved coordinates, not additional independent observations. The error/radius panel takes a maximum within each trial before summarizing trials. The fully matched generic method coincides with COMET.}
+\label{fig:post-core}
+\end{figure}
+
 \subsection{Local questions and irrelevant global difficulties}
 
 E2 keeps the audited first-half mechanism fixed while changing an outside
@@ -67,9 +76,9 @@ Per-query diagnostics distinguish the unchanged first-half query from global
 queries whose relevant outside support actually changes. Averaging these
 queries together would obscure the intended locality comparison.
 For the constant-policy first-half query, the local coloring remains 2.
-The pure local truncation radius is .03254654 in all six conditions, while
+The pure local subgroup-normalized truncation radius is .03254654 in all six conditions, while
 the bounded dispatch reduces it to .02110065. With the outside
-propensity near $10^{-4}$, the global maximum-envelope radius grows from
+propensity near $10^{-4}$, the subgroup-normalized global maximum-envelope radius grows from
 2.2154 to 12.5324 as the outside hub grows; intersecting it with the legal
 target class gives the entire class. The local interval's median
 width/diameter ratio stays .04220130. Keeping local moments but paying for the
@@ -78,6 +87,13 @@ global coloring in the pure truncation engine gives normalized radii
 additional reduction to .02110 is due to the eligible bounded branch.
 The matched local generic baseline recovers the same protection from
 irrelevant outside difficulties.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{figures/empirical_E1_E4_v1/fig2_query_locality.pdf}
+\caption{E2: the constant-policy first-half query retains local coloring count 2 and the same local moment budget when only the outside region changes. The global query legitimately changes with that region. Green versus pink isolates local versus global coloring in the pure truncation engine; the further reduction to blue uses the eligible bounded branch. All radii are normalized by subgroup mass.}
+\label{fig:post-locality}
+\end{figure}
 
 The design computation also exports 216 fixed-overlap and 216
 declining-propensity configurations over sample size, subgroup mass,
@@ -118,29 +134,53 @@ scales signal and radius together. This control is not four new data sets.
 
 All 108 primary E3 diagnostics cover 300/300 complete families, with no observed
 false claim. In the full-support, moderate-overlap bounded cell, a direct
-contrast certifies at least one true positive improvement in 300/300 logs;
+contrast certifies at least one true risk reduction in 300/300 logs;
 the deduplicated joint-level difference certifies none. Mean per-trial
 coordinate widths are .0066724 and .0450457 respectively under the same total
 confidence budget. Every other cell has zero positive-improvement detections
-for COMET, including the smaller-support cells whose raw intervals are
+for COMET, including the smaller-support cells whose intersected intervals are
 narrower. Thus cancellation can support a useful comparison, but a smaller
-raw contrast interval alone is not evidence of higher sign-certification
+contrast interval alone is not evidence of higher sign-certification
 power. The matched contrast-aware generic construction recovers the same
-result. Noninferiority is a separate endpoint and may be easy for tiny raw
-changes simply because their known feasible range is small.
+result. Noninferiority is reported separately; at the primary level it is certified
+only in the same full-support bounded cell.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{figures/empirical_E1_E4_v1/fig3_paired_contrasts.pdf}
+\caption{E3: median intersected contrast width for the constant-policy contrast and all-row auditor. Direct contrasts preserve cancellation, while joint-level subtraction uses 20 deduplicated underlying coordinates under the same total confidence budget. Smaller changed support also scales the target signal; narrower intervals alone do not imply greater sign-certification power.}
+\label{fig:post-contrasts}
+\end{figure}
 
 E4 fixes a normalized subgroup of mass near .1, risk threshold .4 and true
 gaps $\{-.10,-.03,0,.03,.10,.20\}$ in each of four environments. All 24
 cells remain included. Detection, false-safe and false-violation decisions
 must be interpreted alongside the known design-only $2r$ sufficient boundary;
-the procedure never receives the true gap.
+the procedure never receives the true gap. All 192 eligible primary
+comparisons cover 300/300 complete families, with no observed false claim.
+In the moderate-overlap bounded environment, COMET certifies the primary
+query safe in 298/300 trials at gap $-.10$, and detects its violation in
+300/300 at gaps $.10$ and $.20$. It makes neither primary-query decision at
+$-.03$, zero or $.03$. Graph Bernstein and the fully matched generic method
+have identical counts; graph Hoeffding detects only the $.20$ gap.
+COMET makes no primary-query decision in the weak-overlap bounded or either
+heavy-tail environment. Family-wide discovery can still occur because other
+queries are truly violating; that event is not the primary-query power curve.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{figures/empirical_E1_E4_v1/fig4_gap_power_boundary.pdf}
+\caption{E4: primary-query safe and violation certification, with pointwise whole-trial Wilson 95\% intervals. The shaded negative-gap region is truly safe. The design-only $2r$ line is sufficient for high-probability violation detection, not necessary; boundaries beyond the frozen gap grid are annotated rather than clipped into it. Family-any detection is a separate endpoint.}
+\label{fig:post-power}
+\end{figure}
 
 E5 learns nuisance functions on 4,096 training rows and discovers at most four
 rules of depth at most four and minimum design mass .02 on 8,192 independent
 discovery rows. At most eight policies are frozen before 32,768 certification
 rows. The risk threshold is .32, utility noninferiority margin .01, service
-floor .2 and capacity ceiling .6. The full deduplicated risk-plus-utility family,
-typically 47 coordinates, replaces the 16-query validity family. Comparisons
+floor .2 and capacity ceiling .6. The full deduplicated risk-plus-utility family
+contains at most 47 coordinates for eight policies and five auditors, and
+uses its actual distinct count instead of the 16-query validity budget. Comparisons
 include point constraints, diagnostic in-sample auditing, independent global
 and local certificates, matched generic certificates, fixed slices, abstention
 and uncertified status quo. The same independent-pilot candidate library is
@@ -154,8 +194,8 @@ certification of a true violation. Utility, utility gain, service, risk
 violation and oracle-feasible/robust-slack comparators are evaluation-only.
 Conditional unsafe-given-return is separately descriptive. Abstaining in
 every trial and rejecting all service cannot count as useful success.
-The incomplete E4--E5 outcomes are withheld from performance conclusions
-until their fixed counts and analyses are complete.
+E5 outcomes are withheld from performance conclusions until its fixed count
+and full analysis are complete.
 
 The single selected real-covariate extension, E6 on ACS California 2018,
 remains data-blocked after official-source DNS failure, HTTP403 and a browser

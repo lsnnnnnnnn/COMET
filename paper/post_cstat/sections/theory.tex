@@ -37,6 +37,15 @@ counterfactual mean only together with the stated exposure sufficiency and
 assignment assumptions. A policy interpretation additionally requires that
 $q$ arise from a compatible joint assignment law.
 
+Support is a property of the question. For bounded responses with exposure
+law $e=(0,1/2,1/2)$, consider
+$q_0=(1/5,3/10,1/2)$ and $q_1=(1/5,1/2,3/10)$.
+Neither policy level is point identified when the first state's mean is
+unknown. Their signed contrast has coefficient
+$q_1-q_0=(0,1/5,-1/5)$ and uses only observed states. The common unsupported
+contribution cancels. Every matched contrast-aware method receives this
+same supported query.
+
 \begin{assumption}[Conditional graph and residual envelopes]
 \label{ass:post-core}
 The desired exposure-specific means satisfy

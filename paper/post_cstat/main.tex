@@ -13,7 +13,7 @@
 \newtheorem{definition}[theorem]{Definition}
 \title{COMET: Counterfactual Moment Auditing under\\Weak Overlap and Graph Dependence}
 \author{Anonymous research draft}
-\date{Local research revision, 14 November 2026}
+\date{Local research revision, 15 November 2026}
 \begin{document}
 \maketitle
 
@@ -36,12 +36,17 @@ a distinct empirical requirement. The bounded branch admits strong
 Hoeffding/Bernstein comparisons, and a fully matched generic truncated graph
 mean is algebraically identical to its corresponding COMET configuration.
 In 12,000 heterogeneous-graph logs, all 96 eligible primary diagnostics cover
-the complete query family in 1,000/1,000 trials per fixed comparison. Detection
-is useful in five bounded cells but absent in all six tested heavy-tail cells;
+the complete query family in 1,000/1,000 trials per fixed comparison. Violation detection reaches
+1,000/1,000 logs in five bounded cells, 2/1,000 in the sixth, and zero in all
+six tested heavy-tail cells;
 coverage alone conceals this distinction. A further 1,800 paired-condition
 logs isolate local evidence costs and confirm equality with the fully matched
-generic comparator. Complete-pipeline and remaining power results are still
-being collected in this research revision.
+generic comparator. In 3,600 contrast trials, direct contrasts certify a
+risk reduction in every full-support, moderate-overlap bounded trial, while
+joint-level subtraction certifies none; other tested contrast cells give no
+positive detections. A 7,200-trial gap study isolates the primary query's
+limited power under weak overlap and heavy tails. Complete-pipeline results
+are still being collected in this research revision.
 \end{abstract}
 
 \input{sections/introduction}

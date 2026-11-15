@@ -70,7 +70,7 @@ in~\eqref{eq:post-proof-bias} gives
 $|\mathbb E T_\tau(R)-\mathbb E R|\leq c_pv\tau^{1-p}$.
 \end{proof}
 
-For $1<p\leq2$, checking separately $|x|\leq\tau$ and $|x|>\tau$ gives
+For $1<p\leq 2$, checking separately $|x|\leq\tau$ and $|x|>\tau$ gives
 \begin{equation}
  T_\tau(x)^2\leq\tau^{2-p}|x|^p,
  \qquad
@@ -78,7 +78,7 @@ For $1<p\leq2$, checking separately $|x|\leq\tau$ and $|x|>\tau$ gives
  \label{eq:post-proof-second}
 \end{equation}
 Moreover
-$|T_\tau(R)-\mathbb E T_\tau(R)|\leq2\tau$.
+$|T_\tau(R)-\mathbb E T_\tau(R)|\leq 2\tau$.
 The centering is used only in the proof, not in the estimator. The second
 moment inequality cannot be reused for $p>2$: $x=.1$, $\tau=1$ and $p=3$
 give $.01>.001$. A centered-noise bound is also insufficient for clipping
@@ -109,14 +109,14 @@ $\mathbb E X^2\leq a$, expansion of the exponential gives, when
 $b|\lambda|<3$,
 \begin{align}
  \mathbb E e^{\lambda X}
- &\leq1+\frac{\lambda^2a}{2}
+ &\leq 1+\frac{\lambda^2a}{2}
           \sum_{j=0}^\infty\left(\frac{b|\lambda|}{3}\right)^j,
  &\log\mathbb E e^{\lambda X}
  &\leq\frac{\lambda^2a}{2(1-b|\lambda|/3)}.
  \label{eq:post-proof-bernstein-mgf}
 \end{align}
 Here $|\mathbb E X^k|\leq ab^{k-2}$ and
-$k!\geq2\cdot3^{k-2}$ for $k\geq2$ justify the series bound.
+$k!\geq 2\cdot 3^{k-2}$ for $k\geq 2$ justify the series bound.
 
 Let $X_u=T_{\tau_u}(R_u)-\mathbb E T_{\tau_u}(R_u)$,
 $A=\sum_uv_u\tau_u^{2-p}$ and $\tau_{\max}=\max_u\tau_u$.
@@ -140,7 +140,7 @@ $\log\mathbb E e^{\lambda\sum X_u}\leq
 V\lambda^2/(2(1-c|\lambda|))$ implies
 \begin{equation}
  \Pr\left(\left|\sum_uX_u\right|>
-                \sqrt{2Vt}+ct\right)\leq2e^{-t}.
+                \sqrt{2Vt}+ct\right)\leq 2e^{-t}.
  \label{eq:post-proof-tail}
 \end{equation}
 For $V>0$, substitute
@@ -222,9 +222,9 @@ For color $C_j$, let $A_j=\sum_{u\in C_j}v_u\tau_u^{2-p}$,
 $t_j=\log(2/\delta_j)$ and $\tau_{\max,j}=\max_{u\in C_j}\tau_u$.
 By an independent Bernstein argument and a union bound its total radius is
 \begin{equation}
- \frac1B\sum_j\left[
+ \frac 1B\sum_j\left[
      c_p\sum_{u\in C_j}v_u\tau_u^{1-p}
-     +\sqrt{2A_jt_j}+\frac23\tau_{\max,j}t_j\right].
+     +\sqrt{2A_jt_j}+\frac 23\tau_{\max,j}t_j\right].
  \label{eq:post-proof-colorwise}
 \end{equation}
 Every color is retained. Equivalently, color-average estimators are recombined
@@ -262,7 +262,7 @@ Known nuisance $b$ has
 $\mathbb E|Y_j(1)-b|^p=a^pt\leq\nu^p$. The normalized subgroup target is
 $\theta_\sigma=b+\sigma\eta$, and its raw IPW residual moment is at most
 $\epsilon^{1-p}\nu^p$. To keep conditional means in $[0,1]$, choose $b=1/2$
-and $H\leq1/2$. The response amplitudes need not be bounded: bounded conditional
+and $H\leq 1/2$. The response amplitudes need not be bounded: bounded conditional
 means and finite moments are distinct assumptions. This construction is not a
 bounded-response lower bound.
 
@@ -272,7 +272,7 @@ disjoint. Thus
 \begin{equation}
  \operatorname{TV}(P_+,P_-)
    =1-(1-\epsilon t)^n
-   \leq n\epsilon t\leq\frac12.
+   \leq n\epsilon t\leq\frac 12.
  \label{eq:post-proof-tv}
 \end{equation}
 For any estimator $T$, integrate the triangle inequality over the common
@@ -280,14 +280,14 @@ part of the two probability measures. Since the parameter distance is
 $2\eta$,
 \begin{equation}
  \mathbb E_+|T-\theta_+|+\mathbb E_-|T-\theta_-|
- \geq2\eta(1-\operatorname{TV}(P_+,P_-)).
+ \geq 2\eta(1-\operatorname{TV}(P_+,P_-)).
 \end{equation}
 The maximum risk is at least half this sum, hence at least
 $\eta(1-\operatorname{TV})\geq\eta/2$, proving
 \eqref{eq:post-lower}. Multiplying targets by $\pi$ multiplies the risk bound
 by $\pi$.
 
-When $2n\epsilon\geq1$ and the mean cap does not bind, the normalized
+When $2n\epsilon\geq 1$ and the mean cap does not bind, the normalized
 lower-bound scale is
 \[
 2^{-1-(p-1)/p}\,\nu\left(\frac{\chi}{N\pi\epsilon}\right)^{(p-1)/p}.
@@ -301,12 +301,19 @@ $\chi\mid N\pi$ and the explicit observable experiment are part of the claim.
 The sample-size-dependent spike distribution is a minimax construction, not a
 prediction for a fixed Pareto simulation.
 
+At exactly zero exposure support, take $A_j=0$ always and
+$Y_j(1)=b\pm\min\{H,\nu\}$. The observable laws are identical while the
+subgroup targets differ. The same common-measure argument gives maximum
+absolute risk at least $\min\{H,\nu\}$. This is nonidentification outside
+the supported core model; an IPW certificate is unavailable, and the API
+refuses a nonzero target coefficient at zero exposure rather than flooring it.
+
 There is also a simple confidence-width consequence. If a random interval $I$
 has coverage at least $1-\alpha$ under each sign, change of measure gives
 \begin{equation}
  P_+(\theta_+\in I,\theta_-\in I)
- \geq1-2\alpha-\operatorname{TV}(P_+,P_-)
- \geq\frac12-2\alpha.
+ \geq 1-2\alpha-\operatorname{TV}(P_+,P_-)
+ \geq\frac 12-2\alpha.
 \end{equation}
 Consequently its diameter is at least $2\eta$ with at least the displayed
 probability when positive; for a raw target replace $2\eta$ by $2\pi\eta$.
@@ -381,7 +388,7 @@ $w_s=q_s/e_s\in\{2/3,2\}$. Its response locations are $(.35,.55)$, so its
 target is $.45$, threshold $.4$ and gap $.05$. These choices precede any
 anchor outcome. Each observed DR score
 \[
- X=\frac12+w_S(Y-\tfrac12)
+ X=\frac 12+w_S(Y-\tfrac 12)
 \]
 has that target; the observed outcome $Y$ alone instead averages under the
 logging law. All rows share the same distribution and use independent
@@ -391,24 +398,24 @@ Catoni requires a centered moment envelope. In the bounded $p=2$ anchor,
 $Y\in[0,1]$ gives directly
 \[
  \operatorname{Var}(X)\leq
- \mathbb E\!\left[\{w_S(Y-\tfrac12)\}^2\right]
- \leq\frac14\sum_s e_sw_s^2.
+ \mathbb E\!\left[\{w_S(Y-\tfrac 12)\}^2\right]
+ \leq\frac 14\sum_s e_sw_s^2.
 \]
 For the finite-$p$ location-plus-noise anchor, let
 $\delta_s=\mu_s-1/2\in[-1/2,1/2]$ and suppose
 $\|\xi_s\|_p\leq K$. Here
 $K=.1(1.75/(1.75-p))^{1/p}$ and $p=1.5$, with the declared finite-grid
-qualification. Since $w_s\geq1/2$, maximization over the four location
+qualification. Since $w_s\geq 1/2$, maximization over the four location
 corners yields
 \[
- \left|w_s\delta_s-\tfrac12(\delta_0+\delta_1)\right|
- \leq\tfrac12\{|w_s-\tfrac12|+\tfrac12\}
- =\tfrac12w_s.
+ \left|w_s\delta_s-\tfrac 12(\delta_0+\delta_1)\right|
+ \leq\tfrac 12\{|w_s-\tfrac 12|+\tfrac 12\}
+ =\tfrac 12w_s.
 \]
 Conditional Minkowski therefore gives
 \[
  \mathbb E|X-\mathbb EX|^p
- \leq(\tfrac12+K)^p\sum_s e_sw_s^p.
+ \leq(\tfrac 12+K)^p\sum_s e_sw_s^p.
 \]
 This equals the legal raw residual envelope in this particular balanced-target,
 midpoint-fit location model. It is not a general inequality replacing a
@@ -416,10 +423,61 @@ centered moment by a raw moment. The Catoni implementation also checks its
 theorem's sample-size condition and retains its deterministic root-solver
 debit.
 
-For bounded OPE, $\mathbb Ew_S=1$ and $w_S\leq2$ are known from the design,
+For bounded OPE, $\mathbb Ew_S=1$ and $w_S\leq 2$ are known from the design,
 even if a particular log observes only the smaller weight. The author-code
 one-dimensional betting instance receives this design maximum. The 2024
 DR/empirical-Bernstein engine receives the same logging law, target and
 nuisance, with its own stated predictable-predictor truncation and mixture
 parameters. These independent anchors do not authorize applying a row-order
 martingale directly to an arbitrary connected source graph.
+
+\section{Prespecified invalid-assumption controls}
+\label{app:post-negative-controls}
+
+Four supplementary controls each use 25 complete logs with $N=32768$, one
+query and the same two nominal levels. Their configurations precede their
+outcomes. Each compares a valid reference under the actual model, an
+intentionally invalid interval labeled heuristic, and an honest refusal when
+the required premise is not supplied. The invalid output is never promoted
+to a certified result. Refusal has no interval and no assessable error rate;
+it is not a zero-error observation.
+
+\paragraph{Hidden shared shock.}
+Every row has response $.45+H$, where $H\in\{-.25,.25\}$ is a single common
+shock. The invalid description supplies an empty graph. The true sufficient
+graph is complete, although it need not be stored as a quadratic adjacency
+matrix. The valid reference uses a deterministic known target range. A narrow
+interval obtained by pretending the rows are independent can be wrong even
+though the declared array shapes and probability rows pass validation.
+
+\paragraph{Wrong exposure law.}
+The true action-one exposure is $1/5$, generated by an exact five-way lottery;
+the invalid input says $1/2$. The target puts probability .8 on action one,
+the response locations are $(.2,.8)$ and the nuisance is .5. The true target is
+.68. The valid reference receives the true exposure law. A probability array
+being normalized does not show that it equals the logger's actual law.
+
+\paragraph{Missing clipping bias.}
+The response is $.3+100B$ with $B\sim\operatorname{Bernoulli}(1/200)$,
+target equal to logging and nuisance .5. Its mean is .8. At the fixed threshold
+$\tau=.01$, the expected clipped DR score is .4901, giving exact clipping
+bias .3099. A legal $p=1.5$ raw moment is computed analytically from the two
+atoms before sampling. The valid reference pays the complete bias bound even
+when it becomes vacuous. The intentionally invalid interval retains the same
+estimate but omits this debit. A realized log without an extreme score cannot
+justify that omission.
+
+\paragraph{Evaluation-trained nuisance.}
+With true exposure $1/5$, target action-one probability .8 and response
+locations $(.2,.8)$, the invalid fit sets both state predictions in each row
+equal to its observed response. Its weighted residual is zero and its direct
+term is the observed outcome, whose mean is .32 rather than the target .68.
+The valid reference uses the independent fixed nuisance .5. Conditioning on
+the leaked fit does not restore the required identification and independence
+conditions. Source provenance can reveal a declared violation, but array
+schemas cannot discover every hidden training-data dependency.
+
+Coverage and false claims in these controls describe complete logs under
+known intentionally violated premises. They are supplementary diagnostics,
+with pointwise Monte Carlo uncertainty, and do not enter the primary validity
+families or the historical seventeen-comparison study.
