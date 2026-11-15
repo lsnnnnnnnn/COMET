@@ -6,6 +6,8 @@ import hashlib
 import json
 from pathlib import Path
 import shutil
+from contextlib import nullcontext
+from experiments.relocated_sources import DEFAULT_REMOTE_PREFIX, relocated_source_checks
 
 from comet.checkpoint_store import CheckpointStore, NAMESPACE
 
@@ -23,13 +25,19 @@ COMMANDS={
     "negative_controls":".venv/bin/python -m experiments.negative_controls --run"}
 
 
-def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+def sha(path):
+    path=Path(path)
+    if path.is_absolute() and str(path).startswith(DEFAULT_REMOTE_PREFIX+'/'):
+        path=ROOT/path.relative_to(DEFAULT_REMOTE_PREFIX)
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def snapshot():
     suites={}; source_conflicts=[]; sources={}; completed=primary=remaining=0
     for name in SUITES:
         path=ROOT/f"results/post_cstat/{name}_protocol.json"
+        server_path=ROOT/f"results/post_cstat/{name}_server_v2_protocol.json"
+        if name in ("ANCHORS","negative_controls") and server_path.is_file():path=server_path
         if not path.is_file():
             if name=="E6":
                 from experiments.e6_runner import planned_e6_ids
@@ -41,7 +49,10 @@ def snapshot():
             else:
                 suites[name]=dict(status="NOT_FROZEN",completed=0,resume_command=COMMANDS[name])
             continue
-        manifest=json.loads(path.read_text());store=CheckpointStore(ROOT/f"results/post_cstat/{name}",manifest)
+        manifest=json.loads(path.read_text())
+        remote=any(key.startswith(DEFAULT_REMOTE_PREFIX+'/') for key in manifest["sources"])
+        with relocated_source_checks(manifest) if remote else nullcontext():
+            store=CheckpointStore(ROOT/f"results/post_cstat/{name}",manifest)
         # Atomic install makes a present file a completed checkpoint; full payload
         # integrity remains the job of the streamed suite analyses, not this count.
         absent=[run_id for run_id in sorted(store.planned) if not store.path(run_id).is_file()]
@@ -50,7 +61,9 @@ def snapshot():
         suites[name]=dict(status="COMPLETE_FILES_PRESENT" if not absent else "INCOMPLETE",
             protocol_fingerprint=manifest["fingerprint"],protocol_sha256=sha(path),
             planned=len(store.planned),completed=n,remaining=len(absent),remaining_ids=absent,
-            resume_command=COMMANDS[name],payload_verification="streamed analysis receipt; not repeated by this filename inventory")
+            resume_command=("ssh -o BatchMode=yes 10.200.13.23 'cd "+DEFAULT_REMOTE_PREFIX+" && OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m "+("experiments.anchor_runner" if name=="ANCHORS" else "experiments.negative_controls")+" --run --protocol results/post_cstat/"+name+"_server_v2_protocol.json'" if remote else COMMANDS[name]),
+            actual_protocol_path=str(path),production_location="server" if remote else "original_local_host",
+            payload_verification="streamed analysis receipt; not repeated by this filename inventory")
         for source,value in manifest["sources"].items():
             if source in sources and sources[source]!=value:source_conflicts.append(source)
             sources[source]=value
@@ -79,7 +92,7 @@ def snapshot():
         persistent_result_bytes=artifacts,persistent_result_cap_bytes=int(1.5*2**30),
         free_disk_bytes=shutil.disk_usage(ROOT).free,
         scheduler_rule="at most two scientific CPU workers; do not run all resume commands concurrently",
-        background_work_running="consult live tool sessions during task; final handoff must explicitly close or report actual processes")
+        background_work_running="consult live local sessions AND server tmux receipt; final handoff must report actual process state")
 
 
 def main():

@@ -1,0 +1,66 @@
+{
+  "status": "FAIL",
+  "scope": "12 explicit deterministic fixture conditions; production samplers forbidden; not empirical evidence or general cross-platform exactness",
+  "counts": {
+    "numeric": 18317,
+    "exact": 19167
+  },
+  "mismatch_count": 6,
+  "mismatches": [
+    {
+      "path": "fixture_values.scaling-N131072-bounded.data_digest",
+      "local": "b43af0eb56d841ec49af957657a223753ece3bdba544b38d8ac9cf618aa0427d",
+      "server": "6896e1b9527f2f038a012481cb4f93b9603e2ed84a874b3e249d7815dae54314"
+    },
+    {
+      "path": "fixture_values.scaling-N131072-heavy.data_digest",
+      "local": "b43af0eb56d841ec49af957657a223753ece3bdba544b38d8ac9cf618aa0427d",
+      "server": "6896e1b9527f2f038a012481cb4f93b9603e2ed84a874b3e249d7815dae54314"
+    },
+    {
+      "path": "fixture_values.scaling-N32768-bounded.data_digest",
+      "local": "b43af0eb56d841ec49af957657a223753ece3bdba544b38d8ac9cf618aa0427d",
+      "server": "6896e1b9527f2f038a012481cb4f93b9603e2ed84a874b3e249d7815dae54314"
+    },
+    {
+      "path": "fixture_values.scaling-N32768-heavy.data_digest",
+      "local": "b43af0eb56d841ec49af957657a223753ece3bdba544b38d8ac9cf618aa0427d",
+      "server": "6896e1b9527f2f038a012481cb4f93b9603e2ed84a874b3e249d7815dae54314"
+    },
+    {
+      "path": "fixture_values.scaling-N8192-bounded.data_digest",
+      "local": "b43af0eb56d841ec49af957657a223753ece3bdba544b38d8ac9cf618aa0427d",
+      "server": "6896e1b9527f2f038a012481cb4f93b9603e2ed84a874b3e249d7815dae54314"
+    },
+    {
+      "path": "fixture_values.scaling-N8192-heavy.data_digest",
+      "local": "b43af0eb56d841ec49af957657a223753ece3bdba544b38d8ac9cf618aa0427d",
+      "server": "6896e1b9527f2f038a012481cb4f93b9603e2ed84a874b3e249d7815dae54314"
+    }
+  ],
+  "largest_absolute_numeric_difference": 2.220446049250313e-16,
+  "rtol": 5e-12,
+  "atol": 5e-13,
+  "status_decision_coverage_equality": "exact",
+  "local_environment": {
+    "byteorder": "little",
+    "implementation": "CPython",
+    "machine": "arm64",
+    "numpy": "1.26.4",
+    "platform": "macOS-27.2-arm64-arm-64bit",
+    "python": "3.12.2"
+  },
+  "server_environment": {
+    "byteorder": "little",
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "numpy": "1.26.4",
+    "platform": "Linux-5.15.0-136-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "new_scientific_draws": 0,
+  "input_sha256": {
+    "server_fixture_local_v2.json": "3f4f045e1249d598d5885f33abc9333cf806d16a7f3c5e64f2b49e2e25c6308f",
+    "server_fixture_linux_v2.json": "1130a453e0674f8987f58419d46d67570d12756a03cba982aeb9d66fdbdcd5ee"
+  }
+}

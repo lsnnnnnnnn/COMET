@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "scope": "12 explicit deterministic fixture conditions; production samplers forbidden; not empirical evidence or general cross-platform exactness",
+  "counts": {
+    "numeric": 22413,
+    "exact": 23255
+  },
+  "mismatch_count": 0,
+  "mismatches": [],
+  "largest_absolute_numeric_difference": 2.220446049250313e-16,
+  "rtol": 5e-12,
+  "atol": 5e-13,
+  "status_decision_coverage_equality": "exact",
+  "local_environment": {
+    "byteorder": "little",
+    "implementation": "CPython",
+    "machine": "arm64",
+    "numpy": "1.26.4",
+    "platform": "macOS-27.2-arm64-arm-64bit",
+    "python": "3.12.2"
+  },
+  "server_environment": {
+    "byteorder": "little",
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "numpy": "1.26.4",
+    "platform": "Linux-5.15.0-136-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "new_scientific_draws": 0,
+  "within_host_data_hashes": [
+    {
+      "condition": "iid-bounded",
+      "local": "cf721d224ef667b38525b5b358984992d4f403707f74afc44e9fc67afcdb61c7",
+      "server": "cf721d224ef667b38525b5b358984992d4f403707f74afc44e9fc67afcdb61c7",
+      "role": "within-host immutable checksum; cross-host compares exposed observations numerically"
+    },
+    {
+      "condition": "iid-heavy",
+      "local": "cf721d224ef667b38525b5b358984992d4f403707f74afc44e9fc67afcdb61c7",
+      "server": "cf721d224ef667b38525b5b358984992d4f403707f74afc44e9fc67afcdb61c7",
+      "role": "within-host immutable checksum; cross-host compares exposed observations numerically"
+    },
+    {
+      "condition": "scaling-N131072-bounded",
+      "local": "b43af0eb56d841ec49af957657a223753ece3bdba544b38d8ac9cf618aa0427d",
+      "server": "6896e1b9527f2f038a012481cb4f93b9603e2ed84a874b3e249d7815dae54314",
+      "role": "within-host immutable checksum; cross-host compares exposed observations numerically"
+    },
+    {
+      "condition": "scaling-N131072-heavy",
+      "local": "b43af0eb56d841ec49af957657a223753ece3bdba544b38d8ac9cf618aa0427d",
+      "server": "6896e1b9527f2f038a012481cb4f93b9603e2ed84a874b3e249d7815dae54314",
+      "role": "within-host immutable checksum; cross-host compares exposed observations numerically"
+    },
+    {
+      "condition": "scaling-N32768-bounded",
+      "local": "b43af0eb56d841ec49af957657a223753ece3bdba544b38d8ac9cf618aa0427d",
+      "server": "6896e1b9527f2f038a012481cb4f93b9603e2ed84a874b3e249d7815dae54314",
+      "role": "within-host immutable checksum; cross-host compares exposed observations numerically"
+    },
+    {
+      "condition": "scaling-N32768-heavy",
+      "local": "b43af0eb56d841ec49af957657a223753ece3bdba544b38d8ac9cf618aa0427d",
+      "server": "6896e1b9527f2f038a012481cb4f93b9603e2ed84a874b3e249d7815dae54314",
+      "role": "within-host immutable checksum; cross-host compares exposed observations numerically"
+    },
+    {
+      "condition": "scaling-N8192-bounded",
+      "local": "b43af0eb56d841ec49af957657a223753ece3bdba544b38d8ac9cf618aa0427d",
+      "server": "6896e1b9527f2f038a012481cb4f93b9603e2ed84a874b3e249d7815dae54314",
+      "role": "within-host immutable checksum; cross-host compares exposed observations numerically"
+    },
+    {
+      "condition": "scaling-N8192-heavy",
+      "local": "b43af0eb56d841ec49af957657a223753ece3bdba544b38d8ac9cf618aa0427d",
+      "server": "6896e1b9527f2f038a012481cb4f93b9603e2ed84a874b3e249d7815dae54314",
+      "role": "within-host immutable checksum; cross-host compares exposed observations numerically"
+    }
+  ],
+  "input_sha256": {
+    "server_fixture_local_v3.json": "9e32491cc23878fe0389a14610d9ff8d41495bf7a6d0815602afbe019379d5ef",
+    "server_fixture_linux_v3.json": "e1d5aaf576eb4c98e7c5062a8ee31cf519608769212d4345bab391ac6575928b"
+  }
+}
